@@ -31,9 +31,10 @@ jobs:
         run: cd build && ls
 
       - name: Upload COS
+        run: cd build
         uses: zkqiang/tencent-cos-action@master
         with:
-          args: delete -r -f / && upload -r /home/runner/work/qrbtf/qrbtf/build/ /
+          args: delete -r -f / && upload -r ./ /
           secret_id: ${{ secrets.SECRET_ID }}
           secret_key: ${{ secrets.SECRET_KEY }}
           bucket: ${{ secrets.BUCKET }}
