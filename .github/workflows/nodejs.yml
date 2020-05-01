@@ -24,7 +24,7 @@ jobs:
         env:
           CI: true
 
-      - name: Permission
+      - name: Authenticate
         run: sudo chmod 775 ./build/
 
       - name: Upload COS
