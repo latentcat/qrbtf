@@ -117,6 +117,12 @@
     border-color: #44D7B6;
 }
 
+.Qr-item:active .Qr-item-image {
+    -webkit-transition-duration: 0s; /* Safari */
+    transition-duration: 0s;
+    border-color: #3BBC9F;
+}
+
 .Qr-item:hover .Qr-item-image-inner {
     opacity: 1;
 }
@@ -228,6 +234,13 @@ table {
 
 .Qr-input:focus {
     border-color: #44D7B6;
+    color: #000000;
+}
+
+.Qr-input:active {
+    -webkit-transition-duration: 0s; /* Safari */
+    transition-duration: 0s;
+    border-color: #3BBC9F;
     color: #000000;
 }
 
