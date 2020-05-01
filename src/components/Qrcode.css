@@ -18,10 +18,11 @@
 
 .Qr-subtitle {
     margin-top: -1em;
+    margin-bottom: 0;
 }
 
 .Qr-s-subtitle {
-    margin-top: 0;
+    margin-top: 0.25em;
     margin-bottom: 0;
 }
 
@@ -49,7 +50,7 @@
 .Qr-box {
     white-space: nowrap;
     display: flex;
-    padding: 10px 13px 0px 23px;
+    padding: 0px 13px 0px 23px;
 }
 
 @media (min-width: 1000px) {
@@ -117,27 +118,44 @@
     transition-duration: 0.2s;
 }
 
+tr {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between ;
+}
+
 td:nth-child(1) {
-    font-size: 0.8em;
+    font-size: 1em;
+    white-space: nowrap;
 }
 
 td:nth-child(2) {
-    font-size: 0.8em;
+    white-space: nowrap;
+    font-size: 1em;
+}
+
+td {
+    padding-bottom: 10px;
 }
 
 .big-input {
     font-size: calc(10px + 2vmin);
+    margin-top: calc((10px + 2vmin) * 2);
     margin-bottom: calc((10px + 2vmin) * 2);
     border: rgba(0,0,0,0.12) solid 3px;
+    width: 20em;
+}
+
+.small-input {
+    font-size: 0.8em;
+    border: rgba(0,0,0,0.12) solid 2px;
 }
 
 .Qr-input {
-    font-size: 0.6em;
     caret-color: #44D7B6;
     padding: 0;
     line-height: 2em;
     box-sizing: border-box;
-    border: rgba(0,0,0,0.12) solid 2px;
     border-radius: 3em;
     outline: none;
     text-indent: 1em;

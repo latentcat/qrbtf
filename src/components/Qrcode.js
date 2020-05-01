@@ -1,10 +1,15 @@
 import React from "react";
 import QrItem from './QrItem'
 import {getQrcodeData} from "../utils/qrcodeHandler";
-import './Qrcode.css'
+import './Qrcode.css';
+import { InputNumber } from 'antd';
 
 import QrRendererBase from './QrRendererBase'
 import QrRendererRound from './QrRendererRound'
+
+function onChange(value) {
+    console.log('changed', value);
+}
 
 function QrBoxList(props) {
     return (
@@ -79,13 +84,13 @@ class Qrcode extends React.Component {
                                 <tbody>
                                     <tr>
                                         <td>圆点大小</td>
-                                        <td><input className="Qr-input"
-                                                   placeholder="10" />&ensp;px</td>
+                                        <td><input className="Qr-input small-input"
+                                                   placeholder="10" /></td>
                                     </tr>
                                     <tr>
                                         <td>随机种</td>
-                                        <td><input className="Qr-input"
-                                                   placeholder="1" /></td>
+                                        <td><input className="Qr-input small-input"
+                                                   placeholder="10" /></td>
                                     </tr>
                                 </tbody>
 
