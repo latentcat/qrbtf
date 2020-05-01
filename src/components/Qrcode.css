@@ -43,7 +43,7 @@
 }
 
 .Qr-item-image {
-    padding: 10px;
+    padding: 23px;
     background-color: white;
     width: calc((100vw - 56px) / 2);
     height: calc((100vw - 56px) / 2);
@@ -106,12 +106,12 @@
 }
 
 .Qr-input::placeholder {
-    font-family: 'Futura';
+    font-family: 'Futura', sans-serif;
     color: rgba(0,0,0,0.18);
 }
 
 .Qr-input {
-    font-family: 'Futura';
+    font-family: 'Futura', sans-serif;
     color: rgba(0,0,0,0.6);
 }
 
