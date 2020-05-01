@@ -14,3 +14,13 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+
+      # 使用云开发 Github Action 部署
+      - name: Upload COS
+          uses: zkqiang/tencent-cos-action@master
+          with:
+            args: delete -r -f / && upload -r ./dist/ /
+            secret_id: ${{ secrets.SECRET_ID }}
+            secret_key: ${{ secrets.SECRET_KEY }}
+            bucket: ${{ secrets.BUCKET }}
+            region: ap-shanghai
