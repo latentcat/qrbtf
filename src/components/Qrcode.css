@@ -80,12 +80,13 @@
     transition-duration: 0.2s;
 }
 
-.Qr-item-svg {
+.Qr-item-image-inner {
     opacity: 0.36;
     -webkit-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
+    -webkit-transform: translateZ(0);
 }
 
 @media (min-width: 500px) {
@@ -99,7 +100,7 @@
     border-color: #44D7B6;
 }
 
-.Qr-item:hover .Qr-item-svg {
+.Qr-item:hover .Qr-item-image-inner {
     opacity: 1;
 }
 
@@ -152,7 +153,7 @@ td {
 }
 
 .Qr-input {
-    caret-color: #44D7B6;
+    caret-color: #44d7b6;
     padding: 0;
     line-height: 2em;
     box-sizing: border-box;
