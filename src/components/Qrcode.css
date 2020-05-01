@@ -1,10 +1,17 @@
 .Qr-titled {
     background-color: rgba(0,0,0,0.06);
     box-sizing: border-box;
-    border-top: rgba(0,0,0,0.06) solid 3px;
-    border-bottom: rgba(0,0,0,0.06) solid 3px;
+    border-top: rgba(0,0,0,0.06) solid 2px;
+    border-bottom: rgba(0,0,0,0.06) solid 2px;
     padding-top: calc((10px + 2vmin) * 2);
     padding-bottom: calc((10px + 2vmin) * 2);
+}
+
+@media (min-width: 500px) {
+    .Qr-titled {
+        border-top: rgba(0,0,0,0.06) solid 3px;
+        border-bottom: rgba(0,0,0,0.06) solid 3px;
+    }
 }
 
 .Qr-titled-nobg {
@@ -77,11 +84,17 @@
     height: calc((100vw - 56px) / 2);
     border-radius: 10px;
     box-sizing: border-box;
-    border: rgba(0,0,0,0.12) solid 3px;
+    border: rgba(0,0,0,0.12) solid 2px;
     -webkit-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
+}
+
+@media (min-width: 500px) {
+    .Qr-item-image {
+        border: rgba(0,0,0,0.12) solid 3px;
+    }
 }
 
 .Qr-item-image-inner {
@@ -152,15 +165,27 @@ table {
     font-size: calc(10px + 2vmin);
     margin-top: calc((10px + 2vmin) * 2);
     margin-bottom: calc((10px + 2vmin) * 2);
-    border: rgba(0,0,0,0.12) solid 3px;
+    border: rgba(0,0,0,0.12) solid 2px;
     width: 20em;
     max-width: calc(100vw - 46px);
 }
 
+@media (min-width: 500px) {
+    .big-input {
+        border: rgba(0,0,0,0.12) solid 3px;
+    }
+}
+
 .small-input {
     font-size: 0.9em;
-    border: rgba(0,0,0,0.12) solid 3px;
+    border: rgba(0,0,0,0.12) solid 2px;
     width: calc((100vw - 56px) / 2);
+}
+
+@media (min-width: 500px) {
+    .small-input {
+        border: rgba(0,0,0,0.12) solid 3px;
+    }
 }
 
 @media (min-width: 500px) {
@@ -234,7 +259,7 @@ table {
     outline: none;
     padding: 0;
     box-sizing: border-box;
-    border: rgba(0,0,0,0.12) solid 3px;
+    border: rgba(0,0,0,0.12) solid 2px;
     -webkit-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
@@ -245,6 +270,12 @@ table {
     background: white;
     font-family: 'Futura', sans-serif;
     color: rgba(0,0,0,0.6);
+}
+
+@media (min-width: 500px) {
+    .dl-btn {
+        border: rgba(0,0,0,0.12) solid 3px;
+    }
 }
 
 .dl-btn:hover {
