@@ -22,6 +22,8 @@ function QrBoxList(props) {
             <QrItem value={"D1"} qrcode={props.qrcode} />
             <QrItem value={"D2"} qrcode={props.qrcode} />
             <QrItem value={"D3"} qrcode={props.qrcode} />
+            <QrItem value={"E1"} qrcode={props.qrcode} />
+            <QrItem value={"E2"} qrcode={props.qrcode} />
         </React.Fragment>
     );
 }
