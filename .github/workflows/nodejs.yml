@@ -24,7 +24,7 @@ jobs:
         env:
           CI: true
 
-      - name: see2
+      - name: Permission
         run: sudo chmod 775 ./build/
 
       - name: Upload COS
