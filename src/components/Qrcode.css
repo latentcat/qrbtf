@@ -1,0 +1,127 @@
+.Qr-titled {
+    background-color: rgba(0,0,0,0.06);
+    box-sizing: border-box;
+    border-top: rgba(0,0,0,0.06) solid 3px;
+    border-bottom: rgba(0,0,0,0.06) solid 3px;
+}
+
+.Qr-s {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    overflow-scrolling: touch;
+    width: 100vw;
+    white-space: nowrap;
+    display: flex;
+}
+
+.Qr-s::-webkit-scrollbar {
+    display: none;
+}
+
+.Qr-s-title {
+    margin-top: 23px;
+    font-size: 1.4em;
+}
+
+.Qr-box {
+    white-space: nowrap;
+    display: flex;
+    padding: 10px 13px 23px 23px;
+}
+
+@media (min-width: 1000px) {
+    .Qr-box {
+        padding-left: calc((100vw - 1000px) / 2 + 23px);
+    }
+}
+
+.Qr-item {
+    user-select: none;
+    float: left;
+    display:block!important;
+    margin-right: 10px;
+}
+
+.Qr-item-image {
+    background-color: white;
+    width: calc((100vw - 56px) / 2);
+    height: calc((100vw - 56px) / 2);
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: rgba(0,0,0,0.12) solid 3px;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+}
+
+@media (min-width: 500px) {
+    .Qr-item-image {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.Qr-item:hover .Qr-item-image {
+    border-color: #44D7B6;
+}
+
+.Qr-item:hover .Qr-item-detail {
+    color: #000000;
+}
+
+.Qr-item-detail {
+    color: rgba(0,0,0,0.3);
+    margin-top: 5px;
+    font-size: 1em;
+    text-align: left;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+}
+
+.Qr-input {
+    caret-color: #44D7B6;
+    font-size: calc(10px + 2vmin);
+    padding: 0;
+    margin-bottom: calc((10px + 2vmin) * 2);
+    line-height: 2em;
+    box-sizing: border-box;
+    border: rgba(0,0,0,0.12) solid 3px;
+    border-radius: 3em;
+    outline: none;
+    text-indent: 1em;
+    width: 20em;
+    max-width: calc(100vw - 46px);
+    overflow: visible;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.Qr-input::placeholder {
+    font-family: 'Futura';
+    color: rgba(0,0,0,0.18);
+}
+
+.Qr-input {
+    font-family: 'Futura';
+    color: rgba(0,0,0,0.6);
+}
+
+.Qr-Centered {
+    padding-left: 23px;
+    padding-right: 23px;
+    max-width: 954px;
+    text-align: -webkit-left;
+}
+
+.Qr-input:focus {
+    border-color: #44D7B6;
+    color: #000000;
+}
