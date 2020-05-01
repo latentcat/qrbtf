@@ -15,13 +15,13 @@ function QrBoxList(props) {
     return (
         <React.Fragment>
             <QrItem value={"A1"} qrcode={props.qrcode} renderer={<QrRendererBase qrcode={props.qrcode}/>} />
-            <QrItem value={2} qrcode={props.qrcode} renderer={<QrRendererRound qrcode={props.qrcode}/>} />
-            <QrItem value={3} qrcode={props.qrcode} />
-            <QrItem value={4} qrcode={props.qrcode} />
-            <QrItem value={5} qrcode={props.qrcode} />
-            <QrItem value={6} qrcode={props.qrcode} />
-            <QrItem value={7} qrcode={props.qrcode} />
-            <QrItem value={8} qrcode={props.qrcode} />
+            <QrItem value={"A2"} qrcode={props.qrcode} renderer={<QrRendererRound qrcode={props.qrcode}/>} />
+            <QrItem value={"B1"} qrcode={props.qrcode} />
+            <QrItem value={"C1"} qrcode={props.qrcode} />
+            <QrItem value={"C2"} qrcode={props.qrcode} />
+            <QrItem value={"D1"} qrcode={props.qrcode} />
+            <QrItem value={"D2"} qrcode={props.qrcode} />
+            <QrItem value={"D3"} qrcode={props.qrcode} />
         </React.Fragment>
     );
 }
@@ -65,7 +65,7 @@ class Qrcode extends React.Component {
                 <div className="Qr-titled">
                     <div className="Qr-Centered title-margin">
                         <div className="Qr-s-title">Styles</div>
-                        <p className="Qr-s-subtitle">样式选择</p>
+                        <p className="Qr-s-subtitle">点击选择样式</p>
                     </div>
                     <div className="Qr-s">
                         <div className="Qr-box">
