@@ -21,7 +21,7 @@ class QrItem extends React.Component {
         return (
             <div className="Qr-item">
                 <div className="Qr-item-image">
-                    <svg width="100%" height="100%" viewBox={calViewBox(this.props)} fill="white">
+                    <svg className="Qr-item-svg" width="100%" height="100%" viewBox={calViewBox(this.props)} fill="white">
                         {this.props.renderer}
                     </svg>
                 </div>

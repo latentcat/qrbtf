@@ -47,9 +47,10 @@ class Qrcode extends React.Component {
         return (
             <div>
                 <div className="Qr-Centered">
-                    <h1>qrbtf.com</h1>
+                    <h1 className="Qr-title">qrbtf.com</h1>
+                    <p className="Qr-subtitle">参数化二维码生成器</p>
                     <input
-                        className="Qr-input"
+                        className="Qr-input big-input"
                         placeholder="Input your URL here"
                         onChange={this.handleChange}
                         onBlur={this.handleCreate}
@@ -57,12 +58,38 @@ class Qrcode extends React.Component {
                     />
                 </div>
                 <div className="Qr-titled">
-                    <div className="Qr-Centered Qr-s-title">
-                        Styles
+                    <div className="Qr-Centered title-margin">
+                        <div className="Qr-s-title">Styles</div>
+                        <p className="Qr-s-subtitle">样式选择</p>
                     </div>
                     <div className="Qr-s">
                         <div className="Qr-box">
                             <QrBoxList qrcode={this.state.qrcode} options={this.state.options}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="Qr-titled-nobg">
+                    <div className="Qr-Centered title-margin">
+                        <div className="Qr-s-title">Parameters</div>
+                        <p className="Qr-s-subtitle">参数调整</p>
+                    </div>
+                    <div className="Qr-Centered">
+                        <div className="Qr-div-table">
+                            <table className="Qr-table">
+                                <tbody>
+                                    <tr>
+                                        <td>圆点大小</td>
+                                        <td><input className="Qr-input"
+                                                   placeholder="10" />&ensp;px</td>
+                                    </tr>
+                                    <tr>
+                                        <td>随机种</td>
+                                        <td><input className="Qr-input"
+                                                   placeholder="1" /></td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
                         </div>
                     </div>
                 </div>
