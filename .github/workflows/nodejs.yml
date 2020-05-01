@@ -24,13 +24,10 @@ jobs:
         env:
           CI: true
 
-      - name: see
-        run: ls
-
       - name: Upload COS
         uses: zkqiang/tencent-cos-action@master
         with:
-          args: delete -r -f / && upload -r ./build /
+          args: delete -r -f / && upload -r /build /
           secret_id: ${{ secrets.SECRET_ID }}
           secret_key: ${{ secrets.SECRET_KEY }}
           bucket: ${{ secrets.BUCKET }}
