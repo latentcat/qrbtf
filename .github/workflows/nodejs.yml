@@ -28,10 +28,9 @@ jobs:
         run: ls && pwd
 
       - name: see2
-        run: cd build && ls
+        run: sudo chmod 775 ./build/
 
       - name: Upload COS
-        run: cd build
         uses: zkqiang/tencent-cos-action@master
         with:
           args: delete -r -f / && upload -r ./ /
