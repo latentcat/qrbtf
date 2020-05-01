@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="78c692f3-8e9f-49c7-86c1-0c5e9d711b1f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1bFvrHaftMN3n3JxJkjIZayPhN8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="78c692f3-8e9f-49c7-86c1-0c5e9d711b1f" name="Default Changelist" comment="" />
+      <created>1588240852207</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588240852207</updated>
+      <workItem from="1588240855414" duration="15673000" />
+      <workItem from="1588305721761" duration="1596000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1161" y="421" key="#Notifications" timestamp="1588307553058">
+      <screen x="0" y="23" width="2541" height="1057" />
+    </state>
+    <state x="1161" y="421" key="#Notifications/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588307553058" />
+    <state x="870" y="291" key="Vcs.Push.Dialog.v2" timestamp="1588308202572">
+      <screen x="0" y="23" width="2541" height="1057" />
+    </state>
+    <state x="870" y="291" key="Vcs.Push.Dialog.v2/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588308202572" />
+    <state x="1092" y="452" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1588307488317">
+      <screen x="0" y="23" width="2541" height="1057" />
+    </state>
+    <state x="1092" y="452" key="git4idea.remote.GitConfigureRemotesDialog/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588307488317" />
+    <state x="935" y="256" key="run.anything.popup" timestamp="1588250759548">
+      <screen x="0" y="23" width="2560" height="1057" />
+    </state>
+    <state x="935" y="256" key="run.anything.popup/-1600.203.1600.877/428.1103.1680.1027/0.23.2560.1057@0.23.2560.1057" timestamp="1588250759548" />
+  </component>
+</project>
