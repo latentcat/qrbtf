@@ -67,6 +67,7 @@
 @media (min-width: 1000px) {
     .Qr-box {
         padding-left: calc((100vw - 1000px) / 2 + 23px);
+        padding-right: calc((100vw - 1000px) / 2 + 13px);
     }
 }
 
@@ -75,6 +76,7 @@
     float: left;
     display:block!important;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .Qr-item-image {
@@ -237,12 +239,6 @@ table {
     color: #000000;
 }
 
-.Qr-input:active {
-    -webkit-transition-duration: 0s; /* Safari */
-    transition-duration: 0s;
-    border-color: #3BBC9F;
-    color: #000000;
-}
 
 .Qr-table {
     width: 100%;
@@ -262,6 +258,7 @@ table {
 }
 
 .dl-btn {
+    cursor: pointer;
     float: left;
     font-size: 1em;
     line-height: 1em;
