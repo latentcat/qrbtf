@@ -1,26 +1,32 @@
 name: Continuous Integration #action名称
-on: [push] #在推送的时候运行此action
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  build_job:
-    runs-on: ubuntu-latest  #运行环境
-    name: build
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-      # check out the repository
-      - name: Checkout
-        uses: actions/checkout@v2    #这里使用了github官方提供的action,checkout项目到虚拟机上
+      - name: Checkout master
+        uses: actions/checkout@v2
+        with:
+          ref: master
 
-      - name: Install Dependencies
-        run: yarn
-      - name: Build
-        run: yarn build
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
 
-      # 使用云开发 Github Action 部署
+      - name: Build project
+        run: yarn && yarn build
+
       - name: Upload COS
-          uses: zkqiang/tencent-cos-action@master
-          with:
-            args: delete -r -f / && upload -r ./dist/ /
-            secret_id: ${{ secrets.SECRET_ID }}
-            secret_key: ${{ secrets.SECRET_KEY }}
-            bucket: ${{ secrets.BUCKET }}
-            region: ap-shanghai
+        uses: zkqiang/tencent-cos-action@master
+        with:
+          args: delete -r -f / && upload -r ./dist/ /
+          secret_id: ${{ secrets.SECRET_ID }}
+          secret_key: ${{ secrets.SECRET_KEY }}
+          bucket: ${{ secrets.BUCKET }}
+          region: ap-shanghai
