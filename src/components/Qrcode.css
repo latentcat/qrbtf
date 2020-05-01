@@ -10,6 +10,10 @@
 .Qr-titled-nobg {
     padding-top: calc((10px + 2vmin) * 2);
     padding-bottom: calc((10px + 2vmin) * 2);
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
 }
 
 .Qr-title {
@@ -123,6 +127,7 @@ tr {
     width: 100%;
     display: inline-flex;
     justify-content: space-between ;
+    align-items: center;
 }
 
 td:nth-child(1) {
@@ -139,17 +144,29 @@ td {
     padding-bottom: 10px;
 }
 
+table {
+    margin-bottom: -10px;
+}
+
 .big-input {
     font-size: calc(10px + 2vmin);
     margin-top: calc((10px + 2vmin) * 2);
     margin-bottom: calc((10px + 2vmin) * 2);
     border: rgba(0,0,0,0.12) solid 3px;
     width: 20em;
+    max-width: calc(100vw - 46px);
 }
 
 .small-input {
-    font-size: 0.8em;
-    border: rgba(0,0,0,0.12) solid 2px;
+    font-size: 0.9em;
+    border: rgba(0,0,0,0.12) solid 3px;
+    width: calc((100vw - 56px) / 2);
+}
+
+@media (min-width: 500px) {
+    .small-input {
+        width: 200px;
+    }
 }
 
 .Qr-input {
@@ -160,7 +177,6 @@ td {
     border-radius: 3em;
     outline: none;
     text-indent: 1em;
-    max-width: calc(100vw - 46px);
     overflow: visible;
     -webkit-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
@@ -197,5 +213,59 @@ td {
 }
 
 .Qr-div-table {
-    max-width: 600px;
+    max-width: 410px;
+}
+
+.div-btn {
+    white-space: nowrap;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dl-btn {
+    float: left;
+    font-size: 1em;
+    line-height: 1em;
+    margin: 0;
+    width: calc((100vw - 56px) / 2);
+    height: 2em;
+    border-radius: 3em;
+    outline: none;
+    padding: 0;
+    box-sizing: border-box;
+    border: rgba(0,0,0,0.12) solid 3px;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background: white;
+    font-family: 'Futura', sans-serif;
+    color: rgba(0,0,0,0.6);
+}
+
+.dl-btn:hover {
+    border-color: #44D7B6;
+    color: #44D7B6;
+}
+
+.dl-btn:active {
+    -webkit-transition-duration: 0s; /* Safari */
+    transition-duration: 0s;
+    border-color: #3BBC9F;
+    color: #3BBC9F;
+}
+
+@media (min-width: 500px) {
+    .div-btn {
+        max-width: 410px;
+    }
+
+    .dl-btn {
+        width: 200px;
+        height: 2em;
+    }
 }
