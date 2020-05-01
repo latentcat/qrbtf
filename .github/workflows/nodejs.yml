@@ -21,6 +21,11 @@ jobs:
 
       - name: Build project
         run: yarn && yarn build
+        env:
+          CI: true
+
+      - name: see
+        run: ls
 
       - name: Upload COS
         uses: zkqiang/tencent-cos-action@master
