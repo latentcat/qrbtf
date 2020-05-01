@@ -22,7 +22,7 @@ jobs:
       - name: Build project
         run: yarn && yarn build
         env:
-          CI: true
+          CI: false
 
       - name: Authenticate
         run: sudo chmod 775 ./build/

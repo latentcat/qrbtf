@@ -9,7 +9,7 @@ import QrRendererRound from './QrRendererRound'
 function QrBoxList(props) {
     return (
         <React.Fragment>
-            <QrItem value={1} qrcode={props.qrcode} renderer={<QrRendererBase qrcode={props.qrcode}/>} />
+            <QrItem value={"A1"} qrcode={props.qrcode} renderer={<QrRendererBase qrcode={props.qrcode}/>} />
             <QrItem value={2} qrcode={props.qrcode} renderer={<QrRendererRound qrcode={props.qrcode}/>} />
             <QrItem value={3} qrcode={props.qrcode} />
             <QrItem value={4} qrcode={props.qrcode} />

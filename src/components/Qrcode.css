@@ -43,6 +43,7 @@
 }
 
 .Qr-item-image {
+    padding: 10px;
     background-color: white;
     width: calc((100vw - 56px) / 2);
     height: calc((100vw - 56px) / 2);
