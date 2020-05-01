@@ -25,7 +25,10 @@ jobs:
           CI: true
 
       - name: see
-        run: ls
+        run: ls && pwd
+
+      - name: see2
+        run: cd build && ls
 
       - name: Upload COS
         uses: zkqiang/tencent-cos-action@master
