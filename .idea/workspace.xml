@@ -11,9 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78c692f3-8e9f-49c7-86c1-0c5e9d711b1f" name="Default Changelist" comment="0.1.0.2">
+      <change afterPath="$PROJECT_DIR$/src/Futura.ttc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/QrItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/QrItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Qrcode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Qrcode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,12 +45,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
@@ -78,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1588240852207</updated>
       <workItem from="1588240855414" duration="15673000" />
-      <workItem from="1588305721761" duration="22142000" />
+      <workItem from="1588305721761" duration="23192000" />
     </task>
     <task id="LOCAL-00001" summary="0.1.0.1">
       <created>1588308749650</created>
@@ -290,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588334049718</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="0.1.0.2">
+      <created>1588336335380</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1588336335380</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,10 +331,10 @@
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
     <state x="1161" y="421" key="#Notifications/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588307553058" />
-    <state x="870" y="291" key="Vcs.Push.Dialog.v2" timestamp="1588334058054">
+    <state x="870" y="291" key="Vcs.Push.Dialog.v2" timestamp="1588336339174">
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
-    <state x="870" y="291" key="Vcs.Push.Dialog.v2/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588334058054" />
+    <state x="870" y="291" key="Vcs.Push.Dialog.v2/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588336339174" />
     <state x="997" y="347" key="git4idea.merge.GitPullDialog" timestamp="1588322703667">
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
@@ -330,10 +343,10 @@
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
     <state x="1092" y="452" key="git4idea.remote.GitConfigureRemotesDialog/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588308606948" />
-    <state x="928" y="256" key="run.anything.popup" timestamp="1588312207243">
+    <state x="928" y="256" key="run.anything.popup" timestamp="1588338163567">
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
     <state x="935" y="256" key="run.anything.popup/-1600.203.1600.877/428.1103.1680.1027/0.23.2560.1057@0.23.2560.1057" timestamp="1588250759548" />
-    <state x="928" y="256" key="run.anything.popup/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588312207243" />
+    <state x="928" y="256" key="run.anything.popup/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588338163567" />
   </component>
 </project>
