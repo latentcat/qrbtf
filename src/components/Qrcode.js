@@ -113,6 +113,23 @@ class Qrcode extends React.Component {
 
                     </div>
                 </div>
+                <div className="Qr-titled-nobg">
+                    <div className="Qr-Centered title-margin">
+                        <div className="Qr-s-title">More</div>
+                        <p className="Qr-s-subtitle">更多</p>
+                    </div>
+                    <div className="Qr-Centered">
+                        <div className="div-btn">
+                            <button className="dl-btn">提交样式</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="Qr-titled">
+                    <div className="Qr-Centered Qr-footer">
+                        <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener" target="_blank" data-pjax-state="">CPunisher</a></div>
+                        <div><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>
+                    </div>
+                </div>
             </div>
         );
     }
