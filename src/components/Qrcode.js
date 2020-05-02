@@ -1,31 +1,23 @@
 import React from "react";
-import QrItem from './QrItem'
 import {getQrcodeData} from "../utils/qrcodeHandler";
 import './Qrcode.css';
-import { InputNumber } from 'antd';
 
-import QrRendererBase from './QrRendererBase'
-import QrRendererRound from './QrRendererRound'
+import QrRendererBase from "./QrRendererBase";
+import QrRendererRound from "./QrRendererRound";
+import QrItem from "./QrItem";
 
-function onChange(value) {
-    console.log('changed', value);
-}
-
-function QrBoxList(props) {
-    return (
-        <React.Fragment>
-            <QrItem value={"A1"} qrcode={props.qrcode} renderer={<QrRendererBase qrcode={props.qrcode}/>} />
-            <QrItem value={"A2"} qrcode={props.qrcode} renderer={<QrRendererRound qrcode={props.qrcode}/>} />
-            <QrItem value={"B1"} qrcode={props.qrcode} />
-            <QrItem value={"C1"} qrcode={props.qrcode} />
-            <QrItem value={"C2"} qrcode={props.qrcode} />
-            <QrItem value={"D1"} qrcode={props.qrcode} />
-            <QrItem value={"D2"} qrcode={props.qrcode} />
-            <QrItem value={"D3"} qrcode={props.qrcode} />
-            <QrItem value={"E1"} qrcode={props.qrcode} />
-            <QrItem value={"E2"} qrcode={props.qrcode} />
-        </React.Fragment>
-    );
+function getStyleList(qrcode) {
+    const styleList = [
+        {value: "A1", renderer: <QrRendererBase qrcode={qrcode}/> },
+        {value: "A2", renderer: <QrRendererRound qrcode={qrcode}/>},
+        {value: "B1"},
+        {value: "B2"},
+        {value: "C1"},
+        {value: "C2"},
+        {value: "D1"},
+        {value: "D2"},
+    ];
+    return styleList;
 }
 
 class Qrcode extends React.Component {
@@ -34,11 +26,17 @@ class Qrcode extends React.Component {
         super(props);
         this.handleChange = this.handleChange.bind(this)
         this.handleCreate = this.handleCreate.bind(this)
+        this.handleSelected = this.handleSelected.bind(this)
         this.state = {
             text: '',
+            selected: 'A1',
             options: {text: ''},
             qrcode: null
         };
+    }
+
+    handleSelected(value) {
+        this.setState({selected: value});
     }
 
     handleChange(e) {
@@ -46,8 +44,15 @@ class Qrcode extends React.Component {
     }
 
     handleCreate(e) {
-        const text = this.state.text
-        this.setState({options: {text: text}, qrcode: getQrcodeData({text: text})});
+        let text = this.state.text
+
+        if (text.length > 0)
+            this.setState({options: {text: text}, qrcode: getQrcodeData({text: text})});
+        else {
+            text = 'http://qrbtf.com/';
+            this.setState({text: text, options: {text: text}, qrcode: getQrcodeData({text: text})});
+        }
+        e.target.blur();
     }
 
     render() {
@@ -59,6 +64,7 @@ class Qrcode extends React.Component {
                     <input
                         className="Qr-input big-input"
                         placeholder="Input your URL here"
+                        value={this.state.text}
                         onChange={this.handleChange}
                         onBlur={this.handleCreate}
                         onKeyPress={(e) => {if(e.key == 'Enter') this.handleCreate(e)}}
@@ -71,7 +77,17 @@ class Qrcode extends React.Component {
                     </div>
                     <div className="Qr-s">
                         <div className="Qr-box">
-                            <QrBoxList qrcode={this.state.qrcode} options={this.state.options}/>
+                            {
+                                getStyleList().map((style) => {
+                                    return <QrItem
+                                        value={style.value}
+                                        qrcode={this.state.qrcode}
+                                        renderer={style.renderer}
+                                        selected={style.value == this.state.selected}
+                                        onSelected={this.handleSelected}
+                                    />
+                                })
+                            }
                         </div>
                     </div>
                 </div>

@@ -108,6 +108,10 @@
     }
 }
 
+.Qr-item-image-selected {
+    border-color: #44D7B6 !important;
+}
+
 .Qr-item:hover .Qr-item-image {
     border-color: #44D7B6;
 }
