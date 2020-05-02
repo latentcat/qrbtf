@@ -274,13 +274,21 @@ table {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background: white;
     font-family: 'Futura', sans-serif;
-    color: rgba(0,0,0,0.6);
 }
 
 @media (min-width: 500px) {
     .dl-btn {
         border: rgba(0,0,0,0.12) solid 3px;
     }
+}
+
+.dl-btn:disabled {
+    cursor: not-allowed;
+}
+
+.dl-btn:disabled:hover {
+    border-color: rgba(0,0,0,0.12);
+    color: graytext;
 }
 
 .dl-btn:hover {
@@ -323,3 +331,4 @@ a {
 a:hover {
     text-decoration: underline;
 }
+

@@ -137,7 +137,7 @@ class Qrcode extends React.Component {
                     </div>
                     <div className="Qr-Centered">
                         <div className="div-btn">
-                            <button className="dl-btn">提交样式</button>
+                            <button disabled className="dl-btn">提交样式</button>
                         </div>
                     </div>
                 </div>
