@@ -12,8 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="78c692f3-8e9f-49c7-86c1-0c5e9d711b1f" name="Default Changelist" comment="静态参数调节组件初步完成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Qrcode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Qrcode.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Qrcode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Qrcode.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +86,7 @@
       <workItem from="1588240855414" duration="15673000" />
       <workItem from="1588305721761" duration="31311000" />
       <workItem from="1588351235673" duration="578000" />
-      <workItem from="1588418867838" duration="1493000" />
+      <workItem from="1588418867838" duration="2303000" />
     </task>
     <task id="LOCAL-00001" summary="0.1.0.1">
       <created>1588308749650</created>
@@ -382,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588351715706</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="新增更多与 footer 静态组件">
+      <created>1588423142598</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1588423142598</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,16 +412,18 @@
     <MESSAGE value="0.1.0.2" />
     <MESSAGE value="静态参数调节组件初步完成" />
     <MESSAGE value="修复按钮动画、添加指针样式、添加桌面端滑动区域右边距" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复按钮动画、添加指针样式、添加桌面端滑动区域右边距" />
+    <MESSAGE value="新增更多与 footer 静态组件" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增更多与 footer 静态组件" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1161" y="421" key="#Notifications" timestamp="1588307553058">
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
     <state x="1161" y="421" key="#Notifications/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588307553058" />
-    <state x="870" y="291" key="Vcs.Push.Dialog.v2" timestamp="1588351718130">
-      <screen x="0" y="23" width="2541" height="1057" />
+    <state x="877" y="274" key="Vcs.Push.Dialog.v2" timestamp="1588423147735">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
+    <state x="877" y="274" key="Vcs.Push.Dialog.v2/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588423147735" />
     <state x="870" y="291" key="Vcs.Push.Dialog.v2/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588351718130" />
     <state x="997" y="347" key="git4idea.merge.GitPullDialog" timestamp="1588322703667">
       <screen x="0" y="23" width="2541" height="1057" />
@@ -424,10 +433,10 @@
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
     <state x="1092" y="452" key="git4idea.remote.GitConfigureRemotesDialog/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588308606948" />
-    <state x="928" y="256" key="run.anything.popup" timestamp="1588351425012">
+    <state x="935" y="238" key="run.anything.popup" timestamp="1588423828879">
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
     <state x="935" y="256" key="run.anything.popup/-1600.203.1600.877/428.1103.1680.1027/0.23.2560.1057@0.23.2560.1057" timestamp="1588250759548" />
-    <state x="928" y="256" key="run.anything.popup/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588351425012" />
+    <state x="935" y="238" key="run.anything.popup/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588423828879" />
   </component>
 </project>
