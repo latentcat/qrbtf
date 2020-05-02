@@ -9,8 +9,8 @@ function calViewBox(props) {
 }
 
 function calClassName(props) {
-    if (props.selected == true) return 'Qr-item-image Qr-item-image-selected';
-    return 'Qr-item-image';
+    if (props.selected == true) return 'Qr-item Qr-item-selected';
+    return 'Qr-item';
 }
 
 class QrItem extends React.Component {
@@ -29,8 +29,8 @@ class QrItem extends React.Component {
 
     render() {
         return (
-            <div className="Qr-item" onClick={this.handleClick}>
-                <div className={calClassName(this.props)}>
+            <div className={calClassName(this.props)} onClick={this.handleClick}>
+                <div className="Qr-item-image">
                     <div className="Qr-item-image-inner">
                         <svg className="Qr-item-svg" width="100%" height="100%" viewBox={calViewBox(this.props)} fill="white">
                             {this.props.renderer}

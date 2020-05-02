@@ -108,12 +108,16 @@
     }
 }
 
-.Qr-item-image-selected {
+.Qr-item-selected .Qr-item-image {
     border-color: #44D7B6 !important;
 }
 
-.Qr-item:hover .Qr-item-image {
-    border-color: #44D7B6;
+.Qr-item-selected .Qr-item-image-inner {
+    opacity: 1;
+}
+
+.Qr-item-selected .Qr-item-detail {
+    color: #000000;
 }
 
 .Qr-item:hover .Qr-item-image-inner {

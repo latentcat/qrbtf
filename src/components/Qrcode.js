@@ -49,7 +49,7 @@ class Qrcode extends React.Component {
         if (text.length > 0)
             this.setState({options: {text: text}, qrcode: getQrcodeData({text: text})});
         else {
-            text = 'http://qrbtf.com/';
+            text = 'https://qrbtf.com/';
             this.setState({text: text, options: {text: text}, qrcode: getQrcodeData({text: text})});
         }
         e.target.blur();
@@ -81,6 +81,7 @@ class Qrcode extends React.Component {
                                 getStyleList().map((style) => {
                                     return <QrItem
                                         value={style.value}
+                                        key={style.value}
                                         qrcode={this.state.qrcode}
                                         renderer={style.renderer}
                                         selected={style.value == this.state.selected}
