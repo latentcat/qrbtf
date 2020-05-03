@@ -6,6 +6,9 @@ import QrRendererBase from "./QrRendererBase";
 import QrRendererRound from "./QrRendererRound";
 import QrItem from "./QrItem";
 
+const date = new Date();
+const currentYear = date.getFullYear();
+
 function getStyleList(qrcode) {
     const styleList = [
         {value: "A1", renderer: <QrRendererBase qrcode={qrcode}/> },
@@ -144,6 +147,7 @@ class Qrcode extends React.Component {
                 <div className="Qr-titled">
                     <div className="Qr-Centered Qr-footer">
                         <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener" target="_blank" data-pjax-state="">CPunisher</a></div>
+                        <div>Copyright © {currentYear} QRBTF. All rights reserved.</div>
                         <div><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>
                     </div>
                 </div>
