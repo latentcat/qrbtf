@@ -15,7 +15,7 @@ export function getQrcodeData(options) {
         width		: 256,
         height		: 256,
         typeNumber	: -1,
-        correctLevel	: 2,
+        correctLevel	: 0,
         background      : "#ffffff",
         foreground      : "#000000"
     }, options);
