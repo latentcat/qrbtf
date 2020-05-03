@@ -164,7 +164,7 @@ class Qrcode extends React.Component {
                 <div className="Qr-titled">
                     <div className="Qr-Centered title-margin">
                         <div className="Qr-s-title">Downloads</div>
-                        <p className="Qr-s-subtitle">下载二维码 - {styleList[this.state.selectedIndex].value}</p>
+                        <p className="Qr-s-subtitle">下载二维码 — {styleList[this.state.selectedIndex].value}</p>
                     </div>
                     <div className="Qr-Centered">
                         <div className="div-btn">
