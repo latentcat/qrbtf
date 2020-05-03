@@ -18,6 +18,8 @@
 // QR8bitByte
 //---------------------------------------------------------------------
 
+/*eslint-disable*/
+
 function QR8bitByte(data) {
 	this.mode = QRMode.MODE_8BIT_BYTE;
 	this.data = data;

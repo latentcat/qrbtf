@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import React from "react";
 import ReactDOMServer from 'react-dom/server'
 import {getQrcodeData} from "../utils/qrcodeHandler";
@@ -24,7 +26,11 @@ window.onload = function(){
 }
 function isWeiXin(){
     const ua = window.navigator.userAgent.toLowerCase();
-    return ua.match(/MicroMessenger/i) === 'micromessenger';
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 const styleList = [
