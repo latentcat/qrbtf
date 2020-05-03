@@ -42,8 +42,6 @@ export function saveImg(filename, content, width, height) {
 
     let img = document.createElement('img');
 
-    // New window for the image when it's loaded
-    if(!isChrome()) window.open('', 'download');
 
     img.onload = () => {
         ctx.fillStyle = 'white'
