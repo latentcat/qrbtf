@@ -70,7 +70,7 @@ class Qrcode extends React.Component {
                         value={this.state.text}
                         onChange={this.handleChange}
                         onBlur={this.handleCreate}
-                        onKeyPress={(e) => {if(e.key == 'Enter') this.handleCreate(e)}}
+                        onKeyPress={(e) => {if(e.key === 'Enter') this.handleCreate(e)}}
                     />
                 </div>
                 <div className="Qr-titled">
@@ -87,7 +87,7 @@ class Qrcode extends React.Component {
                                         key={style.value}
                                         qrcode={this.state.qrcode}
                                         renderer={style.renderer}
-                                        selected={style.value == this.state.selected}
+                                        selected={style.value === this.state.selected}
                                         onSelected={this.handleSelected}
                                     />
                                 })
@@ -146,9 +146,9 @@ class Qrcode extends React.Component {
                 </div>
                 <div className="Qr-titled">
                     <div className="Qr-Centered Qr-footer">
-                        <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener" target="_blank" data-pjax-state="">CPunisher</a></div>
-                        <div>Copyright © {currentYear} QRBTF. All rights reserved.</div>
-                        <div><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>
+                        <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener noreferrer" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener noreferrer" target="_blank" data-pjax-state="">CPunisher</a></div>
+                        <div className="Gray">Copyright © {currentYear} QRBTF. All rights reserved.</div>
+                        <div className="Gray"><a href="http://www.beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>
                     </div>
                 </div>
             </div>

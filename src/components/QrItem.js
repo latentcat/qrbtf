@@ -9,7 +9,7 @@ function calViewBox(props) {
 }
 
 function calClassName(props) {
-    if (props.selected == true) return 'Qr-item Qr-item-selected';
+    if (props.selected === true) return 'Qr-item Qr-item-selected';
     return 'Qr-item';
 }
 

@@ -318,8 +318,19 @@ table {
 }
 
 .Qr-footer {
-    font-size: 14px;
+    color: #1D1D1F;
+    font-size: 12px;
     margin-bottom: -4px;
+}
+
+@media (min-width: 500px) {
+    .Qr-footer {
+        font-size: 14px;
+    }
+}
+
+.Gray {
+    color: #86868B;
 }
 
 .Qr-footer div {
