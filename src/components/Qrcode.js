@@ -12,6 +12,21 @@ import QrItem from "./QrItem";
 const date = new Date();
 const currentYear = date.getFullYear();
 
+window.onload = function(){
+    if(isWeiXin()){
+        const outer = document.getElementById("wx-message");
+        const inner = document.createElement("div");
+        inner.className = "note-font";
+        inner.id = "wx-message-inner";
+        inner.innerHTML = "请在浏览器中打开";
+        outer.appendChild(inner);
+    }
+}
+function isWeiXin(){
+    const ua = window.navigator.userAgent.toLowerCase();
+    return ua.match(/MicroMessenger/i) === 'micromessenger';
+}
+
 const styleList = [
     {value: "A1", renderer: QrRendererBase},
     {value: "A2", renderer: QrRendererRound},
@@ -149,8 +164,9 @@ class Qrcode extends React.Component {
                             <button className="dl-btn" onClick={this.downloadSvg}>SVG</button>
                             <button className="dl-btn" onClick={this.downloadImg}>JPG</button>
                         </div>
-
+                        <div id="wx-message"></div>
                     </div>
+
                 </div>
                 <div className="Qr-titled-nobg">
                     <div className="Qr-Centered title-margin">
@@ -164,7 +180,7 @@ class Qrcode extends React.Component {
                     </div>
                 </div>
                 <div className="Qr-titled">
-                    <div className="Qr-Centered Qr-footer">
+                    <div className="Qr-Centered Qr-footer note-font">
                         <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener noreferrer" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener noreferrer" target="_blank" data-pjax-state="">CPunisher</a></div>
                         <div className="Gray">Copyright © {currentYear} QRBTF. All rights reserved.</div>
                         <div className="Gray"><a href="http://www.beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>

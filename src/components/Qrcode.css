@@ -319,14 +319,7 @@ table {
 
 .Qr-footer {
     color: #1D1D1F;
-    font-size: 12px;
     margin-bottom: -4px;
-}
-
-@media (min-width: 500px) {
-    .Qr-footer {
-        font-size: 14px;
-    }
 }
 
 .Gray {
@@ -346,3 +339,17 @@ a:hover {
     text-decoration: underline;
 }
 
+#wx-message-inner {
+    margin-top: 20px;
+}
+
+.note-font {
+    font-size: 12px;
+}
+
+@media (min-width: 500px) {
+    .note-font {
+        color: #1D1D1F;
+        font-size: 14px;
+    }
+}
