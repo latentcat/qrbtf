@@ -7,7 +7,7 @@ export function isChrome() {
 
 export function saveSvg(filename, content) {
     let htmlContent = [svgHead + content]
-    let bl = new Blob(htmlContent, {type: "text/html"})
+    let bl = new Blob(htmlContent, {type: "image/svg+xml"})
     let a = document.createElement("a")
     filename = "QRcode_" + filename + ".svg"
 
