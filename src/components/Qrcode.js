@@ -20,7 +20,7 @@ window.onload = function(){
         const inner = document.createElement("div");
         inner.className = "note-font";
         inner.id = "wx-message-inner";
-        inner.innerHTML = "请在浏览器中打开";
+        inner.innerHTML = "当前客户端不支持下载，请在浏览器中打开。";
         outer.appendChild(inner);
     }
 }
