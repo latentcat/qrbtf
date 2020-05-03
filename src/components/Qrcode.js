@@ -93,7 +93,7 @@ class Qrcode extends React.Component {
     downloadImg(e) {
         const style = styleList[this.state.selectedIndex]
         const el = React.createElement(style.renderer, {qrcode: this.state.qrcode})
-        saveImg(style.value, ReactDOMServer.renderToString(el), 512, 512)
+        saveImg(style.value, ReactDOMServer.renderToString(el), 1500, 1500)
     }
 
     render() {
