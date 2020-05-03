@@ -1,42 +1,47 @@
 import React from "react";
+import ReactDOMServer from 'react-dom/server'
 import {getQrcodeData} from "../utils/qrcodeHandler";
+import {saveImg, saveSvg} from "../utils/downloader";
 import './Qrcode.css';
 
 import QrRendererBase from "./QrRendererBase";
 import QrRendererRound from "./QrRendererRound";
+import QrRendererBlank from "./QrRendererBlank";
 import QrItem from "./QrItem";
 
-function getStyleList(qrcode) {
-    const styleList = [
-        {value: "A1", renderer: <QrRendererBase qrcode={qrcode}/> },
-        {value: "A2", renderer: <QrRendererRound qrcode={qrcode}/>},
-        {value: "B1"},
-        {value: "B2"},
-        {value: "C1"},
-        {value: "C2"},
-        {value: "D1"},
-        {value: "D2"},
-    ];
-    return styleList;
-}
+const styleList = [
+    {value: "A1", renderer: QrRendererBase},
+    {value: "A2", renderer: QrRendererRound},
+    {value: "B1", renderer: QrRendererBlank},
+    {value: "B2", renderer: QrRendererBlank},
+    {value: "C1", renderer: QrRendererBlank},
+    {value: "C2", renderer: QrRendererBlank},
+    {value: "D1", renderer: QrRendererBlank},
+    {value: "D2", renderer: QrRendererBlank},
+];
 
 class Qrcode extends React.Component {
-
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this)
         this.handleCreate = this.handleCreate.bind(this)
         this.handleSelected = this.handleSelected.bind(this)
+        this.downloadSvg = this.downloadSvg.bind(this)
+        this.downloadImg = this.downloadImg.bind(this)
         this.state = {
             text: '',
-            selected: 'A1',
+            selectedIndex: 0,
             options: {text: ''},
             qrcode: null
         };
     }
 
-    handleSelected(value) {
-        this.setState({selected: value});
+    componentDidMount() {
+        this.handleCreate()
+    }
+
+    handleSelected(index) {
+        this.setState({selectedIndex: index});
     }
 
     handleChange(e) {
@@ -52,7 +57,19 @@ class Qrcode extends React.Component {
             text = 'https://qrbtf.com/';
             this.setState({text: text, options: {text: text}, qrcode: getQrcodeData({text: text})});
         }
-        e.target.blur();
+        if (e) e.target.blur();
+    }
+
+    downloadSvg(e) {
+        const style = styleList[this.state.selectedIndex]
+        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode})
+        saveSvg(style.value, ReactDOMServer.renderToString(el))
+    }
+
+    downloadImg(e) {
+        const style = styleList[this.state.selectedIndex]
+        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode})
+        saveImg(style.value, ReactDOMServer.renderToString(el), 512, 512)
     }
 
     render() {
@@ -64,7 +81,6 @@ class Qrcode extends React.Component {
                     <input
                         className="Qr-input big-input"
                         placeholder="Input your URL here"
-                        value={this.state.text}
                         onChange={this.handleChange}
                         onBlur={this.handleCreate}
                         onKeyPress={(e) => {if(e.key == 'Enter') this.handleCreate(e)}}
@@ -78,13 +94,16 @@ class Qrcode extends React.Component {
                     <div className="Qr-s">
                         <div className="Qr-box">
                             {
-                                getStyleList(this.state.qrcode).map((style) => {
+                                styleList.map((style, index) => {
                                     return <QrItem
-                                        value={style.value}
                                         key={style.value}
+                                        value={style.value}
+                                        index={index}
                                         qrcode={this.state.qrcode}
-                                        renderer={style.renderer}
-                                        selected={style.value == this.state.selected}
+                                        renderer={React.createElement(style.renderer, {
+                                            qrcode: this.state.qrcode,
+                                        })}
+                                        selected={index == this.state.selectedIndex}
                                         onSelected={this.handleSelected}
                                     />
                                 })
@@ -124,8 +143,8 @@ class Qrcode extends React.Component {
                     </div>
                     <div className="Qr-Centered">
                         <div className="div-btn">
-                            <button className="dl-btn">SVG</button>
-                            <button className="dl-btn">JPG</button>
+                            <button className="dl-btn" onClick={this.downloadSvg}>SVG</button>
+                            <button className="dl-btn" onClick={this.downloadImg}>JPG</button>
                         </div>
 
                     </div>

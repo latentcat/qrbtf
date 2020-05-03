@@ -17,15 +17,18 @@ function listPoint(props) {
     return pointList;
 }
 
+function calViewBox(props) {
+    if (!props.qrcode) return '0 0 0 0';
+
+    const nCount = props.qrcode.getModuleCount();
+    return '0 0 ' + String(nCount) + ' ' + String(nCount);
+}
+
 class QrRendererRound extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
-            <svg>
+            <svg className="Qr-item-svg" width="100%" height="100%" viewBox={calViewBox(this.props)} fill="white"
+                 xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <circle fill="black" r={0.6} id="simpleRound"/>
                 {listPoint(this.props)}
             </svg>

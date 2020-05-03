@@ -11,8 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78c692f3-8e9f-49c7-86c1-0c5e9d711b1f" name="Default Changelist" comment="静态参数调节组件初步完成">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/QrRendererBlank.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/downloader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/QrItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/QrItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/QrRendererBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/QrRendererBase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/QrRendererRound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/QrRendererRound.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Qrcode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Qrcode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/qrcode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/qrcode.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,13 +29,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1bFvrHaftMN3n3JxJkjIZayPhN8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -44,17 +57,22 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\qrbtf\src\components" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
@@ -438,6 +456,10 @@
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
     <state x="1161" y="421" key="#Notifications/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588307553058" />
+    <state x="270" y="57" key="SettingsEditor" timestamp="1588491676810">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588491676810" />
     <state x="877" y="274" key="Vcs.Push.Dialog.v2" timestamp="1588438354037">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -447,6 +469,14 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="99" y="100" width="2343" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588438456208" />
+    <state x="380" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588479183892">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="380" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1588479183892" />
+    <state x="793" y="181" width="613" height="584" key="find.popup" timestamp="1588490972232">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="793" y="181" width="613" height="584" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1588490972232" />
     <state x="1004" y="331" key="git4idea.merge.GitPullDialog" timestamp="1588436573499">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
