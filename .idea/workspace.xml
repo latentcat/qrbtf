@@ -11,8 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78c692f3-8e9f-49c7-86c1-0c5e9d711b1f" name="Default Changelist" comment="静态参数调节组件初步完成">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Qrcode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Qrcode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Qrcode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Qrcode.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -431,7 +431,8 @@
     <MESSAGE value="新增更多与 footer 静态组件" />
     <MESSAGE value="修复 index.html meta 标签问题" />
     <MESSAGE value="修复选择样式" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复选择样式" />
+    <MESSAGE value="取消移动端 Qr-item 点击高亮" />
+    <option name="LAST_COMMIT_MESSAGE" value="取消移动端 Qr-item 点击高亮" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1161" y="421" key="#Notifications" timestamp="1588307553058">
@@ -447,10 +448,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="99" y="100" width="2343" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588438456208" />
-    <state x="1004" y="331" key="git4idea.merge.GitPullDialog" timestamp="1588436573499">
+    <state x="1004" y="331" key="git4idea.merge.GitPullDialog" timestamp="1588476025285">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1004" y="331" key="git4idea.merge.GitPullDialog/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588436573499" />
+    <state x="1004" y="331" key="git4idea.merge.GitPullDialog/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588476025285" />
     <state x="997" y="347" key="git4idea.merge.GitPullDialog/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588322703667" />
     <state x="1092" y="452" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1588308606948">
       <screen x="0" y="23" width="2541" height="1057" />
