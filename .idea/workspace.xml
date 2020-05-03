@@ -423,7 +423,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588438351027</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="取消移动端 Qr-item 点击高亮">
+      <created>1588476169668</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1588476169668</updated>
+    </task>
+    <task id="LOCAL-00047" summary="footer Copyright，标题更名">
+      <created>1588478457716</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1588478457716</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,26 +463,33 @@
     <MESSAGE value="新增更多与 footer 静态组件" />
     <MESSAGE value="修复 index.html meta 标签问题" />
     <MESSAGE value="修复选择样式" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复选择样式" />
+    <MESSAGE value="取消移动端 Qr-item 点击高亮" />
+    <MESSAGE value="footer Copyright，标题更名" />
+    <option name="LAST_COMMIT_MESSAGE" value="footer Copyright，标题更名" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1161" y="421" key="#Notifications" timestamp="1588307553058">
       <screen x="0" y="23" width="2541" height="1057" />
     </state>
     <state x="1161" y="421" key="#Notifications/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588307553058" />
+<<<<<<< HEAD
     <state x="270" y="57" key="SettingsEditor" timestamp="1588491676810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588491676810" />
     <state x="877" y="274" key="Vcs.Push.Dialog.v2" timestamp="1588438354037">
+=======
+    <state x="877" y="274" key="Vcs.Push.Dialog.v2" timestamp="1588478463660">
+>>>>>>> 900c6746d693d000e57edec16ede355945761470
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="877" y="274" key="Vcs.Push.Dialog.v2/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588438354037" />
+    <state x="877" y="274" key="Vcs.Push.Dialog.v2/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588478463660" />
     <state x="870" y="291" key="Vcs.Push.Dialog.v2/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588351718130" />
     <state x="99" y="100" width="2343" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588438456208">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="99" y="100" width="2343" height="880" key="com.intellij.history.integration.ui.views.FileHistoryDialog/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588438456208" />
+<<<<<<< HEAD
     <state x="380" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588479183892">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -478,9 +499,12 @@
     </state>
     <state x="793" y="181" width="613" height="584" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1588490972232" />
     <state x="1004" y="331" key="git4idea.merge.GitPullDialog" timestamp="1588436573499">
+=======
+    <state x="1004" y="331" key="git4idea.merge.GitPullDialog" timestamp="1588476025285">
+>>>>>>> 900c6746d693d000e57edec16ede355945761470
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1004" y="331" key="git4idea.merge.GitPullDialog/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588436573499" />
+    <state x="1004" y="331" key="git4idea.merge.GitPullDialog/428.1080.1680.1050/0.0.2560.1080/-1600.180.1600.900@0.0.2560.1080" timestamp="1588476025285" />
     <state x="997" y="347" key="git4idea.merge.GitPullDialog/428.1103.1680.1027/0.23.2541.1057/-1600.203.1600.877@0.23.2541.1057" timestamp="1588322703667" />
     <state x="1092" y="452" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1588308606948">
       <screen x="0" y="23" width="2541" height="1057" />

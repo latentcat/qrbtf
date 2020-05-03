@@ -9,6 +9,9 @@ import QrRendererRound from "./QrRendererRound";
 import QrRendererBlank from "./QrRendererBlank";
 import QrItem from "./QrItem";
 
+const date = new Date();
+const currentYear = date.getFullYear();
+
 const styleList = [
     {value: "A1", renderer: QrRendererBase},
     {value: "A2", renderer: QrRendererRound},
@@ -83,7 +86,7 @@ class Qrcode extends React.Component {
                         placeholder="Input your URL here"
                         onChange={this.handleChange}
                         onBlur={this.handleCreate}
-                        onKeyPress={(e) => {if(e.key == 'Enter') this.handleCreate(e)}}
+                        onKeyPress={(e) => {if(e.key === 'Enter') this.handleCreate(e)}}
                     />
                 </div>
                 <div className="Qr-titled">
@@ -162,8 +165,9 @@ class Qrcode extends React.Component {
                 </div>
                 <div className="Qr-titled">
                     <div className="Qr-Centered Qr-footer">
-                        <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener" target="_blank" data-pjax-state="">CPunisher</a></div>
-                        <div><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>
+                        <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener noreferrer" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener noreferrer" target="_blank" data-pjax-state="">CPunisher</a></div>
+                        <div className="Gray">Copyright © {currentYear} QRBTF. All rights reserved.</div>
+                        <div className="Gray"><a href="http://www.beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>
                     </div>
                 </div>
             </div>

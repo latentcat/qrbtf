@@ -54,7 +54,7 @@
 .Qr-box {
     white-space: nowrap;
     display: flex;
-    padding: 0px 13px 0px 23px;
+    padding: 0 13px 0 23px;
 }
 
 @media (min-width: 1000px) {
@@ -70,6 +70,9 @@
     display:block!important;
     margin-right: 10px;
     cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .Qr-item-image {
@@ -315,8 +318,19 @@ table {
 }
 
 .Qr-footer {
-    font-size: 14px;
+    color: #1D1D1F;
+    font-size: 12px;
     margin-bottom: -4px;
+}
+
+@media (min-width: 500px) {
+    .Qr-footer {
+        font-size: 14px;
+    }
+}
+
+.Gray {
+    color: #86868B;
 }
 
 .Qr-footer div {
