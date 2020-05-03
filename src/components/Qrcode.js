@@ -78,7 +78,7 @@ class Qrcode extends React.Component {
                     <div className="Qr-s">
                         <div className="Qr-box">
                             {
-                                getStyleList().map((style) => {
+                                getStyleList(this.state.qrcode).map((style) => {
                                     return <QrItem
                                         value={style.value}
                                         key={style.value}

@@ -11,8 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78c692f3-8e9f-49c7-86c1-0c5e9d711b1f" name="Default Changelist" comment="静态参数调节组件初步完成">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Qrcode.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Qrcode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Qrcode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Qrcode.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
