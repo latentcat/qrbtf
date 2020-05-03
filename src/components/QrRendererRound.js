@@ -1,12 +1,6 @@
 import React from "react";
+import {srand, rand} from "../utils/util";
 import './Qrcode.css'
-
-function RandomNum(Min,Max){
-    const Random = Max - Min;
-    const random = Math.random();
-    const num = Min + random * Random;
-    return num;
-}
 
 function listPoint(props) {
     if (!props.qrcode) return []
@@ -20,7 +14,7 @@ function listPoint(props) {
     for (let i = 0; i < nCount; i++) {          //一维长度为5
         sizeTable[i] = new Array(i);    //在声明二维
         for (let j = 0; j < nCount; j++) {      //二维长度为5
-            sizeTable[i][j] = RandomNum(0.33,1);
+            sizeTable[i][j] = rand(0.33,0.8);
         }
     }
     var nearPoint = new Array();

@@ -16,12 +16,16 @@ class QrItem extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.forceUpdate();
+    }
+
     handleClick(e) {
         this.props.onSelected(this.props.index);
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return nextProps.selected || this.props.selected
+        return (nextProps.selected || this.props.selected) && (this.props.text == nextProps.text || this.props.text.length == 0)
     }
 
     render() {

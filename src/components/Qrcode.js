@@ -127,6 +127,7 @@ class Qrcode extends React.Component {
                                         renderer={React.createElement(style.renderer, {
                                             qrcode: this.state.qrcode,
                                         })}
+                                        text={this.state.text}
                                         selected={index == this.state.selectedIndex}
                                         onSelected={this.handleSelected}
                                     />
