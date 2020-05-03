@@ -21,7 +21,7 @@ function calViewBox(props) {
     if (!props.qrcode) return '0 0 0 0';
 
     const nCount = props.qrcode.getModuleCount();
-    return '0 0 ' + String(nCount) + ' ' + String(nCount);
+    return String(-nCount / 5) + ' ' + String(-nCount / 5) + ' ' + String(nCount + nCount / 5 * 2) + ' ' + String(nCount + nCount / 5 * 2);
 }
 
 class QrRendererBase extends React.Component {

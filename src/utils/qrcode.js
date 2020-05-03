@@ -18,8 +18,6 @@
 // QR8bitByte
 //---------------------------------------------------------------------
 
-/*eslint-disable*/
-
 function QR8bitByte(data) {
 	this.mode = QRMode.MODE_8BIT_BYTE;
 	this.data = data;
@@ -48,6 +46,7 @@ function QRCode(typeNumber, errorCorrectLevel) {
 	this.errorCorrectLevel = errorCorrectLevel;
 	this.modules = null;
 	this.moduleCount = 0;
+	this.position = [];
 	this.dataCache = null;
 	this.dataList = [];
 }
@@ -69,6 +68,10 @@ QRCode.prototype = {
 
 	getModuleCount : function() {
 		return this.moduleCount;
+	},
+
+	getPositionTable : function() {
+		return this.position;
 	},
 
 	make : function() {
@@ -222,6 +225,8 @@ QRCode.prototype = {
 
 		let pos = QRUtil.getPatternPosition(this.typeNumber);
 
+		this.position = [];
+
 		for (let i = 0; i < pos.length; i++) {
 
 			for (let j = 0; j < pos.length; j++) {
@@ -232,6 +237,8 @@ QRCode.prototype = {
 				if (this.modules[row][col] != null) {
 					continue;
 				}
+
+				this.position.push([row,col]);
 
 				for (let r = -2; r <= 2; r++) {
 
