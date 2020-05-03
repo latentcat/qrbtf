@@ -20,6 +20,10 @@ class QrItem extends React.Component {
         this.props.onSelected(this.props.index);
     }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return nextProps.selected || this.props.selected
+    }
+
     render() {
         return (
             <div className={calClassName(this.props)} onClick={this.handleClick}>
