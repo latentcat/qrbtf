@@ -150,7 +150,7 @@ tr {
 }
 
 td:nth-child(1) {
-    font-size: 1em;
+    font-size: 0.9em;
     white-space: nowrap;
 }
 
@@ -218,6 +218,14 @@ table {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     font-family: 'Futura', sans-serif;
     color: rgba(0,0,0,0.6);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
 }
 
 .Qr-select {

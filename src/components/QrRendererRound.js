@@ -53,19 +53,19 @@ class QrRendererRound extends React.Component {
         if (this.props.setParamInfo) {
             this.props.setParamInfo([
                     {
-                        key: '没有choices的文本框1',
+                        key: 'Choice 1',
                         default: 1
                     },
                     {
-                        key: '没有choices的文本框2',
+                        key: 'Choice 2',
                         default: 100
                     },
                     {
-                        key: '有choices的选择框',
+                        key: 'Select 1',
                         default: 0,
                         choices: [
-                            "option1",
-                            "option2"
+                            "Option 1",
+                            "Option 2"
                         ]
                     }
                 ]

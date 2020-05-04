@@ -9,7 +9,7 @@ function listPoint(props) {
     const pointList = new Array(nCount);
 
     let type = props.params[1];
-    let size = props.params[0];
+    let size = props.params[0] / 100;
     let id = 0;
 
     if (size <= 0) size = 1.0
@@ -20,7 +20,7 @@ function listPoint(props) {
                 if (type == 0)
                     pointList.push(<rect width={size} height={size} key={id++} fill="black" x={row} y={col}/>)
                 else if (type == 1)
-                    pointList.push(<circle r={size} key={id++} fill="black" cx={row} cy={col}/>)
+                    pointList.push(<circle r={size / 2} key={id++} fill="black" cx={row + 0.5} cy={col + 0.5}/>)
             }
         }
     }
@@ -41,7 +41,7 @@ class QrRendererBase extends React.Component {
             this.props.setParamInfo([
                     {
                         key: '大小',
-                        default: 1
+                        default: 100
                     },
                     {
                         key: '定位点样式',
