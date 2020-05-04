@@ -7,16 +7,20 @@ function listPoint(props) {
     const qrcode = props.qrcode;
     const nCount = qrcode.getModuleCount();
     const pointList = new Array(nCount);
-    const params = props.params;
 
+    let type = props.params[1];
+    let size = props.params[0];
     let id = 0;
+
+    if (size <= 0) size = 1.0
+
     for (let row = 0; row < nCount; row++) {
         for (let col = 0; col < nCount; col++) {
             if (qrcode.isDark(row, col)) {
-                if (params[1] == 0)
-                    pointList.push(<rect width={params[0]} height={params[0]} key={id++} fill="black" x={row} y={col}/>)
-                else if (params[1] == 1)
-                    pointList.push(<circle r={params[0]} key={id++} fill="black" cx={row} cy={col}/>)
+                if (type == 0)
+                    pointList.push(<rect width={size} height={size} key={id++} fill="black" x={row} y={col}/>)
+                else if (type == 1)
+                    pointList.push(<circle r={size} key={id++} fill="black" cx={row} cy={col}/>)
             }
         }
     }

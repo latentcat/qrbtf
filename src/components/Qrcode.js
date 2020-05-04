@@ -143,8 +143,9 @@ class Qrcode extends React.Component {
                     type="number"
                     className="Qr-input small-input"
                     placeholder="10"
-                    value={this.state.paramValue[this.state.selectedIndex][index]}
-                    onChange={(e) => this.setParamValue(index, e.target.value)}/>
+                    defaultValue={this.state.paramValue[this.state.selectedIndex][index]}
+                    onBlur={(e) => this.setParamValue(index, e.target.value)}
+                    onKeyPress={(e) => {if(e.key === 'Enter') {this.setParamValue(index, e.target.value); e.target.blur()}}}/>
             );
         }
     }
@@ -164,7 +165,6 @@ class Qrcode extends React.Component {
     }
 
     render() {
-        console.log(1)
         return (
             <div>
                 <div className="Qr-Centered">
