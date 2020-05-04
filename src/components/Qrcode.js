@@ -4,35 +4,17 @@ import React from "react";
 import ReactDOMServer from 'react-dom/server'
 import {getQrcodeData} from "../utils/qrcodeHandler";
 import {saveImg, saveSvg} from "../utils/downloader";
+import {isWeiXin} from "../utils/util";
 import './Qrcode.css';
 
+import QrItem from "./QrItem";
 import QrRendererBase from "./QrRendererBase";
 import QrRendererRound from "./QrRendererRound";
 import QrRendererBlank from "./QrRendererBlank";
-import QrItem from "./QrItem";
 import QrRendererRandRect from "./QrRendererRandRect";
 
 const date = new Date();
 const currentYear = date.getFullYear();
-
-window.onload = function(){
-    if(isWeiXin()){
-        const outer = document.getElementById("wx-message");
-        const inner = document.createElement("div");
-        inner.className = "note-font";
-        inner.id = "wx-message-inner";
-        inner.innerHTML = "当前客户端不支持下载，请在浏览器中打开。";
-        outer.appendChild(inner);
-    }
-}
-function isWeiXin(){
-    const ua = window.navigator.userAgent.toLowerCase();
-    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-        return true;
-    }else{
-        return false;
-    }
-}
 
 const styleList = [
     {value: "A1", renderer: QrRendererBase},
@@ -46,31 +28,57 @@ const styleList = [
 ];
 
 class Qrcode extends React.Component {
+    paramInfoBuffer;
+    paramValueBuffer;
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this)
         this.handleCreate = this.handleCreate.bind(this)
-        this.handleSelected = this.handleSelected.bind(this)
         this.downloadSvg = this.downloadSvg.bind(this)
         this.downloadImg = this.downloadImg.bind(this)
+        this.setParamValue = this.setParamValue.bind(this)
+        this.getParamValue = this.getParamValue.bind(this)
+        this.setParamInfo = this.setParamInfo.bind(this)
+        this.renderAdjustment = this.renderAdjustment.bind(this)
+        this.renderParamEditor = this.renderParamEditor.bind(this)
         this.state = {
             text: '',
             selectedIndex: 0,
             options: {text: ''},
-            qrcode: null
+            qrcode: null,
+            paramInfo: [],
+            paramValue: []
         };
+        this.paramInfoBuffer = new Array(10).fill(new Array(10));
+        this.paramValueBuffer = new Array(10).fill(new Array(10));
     }
 
     componentDidMount() {
-        this.handleCreate()
+        this.setState({paramInfo: this.paramInfoBuffer, paramValue: this.paramValueBuffer}, () => {
+            this.handleCreate();
+        })
     }
 
-    handleSelected(index) {
-        this.setState({selectedIndex: index});
+    setParamInfo(index) {
+        const _this = this;
+        return function (params) {
+            _this.paramInfoBuffer[index] = params;
+            _this.paramValueBuffer[index] = params.map(p => {
+                return p.default
+            });
+        }
     }
 
-    handleChange(e) {
-        this.setState({text: e.target.value})
+    setParamValue(valueIndex, value) {
+        const newValue = this.state.paramValue.slice();
+        newValue[this.state.selectedIndex][valueIndex] = value;
+        this.setState({paramValue: newValue});
+    }
+
+    getParamValue(index) {
+        const _this = this;
+        return function () {
+            return _this.state.paramValue[index];
+        }
     }
 
     handleCreate(e) {
@@ -97,6 +105,52 @@ class Qrcode extends React.Component {
         saveImg(style.value, ReactDOMServer.renderToString(el), 1500, 1500)
     }
 
+    renderParamEditor(info, index) {
+        if (info.choices) {
+            return (
+                <select
+                    className="Qr-select"
+                    value={this.state.paramValue[this.state.selectedIndex][index]}
+                    onChange={(e) => this.setParamValue(index, e.target.value)}>
+                    {
+                        info.choices.map((choice, index) => {
+                            return (
+                                <option key={"option_" + this.state.selectedIndex + "_" + index}
+                                        value={index}>
+                                    {choice}
+                                </option>
+                            );
+                        })
+                    }
+                </select>
+            );
+        }
+        else {
+            return (
+                <input
+                    type="number"
+                    className="Qr-input small-input"
+                    placeholder="10"
+                    value={this.state.paramValue[this.state.selectedIndex][index]}
+                    onChange={(e) => this.setParamValue(index, e.target.value)}/>
+            );
+        }
+    }
+
+    renderAdjustment() {
+        const target = this.state.paramInfo[this.state.selectedIndex];
+        if (target instanceof Array) {
+            return target.map((info, index) => {
+                return (
+                    <tr key={"tr_" + index}>
+                        <td key={"title_" + index}>{info.key}</td>
+                        <td key={"editor_" + index}>{this.renderParamEditor(info, index)}</td>
+                    </tr>
+                )
+            })
+        }
+    }
+
     render() {
         return (
             <div>
@@ -106,7 +160,7 @@ class Qrcode extends React.Component {
                     <input
                         className="Qr-input big-input"
                         placeholder="Input your URL here"
-                        onChange={this.handleChange}
+                        onChange={(e) => this.setState({text: e.target.value})}
                         onBlur={this.handleCreate}
                         onKeyPress={(e) => {if(e.key === 'Enter') this.handleCreate(e)}}
                     />
@@ -127,10 +181,12 @@ class Qrcode extends React.Component {
                                         qrcode={this.state.qrcode}
                                         renderer={React.createElement(style.renderer, {
                                             qrcode: this.state.qrcode,
+                                            getParamValue: this.getParamValue(index),
+                                            setParamInfo: this.setParamInfo(index)
                                         })}
                                         text={this.state.text}
                                         selected={index == this.state.selectedIndex}
-                                        onSelected={this.handleSelected}
+                                        onSelected={() => this.setState({selectedIndex: index})}
                                     />
                                 })
                             }
@@ -146,18 +202,8 @@ class Qrcode extends React.Component {
                         <div className="Qr-div-table">
                             <table className="Qr-table">
                                 <tbody>
-                                    <tr>
-                                        <td>圆点大小</td>
-                                        <td><input className="Qr-input small-input"
-                                                   placeholder="10" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>随机种</td>
-                                        <td><input className="Qr-input small-input"
-                                                   placeholder="10" /></td>
-                                    </tr>
+                                    {this.renderAdjustment()}
                                 </tbody>
-
                             </table>
                         </div>
                     </div>
@@ -200,3 +246,14 @@ class Qrcode extends React.Component {
 }
 
 export default Qrcode;
+
+window.onload = function(){
+    if(isWeiXin()){
+        const outer = document.getElementById("wx-message");
+        const inner = document.createElement("div");
+        inner.className = "note-font";
+        inner.id = "wx-message-inner";
+        inner.innerHTML = "当前客户端不支持下载，请在浏览器中打开。";
+        outer.appendChild(inner);
+    }
+}

@@ -11,13 +11,6 @@ class QrItem extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-        this.state = {
-            params: new Array(16)
-        };
-    }
-
-    componentDidMount() {
-        this.forceUpdate();
     }
 
     handleClick(e) {
