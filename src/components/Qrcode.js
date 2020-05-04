@@ -6,12 +6,19 @@ import {getQrcodeData} from "../utils/qrcodeHandler";
 import {saveImg, saveSvg} from "../utils/downloader";
 import {isWeiXin} from "../utils/util";
 import './Qrcode.css';
+import logo from '../qrbtf-logo.svg';
 
 import QrItem from "./QrItem";
 import QrRendererBase from "./QrRendererBase";
 import QrRendererRound from "./QrRendererRound";
 import QrRendererBlank from "./QrRendererBlank";
 import QrRendererRandRect from "./QrRendererRandRect";
+
+const logoStyle = {
+    background: `url(${logo})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'left'
+};
 
 const date = new Date();
 const currentYear = date.getFullYear();
@@ -155,7 +162,9 @@ class Qrcode extends React.Component {
         return (
             <div>
                 <div className="Qr-Centered">
-                    <h1 className="Qr-title">qrbtf.com</h1>
+                    <div style={logoStyle}>
+                        <h1 className="Qr-title">&ensp;</h1>
+                    </div>
                     <p className="Qr-subtitle">参数化二维码生成器</p>
                     <input
                         className="Qr-input big-input"
