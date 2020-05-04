@@ -18,7 +18,7 @@ function listPoint(props) {
         for (let col = 0; col < nCount; col++) {
             if (qrcode.isDark(row, col)) {
                 if (type == 0)
-                    pointList.push(<rect width={size} height={size} key={id++} fill="black" x={row} y={col}/>)
+                    pointList.push(<rect width={size} height={size} key={id++} fill="black" x={row + (1 - size)/2} y={col + (1 - size)/2}/>)
                 else if (type == 1)
                     pointList.push(<circle r={size / 2} key={id++} fill="black" cx={row + 0.5} cy={col + 0.5}/>)
             }

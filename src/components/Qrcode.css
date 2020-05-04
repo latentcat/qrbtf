@@ -8,10 +8,6 @@
 .Qr-titled-nobg {
     padding-top: calc((10px + 2vmin) * 2);
     padding-bottom: calc((10px + 2vmin) * 2);
-    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
-    -webkit-transition-duration: 0.2s; /* Safari */
-    transition-duration: 0.2s;
 }
 
 .Qr-title {
