@@ -5,7 +5,6 @@
     padding-bottom: calc((10px + 2vmin) * 2);
 }
 
-
 .Qr-titled-nobg {
     padding-top: calc((10px + 2vmin) * 2);
     padding-bottom: calc((10px + 2vmin) * 2);
@@ -16,8 +15,9 @@
 }
 
 .Qr-title {
-    margin-top: 3em;
+    margin-top: 2em;
     font-weight: bold;
+    font-size: 2.5em;
 }
 
 .Qr-subtitle {
