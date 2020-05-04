@@ -53,9 +53,14 @@ class Qrcode extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({paramInfo: this.paramInfoBuffer, paramValue: this.paramValueBuffer}, () => {
-            this.handleCreate();
-        })
+        const text = 'https://qrbtf.com/';
+        this.setState({
+            paramInfo: this.paramInfoBuffer,
+            paramValue: this.paramValueBuffer,
+            text: text,
+            options: {text: text},
+            qrcode: getQrcodeData({text: text})
+        });
     }
 
     setParamInfo(index) {
@@ -95,13 +100,13 @@ class Qrcode extends React.Component {
 
     downloadSvg(e) {
         const style = styleList[this.state.selectedIndex]
-        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode})
+        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode, params: this.state.paramValue[this.state.selectedIndex]})
         saveSvg(style.value, ReactDOMServer.renderToString(el))
     }
 
     downloadImg(e) {
         const style = styleList[this.state.selectedIndex]
-        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode})
+        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode, params: this.state.paramValue[this.state.selectedIndex]})
         saveImg(style.value, ReactDOMServer.renderToString(el), 1500, 1500)
     }
 
@@ -152,6 +157,7 @@ class Qrcode extends React.Component {
     }
 
     render() {
+        console.log(1)
         return (
             <div>
                 <div className="Qr-Centered">
@@ -181,7 +187,7 @@ class Qrcode extends React.Component {
                                         qrcode={this.state.qrcode}
                                         renderer={React.createElement(style.renderer, {
                                             qrcode: this.state.qrcode,
-                                            getParamValue: this.getParamValue(index),
+                                            params: this.state.paramValue[index],
                                             setParamInfo: this.setParamInfo(index)
                                         })}
                                         text={this.state.text}

@@ -7,7 +7,7 @@ function listPoint(props) {
     const qrcode = props.qrcode;
     const nCount = qrcode.getModuleCount();
     const pointList = new Array(nCount);
-    const params = props.getParamValue();
+    const params = props.params;
 
     let id = 0;
     for (let row = 0; row < nCount; row++) {
@@ -33,21 +33,23 @@ function calViewBox(props) {
 class QrRendererBase extends React.Component {
     constructor(props) {
         super(props);
-        this.props.setParamInfo([
-                {
-                    key: '大小',
-                    default: 1
-                },
-                {
-                    key: '定位点样式',
-                    default: 0,
-                    choices: [
-                        "矩形",
-                        "圆形"
-                    ]
-                }
-            ]
-        );
+        if (this.props.setParamInfo) {
+            this.props.setParamInfo([
+                    {
+                        key: '大小',
+                        default: 1
+                    },
+                    {
+                        key: '定位点样式',
+                        default: 0,
+                        choices: [
+                            "矩形",
+                            "圆形"
+                        ]
+                    }
+                ]
+            );
+        }
     }
 
     render() {

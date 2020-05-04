@@ -13,6 +13,10 @@ class QrItem extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentDidMount() {
+        this.forceUpdate()
+    }
+
     handleClick(e) {
         this.props.onSelected(this.props.index);
     }

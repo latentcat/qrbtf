@@ -50,25 +50,27 @@ function calViewBox(props) {
 class QrRendererRound extends React.Component {
     constructor(props) {
         super(props);
-        this.props.setParamInfo([
-                {
-                    key: '没有choices的文本框1',
-                    default: 1
-                },
-                {
-                    key: '没有choices的文本框2',
-                    default: 100
-                },
-                {
-                    key: '有choices的选择框',
-                    default: 0,
-                    choices: [
-                        "option1",
-                        "option2"
-                    ]
-                }
-            ]
-        );
+        if (this.props.setParamInfo) {
+            this.props.setParamInfo([
+                    {
+                        key: '没有choices的文本框1',
+                        default: 1
+                    },
+                    {
+                        key: '没有choices的文本框2',
+                        default: 100
+                    },
+                    {
+                        key: '有choices的选择框',
+                        default: 0,
+                        choices: [
+                            "option1",
+                            "option2"
+                        ]
+                    }
+                ]
+            );
+        }
     }
 
     render() {
