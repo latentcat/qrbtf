@@ -220,6 +220,34 @@ table {
     color: rgba(0,0,0,0.6);
 }
 
+.Qr-select {
+    line-height: 2em;
+    box-sizing: border-box;
+    border-radius: 3em;
+    outline: none;
+    text-indent: 1em;
+    overflow: visible;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'Futura', sans-serif;
+    color: rgba(0,0,0,0.6);
+    font-size: 0.9em;
+    border: rgba(0,0,0,0.12) solid 2px;
+    width: calc((100vw - 56px) / 2);
+}
+
+@media (min-width: 500px) {
+    .Qr-select {
+        border: rgba(0,0,0,0.12) solid 3px;
+        width: 200px;
+    }
+}
+
 .Qr-input::placeholder {
     font-family: 'Futura', sans-serif;
     color: rgba(0,0,0,0.18);

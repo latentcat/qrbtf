@@ -10,6 +10,7 @@ import QrRendererBase from "./QrRendererBase";
 import QrRendererRound from "./QrRendererRound";
 import QrRendererBlank from "./QrRendererBlank";
 import QrItem from "./QrItem";
+import QrRendererRandRect from "./QrRendererRandRect";
 
 const date = new Date();
 const currentYear = date.getFullYear();
@@ -36,7 +37,7 @@ function isWeiXin(){
 const styleList = [
     {value: "A1", renderer: QrRendererBase},
     {value: "A2", renderer: QrRendererRound},
-    {value: "B1", renderer: QrRendererBlank},
+    {value: "B1", renderer: QrRendererRandRect},
     {value: "B2", renderer: QrRendererBlank},
     {value: "C1", renderer: QrRendererBlank},
     {value: "C2", renderer: QrRendererBlank},
