@@ -244,15 +244,18 @@ class Qrcode extends React.Component {
                     </div>
                     <div className="Qr-Centered">
                         <div className="div-btn">
+                            <a href="https://www.yuque.com/qrbtf/docs" rel="noopener noreferrer" target="_blank">
+                                <button className="dl-btn">使用手册</button>
+                            </a>
                             <button disabled className="dl-btn">提交样式</button>
                         </div>
                     </div>
                 </div>
                 <div className="Qr-titled">
                     <div className="Qr-Centered Qr-footer note-font">
-                        <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener noreferrer" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener noreferrer" target="_blank" data-pjax-state="">CPunisher</a></div>
+                        <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener noreferrer" target="_blank">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener noreferrer" target="_blank">CPunisher</a></div>
                         <div className="Gray">Copyright © {currentYear} QRBTF. 保留所有权利。</div>
-                        <div className="Gray"><a href="http://www.beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>
+                        <div className="Gray"><a href="http://www.beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">浙 ICP 备 19005869 号 </a></div>
                     </div>
                 </div>
             </div>
