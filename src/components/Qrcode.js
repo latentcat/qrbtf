@@ -219,7 +219,15 @@ class Qrcode extends React.Component {
                         <div className="Qr-div-table">
                             <table className="Qr-table">
                                 <tbody>
-                                {this.renderAdjustment()}
+                                    <tr>
+                                        <td>容错率</td>
+                                        <td>
+                                            <select className="Qr-select">
+                                                <option>123</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    {this.renderAdjustment()}
                                 </tbody>
                             </table>
                         </div>

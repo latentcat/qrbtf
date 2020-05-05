@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   text-align: -webkit-center;
+  text-align: -moz-center;
   user-select: none;
 }
 

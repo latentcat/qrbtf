@@ -39,6 +39,15 @@
     display: none;
 }
 
+.Qr-s {
+    scrollbar-width: none;
+}
+
+
+.Qr-s {
+    -ms-overflow-style: none;
+}
+
 .Qr-s-title {
     font-size: 1.4em;
 }
@@ -69,6 +78,8 @@
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-appearance: none;
+    -moz-text-size-adjust: 100%;
 }
 
 .Qr-item-image {
@@ -80,8 +91,10 @@
     box-sizing: border-box;
     border: rgba(0,0,0,0.12) solid 2px;
     -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
     transition-duration: 0.2s;
 }
 
@@ -94,10 +107,13 @@
 .Qr-item-image-inner {
     opacity: 0.36;
     -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
     transition-duration: 0.2s;
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
 }
 
 @media (min-width: 500px) {
@@ -133,8 +149,10 @@
     font-size: 1em;
     text-align: left;
     -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
     transition-duration: 0.2s;
 }
 
@@ -208,12 +226,16 @@ table {
     text-indent: 1em;
     overflow: visible;
     -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
     transition-duration: 0.2s;
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-appearance: none;
+    -moz-text-size-adjust: 100%;
     font-family: 'Futura', sans-serif;
     color: rgba(0,0,0,0.6);
 }
@@ -221,6 +243,7 @@ table {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+    -moz-appearance: none;
 }
 input[type="number"]{
     -moz-appearance: textfield;
@@ -231,20 +254,24 @@ input[type="number"]{
     box-sizing: border-box;
     border-radius: 3em;
     outline: none;
-    text-indent: 1em;
     overflow: visible;
     -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
     transition-duration: 0.2s;
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-appearance: none;
+    -moz-text-size-adjust: 100%;
     font-family: 'Futura', sans-serif;
     color: rgba(0,0,0,0.6);
     font-size: 0.9em;
     border: rgba(0,0,0,0.12) solid 2px;
     width: calc((100vw - 56px) / 2);
+    padding-left: 1em;
 }
 
 @media (min-width: 500px) {
@@ -265,6 +292,7 @@ input[type="number"]{
     padding-right: 23px;
     max-width: 954px;
     text-align: -webkit-left;
+    text-align: -moz-left;
 }
 
 .Qr-input:focus {
@@ -314,12 +342,16 @@ input[type="number"]{
     box-sizing: border-box;
     border: rgba(0,0,0,0.12) solid 2px;
     -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
     transition-duration: 0.2s;
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-appearance: none;
+    -moz-text-size-adjust: 100%;
     background: white;
     font-family: 'Futura', sans-serif;
 }
@@ -348,6 +380,7 @@ input[type="number"]{
 .dl-btn:active {
     -webkit-transition-duration: 0s; /* Safari */
     transition-duration: 0s;
+    -moz-transition-duration: 0s;
     border-color: #3BBC9F;
     color: #3BBC9F;
 }
@@ -403,4 +436,9 @@ a:hover {
 select {
     padding: 0;
     background-color: #FFFFFF;
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
 }
