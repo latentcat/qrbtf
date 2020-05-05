@@ -150,6 +150,12 @@ td:nth-child(1) {
     white-space: nowrap;
 }
 
+@media (min-width: 500px) {
+    td:nth-child(1) {
+        font-size: 0.8em;
+    }
+}
+
 td:nth-child(2) {
     white-space: nowrap;
     font-size: 1em;
@@ -187,11 +193,7 @@ table {
 @media (min-width: 500px) {
     .small-input {
         border: rgba(0,0,0,0.12) solid 3px;
-    }
-}
-
-@media (min-width: 500px) {
-    .small-input {
+        font-size: 0.8em;
         width: 200px;
     }
 }
@@ -249,6 +251,7 @@ input[type="number"]{
     .Qr-select {
         border: rgba(0,0,0,0.12) solid 3px;
         width: 200px;
+        font-size: 0.8em;
     }
 }
 
@@ -314,6 +317,7 @@ input[type="number"]{
 @media (min-width: 500px) {
     .dl-btn {
         border: rgba(0,0,0,0.12) solid 3px;
+        font-size: 0.9em;
     }
 }
 
