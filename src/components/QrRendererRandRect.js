@@ -23,13 +23,17 @@ function listPoint(props) {
     for (let i = 0; i < randArr.length; i++) {
         let row = randArr[i][0];
         let col = randArr[i][1];
-            if (qrcode.isDark(row, col)) {
-                let tempRand = rand(0.8, 1.3);
-                let tempRGB = randRGB();
-                let width = 0.15;
-                pointList.push(<rect key={id++} opacity="0.9" fill={tempRGB[1]} width={1 * tempRand + width} height={1 * tempRand + width} x={row - (tempRand - 1)/2} y={col - (tempRand - 1)/2}/>);
-                pointList.push(<rect key={id++} fill={tempRGB[0]} width={1 * tempRand} height={1 * tempRand} x={row - (tempRand - 1)/2} y={col - (tempRand - 1)/2}/>);
-            }
+        if (qrcode.isDark(row, col)) {
+            let tempRand = rand(0.8, 1.3);
+            let randNum = rand(50,230);
+            let tempRGB = [
+                'rgb(' + Math.floor(20 + randNum) + ',' + Math.floor(170 - randNum / 2) + ',' + Math.floor(60 + randNum * 2) + ')',
+                'rgb(' + Math.floor(-20 + randNum) + ',' + Math.floor(130 - randNum / 2) + ',' + Math.floor(20 + randNum * 2) + ')'
+            ];
+            let width = 0.15;
+            pointList.push(<rect key={id++} opacity="0.9" fill={tempRGB[1]} width={1 * tempRand + width} height={1 * tempRand + width} x={row - (tempRand - 1)/2} y={col - (tempRand - 1)/2}/>);
+            pointList.push(<rect key={id++} fill={tempRGB[0]} width={1 * tempRand} height={1 * tempRand} x={row - (tempRand - 1)/2} y={col - (tempRand - 1)/2}/>);
+        }
     }
     return pointList;
 }
