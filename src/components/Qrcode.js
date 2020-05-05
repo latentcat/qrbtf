@@ -166,7 +166,7 @@ class Qrcode extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="Qr-outer">
                 <div className="Qr-Centered">
                     <div style={logoStyle}>
                         <h1 className="Qr-title">&ensp;</h1>
@@ -251,7 +251,7 @@ class Qrcode extends React.Component {
                 <div className="Qr-titled">
                     <div className="Qr-Centered Qr-footer note-font">
                         <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener noreferrer" target="_blank" data-pjax-state="">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener noreferrer" target="_blank" data-pjax-state="">CPunisher</a></div>
-                        <div className="Gray">Copyright © {currentYear} QRBTF. All rights reserved.</div>
+                        <div className="Gray">Copyright © {currentYear} QRBTF. 保留所有权利。</div>
                         <div className="Gray"><a href="http://www.beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank" data-pjax-state="">浙 ICP 备 19005869 号 </a></div>
                     </div>
                 </div>
