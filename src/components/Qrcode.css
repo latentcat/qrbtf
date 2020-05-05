@@ -272,6 +272,11 @@ input[type="number"]{
     color: #000000;
 }
 
+.Qr-select:focus {
+    border-color: #44D7B6;
+    color: #000000;
+}
+
 
 .Qr-table {
     width: 100%;
