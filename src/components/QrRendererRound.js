@@ -1,7 +1,7 @@
 import React from "react";
 import './Qrcode.css'
 import {getTypeTable, QRPointType} from "../utils/qrcodeHandler";
-import {rand} from "../utils/util";
+import {defaultRenderer, rand} from "../utils/util";
 
 function listPoint(props) {
     if (!props.qrcode) return []
@@ -16,7 +16,6 @@ function listPoint(props) {
     let opacity = props.params[2] / 100;
     let posType = props.params[3];
     let id = 0;
-    console.log(posType)
 
     const vw = [3, -3];
     const vh = [3, -3];
@@ -71,13 +70,6 @@ function listPoint(props) {
     return pointList;
 }
 
-function calViewBox(props) {
-    if (!props.qrcode) return '0 0 0 0';
-
-    const nCount = props.qrcode.getModuleCount();
-    return String(-nCount / 5) + ' ' + String(-nCount / 5) + ' ' + String(nCount + nCount / 5 * 2) + ' ' + String(nCount + nCount / 5 * 2);
-}
-
 class QrRendererRound extends React.Component {
     constructor(props) {
         super(props);
@@ -115,12 +107,7 @@ class QrRendererRound extends React.Component {
     }
 
     render() {
-        return (
-            <svg className="Qr-item-svg" width="100%" height="100%" viewBox={calViewBox(this.props)} fill="white"
-                 xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                {listPoint(this.props)}
-            </svg>
-        );
+        return defaultRenderer(this.props.qrcode, listPoint(this.props));
     }
 }
 

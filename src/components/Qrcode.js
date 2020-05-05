@@ -21,9 +21,6 @@ const logoStyle = {
     backgroundPosition: 'left'
 };
 
-const date = new Date();
-const currentYear = date.getFullYear();
-
 const styleList = [
     {value: "A1", renderer: QrRendererBase},
     {value: "A2", renderer: QrRendererRound},
@@ -34,6 +31,8 @@ const styleList = [
     {value: "D1", renderer: QrRendererBlank},
     {value: "D2", renderer: QrRendererBlank},
 ];
+
+const currentYear = new Date().getFullYear();
 
 class Qrcode extends React.Component {
     paramInfoBuffer;
@@ -56,8 +55,8 @@ class Qrcode extends React.Component {
             paramInfo: [],
             paramValue: []
         };
-        this.paramInfoBuffer = new Array(10).fill(new Array(10));
-        this.paramValueBuffer = new Array(10).fill(new Array(10));
+        this.paramInfoBuffer = new Array(16).fill(new Array(16));
+        this.paramValueBuffer = new Array(16).fill(new Array(16));
     }
 
     componentDidMount() {
@@ -123,6 +122,7 @@ class Qrcode extends React.Component {
             return (
                 <select
                     className="Qr-select"
+                    key={"select_" + this.state.selectedIndex + "_" + index}
                     value={this.state.paramValue[this.state.selectedIndex][index]}
                     onChange={(e) => this.setParamValue(index, e.target.value)}>
                     {
@@ -142,6 +142,7 @@ class Qrcode extends React.Component {
             return (
                 <input
                     type="number"
+                    key={"input_" + this.state.selectedIndex + "_" + index}
                     className="Qr-input small-input"
                     placeholder="10"
                     defaultValue={this.state.paramValue[this.state.selectedIndex][index]}
