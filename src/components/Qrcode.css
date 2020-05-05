@@ -385,3 +385,8 @@ a:hover {
         font-size: 14px;
     }
 }
+
+select {
+    padding: 0;
+    background-color: #FFFFFF;
+}

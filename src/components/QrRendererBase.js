@@ -1,29 +1,57 @@
 import React from "react";
 import './Qrcode.css'
+import {getTypeTable, QRPointType} from "../utils/qrcodeHandler";
+import {rand} from "../utils/util";
 
 function listPoint(props) {
     if (!props.qrcode) return []
 
     const qrcode = props.qrcode;
     const nCount = qrcode.getModuleCount();
+    const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
 
-    let type = props.params[1];
-    let size = props.params[0] / 100;
+    let type = props.params[0];
+    let size = props.params[1] / 100;
+    let opacity = props.params[2] / 100;
+    let posType = props.params[3];
     let id = 0;
+    console.log(posType)
 
     if (size <= 0) size = 1.0
 
-    for (let row = 0; row < nCount; row++) {
-        for (let col = 0; col < nCount; col++) {
-            if (qrcode.isDark(row, col)) {
+    for (let x = 0; x < nCount; x++) {
+        for (let y = 0; y < nCount; y++) {
+            if (qrcode.isDark(x, y) == false) continue;
+
+            if (typeTable[x][y] == QRPointType.ALIGN_CENTER || typeTable[x][y] == QRPointType.ALIGN_OTHER || typeTable[x][y] == QRPointType.TIMING) {
                 if (type == 0)
-                    pointList.push(<rect width={size} height={size} key={id++} fill="black" x={row + (1 - size)/2} y={col + (1 - size)/2}/>)
+                    pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill="black" x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
                 else if (type == 1)
-                    pointList.push(<circle r={size / 2} key={id++} fill="black" cx={row + 0.5} cy={col + 0.5}/>)
+                    pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill="black" cx={x + 0.5} cy={y + 0.5}/>)
+            }
+            else if (typeTable[x][y] == QRPointType.POS_CENTER) {
+                if (posType == 0) {
+                    pointList.push(<rect width={1} height={1} key={id++} fill="black" x={x} y={y}/>);
+                } else if (posType == 1) {
+                    pointList.push(<circle key={id++} fill="black" cx={x + 0.5} cy={y + 0.5} r={1.5} />)
+                    pointList.push(<circle key={id++} fill="none" strokeWidth="1" stroke="black"  cx={x + 0.5} cy={y + 0.5} r={3} />)
+                }
+            }
+            else if (typeTable[x][y] == QRPointType.POS_OTHER) {
+                if (posType == 0) {
+                    pointList.push(<rect width={1} height={1} key={id++} fill="black" x={x} y={y}/>);
+                }
+            }
+            else {
+                if (type == 0)
+                    pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill="black" x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
+                else if (type == 1)
+                    pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill="black" cx={x + 0.5} cy={y + 0.5}/>)
             }
         }
     }
+
     return pointList;
 }
 
@@ -39,18 +67,30 @@ class QrRendererBase extends React.Component {
         super(props);
         if (this.props.setParamInfo) {
             this.props.setParamInfo([
-                    {
-                        key: '大小',
-                        default: 100
-                    },
-                    {
-                        key: '定位点样式',
-                        default: 0,
-                        choices: [
-                            "矩形",
-                            "圆形"
-                        ]
-                    }
+                {
+                    key: '信息点样式',
+                    default: 0,
+                    choices: [
+                        "矩形",
+                        "圆形"
+                    ]
+                },
+                {
+                    key: '信息点缩放',
+                    default: 100
+                },
+                {
+                    key: '信息点不透明度',
+                    default: 100,
+                },
+                {
+                    key: '定位点样式',
+                    default: 0,
+                    choices: [
+                        "矩形",
+                        "圆形"
+                    ]
+                },
                 ]
             );
         }
