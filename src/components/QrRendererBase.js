@@ -18,6 +18,9 @@ function listPoint(props) {
     let id = 0;
     console.log(posType)
 
+    const vw = [3, -3];
+    const vh = [3, -3];
+
     if (size <= 0) size = 1.0
 
     for (let x = 0; x < nCount; x++) {
@@ -29,6 +32,8 @@ function listPoint(props) {
                     pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill="black" x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
                 else if (type == 1)
                     pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill="black" cx={x + 0.5} cy={y + 0.5}/>)
+                else if (type == 2)
+                    pointList.push(<circle key={id++} opacity={opacity} fill="black" cx={x + 0.5} cy={y + 0.5} r={size / 2} />)
             }
             else if (typeTable[x][y] == QRPointType.POS_CENTER) {
                 if (posType == 0) {
@@ -36,6 +41,15 @@ function listPoint(props) {
                 } else if (posType == 1) {
                     pointList.push(<circle key={id++} fill="black" cx={x + 0.5} cy={y + 0.5} r={1.5} />)
                     pointList.push(<circle key={id++} fill="none" strokeWidth="1" stroke="black"  cx={x + 0.5} cy={y + 0.5} r={3} />)
+                } else if (posType == 2) {
+                    pointList.push(<circle key={id++} fill="black" cx={x + 0.5} cy={y + 0.5} r={1.5} />)
+                    pointList.push(<circle key={id++} fill="none" strokeWidth="0.15" strokeDasharray="0.5,0.5" stroke="black"  cx={x + 0.5} cy={y + 0.5} r={3} />)
+                    for (let w = 0; w < vw.length; w++) {
+                        pointList.push(<circle key={id++} fill="black" cx={x + vw[w] + 0.5} cy={y + 0.5} r={0.5} />)
+                    }
+                    for (let h = 0; h < vh.length; h++) {
+                        pointList.push(<circle key={id++} fill="black" cx={x + 0.5} cy={y + vh[h] + 0.5} r={0.5} />)
+                    }
                 }
             }
             else if (typeTable[x][y] == QRPointType.POS_OTHER) {
@@ -48,6 +62,8 @@ function listPoint(props) {
                     pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill="black" x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
                 else if (type == 1)
                     pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill="black" cx={x + 0.5} cy={y + 0.5}/>)
+                else if (type == 2)
+                    pointList.push(<circle opacity={opacity}  key={id++} fill="black" cx={x + 0.5} cy={y + 0.5} r={0.5 * rand(0.33,1.0)} />)
             }
         }
     }
@@ -72,7 +88,8 @@ class QrRendererBase extends React.Component {
                     default: 0,
                     choices: [
                         "矩形",
-                        "圆形"
+                        "圆形",
+                        "随机"
                     ]
                 },
                 {
@@ -88,7 +105,8 @@ class QrRendererBase extends React.Component {
                     default: 0,
                     choices: [
                         "矩形",
-                        "圆形"
+                        "圆形",
+                        "行星",
                     ]
                 },
                 ]

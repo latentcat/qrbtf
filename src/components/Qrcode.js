@@ -11,6 +11,7 @@ import logo from '../qrbtf-logo.svg';
 import QrItem from "./QrItem";
 import QrRendererBase from "./QrRendererBase";
 import QrRendererRound from "./QrRendererRound";
+import QrRendererRandRound from "./QrRendererRandRound";
 import QrRendererBlank from "./QrRendererBlank";
 import QrRendererRandRect from "./QrRendererRandRect";
 
@@ -26,8 +27,8 @@ const currentYear = date.getFullYear();
 const styleList = [
     {value: "A1", renderer: QrRendererBase},
     {value: "A2", renderer: QrRendererRound},
+    {value: "A3", renderer: QrRendererRandRound},
     {value: "B1", renderer: QrRendererRandRect},
-    {value: "B2", renderer: QrRendererBlank},
     {value: "C1", renderer: QrRendererBlank},
     {value: "C2", renderer: QrRendererBlank},
     {value: "D1", renderer: QrRendererBlank},

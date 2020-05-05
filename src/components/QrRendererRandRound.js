@@ -25,9 +25,9 @@ function listPoint(props) {
 
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
-            if (qrcode.isDark(x, y) === false) continue;
+            if (qrcode.isDark(x, y) == false) continue;
 
-            if (typeTable[x][y] === QRPointType.ALIGN_CENTER || typeTable[x][y] == QRPointType.ALIGN_OTHER || typeTable[x][y] == QRPointType.TIMING) {
+            if (typeTable[x][y] == QRPointType.ALIGN_CENTER || typeTable[x][y] == QRPointType.ALIGN_OTHER || typeTable[x][y] == QRPointType.TIMING) {
                 if (type == 0)
                     pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill="black" x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
                 else if (type == 1)
@@ -78,14 +78,14 @@ function calViewBox(props) {
     return String(-nCount / 5) + ' ' + String(-nCount / 5) + ' ' + String(nCount + nCount / 5 * 2) + ' ' + String(nCount + nCount / 5 * 2);
 }
 
-class QrRendererRound extends React.Component {
+class QrRendererRandRound extends React.Component {
     constructor(props) {
         super(props);
         if (this.props.setParamInfo) {
             this.props.setParamInfo([
                     {
                         key: '信息点样式',
-                        default: 1,
+                        default: 2,
                         choices: [
                             "矩形",
                             "圆形",
@@ -94,15 +94,15 @@ class QrRendererRound extends React.Component {
                     },
                     {
                         key: '信息点缩放',
-                        default: 50
+                        default: 80
                     },
                     {
                         key: '信息点不透明度',
-                        default: 30,
+                        default: 100,
                     },
                     {
                         key: '定位点样式',
-                        default: 1,
+                        default: 2,
                         choices: [
                             "矩形",
                             "圆形",
@@ -124,4 +124,4 @@ class QrRendererRound extends React.Component {
     }
 }
 
-export default QrRendererRound
+export default QrRendererRandRound
