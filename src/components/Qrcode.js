@@ -243,12 +243,17 @@ class Qrcode extends React.Component {
                         <div className="Qr-s-title">More</div>
                         <p className="Qr-s-subtitle">更多</p>
                     </div>
-                    <div className="Qr-Centered">
+                    <div className="Qr-Centered btn-row">
                         <div className="div-btn">
                             <a href="https://www.yuque.com/qrbtf/docs" rel="noopener noreferrer" target="_blank">
                                 <button className="dl-btn">使用手册</button>
                             </a>
                             <button disabled className="dl-btn">提交样式</button>
+                        </div>
+                        <div className="div-btn">
+                            <a href="https://www.yuque.com/qrbtf/topics" rel="noopener noreferrer" target="_blank">
+                                <button className="dl-btn">问题反馈</button>
+                            </a>
                         </div>
                     </div>
                 </div>
