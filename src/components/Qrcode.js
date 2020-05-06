@@ -8,7 +8,7 @@ import {isWeiXin} from "../utils/util";
 import './Qrcode.css';
 import logo from '../qrbtf-logo.svg';
 
-import Footer from "./Footer";
+import Footer from "./footer/Footer";
 import QrItem from "./QrItem";
 import QrRendererBase from "./QrRendererBase";
 import QrRendererRound from "./QrRendererRound";
@@ -17,11 +17,6 @@ import QrRendererBlank from "./QrRendererBlank";
 import QrRendererRandRect from "./QrRendererRandRect";
 import QrRendererDSJ from "./QrRendererDSJ";
 
-const logoStyle = {
-    background: `url(${logo})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'left'
-};
 
 const styleList = [
     {value: "A1", renderer: QrRendererBase},
@@ -150,12 +145,8 @@ class Qrcode extends React.Component {
 
     render() {
         return (
-            <div className="Qr-outer">
                 <div className="Qr-Centered">
-                    <div style={logoStyle}>
-                        <h1 className="Qr-title">&ensp;</h1>
-                    </div>
-                    <p className="Qr-subtitle">参数化二维码生成器</p>
+
                     <input
                         className="Qr-input big-input"
                         placeholder="Input your URL here"
@@ -256,8 +247,6 @@ class Qrcode extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
-            </div>
         );
     }
 }
