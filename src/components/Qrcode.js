@@ -14,6 +14,7 @@ import QrRendererRound from "./QrRendererRound";
 import QrRendererRandRound from "./QrRendererRandRound";
 import QrRendererBlank from "./QrRendererBlank";
 import QrRendererRandRect from "./QrRendererRandRect";
+import QrRendererDSJ from "./QrRendererDSJ";
 
 const logoStyle = {
     background: `url(${logo})`,
@@ -25,8 +26,8 @@ const styleList = [
     {value: "A1", renderer: QrRendererBase},
     {value: "A2", renderer: QrRendererRound},
     {value: "A3", renderer: QrRendererRandRound},
-    {value: "B1", renderer: QrRendererRandRect},
-    {value: "C1", renderer: QrRendererBlank},
+    {value: "SP — 1", renderer: QrRendererDSJ},
+    {value: "SP — 2", renderer: QrRendererRandRect},
     {value: "C2", renderer: QrRendererBlank},
     {value: "D1", renderer: QrRendererBlank},
     {value: "D2", renderer: QrRendererBlank},

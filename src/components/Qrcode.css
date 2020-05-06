@@ -105,7 +105,7 @@
 }
 
 .Qr-item-image-inner {
-    opacity: 0.36;
+    opacity: 0.8;
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
@@ -331,11 +331,10 @@ input[type="number"]{
 .dl-btn {
     cursor: pointer;
     float: left;
-    font-size: 1em;
-    line-height: 1em;
+    font-size: 0.9em;
+    line-height: 2em;
     margin: 0;
     width: calc((100vw - 56px) / 2);
-    height: 2em;
     border-radius: 3em;
     outline: none;
     padding: 0;
@@ -359,7 +358,7 @@ input[type="number"]{
 @media (min-width: 500px) {
     .dl-btn {
         border: rgba(0,0,0,0.12) solid 3px;
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
 }
 
@@ -392,7 +391,6 @@ input[type="number"]{
 
     .dl-btn {
         width: 200px;
-        height: 2em;
     }
 }
 
