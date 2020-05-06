@@ -18,7 +18,8 @@ function listPoint(props) {
     let posType = props.params[2];
     let id = 0;
 
-    if (width2 <= 0) width2 = 80;
+    if (width2 <= 0) width2 = 70;
+    if (width1 <= 0) width1 = 70;
 
     let available = [];
     let ava2 = [];
