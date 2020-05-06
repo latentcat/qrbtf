@@ -105,7 +105,6 @@
 }
 
 .Qr-item-image-inner {
-    opacity: 0.8;
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
@@ -127,16 +126,8 @@
     border-color: #44D7B6 !important;
 }
 
-.Qr-item-selected .Qr-item-image-inner {
-    opacity: 1;
-}
-
 .Qr-item-selected .Qr-item-detail {
     color: #000000;
-}
-
-.Qr-item:hover .Qr-item-image-inner {
-    opacity: 1;
 }
 
 .Qr-item:hover .Qr-item-detail {
