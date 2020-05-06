@@ -222,9 +222,8 @@ class Qrcode extends React.Component {
                                         <select
                                             className="Qr-select"
                                             value={this.state.correctLevel}
-                                            onChange={(e) => {                                                this.setState({correctLevel: parseInt(e.target.value)})
-                                                this.setState({correctLevel: parseInt(e.target.value)})
-                                                this.handleCreate()
+                                            onChange={(e) => {
+                                                this.setState({correctLevel: parseInt(e.target.value)}, () => this.handleCreate())
                                             }}>
                                             <option value={1}>7%</option>
                                             <option value={0}>15%</option>
