@@ -145,108 +145,21 @@ class Qrcode extends React.Component {
 
     render() {
         return (
-                <div className="Qr-Centered">
-
-                    <input
-                        className="Qr-input big-input"
-                        placeholder="Input your URL here"
-                        onChange={(e) => this.setState({text: e.target.value})}
-                        onBlur={this.handleCreate}
-                        onKeyPress={(e) => {if(e.key === 'Enter') this.handleCreate(e)}}
-                    />
-                </div>
-                <div className="Qr-titled">
-                    <div className="Qr-Centered title-margin">
-                        <div className="Qr-s-title">Styles</div>
-                        <p className="Qr-s-subtitle">点击选择样式</p>
-                    </div>
-                    <div className="Qr-s">
-                        <div className="Qr-box">
-                            {
-                                styleList.map((style, index) => {
-                                    return <QrItem
-                                        key={style.value}
-                                        value={style.value}
-                                        index={index}
-                                        qrcode={this.state.qrcode}
-                                        renderer={React.createElement(style.renderer, {
-                                            qrcode: this.state.qrcode,
-                                            params: this.state.paramValue[index],
-                                            setParamInfo: this.setParamInfo(index)
-                                        })}
-                                        text={this.state.text}
-                                        selected={index == this.state.selectedIndex}
-                                        onSelected={() => this.setState({selectedIndex: index})}
-                                    />
-                                })
-                            }
-                        </div>
-                    </div>
-                </div>
-                <div className="Qr-titled-nobg">
-                    <div className="Qr-Centered title-margin">
-                        <div className="Qr-s-title">Parameters</div>
-                        <p className="Qr-s-subtitle">参数调整</p>
-                    </div>
-                    <div className="Qr-Centered">
-                        <div className="Qr-div-table">
-                            <table className="Qr-table">
-                                <tbody>
-                                <tr>
-                                    <td>容错率</td>
-                                    <td>
-                                        <select
-                                            className="Qr-select"
-                                            value={this.state.correctLevel}
-                                            onChange={(e) => {
-                                                this.setState({correctLevel: parseInt(e.target.value)}, () => this.handleCreate())
-                                            }}>
-                                            <option value={1}>7%</option>
-                                            <option value={0}>15%</option>
-                                            <option value={3}>20%</option>
-                                            <option value={2}>30%</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                {this.renderAdjustment()}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div className="Qr-titled">
-                    <div className="Qr-Centered title-margin">
-                        <div className="Qr-s-title">Downloads</div>
-                        <p className="Qr-s-subtitle">下载二维码 — {styleList[this.state.selectedIndex].value}</p>
-                    </div>
-                    <div className="Qr-Centered">
-                        <div className="div-btn">
-                            <button className="dl-btn" onClick={this.downloadSvg}>SVG</button>
-                            <button className="dl-btn" onClick={this.downloadImg}>JPG</button>
-                        </div>
-                        <div id="wx-message"></div>
-                    </div>
-
-                </div>
-                <div className="Qr-titled-nobg">
-                    <div className="Qr-Centered title-margin">
-                        <div className="Qr-s-title">More</div>
-                        <p className="Qr-s-subtitle">更多</p>
-                    </div>
-                    <div className="Qr-Centered btn-row">
-                        <div className="div-btn">
-                            <a href="https://www.yuque.com/qrbtf/docs" rel="noopener noreferrer" target="_blank">
-                                <button className="dl-btn">使用手册</button>
-                            </a>
-                            <a href="https://www.yuque.com/qrbtf/topics" rel="noopener noreferrer" target="_blank">
-                                <button className="dl-btn">问题反馈</button>
-                            </a>
-                        </div>
-                        <div className="div-btn">
-                            <button disabled className="dl-btn">提交样式</button>
-                        </div>
-                    </div>
-                </div>
+            <div></div>
+                // <div className="Qr-titled">
+                //     <div className="Qr-Centered title-margin">
+                //         <div className="Qr-s-title">Downloads</div>
+                //         <p className="Qr-s-subtitle">下载二维码 — {styleList[this.state.selectedIndex].value}</p>
+                //     </div>
+                //     <div className="Qr-Centered">
+                //         <div className="div-btn">
+                //             <button className="dl-btn" onClick={this.downloadSvg}>SVG</button>
+                //             <button className="dl-btn" onClick={this.downloadImg}>JPG</button>
+                //         </div>
+                //         <div id="wx-message"></div>
+                //     </div>
+                //
+                // </div>
         );
     }
 }
