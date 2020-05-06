@@ -8,6 +8,7 @@ import {isWeiXin} from "../utils/util";
 import './Qrcode.css';
 import logo from '../qrbtf-logo.svg';
 
+import Footer from "./Footer";
 import QrItem from "./QrItem";
 import QrRendererBase from "./QrRendererBase";
 import QrRendererRound from "./QrRendererRound";
@@ -32,7 +33,6 @@ const styleList = [
     {value: "D2", renderer: QrRendererBlank},
 ];
 
-const currentYear = new Date().getFullYear();
 
 class Qrcode extends React.Component {
     paramInfoBuffer;
@@ -53,7 +53,8 @@ class Qrcode extends React.Component {
             options: {text: ''},
             qrcode: null,
             paramInfo: [],
-            paramValue: []
+            paramValue: [],
+            correctLevel: 0
         };
         this.paramInfoBuffer = new Array(16).fill(new Array(16));
         this.paramValueBuffer = new Array(16).fill(new Array(16));
@@ -66,7 +67,7 @@ class Qrcode extends React.Component {
             paramValue: this.paramValueBuffer,
             text: text,
             options: {text: text},
-            qrcode: getQrcodeData({text: text})
+            qrcode: getQrcodeData({text: text, correctLevel: this.state.correctLevel})
         });
     }
 
@@ -95,13 +96,8 @@ class Qrcode extends React.Component {
 
     handleCreate(e) {
         let text = this.state.text
-
-        if (text.length > 0)
-            this.setState({options: {text: text}, qrcode: getQrcodeData({text: text})});
-        else {
-            text = 'https://qrbtf.com/';
-            this.setState({text: text, options: {text: text}, qrcode: getQrcodeData({text: text})});
-        }
+        if (text.length <= 0) text = 'https://qrbtf.com/';
+        this.setState({text: text, options: {text: text}, qrcode: getQrcodeData({text: text, correctLevel: this.state.correctLevel})});
         if (e) e.target.blur();
     }
 
@@ -219,6 +215,23 @@ class Qrcode extends React.Component {
                         <div className="Qr-div-table">
                             <table className="Qr-table">
                                 <tbody>
+                                <tr>
+                                    <td>容错率</td>
+                                    <td>
+                                        <select
+                                            className="Qr-select"
+                                            value={this.state.correctLevel}
+                                            onChange={(e) => {                                                this.setState({correctLevel: parseInt(e.target.value)})
+                                                this.setState({correctLevel: parseInt(e.target.value)})
+                                                this.handleCreate()
+                                            }}>
+                                            <option value={1}>7%</option>
+                                            <option value={0}>15%</option>
+                                            <option value={3}>20%</option>
+                                            <option value={2}>30%</option>
+                                        </select>
+                                    </td>
+                                </tr>
                                 {this.renderAdjustment()}
                                 </tbody>
                             </table>
@@ -258,13 +271,7 @@ class Qrcode extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="Qr-titled">
-                    <div className="Qr-Centered Qr-footer note-font">
-                        <div><strong>作者</strong>&emsp;<a href="https://blog.ciaochaos.com/" rel="noopener noreferrer" target="_blank">ciaochaos</a>&emsp;<a href="https://github.com/CPunisher/" rel="noopener noreferrer" target="_blank">CPunisher</a></div>
-                        <div className="Gray">Copyright © {currentYear} QRBTF. 保留所有权利。</div>
-                        <div className="Gray"><a href="http://www.beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">浙 ICP 备 19005869 号 </a></div>
-                    </div>
-                </div>
+                <Footer />
             </div>
         );
     }
