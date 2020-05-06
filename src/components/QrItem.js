@@ -6,18 +6,17 @@ function calClassName(props) {
     return 'Qr-item';
 }
 
-class QrItem extends React.Component {
+export default class QrItem extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
         this.forceUpdate()
     }
 
-    handleClick(e) {
+    handleClick = (e) => {
         this.props.onSelected(this.props.index);
     }
 
@@ -40,5 +39,3 @@ class QrItem extends React.Component {
         );
     }
 }
-
-export default QrItem;
