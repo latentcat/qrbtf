@@ -1,6 +1,6 @@
 import React from "react";
 import './Qrcode.css'
-import {defaultRenderer, rand, randRGB} from "../utils/util";
+import {defaultRenderer, rand} from "../utils/util";
 
 function listPoint(props) {
     if (!props.qrcode) return []
