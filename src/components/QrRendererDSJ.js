@@ -37,18 +37,18 @@ function listPoint(props) {
 
             else if (typeTable[x][y] == QRPointType.POS_CENTER) {
                 if (posType == 0) {
-                    pointList.push(<rect width={1} height={1} key={id++} fill="#021B6A" x={x} y={y}/>);
+                    pointList.push(<rect width={1} height={1} key={id++} fill="#0B2D97" x={x} y={y}/>);
                 } else if (posType == 1) {
-                    pointList.push(<rect width={3 - (1 - width2)} height={3 - (1 - width2)} key={id++} fill="#021B6A" x={x - 1 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
-                    pointList.push(<rect width={width2} height={3 - (1 - width2)} key={id++} fill="#021B6A" x={x - 3 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
-                    pointList.push(<rect width={width2} height={3 - (1 - width2)} key={id++} fill="#021B6A" x={x + 3 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
-                    pointList.push(<rect width={3 - (1 - width2)} height={width2} key={id++} fill="#021B6A" x={x - 1 + (1 - width2)/2} y={y - 3 + (1 - width2)/2}/>);
-                    pointList.push(<rect width={3 - (1 - width2)} height={width2} key={id++} fill="#021B6A" x={x - 1 + (1 - width2)/2} y={y + 3 + (1 - width2)/2}/>);
+                    pointList.push(<rect width={3 - (1 - width2)} height={3 - (1 - width2)} key={id++} fill="#0B2D97" x={x - 1 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
+                    pointList.push(<rect width={width2} height={3 - (1 - width2)} key={id++} fill="#0B2D97" x={x - 3 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
+                    pointList.push(<rect width={width2} height={3 - (1 - width2)} key={id++} fill="#0B2D97" x={x + 3 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
+                    pointList.push(<rect width={3 - (1 - width2)} height={width2} key={id++} fill="#0B2D97" x={x - 1 + (1 - width2)/2} y={y - 3 + (1 - width2)/2}/>);
+                    pointList.push(<rect width={3 - (1 - width2)} height={width2} key={id++} fill="#0B2D97" x={x - 1 + (1 - width2)/2} y={y + 3 + (1 - width2)/2}/>);
                 }
             }
             else if (typeTable[x][y] == QRPointType.POS_OTHER) {
                 if (posType == 0) {
-                    pointList.push(<rect width={1} height={1} key={id++} fill="#021B6A" x={x} y={y}/>);
+                    pointList.push(<rect width={1} height={1} key={id++} fill="#0B2D97" x={x} y={y}/>);
                 }
             }
             else {
@@ -62,8 +62,8 @@ function listPoint(props) {
                         }
                     }
                     if (ctn && qrcode.isDark(x + 2, y) && qrcode.isDark(x + 1, y + 1) && qrcode.isDark(x, y + 2) && qrcode.isDark(x + 2, y + 2)) {
-                        g1.push(<line key={id++} x1={x + width1 / Math.sqrt(8)} y1={y + width1 / Math.sqrt(8)} x2={x + 3 - width1 / Math.sqrt(8)} y2={y + 3 - width1 / Math.sqrt(8)} fill="none" stroke="#021B6A" strokeWidth={width1} />)
-                        g1.push(<line key={id++} x1={x + 3 - width1 / Math.sqrt(8)} y1={y + width1 / Math.sqrt(8)} x2={x + width1 / Math.sqrt(8)} y2={y + 3 - width1 / Math.sqrt(8)} fill="none" stroke="#021B6A" strokeWidth={width1} />)
+                        g1.push(<line key={id++} x1={x + width1 / Math.sqrt(8)} y1={y + width1 / Math.sqrt(8)} x2={x + 3 - width1 / Math.sqrt(8)} y2={y + 3 - width1 / Math.sqrt(8)} fill="none" stroke="#0B2D97" strokeWidth={width1} />)
+                        g1.push(<line key={id++} x1={x + 3 - width1 / Math.sqrt(8)} y1={y + width1 / Math.sqrt(8)} x2={x + width1 / Math.sqrt(8)} y2={y + 3 - width1 / Math.sqrt(8)} fill="none" stroke="#0B2D97" strokeWidth={width1} />)
                         available[x][y] = false;
                         available[x + 2][y] = false;
                         available[x][y + 2] = false;
@@ -86,8 +86,8 @@ function listPoint(props) {
                         }
                     }
                     if (ctn && qrcode.isDark(x + 1, y) && qrcode.isDark(x, y + 1) && qrcode.isDark(x + 1, y + 1)) {
-                        g1.push(<line key={id++} x1={x + width1 / Math.sqrt(8)} y1={y + width1 / Math.sqrt(8)} x2={x + 2 - width1 / Math.sqrt(8)} y2={y + 2 - width1 / Math.sqrt(8)} fill="none" stroke="#021B6A" strokeWidth={width1} />)
-                        g1.push(<line key={id++} x1={x + 2 - width1 / Math.sqrt(8)} y1={y + width1 / Math.sqrt(8)} x2={x + width1 / Math.sqrt(8)} y2={y + 2 - width1 / Math.sqrt(8)} fill="none" stroke="#021B6A" strokeWidth={width1} />)
+                        g1.push(<line key={id++} x1={x + width1 / Math.sqrt(8)} y1={y + width1 / Math.sqrt(8)} x2={x + 2 - width1 / Math.sqrt(8)} y2={y + 2 - width1 / Math.sqrt(8)} fill="none" stroke="#0B2D97" strokeWidth={width1} />)
+                        g1.push(<line key={id++} x1={x + 2 - width1 / Math.sqrt(8)} y1={y + width1 / Math.sqrt(8)} x2={x + width1 / Math.sqrt(8)} y2={y + 2 - width1 / Math.sqrt(8)} fill="none" stroke="#0B2D97" strokeWidth={width1} />)
                         for (let i = 0; i < 2; i++) {
                             for (let j = 0; j < 2; j++) {
                                 available[x + i][y + j] = false;
@@ -113,8 +113,8 @@ function listPoint(props) {
                                 ava2[x][i] = false;
                                 available[x][i] = false;
                             }
-                            g2.push(<rect width={width2} height={end - start - 1 - (1 - width2)} key={id++} fill="#B71814" x={x + (1 - width2)/2} y={y + (1 - width2)/2}/>)
-                            g2.push(<rect width={width2} height={width2} key={id++} fill="#B71814" x={x + (1 - width2)/2} y={end - 1 + (1 - width2)/2}/>)
+                            g2.push(<rect width={width2} height={end - start - 1 - (1 - width2)} key={id++} fill="#E02020" x={x + (1 - width2)/2} y={y + (1 - width2)/2}/>)
+                            g2.push(<rect width={width2} height={width2} key={id++} fill="#E02020" x={x + (1 - width2)/2} y={end - 1 + (1 - width2)/2}/>)
                         }
                     }
                 }
@@ -135,12 +135,12 @@ function listPoint(props) {
                                 ava2[i][y] = false;
                                 available[i][y] = false;
                             }
-                            g2.push(<rect width={end - start - (1 - width2)} height={width2} key={id++} fill="#F1A11A" x={x + (1 - width2)/2} y={y + (1 - width2)/2}/>)
+                            g2.push(<rect width={end - start - (1 - width2)} height={width2} key={id++} fill="#F6B506" x={x + (1 - width2)/2} y={y + (1 - width2)/2}/>)
                         }
                     }
                 }
                 if (available[x][y]) {
-                    pointList.push(<rect width={width2} height={width2} key={id++} fill="#F1A11A" x={x + (1 - width2)/2} y={y + (1 - width2)/2}/>)
+                    pointList.push(<rect width={width2} height={width2} key={id++} fill="#F6B506" x={x + (1 - width2)/2} y={y + (1 - width2)/2}/>)
                 }
 
 
@@ -165,7 +165,7 @@ export default class QrRendererDSJ extends React.Component {
             this.props.setParamInfo([
                 {
                     key: '信息点缩放',
-                    default: 80,
+                    default: 70,
                 },
                 {
                     key: 'x 宽度',
@@ -176,7 +176,7 @@ export default class QrRendererDSJ extends React.Component {
                     default: 1,
                     choices: [
                         "矩形",
-                        "默认",
+                        "DSJ",
                     ]
                 },
                 ]
