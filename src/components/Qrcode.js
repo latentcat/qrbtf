@@ -40,14 +40,6 @@ class Qrcode extends React.Component {
     paramValueBuffer;
     constructor(props) {
         super(props);
-        this.handleCreate = this.handleCreate.bind(this)
-        this.downloadSvg = this.downloadSvg.bind(this)
-        this.downloadImg = this.downloadImg.bind(this)
-        this.setParamValue = this.setParamValue.bind(this)
-        this.getParamValue = this.getParamValue.bind(this)
-        this.setParamInfo = this.setParamInfo.bind(this)
-        this.renderAdjustment = this.renderAdjustment.bind(this)
-        this.renderParamEditor = this.renderParamEditor.bind(this)
         this.state = {
             text: '',
             selectedIndex: 0,
@@ -72,7 +64,7 @@ class Qrcode extends React.Component {
         });
     }
 
-    setParamInfo(index) {
+    setParamInfo = (index) => {
         const _this = this;
         return function (params) {
             _this.paramInfoBuffer[index] = params;
@@ -82,39 +74,32 @@ class Qrcode extends React.Component {
         }
     }
 
-    setParamValue(valueIndex, value) {
+    setParamValue = (valueIndex, value) => {
         const newValue = this.state.paramValue.slice();
         newValue[this.state.selectedIndex][valueIndex] = value;
         this.setState({paramValue: newValue});
     }
 
-    getParamValue(index) {
-        const _this = this;
-        return function () {
-            return _this.state.paramValue[index];
-        }
-    }
-
-    handleCreate(e) {
+    handleCreate = (e) => {
         let text = this.state.text
         if (text.length <= 0) text = 'https://qrbtf.com/';
         this.setState({text: text, options: {text: text}, qrcode: getQrcodeData({text: text, correctLevel: this.state.correctLevel})});
         if (e) e.target.blur();
     }
 
-    downloadSvg(e) {
+    downloadSvg = (e) => {
         const style = styleList[this.state.selectedIndex]
         const el = React.createElement(style.renderer, {qrcode: this.state.qrcode, params: this.state.paramValue[this.state.selectedIndex]})
         saveSvg(style.value, ReactDOMServer.renderToString(el))
     }
 
-    downloadImg(e) {
+    downloadImg = (e) => {
         const style = styleList[this.state.selectedIndex]
         const el = React.createElement(style.renderer, {qrcode: this.state.qrcode, params: this.state.paramValue[this.state.selectedIndex]})
         saveImg(style.value, ReactDOMServer.renderToString(el), 1500, 1500)
     }
 
-    renderParamEditor(info, index) {
+    renderParamEditor = (info, index) => {
         if (info.choices) {
             return (
                 <select
@@ -149,7 +134,7 @@ class Qrcode extends React.Component {
         }
     }
 
-    renderAdjustment() {
+    renderAdjustment = () => {
         const target = this.state.paramInfo[this.state.selectedIndex];
         if (target instanceof Array) {
             return target.map((info, index) => {

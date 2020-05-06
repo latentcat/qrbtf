@@ -159,7 +159,7 @@ function listPoint(props) {
     return pointList;
 }
 
-class QrRendererDSJ extends React.Component {
+export default class QrRendererDSJ extends React.Component {
     constructor(props) {
         super(props);
         if (this.props.setParamInfo) {
@@ -190,4 +190,3 @@ class QrRendererDSJ extends React.Component {
     }
 }
 
-export default QrRendererDSJ

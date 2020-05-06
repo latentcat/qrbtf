@@ -70,7 +70,7 @@ function listPoint(props) {
     return pointList;
 }
 
-class QrRendererRound extends React.Component {
+export default class QrRendererRound extends React.Component {
     constructor(props) {
         super(props);
         if (this.props.setParamInfo) {
@@ -111,4 +111,3 @@ class QrRendererRound extends React.Component {
     }
 }
 
-export default QrRendererRound

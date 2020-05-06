@@ -38,10 +38,9 @@ function listPoint(props) {
     return pointList;
 }
 
-class QrRendererRandRect extends React.Component {
+export default class QrRendererRandRect extends React.Component {
     render() {
         return defaultRenderer(this.props.qrcode, listPoint(this.props));
     }
 }
 
-export default QrRendererRandRect
