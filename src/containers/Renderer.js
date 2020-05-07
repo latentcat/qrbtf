@@ -1,14 +1,17 @@
 import React from "react";
 import { connect } from 'react-redux';
-import {changeStyle} from "../actions";
+import {createParam} from "../actions";
 
-const mapStateToProp = state => ({
-    qrcode: state.qrcode
+const mapStateToProps = (state, ownProps) => ({
+    qrcode: state.qrcode,
+    params: state.paramValue[ownProps.index],
+    rendererIndex: ownProps.index
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
+    setParamInfo: (index, params) => dispatch(createParam(index, params)),
 })
 
 export default function Renderer(WrappedRenderer) {
-    return connect(mapStateToProp, mapDispatchToProps())(WrappedRenderer)
+    return connect(mapStateToProps, mapDispatchToProps)(WrappedRenderer)
 }

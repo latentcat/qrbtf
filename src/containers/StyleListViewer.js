@@ -16,12 +16,12 @@ const styles = [
     {value: 'D1', renderer: RendererBlank},
 ]
 
-const mapStateToProp = state => ({
+const mapStateToProps = state => ({
     styles: styles.map((style, index) => {
         return {
             value: style.value,
             selected: state.selectedIndex == index,
-            renderer: React.createElement(Renderer(style.renderer))
+            renderer: React.createElement(Renderer(style.renderer), {index: index})
         }
     })
 })
@@ -31,6 +31,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-    mapStateToProp,
+    mapStateToProps,
     mapDispatchToProps
 )(StyleList)
