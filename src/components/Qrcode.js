@@ -31,9 +31,9 @@ const styleList = [
     {value: "A3", renderer: QrRendererRandRound},
     {value: "SP — 1", renderer: QrRendererDSJ},
     {value: "SP — 2", renderer: QrRendererRandRect},
-    {value: "D1", renderer: QrRenderer25D},
+    {value: "B1", renderer: QrRenderer25D},
     {value: "C1", renderer: QrRendererImage},
-    {value: "D2", renderer: QrRendererBlank},
+    {value: "D1", renderer: QrRendererBlank},
 ];
 
 
