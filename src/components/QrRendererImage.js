@@ -1,7 +1,7 @@
 import React from "react";
 import './Qrcode.css'
 import {getTypeTable, QRPointType} from "../utils/qrcodeHandler";
-import {defaultRenderer} from "../utils/util";
+import {defaultRenderer, defaultViewBox} from "../utils/util";
 
 function listPoint(props) {
     if (!props.qrcode) return []
@@ -130,7 +130,12 @@ export default class QrRendererImage extends React.Component {
     }
 
     render() {
-        return defaultRenderer(this.props.qrcode, listPoint(this.props));
+        return (
+            <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(this.props.qrcode)} fill="white"
+                 xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                {listPoint(this.props)}
+            </svg>
+        );
     }
 }
 
