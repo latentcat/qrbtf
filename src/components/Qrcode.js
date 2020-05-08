@@ -157,7 +157,7 @@ class Qrcode extends React.Component {
                     <div style={logoStyle}>
                         <h1 className="Qr-title">&ensp;</h1>
                     </div>
-                    <p className="Qr-subtitle">参数化二维码生成器 <sup>测试版</sup></p>
+                    <p className="Qr-subtitle">参数化二维码生成器 <sup className="note-font">测试版</sup></p>
                     <input
                         className="Qr-input big-input"
                         placeholder="Input your URL here"
