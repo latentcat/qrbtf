@@ -11,8 +11,8 @@ function listPoint(props) {
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
 
-    let size = 1.03;
-    let size2 = 1.03;
+    let size = 1.001;
+    let size2 = 1.001;
     let height = props.params[0];
     let height2 = props.params[1];
     let id = 0;
