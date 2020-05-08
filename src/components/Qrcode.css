@@ -84,7 +84,7 @@
 
 .Qr-item-image {
     /*padding: 23px;*/
-    overflow: auto;
+    overflow: hidden;
     display: flex;
     background-color: white;
     width: calc((100vw - 56px) / 2);
