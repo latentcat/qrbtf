@@ -16,6 +16,7 @@ import QrRendererRandRound from "./QrRendererRandRound";
 import QrRendererBlank from "./QrRendererBlank";
 import QrRendererRandRect from "./QrRendererRandRect";
 import QrRendererDSJ from "./QrRendererDSJ";
+import QrRenderer25D from "./QrRenderer25D";
 import QrRendererImage from "./QrRendererImage";
 
 const logoStyle = {
@@ -30,8 +31,8 @@ const styleList = [
     {value: "A3", renderer: QrRendererRandRound},
     {value: "SP — 1", renderer: QrRendererDSJ},
     {value: "SP — 2", renderer: QrRendererRandRect},
+    {value: "D1", renderer: QrRenderer25D},
     {value: "C1", renderer: QrRendererImage},
-    {value: "D1", renderer: QrRendererBlank},
     {value: "D2", renderer: QrRendererBlank},
 ];
 

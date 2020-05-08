@@ -117,7 +117,7 @@ export default class QrRendererImage extends React.Component {
                 },
                 {
                     key: '定位点样式',
-                    default: 2,
+                    default: 0,
                     choices: [
                         "矩形",
                         "圆形",
