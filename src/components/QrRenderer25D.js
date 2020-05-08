@@ -11,10 +11,10 @@ function listPoint(props) {
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
 
-    let type = props.params[0];
-    let size = props.params[1] / 100;
-    let opacity = props.params[2] / 100;
-    let posType = props.params[3];
+    let size = 1.03;
+    let size2 = 1.03;
+    let height = props.params[0];
+    let height2 = props.params[1];
     let id = 0;
 
     const vw = [3, -3];
@@ -26,37 +26,33 @@ function listPoint(props) {
 
     const matrixString = 'matrix(' + String(X[0]) + ', ' + String(X[1]) + ', ' + String(Y[0]) + ', ' + String(Y[1]) + ', ' + String(Z[0]) + ', ' + String(Z[1]) + ')'
 
-
-    if (size <= 0) size = 1.0
+    if (height <= 0) height = 1.0;
+    if (height2 <= 0) height2 = 1.0;
 
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
             if (qrcode.isDark(x, y) == false) continue;
-            else if (typeTable[x][y] == QRPointType.POS_CENTER) {
-                if (posType == 0) {
-                    pointList.push(<rect width={1} height={1} key={id++} fill="rgb(0,0,0)" x={x} y={y} transform={matrixString}/>);
-                    pointList.push(<rect opacity={opacity} width={size/2} height={size} key={id++} fill="rgb(225,225,225)" x={0} y={0} transform={matrixString+'translate('+String(x+1)+','+String(y)+') '+'skewY(45) '}/>);
-                    pointList.push(<rect opacity={opacity} width={size} height={size/2} key={id++} fill="rgb(240,240,240)" x={0} y={0} transform={matrixString+'translate('+String(x)+','+String(y+1)+') '+'skewX(45) '}/>);
-                }
-            }
-            else if (typeTable[x][y] == QRPointType.POS_OTHER) {
-                if (posType == 0) {
-                    pointList.push(<rect width={1} height={1} key={id++} fill="rgb(0,0,0)" x={x} y={y} transform={matrixString}/>);
-                    pointList.push(<rect opacity={opacity} width={size/2} height={size} key={id++} fill="rgb(225,225,225)" x={0} y={0} transform={matrixString+'translate('+String(x+1)+','+String(y)+') '+'skewY(45) '}/>);
-                    pointList.push(<rect opacity={opacity} width={size} height={size/2} key={id++} fill="rgb(240,240,240)" x={0} y={0} transform={matrixString+'translate('+String(x)+','+String(y+1)+') '+'skewX(45) '}/>);
-                }
+            else if (typeTable[x][y] == QRPointType.POS_OTHER || typeTable[x][y] == QRPointType.POS_CENTER) {
+                pointList.push(<rect width={size2} height={size2} key={id++} fill="#FF7F89" x={x + (1 - size2)/2} y={y + (1 - size2)/2} transform={matrixString}/>);
+                pointList.push(<rect width={height2} height={size2} key={id++} fill="#FFEBF3" x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size2)/2 + size2)+','+String(y + (1 - size2)/2)+') '+'skewY(45) '}/>);
+                pointList.push(<rect width={size2} height={height2} key={id++} fill="#FFD7D9" x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size2)/2)+','+String(y + size2 + (1 - size2)/2)+') '+'skewX(45) '}/>);
             }
             else {
-                if (type == 0) {
-                    pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill="rgb(0,0,0)" x={x + (1 - size)/2} y={y + (1 - size)/2} transform={matrixString}/>);
-                    pointList.push(<rect opacity={opacity} width={size/2} height={size} key={id++} fill="rgb(210,210,210)" x={0} y={0} transform={matrixString+'translate('+String(x+1)+','+String(y)+') '+'skewY(45) '}/>);
-                    pointList.push(<rect opacity={opacity} width={size} height={size/2} key={id++} fill="rgb(235,235,235)" x={0} y={0} transform={matrixString+'translate('+String(x)+','+String(y+1)+') '+'skewX(45) '}/>);
-                }
+                pointList.push(<rect width={size} height={size} key={id++} fill="#FF7F89" x={x + (1 - size)/2} y={y + (1 - size)/2} transform={matrixString}/>);
+                pointList.push(<rect width={height} height={size} key={id++} fill="#FFEBF3" x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size)/2 + size)+','+String(y + (1 - size)/2)+') '+'skewY(45) '}/>);
+                pointList.push(<rect width={size} height={height} key={id++} fill="#FFD7D9" x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size)/2)+','+String(y + size + (1 - size)/2)+') '+'skewX(45) '}/>);
             }
         }
     }
 
     return pointList;
+}
+
+function viewBox(qrcode) {
+    if (!qrcode) return '0 0 0 0';
+
+    const nCount = qrcode.getModuleCount();
+    return String(-nCount) + ' ' + String(-nCount / 2) + ' ' + String(nCount * 2) + ' ' + String(nCount * 2);
 }
 
 export default class QrRenderer25D extends React.Component {
@@ -65,30 +61,12 @@ export default class QrRenderer25D extends React.Component {
         if (this.props.setParamInfo) {
             this.props.setParamInfo([
                 {
-                    key: '信息点样式',
-                    default: 0,
-                    choices: [
-                        "矩形",
-                        "圆形",
-                        "随机"
-                    ]
+                    key: '柱体高度',
+                    default: 1
                 },
                 {
-                    key: '信息点缩放',
-                    default: 100
-                },
-                {
-                    key: '信息点不透明度',
-                    default: 100,
-                },
-                {
-                    key: '定位点样式',
-                    default: 0,
-                    choices: [
-                        "矩形",
-                        "圆形",
-                        "行星",
-                    ]
+                    key: '定位点柱体高度',
+                    default: 1,
                 },
                 ]
             );
@@ -97,7 +75,7 @@ export default class QrRenderer25D extends React.Component {
 
     render() {
         return (
-            <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(this.props.qrcode)} fill="white"
+            <svg className="Qr-item-svg" width="100%" height="100%" viewBox={viewBox(this.props.qrcode)} fill="white"
                  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 {listPoint(this.props)}
             </svg>
