@@ -255,7 +255,7 @@ class Qrcode extends React.Component {
                         </div>
                         <div className="div-btn">
                             <a href="https://www.yuque.com/qrbtf/docs/dev" rel="noopener noreferrer" target="_blank">
-                                <button className="dl-btn">开发与设计</button>
+                                <button className="dl-btn">开发 & 设计</button>
                             </a>
                             <a href="https://www.yuque.com/qrbtf/docs/coop" rel="noopener noreferrer" target="_blank">
                                 <button className="dl-btn">商业合作</button>
