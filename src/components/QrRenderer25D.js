@@ -62,11 +62,11 @@ export default class QrRenderer25D extends React.Component {
             this.props.setParamInfo([
                 {
                     key: '柱体高度',
-                    default: 1
+                    default: 0.5,
                 },
                 {
                     key: '定位点柱体高度',
-                    default: 1,
+                    default: 0.5,
                 },
                 ]
             );
