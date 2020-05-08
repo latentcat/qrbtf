@@ -10,9 +10,9 @@ export const changeStyle = index => ({
     index
 })
 
-export const createParam = (rendererIndex, params) => ({
+export const createParam = (paramInfo, paramValue) => ({
     type: actionTypes.CREATE_PARAM,
-    rendererIndex, params
+    paramInfo, paramValue
 })
 
 export const changeParam = (rendererIndex, paramIndex, value) => ({

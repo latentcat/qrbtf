@@ -1,21 +1,20 @@
-import React from "react";
-import './Qrcode.css'
-import {getTypeTable, QRPointType} from "../utils/qrcodeHandler";
-import {defaultRenderer, rand} from "../utils/util";
+import React, { useEffect } from "react";
+import {defaultViewBox} from "../../utils/util";
+import {ParamTypes} from "../../constant/ParamTypes";
+import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 
-function listPoint(props) {
-    if (!props.qrcode) return []
+function listPoints(qrcode, params) {
+    if (!qrcode) return []
 
-    const qrcode = props.qrcode;
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = [];
     const g1 = [];
     const g2 = [];
 
-    let width2 = props.params[0] / 100;
-    let width1 = props.params[1] / 100;
-    let posType = props.params[2];
+    let width2 = params[0] / 100;
+    let width1 = params[1] / 100;
+    let posType = params[2];
     let id = 0;
 
     if (width2 <= 0) width2 = 80;
@@ -158,34 +157,41 @@ function listPoint(props) {
     return pointList;
 }
 
-export default class QrRendererDSJ extends React.Component {
-    constructor(props) {
-        super(props);
-        if (this.props.setParamInfo) {
-            this.props.setParamInfo([
-                {
-                    key: '信息点缩放',
-                    default: 70,
-                },
-                {
-                    key: 'x 宽度',
-                    default: 70,
-                },
-                {
-                    key: '定位点样式',
-                    default: 1,
-                    choices: [
-                        "矩形",
-                        "DSJ",
-                    ]
-                },
-                ]
-            );
-        }
-    }
-
-    render() {
-        return defaultRenderer(this.props.qrcode, listPoint(this.props));
-    }
+function getParamInfo() {
+    return [
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '信息点缩放',
+            default: 70,
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: 'x 宽度',
+            default: 70,
+        },
+        {
+            type: ParamTypes.SELECTOR,
+            key: '定位点样式',
+            default: 1,
+            choices: [
+                "矩形",
+                "DSJ",
+            ]
+        },
+    ]
 }
 
+const RenderDSJ = ({ qrcode, params, setParamInfo}) => {
+    useEffect(() => {
+        setParamInfo(getParamInfo());
+    }, [setParamInfo]);
+
+    return (
+        <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(qrcode)} fill="white"
+             xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            {listPoints(qrcode, params)}
+        </svg>
+    )
+}
+
+export default RenderDSJ

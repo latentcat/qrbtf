@@ -6,6 +6,8 @@ import Header from "../header/Header";
 import PartInput from "./PartInput";
 import PartStyles from "./PartStyles";
 import PartMore from "./PartMore";
+import PartParams from "./PartParams";
+import PartDownload from "./PartDownload";
 
 function App() {
     return (
@@ -15,6 +17,8 @@ function App() {
                     <Header/>
                     <PartInput/>
                     <PartStyles/>
+                    <PartParams/>
+                    <PartDownload/>
                     <PartMore/>
                     <Footer/>
                 </div>

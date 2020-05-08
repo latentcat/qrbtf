@@ -1,5 +1,3 @@
-import React from "react";
-
 let seed = 0;
 
 export function srand(sd) {

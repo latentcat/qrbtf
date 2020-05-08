@@ -1,6 +1,6 @@
-import React from "react";
 import { connect } from 'react-redux';
 import { genQRInfo } from "../actions";
+import React from "react";
 
 const InputText = ({ dispatch }) => (
     <div className="Qr-Centered">

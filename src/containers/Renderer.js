@@ -1,6 +1,4 @@
-import React from "react";
 import { connect } from 'react-redux';
-import {createParam} from "../actions";
 
 const mapStateToProps = (state, ownProps) => ({
     qrcode: state.qrcode,
@@ -8,8 +6,8 @@ const mapStateToProps = (state, ownProps) => ({
     rendererIndex: ownProps.index
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    setParamInfo: (index, params) => dispatch(createParam(index, params)),
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    setParamInfo: (params) => ownProps.setParamInfo(ownProps.index, params)
 })
 
 export default function Renderer(WrappedRenderer) {

@@ -1,4 +1,3 @@
-import { combineReducers } from "redux";
 import {getQrcodeData} from "../utils/qrcodeHandler";
 import {actionTypes} from "../constant/ActionTypes";
 
@@ -10,6 +9,7 @@ const initialState = {
 }
 
 export default function appReducer(state = initialState, action) {
+    console.log(state)
     switch (action.type) {
         case actionTypes.GENERATE_QR_INFO: {
             return Object.assign({}, state, {
@@ -23,21 +23,20 @@ export default function appReducer(state = initialState, action) {
         }
         case actionTypes.CREATE_PARAM: {
             return Object.assign({}, state, {
-                paramInfo: Object.assign([], [...state.paramInfo], {
-                    [action.rendererIndex]: action.params
-                }),
-                paramValue: Object.assign([], [...state.paramValue], {
-                    [action.rendererIndex]: action.params.map(obj => obj.default)
-                })
-            });
+                paramInfo: action.paramInfo,
+                paramValue: action.paramValue
+            })
         }
         case actionTypes.CHANGE_PARAM: {
             return Object.assign({}, state, {
-                paramValue: Object.assign([], [...state.paramValue], {
-                    [action.rendererIndex]:
-                        Object.assign([], [...state.paramValue[action.rendererIndex]], {
-                        [action.paramIndex]: action.value
-                    })
+                paramValue: state.paramValue.map((item, index) => {
+                    if (index != action.rendererIndex) {
+                        return item;
+                    }
+
+                    const newItem = item.slice();
+                    newItem[action.paramIndex] = action.value;
+                    return newItem;
                 })
             });
         }

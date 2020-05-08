@@ -9,7 +9,7 @@ const PartStyles = () => (
             <p className="Qr-s-subtitle">点击选择样式</p>
         </div>
         <div className="Qr-s">
-            <StyleListViewer/>
+            {React.createElement(StyleListViewer())}
         </div>
     </div>
 )
