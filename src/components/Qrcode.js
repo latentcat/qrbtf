@@ -157,7 +157,7 @@ class Qrcode extends React.Component {
                     <div style={logoStyle}>
                         <h1 className="Qr-title">&ensp;</h1>
                     </div>
-                    <p className="Qr-subtitle">参数化二维码生成器</p>
+                    <p className="Qr-subtitle">参数化二维码生成器 <sup>测试版</sup></p>
                     <input
                         className="Qr-input big-input"
                         placeholder="Input your URL here"
@@ -214,7 +214,7 @@ class Qrcode extends React.Component {
                                             }}>
                                             <option value={1}>7%</option>
                                             <option value={0}>15%</option>
-                                            <option value={3}>20%</option>
+                                            <option value={3}>25%</option>
                                             <option value={2}>30%</option>
                                         </select>
                                     </td>
@@ -246,14 +246,17 @@ class Qrcode extends React.Component {
                     </div>
                     <div className="Qr-Centered btn-row">
                         <div className="div-btn">
+                            <a href="https://www.yuque.com/qrbtf/docs/donate" rel="noopener noreferrer" target="_blank">
+                                <button className="dl-btn">打赏 & 赞助</button>
+                            </a>
                             <a href="https://www.yuque.com/qrbtf/topics" rel="noopener noreferrer" target="_blank">
                                 <button className="dl-btn">问题反馈</button>
                             </a>
-                            <a href="https://www.yuque.com/qrbtf/docs/dev" rel="noopener noreferrer" target="_blank">
-                            <button className="dl-btn">开发与设计</button>
-                            </a>
                         </div>
                         <div className="div-btn">
+                            <a href="https://www.yuque.com/qrbtf/docs/dev" rel="noopener noreferrer" target="_blank">
+                                <button className="dl-btn">开发与设计</button>
+                            </a>
                             <a href="https://www.yuque.com/qrbtf/docs/coop" rel="noopener noreferrer" target="_blank">
                                 <button className="dl-btn">商业合作</button>
                             </a>
