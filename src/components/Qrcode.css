@@ -84,6 +84,8 @@
 
 .Qr-item-image {
     /*padding: 23px;*/
+    overflow: auto;
+    display: flex;
     background-color: white;
     width: calc((100vw - 56px) / 2);
     height: calc((100vw - 56px) / 2);
@@ -105,6 +107,7 @@
 }
 
 .Qr-item-image-inner {
+    justify-content: center;
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
