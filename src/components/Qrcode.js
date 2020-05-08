@@ -18,6 +18,7 @@ import QrRendererRandRect from "./QrRendererRandRect";
 import QrRendererDSJ from "./QrRendererDSJ";
 import QrRenderer25D from "./QrRenderer25D";
 import QrRendererImage from "./QrRendererImage";
+import {recordDownloadDetail} from "../api/db";
 
 const logoStyle = {
     background: `url(${logo})`,
@@ -49,7 +50,8 @@ class Qrcode extends React.Component {
             qrcode: null,
             paramInfo: [],
             paramValue: [],
-            correctLevel: 0
+            correctLevel: 0,
+            history: []
         };
         this.paramInfoBuffer = new Array(16).fill(new Array(16));
         this.paramValueBuffer = new Array(16).fill(new Array(16));
@@ -90,15 +92,41 @@ class Qrcode extends React.Component {
     }
 
     downloadSvg = (e) => {
-        const style = styleList[this.state.selectedIndex]
-        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode, params: this.state.paramValue[this.state.selectedIndex]})
+        const selected = this.state.selectedIndex
+        const style = styleList[selected]
+        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode, params: this.state.paramValue[selected]})
         saveSvg(style.value, ReactDOMServer.renderToString(el))
+        recordDownloadDetail({
+            text: this.state.text,
+            value: styleList[selected],
+            type: 'svg',
+            params: this.state.paramInfo[selected].map((item, index) => {
+                return {
+                    key: item.key,
+                    value: item.choices ? item.choices[this.state.paramValue[selected][index]] : this.state.paramValue[selected][index]
+                }
+            }),
+            history: this.state.history
+        });
     }
 
     downloadImg = (e) => {
-        const style = styleList[this.state.selectedIndex]
-        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode, params: this.state.paramValue[this.state.selectedIndex]})
+        const selected = this.state.selectedIndex
+        const style = styleList[selected]
+        const el = React.createElement(style.renderer, {qrcode: this.state.qrcode, params: this.state.paramValue[selected]})
         saveImg(style.value, ReactDOMServer.renderToString(el), 1500, 1500)
+        recordDownloadDetail({
+            text: this.state.text,
+            value: styleList[selected],
+            type: 'jpg',
+            params: this.state.paramInfo[selected].map((item, index) => {
+                return {
+                    key: item.key,
+                    value: item.choices ? item.choices[this.state.paramValue[selected][index]] : this.state.paramValue[selected][index]
+                }
+            }),
+            history: this.state.history
+        });
     }
 
     renderParamEditor = (info, index) => {
@@ -150,6 +178,12 @@ class Qrcode extends React.Component {
         }
     }
 
+    changeStyle = (index) => {
+        const newHistory = this.state.history.slice();
+        newHistory.push(styleList[index].value);
+        this.setState({selectedIndex: index, history: newHistory})
+    }
+
     render() {
         return (
             <div className="Qr-outer">
@@ -187,7 +221,7 @@ class Qrcode extends React.Component {
                                         })}
                                         text={this.state.text}
                                         selected={index == this.state.selectedIndex}
-                                        onSelected={() => this.setState({selectedIndex: index})}
+                                        onSelected={this.changeStyle}
                                     />
                                 })
                             }

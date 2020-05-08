@@ -1,4 +1,4 @@
-import {insert, update} from "../api/db";
+import {increaseDownloadData} from "../api/db";
 
 const svgHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n " +
     "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n"
@@ -18,7 +18,7 @@ export function saveSvg(value, content) {
     a.hidden = true
     a.click()
 
-    update(value)
+    increaseDownloadData(value, new Date().toString())
 }
 
 export function saveImg(value, content, width, height) {
@@ -60,8 +60,9 @@ export function saveImg(value, content, width, height) {
         a.setAttribute('target', 'download')
         a.setAttribute('download', filename);
         a.click();
-        update(value)
     };
 
     img.setAttribute('src', 'data:image/svg+xml;base64,' + btoa(svgData));
+
+    increaseDownloadData(value, new Date().toString())
 }

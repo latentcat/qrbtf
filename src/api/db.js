@@ -15,28 +15,42 @@ login();
 
 const db = app.database();
 const _ = db.command
-const counter = db.collection('QRCounter');
 
-export function update(value) {
-    counter.where({
+export function increaseDownloadData(value, date) {
+    db.collection('QRCounter').where({
         value: _.eq(value)
     }).get().then(res => {
         if (res.data.length > 0) {
-            counter.where({
+            db.collection('QRCounter').where({
                 value: _.eq(value)
             }).update({
-                count: _.inc(1)
+                count: _.inc(1),
+                date: date
             }).then(res => {
                 console.log(res)
             })
         }
         else {
-            counter.add({
+            db.collection('QRCounter').add({
                 value: value,
-                count: 1
+                count: 1,
+                date: date
             }).then(res => {
                 console.log(res)
             })
         }
+    })
+}
+
+export function recordDownloadDetail({text, value, type, params, history}) {
+    db.collection('QRDownloadData').add({
+        date: new Date().toString(),
+        text: text,
+        value: value,
+        type: type,
+        params: params,
+        history: history
+    }).then(res => {
+        console.log(res)
     })
 }
