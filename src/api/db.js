@@ -17,21 +17,26 @@ const db = app.database();
 const _ = db.command
 const counter = db.collection('QRCounter');
 
-export function insert(value) {
-    counter.add({
-        value: value,
-        count: 1
-    }).then(res => {
-        console.log(res);
-    })
-}
-
 export function update(value) {
     counter.where({
         value: _.eq(value)
-    }).update({
-        count: _.inc(1)
-    }).then(res => {
-        console.log(res)
+    }).get().then(res => {
+        if (res.data.length > 0) {
+            counter.where({
+                value: _.eq(value)
+            }).update({
+                count: _.inc(1)
+            }).then(res => {
+                console.log(res)
+            })
+        }
+        else {
+            counter.add({
+                value: value,
+                count: 1
+            }).then(res => {
+                console.log(res)
+            })
+        }
     })
 }
