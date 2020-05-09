@@ -8,7 +8,6 @@ const auth = app.auth();
 async function login() {
     await auth.signInAnonymously();
     const loginState = await auth.getLoginState()
-    console.log(loginState.isAnonymous);
 }
 
 login();
@@ -27,7 +26,6 @@ export function increaseDownloadData(value, date) {
                 count: _.inc(1),
                 date: date
             }).then(res => {
-                console.log(res)
             })
         }
         else {
@@ -36,7 +34,6 @@ export function increaseDownloadData(value, date) {
                 count: 1,
                 date: date
             }).then(res => {
-                console.log(res)
             })
         }
     })
@@ -51,6 +48,5 @@ export function recordDownloadDetail({text, value, type, params, history}) {
         params: params,
         history: history
     }).then(res => {
-        console.log(res)
     })
 }
