@@ -1,4 +1,5 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import * as React from "react";
 
 const mapStateToProps = (state, ownProps) => ({
     qrcode: state.qrcode,

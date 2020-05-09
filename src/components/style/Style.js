@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import PropTypes from 'prop-types'
 
 function calClassName(selected) {
@@ -6,9 +6,9 @@ function calClassName(selected) {
     return 'Qr-item';
 }
 
-const Style = ({ value, renderer, selected, onClick }) => (
+const Style = ({ value, renderer, selected, onSelected }) => (
     <div className={calClassName(selected)}
-         onClick={onClick}>
+         onMouseDown={onSelected}>
         <div className="Qr-item-image">
             <div className="Qr-item-image-inner">
                 {renderer}
@@ -24,7 +24,7 @@ Style.propTypes = {
     value: PropTypes.string.isRequired,
     renderer: PropTypes.object.isRequired,
     selected: PropTypes.bool.isRequired,
-    onClick: PropTypes.func.isRequired
+    onSelected: PropTypes.func.isRequired
 }
 
 export default Style;

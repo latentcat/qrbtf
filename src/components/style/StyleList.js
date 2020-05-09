@@ -8,7 +8,7 @@ const StyleList = ({ styles, onSelected }) => (
             <Style
                 key={style.value}
                 {...style}
-                onClick={() => onSelected(index)}
+                onSelected={() => onSelected(index)}
             />
         )}
     </div>

@@ -36,13 +36,18 @@ const mapStateToProps = state => ({
         return {
             value: style.value,
             selected: state.selectedIndex == index,
-            renderer: React.createElement(Renderer(style.renderer), {index: index, setParamInfo: setParamInfo})
+            renderer: React.createElement(Renderer(style.renderer), {
+                index: index,
+                setParamInfo: setParamInfo
+            })
         }
     })
 })
 
 const mapDispatchToProps = dispatch => ({
-    onSelected: index => dispatch(changeStyle(index))
+    onSelected: index => {
+        dispatch(changeStyle(index))
+    }
 })
 
 const StyleListViewer = () => {
