@@ -5,9 +5,14 @@ export const genQRInfo = text => ({
     text
 })
 
-export const changeStyle = index => ({
+export const changeStyle = (rendererIndex, rendererType, value) => ({
     type: actionTypes.CHANGE_STYLE,
-    index
+    rendererIndex, rendererType, value
+})
+
+export const changeCorrectLevel = (correctLevel) => ({
+    type: actionTypes.CHANGE_CORRECT_LEVEL,
+    correctLevel
 })
 
 export const createParam = (paramInfo, paramValue) => ({

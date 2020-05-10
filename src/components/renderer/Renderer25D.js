@@ -59,13 +59,20 @@ function getParamInfo() {
     ];
 }
 
+function viewBox(qrcode) {
+    if (!qrcode) return '0 0 0 0';
+
+    const nCount = qrcode.getModuleCount();
+    return String(-nCount) + ' ' + String(-nCount / 2) + ' ' + String(nCount * 2) + ' ' + String(nCount * 2);
+}
+
 const Renderer25D = ({ qrcode, params, setParamInfo}) => {
     useEffect(() => {
         setParamInfo(getParamInfo());
     }, [setParamInfo]);
 
     return (
-        <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(qrcode)} fill="white"
+        <svg className="Qr-item-svg" width="100%" height="100%" viewBox={viewBox(qrcode)} fill="white"
              xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             {listPoints(qrcode, params)}
         </svg>

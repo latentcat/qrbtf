@@ -9,7 +9,7 @@ const ParamList = ({ rendererIndex, paramInfo }) => (
         switch (item.type) {
             case ParamTypes.TEXT_EDITOR: {
                 return (
-                    <tr>
+                    <tr key={"tr_" + rendererIndex + "_" + paramIndex}>
                         <td>{item.key}</td>
                         <td>
                             <ParamTextViewer rendererIndex={rendererIndex} paramIndex={paramIndex}/>
@@ -19,7 +19,7 @@ const ParamList = ({ rendererIndex, paramInfo }) => (
             }
             case ParamTypes.SELECTOR: {
                 return (
-                    <tr>
+                    <tr key={"tr_" + rendererIndex + "_" + paramIndex}>
                         <td>{item.key}</td>
                         <td>
                             <ParamSelectViewer rendererIndex={rendererIndex} paramIndex={paramIndex}/>

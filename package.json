@@ -36,6 +36,7 @@
   },
   "homepage": "./",
   "devDependencies": {
-    "redux-devtools": "^3.5.0"
+    "redux-devtools": "^3.5.0",
+    "tcb-js-sdk": "^1.6.1"
   }
 }

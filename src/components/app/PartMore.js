@@ -10,8 +10,12 @@ const PartMore = () => (
         </div>
         <div className="Qr-Centered btn-row">
             <div className="div-btn">
-                <LinkButton href={"https://www.yuque.com/qrbtf/docs"} value={"使用手册"} />
+                <LinkButton href={"https://www.yuque.com/qrbtf/docs/donate"} value={"打赏 & 赞助"} />
                 <LinkButton href={"https://www.yuque.com/qrbtf/topics"} value={"问题反馈"} />
+            </div>
+            <div className="div-btn">
+                <LinkButton href={"https://www.yuque.com/qrbtf/docs/dev"} value={"开发与设计"} />
+                <LinkButton href={"https://www.yuque.com/qrbtf/docs/coop"} value={"商业合作"} />
             </div>
         </div>
     </div>

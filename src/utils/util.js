@@ -1,3 +1,5 @@
+import {ParamTypes} from "../constant/ParamTypes";
+
 let seed = 0;
 
 export function srand(sd) {
@@ -20,6 +22,12 @@ export function defaultViewBox(qrcode) {
     return String(-nCount / 5) + ' ' + String(-nCount / 5) + ' ' + String(nCount + nCount / 5 * 2) + ' ' + String(nCount + nCount / 5 * 2);
 }
 
+export function fillEmptyWith(arr, value) {
+    for (let i = 0; i < arr.length; i++)
+        if (!arr[i]) arr[i] = value;
+    return arr;
+}
+
 export function isWeiXin(){
     const ua = window.navigator.userAgent.toLowerCase();
     if(ua.match(/MicroMessenger/i) == 'micromessenger'){
@@ -27,4 +35,9 @@ export function isWeiXin(){
     }else{
         return false;
     }
+}
+
+export function getParamDetailedValue(item, paramValue) {
+    if (item.type == ParamTypes.SELECTOR) return item.choices[paramValue];
+    return paramValue;
 }
