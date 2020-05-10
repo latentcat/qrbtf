@@ -7,7 +7,7 @@ const ParamText = ({ rendererIndex, paramIndex, value, onBlur, onKeyPress }) => 
         type="number"
         key={"input_" + rendererIndex + "_" + paramIndex}
         className="Qr-input small-input"
-        placeholder="10"
+        placeholder={value}
         defaultValue={value}
         onBlur={onBlur}
         onKeyPress={onKeyPress}

@@ -28,7 +28,7 @@ const paramValueBuffer = new Array(16).fill(new Array(16))
 
 const setParamInfo = (renderIndex, paramInfo) => {
     paramInfoBuffer[renderIndex] = paramInfo
-    paramValueBuffer[renderIndex] = paramInfo.map(item => parseInt(item.default))
+    paramValueBuffer[renderIndex] = paramInfo.map(item => item.default)
 }
 
 const mapStateToProps = state => ({
