@@ -1,20 +1,19 @@
-import React from "react";
-import './Qrcode.css'
-import {getTypeTable, QRPointType} from "../utils/qrcodeHandler";
-import {defaultRenderer, defaultViewBox, rand} from "../utils/util";
+import React, { useEffect } from "react";
+import {defaultViewBox, rand} from "../../utils/util";
+import {ParamTypes} from "../../constant/ParamTypes";
+import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 
-function listPoint(props) {
-    if (!props.qrcode) return []
+function listPoints(qrcode, params) {
+    if (!qrcode) return []
 
-    const qrcode = props.qrcode;
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
 
-    let type = props.params[0];
-    let size = props.params[1] / 100;
-    let opacity = props.params[2] / 100;
-    let posType = props.params[3];
+    let type = params[0];
+    let size = params[1] / 100;
+    let opacity = params[2] / 100;
+    let posType = params[3];
     let id = 0;
 
     const vw = [3, -3];
@@ -70,49 +69,52 @@ function listPoint(props) {
     return pointList;
 }
 
-export default class QrRendererBase extends React.Component {
-    constructor(props) {
-        super(props);
-        if (this.props.setParamInfo) {
-            this.props.setParamInfo([
-                {
-                    key: '信息点样式',
-                    default: 0,
-                    choices: [
-                        "矩形",
-                        "圆形",
-                        "随机"
-                    ]
-                },
-                {
-                    key: '信息点缩放',
-                    default: 100
-                },
-                {
-                    key: '信息点不透明度',
-                    default: 100,
-                },
-                {
-                    key: '定位点样式',
-                    default: 0,
-                    choices: [
-                        "矩形",
-                        "圆形",
-                        "行星",
-                    ]
-                },
-                ]
-            );
-        }
-    }
-
-    render() {
-        return (
-            <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(this.props.qrcode)} fill="white"
-                 xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                {listPoint(this.props)}
-            </svg>
-        );
-    }
+function getParamInfo() {
+    return [
+        {
+            type: ParamTypes.SELECTOR,
+            key: '信息点样式',
+            default: 2,
+            choices: [
+                "矩形",
+                "圆形",
+                "随机"
+            ]
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '信息点缩放',
+            default: 80
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '信息点不透明度',
+            default: 100,
+        },
+        {
+            type: ParamTypes.SELECTOR,
+            key: '定位点样式',
+            default: 2,
+            choices: [
+                "矩形",
+                "圆形",
+                "行星",
+            ]
+        },
+    ];
 }
 
+const RendererRandRound = ({ qrcode, params, setParamInfo}) => {
+    useEffect(() => {
+        setParamInfo(getParamInfo());
+    }, [setParamInfo]);
+
+    return (
+        <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(qrcode)} fill="white"
+             xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            {listPoints(qrcode, params)}
+        </svg>
+    )
+}
+
+export default RendererRandRound

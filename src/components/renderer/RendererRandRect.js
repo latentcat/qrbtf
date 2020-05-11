@@ -1,11 +1,11 @@
-import React from "react";
-import './Qrcode.css'
-import {defaultRenderer, defaultViewBox, rand} from "../utils/util";
+import React, { useEffect } from "react";
+import {defaultViewBox, rand} from "../../utils/util";
+import {ParamTypes} from "../../constant/ParamTypes";
+import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 
-function listPoint(props) {
-    if (!props.qrcode) return []
+function listPoints(qrcode, params) {
+    if (!qrcode) return []
 
-    const qrcode = props.qrcode;
     const nCount = qrcode.getModuleCount();
     const pointList = [];
     let id = 0;
@@ -38,14 +38,21 @@ function listPoint(props) {
     return pointList;
 }
 
-export default class QrRendererRandRect extends React.Component {
-    render() {
-        return (
-            <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(this.props.qrcode)} fill="white"
-                 xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                {listPoint(this.props)}
-            </svg>
-        );
-    }
+function getParamInfo() {
+    return []
 }
 
+const RendererRandRect = ({ qrcode, params, setParamInfo}) => {
+    useEffect(() => {
+        setParamInfo(getParamInfo());
+    }, [setParamInfo]);
+
+    return (
+        <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(qrcode)} fill="white"
+             xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+            {listPoints(qrcode, params)}
+        </svg>
+    )
+}
+
+export default RendererRandRect
