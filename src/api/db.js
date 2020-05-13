@@ -6,12 +6,8 @@ const app = tcb.init({
 const auth = app.auth();
 
 async function login() {
-    await auth.signInAnonymously();
-<<<<<<< HEAD
-    const loginState = await auth.getLoginState()
-=======
+    // await auth.signInAnonymously();
     // const loginState = await auth.getLoginState();
->>>>>>> 47e31499e13fa4a29b3e69e6551268f3badb67b2
 }
 
 login();
@@ -19,11 +15,7 @@ login();
 const db = app.database();
 const _ = db.command
 
-<<<<<<< HEAD
-export function increaseDownloadData(value, date) {
-=======
 export function increaseDownloadData(value) {
->>>>>>> 47e31499e13fa4a29b3e69e6551268f3badb67b2
     db.collection('QRCounter').where({
         value: _.eq(value)
     }).get().then(res => {
@@ -32,11 +24,7 @@ export function increaseDownloadData(value) {
                 value: _.eq(value)
             }).update({
                 count: _.inc(1),
-<<<<<<< HEAD
-                date: date
-=======
                 date: new Date().toString()
->>>>>>> 47e31499e13fa4a29b3e69e6551268f3badb67b2
             }).then(res => {
             })
         }
@@ -44,11 +32,7 @@ export function increaseDownloadData(value) {
             db.collection('QRCounter').add({
                 value: value,
                 count: 1,
-<<<<<<< HEAD
-                date: date
-=======
                 date: new Date().toString()
->>>>>>> 47e31499e13fa4a29b3e69e6551268f3badb67b2
             }).then(res => {
             })
         }

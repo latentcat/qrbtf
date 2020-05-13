@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptSettings">
-    <option name="languageLevel" value="JSX" />
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/src/logo.svg" />
+    <option name="languageLevel" value="FLOW" />
   </component>
 </project>
