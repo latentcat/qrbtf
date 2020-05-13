@@ -41,3 +41,23 @@ export function getParamDetailedValue(item, paramValue) {
     if (item.type == ParamTypes.SELECTOR) return item.choices[paramValue];
     return paramValue;
 }
+
+export async function toBase64(file, width, height) {
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+    let img = document.createElement('img');
+
+    canvas.setAttribute('width', width);
+    canvas.setAttribute('height', height);
+    img.setAttribute('src', URL.createObjectURL(file));
+
+    return new Promise(resolve => {
+        img.onload = () => {
+            ctx.fillStyle = 'white'
+            ctx.fillRect(0, 0, width, height)
+            ctx.drawImage(img, 0, 0, width, height);
+
+            resolve(canvas.toDataURL(file.type, 0.8));
+        };
+    })
+}
