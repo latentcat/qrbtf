@@ -1,18 +1,18 @@
-name: Continuous Integration #action名称
+name: Continuous Integration Dev #action名称
 on:
   push:
     branches:
-      - master
+      - dev-redux
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout master
+      - name: Checkout dev-redux
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: dev-redux
 
       - name: Setup node
         uses: actions/setup-node@v1
@@ -25,13 +25,13 @@ jobs:
           CI: false
 
       - name: Authenticate
-        run: sudo chmod 775 ./build/
+        run: sudo chmod 775 ./build/ && ls
 
       - name: Upload COS
         uses: ciaochaos/tencent-cos-action@master
         with:
-          args: delete -r -f / && upload -r build/ /
+          args: delete -r -f / && upload -r ./build/ /
           secret_id: ${{ secrets.SECRET_ID }}
           secret_key: ${{ secrets.SECRET_KEY }}
-          bucket: ${{ secrets.BUCKET }}
+          bucket: ${{ secrets.BUCKET_DEV }}
           region: ap-shanghai
