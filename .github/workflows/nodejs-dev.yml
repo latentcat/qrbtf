@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout master
+      - name: Checkout dev-redux
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: dev-redux
 
       - name: Setup node
         uses: actions/setup-node@v1
