@@ -1,4 +1,4 @@
-name: Continuous Integration #action名称
+name: Continuous Integration Dev #action名称
 on:
   push:
     branches:
@@ -25,7 +25,7 @@ jobs:
           CI: false
 
       - name: Authenticate
-        run: sudo chmod 775 ./build/ && ls
+        run: sudo chmod 775 build/ && ls
 
       - name: Upload COS
         uses: ciaochaos/tencent-cos-action@master
