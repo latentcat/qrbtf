@@ -25,12 +25,12 @@ jobs:
           CI: false
 
       - name: Authenticate
-        run: sudo chmod 775 build/ && ls
+        run: sudo chmod 775 ./build/ && ls
 
       - name: Upload COS
         uses: ciaochaos/tencent-cos-action@master
         with:
-          args: delete -r -f / && upload -r build/ /
+          args: delete -r -f / && upload -r /build/ /
           secret_id: ${{ secrets.SECRET_ID }}
           secret_key: ${{ secrets.SECRET_KEY }}
           bucket: ${{ secrets.BUCKET_DEV }}
