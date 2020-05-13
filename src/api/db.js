@@ -6,7 +6,7 @@ const app = tcb.init({
 const auth = app.auth();
 
 async function login() {
-    // await auth.signInAnonymously();
+    await auth.signInAnonymously();
     // const loginState = await auth.getLoginState();
 }
 
