@@ -62,10 +62,11 @@ export function getTypeTable(qrcode) {
 
     for (let i = 0; i < PD.length; i++) {
         typeTable[PD[i][0]][PD[i][1]] = QRPointType.POS_CENTER
-        for (let r = -3; r <= 3; r++) {
-            for (let c = -3; c <= 3; c++) {
-                if (!(r == 0 && c == 0))
-                    typeTable[PD[i][0] + r][PD[i][1] + c] = QRPointType.POS_OTHER;
+        for (let r = -4; r <= 4; r++) {
+            for (let c = -4; c <= 4; c++) {
+                if (PD[i][0] + r >= 0 && PD[i][0] + r < nCount && PD[i][1] + c >=0 && PD[i][1] + c < nCount)
+                    if (!(r == 0 && c == 0))
+                        typeTable[PD[i][0] + r][PD[i][1] + c] = QRPointType.POS_OTHER;
             }
         }
     }

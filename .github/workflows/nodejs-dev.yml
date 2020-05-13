@@ -1,0 +1,37 @@
+name: Continuous Integration Dev #action名称
+on:
+  push:
+    branches:
+      - dev-redux
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout dev-redux
+        uses: actions/checkout@v2
+        with:
+          ref: dev-redux
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Build project
+        run: yarn && yarn build
+        env:
+          CI: false
+
+      - name: Authenticate
+        run: sudo chmod 775 ./build/ && ls
+
+      - name: Upload COS
+        uses: ciaochaos/tencent-cos-action@master
+        with:
+          args: delete -r -f / && upload -r ./build/ /
+          secret_id: ${{ secrets.SECRET_ID }}
+          secret_key: ${{ secrets.SECRET_KEY }}
+          bucket: ${{ secrets.BUCKET_DEV }}
+          region: ap-shanghai
