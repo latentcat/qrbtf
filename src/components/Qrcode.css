@@ -103,7 +103,36 @@
 @media (min-width: 500px) {
     .Qr-item-image {
         border: rgba(0,0,0,0.12) solid 3px;
+        width: 200px;
+        height: 200px;
     }
+}
+
+#dl-image {
+    padding-top: 20px;
+}
+
+#dl-image-inner {
+    overflow: hidden;
+    display: flex;
+    border-radius: 20px;
+    box-sizing: border-box;
+    border: rgba(0,0,0,0.12) solid 2px;
+    width: calc((100vw - 56px) / 2);
+    height: calc((100vw - 56px) / 2);
+}
+
+@media (min-width: 500px) {
+    #dl-image-inner {
+        border: rgba(0,0,0,0.12) solid 3px;
+        width: 200px;
+        height: 200px;
+    }
+}
+
+#dl-image-inner-jpg {
+    width: 100%;
+    height: 100%;
 }
 
 .Qr-item-image-inner {
@@ -116,13 +145,6 @@
     transition-duration: 0.2s;
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
-}
-
-@media (min-width: 500px) {
-    .Qr-item-image {
-        width: 200px;
-        height: 200px;
-    }
 }
 
 .Qr-item-selected .Qr-item-image {
@@ -175,10 +197,6 @@ td:nth-child(2) {
 
 td {
     padding: 0 0 10px 0;
-}
-
-table {
-    margin-bottom: -10px;
 }
 
 .big-input {
@@ -301,16 +319,26 @@ input[type="number"]{
 
 
 .Qr-table {
+    max-width: 410px;
     width: 100%;
     border-spacing: 0;
-    margin-top: 23px;
 }
 
 .Qr-div-table {
-    max-width: 410px;
+    margin-bottom: -10px;
+    display: block;
 }
 
-.btn-row:nth-last-child(1) {
+@media (min-width: 886px) {
+    .Qr-div-table {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: -10px;
+    }
+}
+
+.btn-row {
     margin-bottom: -10px;
 }
 

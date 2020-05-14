@@ -11,12 +11,8 @@ const PartParams = () => (
         </div>
         <div className="Qr-Centered">
             <div className="Qr-div-table">
-                <table className="Qr-table">
-                    <tbody>
-                    <ParamCorrectLevelViewer/>
-                    <ParamListViewer/>
-                    </tbody>
-                </table>
+                <ParamCorrectLevelViewer/>
+                <ParamListViewer/>
             </div>
         </div>
     </div>

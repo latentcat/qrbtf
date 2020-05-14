@@ -5,7 +5,7 @@ import {isWeiXin} from "../../utils/util";
 
 const WxMessage = () => {
     if (isWeiXin()) {
-        return <div className="note-font" id="wx-message-inner">当前客户端不支持下载，请长按图片保存。</div>
+        return <div className="note-font" id="wx-message-inner">当前客户端不支持下载 SVG，<br />请下载 JPG 并长按二维码保存。</div>
     }
     return null
 }
@@ -20,20 +20,25 @@ const PartDownload = ({ value, onSvgDownload, onJpgDownload }) => {
             <p className="Qr-s-subtitle">下载二维码 — {value}</p>
         </div>
         <div className="Qr-Centered">
-            <div className="div-btn">
-                <button className="dl-btn" onClick={onSvgDownload}>SVG</button>
-                <button className="dl-btn" onClick={() => {
-                    onJpgDownload().then(res => setImgData(res));
-                }}>
-                    JPG
-                </button>
+            <div className="btn-row">
+                <div className="div-btn">
+                    <button className="dl-btn" onClick={() => {
+                        onJpgDownload().then(res => setImgData(res));
+                    }}>
+                        JPG
+                    </button>
+                    <button className="dl-btn" onClick={onSvgDownload}>SVG</button>
+                </div>
             </div>
+
             <div id="wx-message">
                 <WxMessage/>
             </div>
             <div>
                 {
-                    imgData.length > 0 ? <img src={imgData} width={300} height={300} alt="点击JPG下载" /> : null
+                    imgData.length > 0 ? <div id="dl-image" onClick={() => {
+                        onJpgDownload().then(res => setImgData(res));
+                    }}><div id="dl-image-inner"><img id="dl-image-inner-jpg" src={imgData} alt="点击JPG下载" /></div></div> : null
                 }
             </div>
         </div>

@@ -16,15 +16,19 @@ const mapTypeToComponent = ({
 const ParamList = ({ rendererIndex, paramInfo }) => (
     paramInfo.map((item, paramIndex) => {
         return (
-            <tr key={"tr_" + rendererIndex + "_" + paramIndex}>
-                <td>{item.key}</td>
-                <td>
-                    {React.createElement(mapTypeToComponent[item.type], {
-                        rendererIndex: rendererIndex,
-                        paramIndex: paramIndex
-                    })}
-                </td>
-            </tr>
+            <table className="Qr-table" key={"tr_" + rendererIndex + "_" + paramIndex}>
+                <tbody>
+                    <tr>
+                        <td>{item.key}</td>
+                        <td>
+                            {React.createElement(mapTypeToComponent[item.type], {
+                                rendererIndex: rendererIndex,
+                                paramIndex: paramIndex
+                            })}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         );
     })
 )

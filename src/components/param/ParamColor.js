@@ -33,7 +33,7 @@ const ParamColor = ({ rendererIndex, paramIndex, value, onChange }) => {
     return (
         <div>
             <button className="dl-btn" onClick={ () => setDisplay(!displayColorPicker) }>
-                点击选择颜色
+                选择颜色
             </button>
             {
                 displayColorPicker ?

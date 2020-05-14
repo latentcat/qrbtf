@@ -10,10 +10,10 @@ function listPoints(qrcode, params) {
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
 
-    let type = params[0];
-    let size = params[1] / 100 / 3;
-    let opacity = params[2] / 100;
-    let posType = params[3];
+    let type = params[1];
+    let size = params[2] / 100 / 3;
+    let opacity = params[3] / 100;
+    let posType = params[4];
     let id = 0;
 
     const vw = [3, -3];
@@ -21,7 +21,7 @@ function listPoints(qrcode, params) {
 
     if (size <= 0) size = 1.0
 
-    pointList.push(<image key={id++} x="0" y="0" width={nCount} height={nCount} xlinkHref={params[4]}/>);
+    pointList.push(<image key={id++} x="0" y="0" width={nCount} height={nCount} xlinkHref={params[0]}/>);
 
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
@@ -96,6 +96,11 @@ function listPoints(qrcode, params) {
 function getParamInfo() {
     return [
         {
+            type: ParamTypes.UPLOAD_BUTTON,
+            key: '背景图片',
+            default: data,
+        },
+        {
             type: ParamTypes.SELECTOR,
             key: '信息点样式',
             default: 0,
@@ -124,11 +129,6 @@ function getParamInfo() {
                 "行星",
             ]
         },
-        {
-            type: ParamTypes.UPLOAD_BUTTON,
-            key: '背景图片',
-            default: data,
-        }
     ];
 }
 
