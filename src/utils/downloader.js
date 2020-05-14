@@ -1,5 +1,3 @@
-import {increaseDownloadData} from "../api/db";
-
 const svgHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n " +
     "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n"
 
@@ -17,8 +15,6 @@ export function saveSvg(value, content) {
     a.download = filename
     a.hidden = true
     a.click()
-
-    increaseDownloadData(value, new Date().toString())
 }
 
 export function saveImg(value, content, width, height) {
@@ -43,26 +39,26 @@ export function saveImg(value, content, width, height) {
     canvas.setAttribute('height', height);
 
     let ctx = canvas.getContext('2d');
-
     let img = document.createElement('img');
-
-
-    img.onload = () => {
-        ctx.fillStyle = 'white'
-        ctx.fillRect(0, 0, width, height)
-        ctx.drawImage(img, 0, 0, width, height);
-        // `download` attr is not well supported
-        // Will result in a download popup for chrome and the
-        // image opening in a new tab for others.
-
-        let a = document.createElement('a');
-        a.setAttribute('href', canvas.toDataURL('image/jpeg', 0.8))
-        a.setAttribute('target', 'download')
-        a.setAttribute('download', filename);
-        a.click();
-    };
-
     img.setAttribute('src', 'data:image/svg+xml;base64,' + btoa(svgData));
 
-    increaseDownloadData(value, new Date().toString())
+    return new Promise(resolve => {
+        img.onload = () => {
+            ctx.fillStyle = 'white'
+            ctx.fillRect(0, 0, width, height)
+            ctx.drawImage(img, 0, 0, width, height);
+            // `download` attr is not well supported
+            // Will result in a download popup for chrome and the
+            // image opening in a new tab for others.
+
+            let a = document.createElement('a');
+            let data = canvas.toDataURL('image/jpeg', 0.8);
+            a.setAttribute('href', data)
+            a.setAttribute('target', 'download')
+            a.setAttribute('download', filename);
+            a.click();
+
+            resolve(data)
+        };
+    })
 }

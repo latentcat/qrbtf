@@ -5,7 +5,8 @@ import {changeParam} from "../../actions";
 const mapStateToProps = (state, ownProps) => ({
     rendererIndex: ownProps.rendererIndex,
     paramIndex: ownProps.paramIndex,
-    value: String(state.paramValue[ownProps.rendererIndex][ownProps.paramIndex])
+    value: state.paramValue[ownProps.rendererIndex][ownProps.paramIndex],
+    info: state.paramInfo[ownProps.rendererIndex][ownProps.paramIndex]
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

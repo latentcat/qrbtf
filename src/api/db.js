@@ -7,15 +7,18 @@ const auth = app.auth();
 
 async function login() {
     await auth.signInAnonymously();
-    // const loginState = await auth.getLoginState();
+    const loginState = await auth.getLoginState();
+    isLogin = loginState
 }
 
 login();
 
+let isLogin;
 const db = app.database();
 const _ = db.command
 
 export function increaseDownloadData(value) {
+    if (!isLogin) return;
     db.collection('QRCounter').where({
         value: _.eq(value)
     }).get().then(res => {
@@ -25,21 +28,20 @@ export function increaseDownloadData(value) {
             }).update({
                 count: _.inc(1),
                 date: new Date().toString()
-            }).then(res => {
-            })
+            }).catch(console.error)
         }
         else {
             db.collection('QRCounter').add({
                 value: value,
                 count: 1,
                 date: new Date().toString()
-            }).then(res => {
-            })
+            }).catch(console.error)
         }
     })
 }
 
 export function recordDownloadDetail({text, value, type, params, history}) {
+    if (!isLogin) return;
     db.collection('QRDownloadData').add({
         date: new Date().toString(),
         text: text,
@@ -47,6 +49,5 @@ export function recordDownloadDetail({text, value, type, params, history}) {
         type: type,
         params: params,
         history: history
-    }).then(res => {
-    })
+    }).catch(console.error)
 }

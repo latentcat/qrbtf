@@ -7,14 +7,16 @@ const PartStyles = ({ setParamInfo }) => {
     useEffect(() => {
         setLoaded(true);
     }, [])
+
     const styleList = React.createElement(StyleListViewer({setParamInfo}))
+    console.log(loaded)
 
     return (<div className="Qr-titled">
         <div className="Qr-Centered title-margin">
             <div className="Qr-s-title">Styles</div>
             <p className="Qr-s-subtitle">点击选择样式</p>
         </div>
-        <div className="Qr-s">
+        <div className="Qr-s" style={{visibility: loaded ? "visible" :"hidden"}}>
             {styleList}
         </div>
     </div>)

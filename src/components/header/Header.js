@@ -1,7 +1,7 @@
 import React from "react";
 import '../Qrcode.css';
 import logo from "../../qrbtf-logo.svg";
-import InputText from "../../containers/InputText";
+import InputText from "../../containers/app/InputText";
 
 const logoStyle = {
     background: `url(${logo})`,
