@@ -9,7 +9,6 @@ const PartStyles = ({ setParamInfo }) => {
     }, [])
 
     const styleList = React.createElement(StyleListViewer({setParamInfo}))
-    console.log(loaded)
 
     return (<div className="Qr-titled">
         <div className="Qr-Centered title-margin">

@@ -16,7 +16,6 @@ const initialState = {
 }
 
 export default function appReducer(state = initialState, action) {
-    console.log(state.paramValue)
     switch (action.type) {
         case actionTypes.GENERATE_QR_INFO: {
             let text = action.text;
@@ -57,7 +56,6 @@ export default function appReducer(state = initialState, action) {
                     let newValue = action.value;
                     if (newValue.length <= 0)
                         newValue = state.paramInfo[action.rendererIndex][action.paramIndex].default;
-                    console.log(newValue)
 
                     if (!isNaN(newValue)) newValue = parseInt(newValue);
                     newItem[action.paramIndex] = newValue;

@@ -11,6 +11,7 @@ import RendererRandRect from "../../components/renderer/RendererRandRect";
 import Renderer25D from "../../components/renderer/Renderer25D";
 import RendererImage from "../../components/renderer/RendererImage";
 import * as React from "react";
+import RendererResImage from "../../components/renderer/RendererResImage";
 
 const styles = [
     {value: "A1", renderer: RendererBase},
@@ -20,7 +21,7 @@ const styles = [
     {value: "SP — 2", renderer: RendererRandRect},
     {value: "B1", renderer: Renderer25D},
     {value: "C1", renderer: RendererImage},
-    {value: "D1", renderer: RendererBlank},
+    {value: "C2", renderer: RendererResImage},
 ]
 
 const paramInfoBuffer = new Array(16).fill(new Array(16))
