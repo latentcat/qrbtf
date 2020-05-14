@@ -63,8 +63,8 @@ export function getGrayPointList(imgBase64, size, black, white) {
             ctx.imageSmoothingEnabled = false;
             ctx.drawImage(img, 0, 0, size, size);
 
-            for (let x = 1; x < canvas.width - 1; x++) {
-                for (let y = 1; y < canvas.height - 1; y++) {
+            for (let x = 0; x < canvas.width; x++) {
+                for (let y = 0; y < canvas.height; y++) {
                     let imageData = ctx.getImageData(x, y, 1, 1);
                     let data = imageData.data;
                     let gray = gamma(data[0], data[1], data[2]);

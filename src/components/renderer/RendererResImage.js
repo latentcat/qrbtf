@@ -13,12 +13,12 @@ function listPoints(qrcode, params) {
     let id = 0;
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
-            const posX = 3 * x + 1, posY = 3 * y + 1;
+            const posX = 3 * x, posY = 3 * y;
             if (typeTable[x][y] == QRPointType.ALIGN_CENTER || typeTable[x][y] == QRPointType.ALIGN_OTHER || typeTable[x][y] == QRPointType.TIMING) {
                 if (qrcode.isDark(x, y)) {
-                    pointList.push(<use key={id++} xlinkHref="#B-black" x={posX} y={posY}/>)
+                    pointList.push(<use key={id++} xlinkHref="#S-black" x={posX + 1} y={posY + 1}/>)
                 } else {
-                    pointList.push(<use key={id++} xlinkHref="#B-white" x={posX} y={posY}/>)
+                    pointList.push(<use key={id++} xlinkHref="#S-white" x={posX + 1} y={posY + 1}/>)
                 }
             } else if (typeTable[x][y] == QRPointType.POS_CENTER) {
                 if (qrcode.isDark(x, y)) {
@@ -32,9 +32,9 @@ function listPoints(qrcode, params) {
                 }
             } else {
                 if (qrcode.isDark(x, y)) {
-                    pointList.push(<use key={id++} xlinkHref="#S-black" x={posX} y={posY}/>)
+                    pointList.push(<use key={id++} xlinkHref="#S-black" x={posX + 1} y={posY + 1}/>)
                 } else {
-                    pointList.push(<use key={id++} xlinkHref="#S-white" x={posX} y={posY}/>)
+                    pointList.push(<use key={id++} xlinkHref="#S-white" x={posX + 1} y={posY + 1}/>)
                 }
             }
         }
@@ -67,8 +67,8 @@ const RendererResImage = ({qrcode, params, setParamInfo}) => {
 
     const [gpl, setGPL] = useState([]);
     useEffect(() => {
-        getGrayPointList(params[0], qrcode.getModuleCount(), "#B-black", "#B-white").then(res => setGPL(res));
-    }, [params[0]])
+        getGrayPointList(params[0], qrcode.getModuleCount(), "#S-black", "#S-white").then(res => setGPL(res));
+    }, [params[0], qrcode])
 
     return (
         <svg className="Qr-item-svg" width="100%" height="100%" viewBox={getViewBox(qrcode)} fill="white"
