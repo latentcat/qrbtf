@@ -89,7 +89,7 @@
     background-color: white;
     width: calc((100vw - 56px) / 2);
     height: calc((100vw - 56px) / 2);
-    border-radius: 10px;
+    border-radius: 20px;
     box-sizing: border-box;
     border: rgba(0,0,0,0.12) solid 2px;
     -webkit-transition-timing-function: ease-in-out;
