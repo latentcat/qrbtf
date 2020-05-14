@@ -102,7 +102,6 @@ function getParamInfo() {
             choices: [
                 "矩形",
                 "圆形",
-                "随机"
             ]
         },
         {
