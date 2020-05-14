@@ -4,7 +4,7 @@ import React from "react";
 import {saveImg, saveSvg} from "../../utils/downloader";
 import ReactDOMServer from "react-dom/server";
 import {increaseDownloadData, recordDownloadDetail} from "../../api/db";
-import {getParamDetailedValue} from "../../utils/util";
+import {getParamDetailedValue, outerHtml} from "../../utils/util";
 
 function saveEl(state, type) {
     const el = React.createElement(state.rendererType, {
@@ -31,10 +31,12 @@ function saveEl(state, type) {
 const mapStateToProps = (state) => ({
     value: state.value,
     onSvgDownload: () => {
-        saveSvg(state.value, ReactDOMServer.renderToString(saveEl(state, 'svg')))
+        // saveSvg(state.value, ReactDOMServer.renderToString(saveEl(state, 'svg')))
+        saveSvg(state.value, outerHtml(state.selectedIndex))
     },
     onJpgDownload: () => {
-        return saveImg(state.value, ReactDOMServer.renderToString(saveEl(state, 'jpg')), 1500, 1500)
+        // return saveImg(state.value, ReactDOMServer.renderToString(saveEl(state, 'jpg')), 1500, 1500)
+        return saveImg(state.value, outerHtml(state.selectedIndex), 1500, 1500)
     }
 })
 

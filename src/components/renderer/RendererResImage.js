@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {getGrayPointList, rand} from "../../utils/util";
+import React, {useEffect, useMemo, useState} from "react";
+import {gamma} from "../../utils/util";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 
@@ -60,15 +60,46 @@ export function getViewBox(qrcode) {
     return String(-nCount / 5) + ' ' + String(-nCount / 5) + ' ' + String(nCount + nCount / 5 * 2) + ' ' + String(nCount + nCount / 5 * 2);
 }
 
+function getGrayPointList(imgBase64, size, black, white) {
+    console.log(1)
+
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+    let img = document.createElement('img');
+    let gpl = [];
+    canvas.style.imageRendering = 'pixelated';
+    size *= 3;
+
+    img.src = imgBase64;
+    return new Promise(resolve => {
+        img.onload = () => {
+            canvas.width = size;
+            canvas.height = size;
+            ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(img, 0, 0, size, size);
+
+            for (let x = 0; x < canvas.width; x++) {
+                for (let y = 0; y < canvas.height; y++) {
+                    let imageData = ctx.getImageData(x, y, 1, 1);
+                    let data = imageData.data;
+                    let gray = gamma(data[0], data[1], data[2]);
+                    if (Math.random() > gray / 255) gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={black} />);
+                }
+            }
+            resolve(gpl);
+        }
+    })
+}
+
 const RendererResImage = ({qrcode, params, setParamInfo}) => {
     useEffect(() => {
         setParamInfo(getParamInfo());
     }, [setParamInfo]);
 
     const [gpl, setGPL] = useState([]);
-    useEffect(() => {
+    useMemo(() => {
         getGrayPointList(params[0], qrcode.getModuleCount(), "#S-black", "#S-white").then(res => setGPL(res));
-    }, [params[0], qrcode])
+    }, [setGPL, params[0], qrcode])
 
     return (
         <svg className="Qr-item-svg" width="100%" height="100%" viewBox={getViewBox(qrcode)} fill="white"
@@ -79,7 +110,6 @@ const RendererResImage = ({qrcode, params, setParamInfo}) => {
                 <rect id="S-black" fill="black" width={1} height={1}/>
                 <rect id="S-white" fill="white" width={1} height={1}/>
             </defs>
-
             {gpl.concat(listPoints(qrcode, params))}
         </svg>
     )

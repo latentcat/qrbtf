@@ -43,38 +43,12 @@ export function getParamDetailedValue(item, paramValue) {
     return paramValue;
 }
 
-export function gamma(r, g, b) {
-    return Math.pow((Math.pow(r, 2.2) + Math.pow(1.5 * g, 2.2) + Math.pow(0.6 * b, 2.2)) / (1 + Math.pow(1.5, 2.2) + Math.pow(0.6, 2.2)), 1/2.2)
+export function outerHtml(selectedIndex) {
+    return document.getElementsByClassName('Qr-item-svg')[selectedIndex].outerHTML;
 }
 
-export function getGrayPointList(imgBase64, size, black, white) {
-    let canvas = document.createElement('canvas');
-    let ctx = canvas.getContext('2d');
-    let img = document.createElement('img');
-    let gpl = [];
-    canvas.style.imageRendering = 'pixelated';
-    size *= 3;
-
-    img.src = imgBase64;
-    return new Promise(resolve => {
-        img.onload = () => {
-            canvas.width = size;
-            canvas.height = size;
-            ctx.imageSmoothingEnabled = false;
-            ctx.drawImage(img, 0, 0, size, size);
-
-            for (let x = 0; x < canvas.width; x++) {
-                for (let y = 0; y < canvas.height; y++) {
-                    let imageData = ctx.getImageData(x, y, 1, 1);
-                    let data = imageData.data;
-                    let gray = gamma(data[0], data[1], data[2]);
-                    if (Math.random() <= gray / 255) gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={white} />);
-                    else gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={black} />);
-                }
-            }
-            resolve(gpl);
-        }
-    })
+export function gamma(r, g, b) {
+    return Math.pow((Math.pow(r, 2.2) + Math.pow(1.5 * g, 2.2) + Math.pow(0.6 * b, 2.2)) / (1 + Math.pow(1.5, 2.2) + Math.pow(0.6, 2.2)), 1/2.2)
 }
 
 export function toBase64(file, width, height) {
