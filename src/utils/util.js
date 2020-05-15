@@ -66,7 +66,7 @@ export function toBase64(file, width, height) {
             ctx.fillRect(0, 0, width, height)
             ctx.drawImage(img, 0, 0, width, height);
 
-            resolve(canvas.toDataURL(file.type, 0.8));
+            resolve(canvas.toDataURL(file.type, 0.9));
         };
     })
 }

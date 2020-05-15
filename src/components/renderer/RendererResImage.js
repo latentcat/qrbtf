@@ -11,6 +11,8 @@ function listPoints(qrcode, params) {
     const pointList = new Array(nCount);
     let alignType = params[1];
     let timingType = params[2];
+    let otherColor = params[3];
+    let posColor = params[4];
 
     let id = 0;
     for (let x = 0; x < nCount; x++) {
@@ -19,21 +21,21 @@ function listPoints(qrcode, params) {
             if (typeTable[x][y] == QRPointType.ALIGN_CENTER || typeTable[x][y] == QRPointType.ALIGN_OTHER) {
                 if (qrcode.isDark(x, y)) {
                     if (alignType === 2) {
-                        pointList.push(<use key={id++} xlinkHref="#B-black" x={posX} y={posY}/>)
+                        pointList.push(<use key={id++} xlinkHref="#B-black" x={posX - 0.03} y={posY - 0.03}/>)
                     } else {
-                        pointList.push(<use key={id++} xlinkHref="#S-black" x={posX + 1} y={posY + 1}/>)
+                        pointList.push(<use key={id++} xlinkHref="#S-black" x={posX + 1 - 0.01} y={posY + 1 - 0.01}/>)
                     }
                 } else {
                     if (alignType === 0) {
                         pointList.push(<use key={id++} xlinkHref="#S-white" x={posX + 1} y={posY + 1}/>)
                     } else {
-                        pointList.push(<use key={id++} xlinkHref="#B-white" x={posX} y={posY}/>)
+                        pointList.push(<use key={id++} xlinkHref="#B-white" x={posX - 0.03} y={posY - 0.03}/>)
                     }
                 }
             } else if (typeTable[x][y] == QRPointType.TIMING) {
                 if (qrcode.isDark(x, y)) {
                     if (timingType === 2) {
-                        pointList.push(<use key={id++} xlinkHref="#B-black" x={posX} y={posY}/>)
+                        pointList.push(<use key={id++} xlinkHref="#B-black" x={posX - 0.03} y={posY - 0.03}/>)
                     } else {
                         pointList.push(<use key={id++} xlinkHref="#S-black" x={posX + 1} y={posY + 1}/>)
                     }
@@ -41,24 +43,22 @@ function listPoints(qrcode, params) {
                     if (timingType === 0) {
                         pointList.push(<use key={id++} xlinkHref="#S-white" x={posX + 1} y={posY + 1}/>)
                     } else {
-                        pointList.push(<use key={id++} xlinkHref="#B-white" x={posX} y={posY}/>)
+                        pointList.push(<use key={id++} xlinkHref="#B-white" x={posX - 0.03} y={posY - 0.03}/>)
                     }
                 }
             } else if (typeTable[x][y] == QRPointType.POS_CENTER) {
                 if (qrcode.isDark(x, y)) {
-                    pointList.push(<use key={id++} xlinkHref="#B-black" x={posX} y={posY}/>)
+                    pointList.push(<use key={id++} fill={posColor} xlinkHref="#B" x={posX - 0.03} y={posY - 0.03}/>)
                 }
             } else if (typeTable[x][y] == QRPointType.POS_OTHER) {
                 if (qrcode.isDark(x, y)) {
-                    pointList.push(<use key={id++} xlinkHref="#B-black" x={posX} y={posY}/>)
+                    pointList.push(<use key={id++} fill={posColor} xlinkHref="#B" x={posX - 0.03} y={posY - 0.03}/>)
                 } else {
-                    pointList.push(<use key={id++} xlinkHref="#B-white" x={posX} y={posY}/>)
+                    pointList.push(<use key={id++} xlinkHref="#B-white" x={posX - 0.03} y={posY - 0.03}/>)
                 }
             } else {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(<use key={id++} xlinkHref="#S-black" x={posX + 1} y={posY + 1}/>)
-                } else {
-                    pointList.push(<use key={id++} xlinkHref="#S-white" x={posX + 1} y={posY + 1}/>)
                 }
             }
         }
@@ -94,6 +94,16 @@ function getParamInfo() {
                 "黑白",
             ]
         },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '信息点颜色',
+            default: '#000000'
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '定位点颜色',
+            default: '#000000'
+        },
     ];
 }
 
@@ -105,8 +115,6 @@ export function getViewBox(qrcode) {
 }
 
 function getGrayPointList(imgBase64, size, black, white) {
-    console.log(1)
-
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
     let img = document.createElement('img');
@@ -127,7 +135,7 @@ function getGrayPointList(imgBase64, size, black, white) {
                     let imageData = ctx.getImageData(x, y, 1, 1);
                     let data = imageData.data;
                     let gray = gamma(data[0], data[1], data[2]);
-                    if (Math.random() > gray / 255) gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={black} />);
+                    if (Math.random() > gray / 255 && ( x % 3 !== 1 || y % 3 !== 1 ) ) gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={black} />);
                 }
             }
             resolve(gpl);
@@ -136,6 +144,9 @@ function getGrayPointList(imgBase64, size, black, white) {
 }
 
 const RendererResImage = ({qrcode, params, setParamInfo}) => {
+    let otherColor = params[3];
+    let posColor = params[4];
+
     useEffect(() => {
         setParamInfo(getParamInfo());
     }, [setParamInfo]);
@@ -149,10 +160,12 @@ const RendererResImage = ({qrcode, params, setParamInfo}) => {
         <svg className="Qr-item-svg" width="100%" height="100%" viewBox={getViewBox(qrcode)} fill="white"
              xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <defs>
-                <rect id="B-black" fill="black" width={3} height={3}/>
-                <rect id="B-white" fill="white" width={3} height={3}/>
-                <rect id="S-black" fill="black" width={1} height={1}/>
-                <rect id="S-white" fill="white" width={1} height={1}/>
+                <rect id="B-black" fill={otherColor} width={3.08} height={3.08}/>
+                <rect id="B-white" fill="white" width={3.08} height={3.08}/>
+                <rect id="S-black" fill={otherColor} width={1.02} height={1.02}/>
+                <rect id="S-white" fill="white" width={1.02} height={1.02}/>
+                <rect id="B" width={3.08} height={3.08}/>
+                <rect id="S" width={1.02} height={1.02}/>
             </defs>
             {gpl.concat(listPoints(qrcode, params))}
         </svg>
