@@ -8,13 +8,9 @@ const ParamColor = ({ rendererIndex, paramIndex, value, onChange }) => {
     const [displayColorPicker, setDisplay] = useState(false);
     const styles = reactCSS({
         'default': {
-            swatch: {
-                padding: '5px',
-                background: '#fff',
-                borderRadius: '1px',
-                boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
-                display: 'inline-block',
-                cursor: 'pointer',
+            btn: {
+                borderColor: displayColorPicker ? '#44D7B6' : null,
+                color: displayColorPicker ? '#44D7B6' : null
             },
             container: {
                 position: 'relative',
@@ -37,7 +33,7 @@ const ParamColor = ({ rendererIndex, paramIndex, value, onChange }) => {
 
     return (
         <div style={styles.container}>
-            <button className="dl-btn" onClick={ () => setDisplay(!displayColorPicker) }>
+            <button className="dl-btn" style={styles.btn} onClick={ () => setDisplay(!displayColorPicker) }>
                 选择颜色
             </button>
             {
