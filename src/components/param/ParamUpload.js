@@ -7,7 +7,7 @@ const ParamUpload = ({ rendererIndex, paramIndex, onChange }) => (
         <label
             htmlFor="image_upload"
             key={"label_" + rendererIndex + "_" + paramIndex}
-            className="dl-btn"
+            className="dl-btn ul-btn"
             style={{textAlign: "center"}}
         >
             上传图片

@@ -357,6 +357,10 @@ input[type="number"]{
     margin-bottom: 10px;
 }
 
+.ul-btn {
+    float: left;
+}
+
 .dl-btn {
     cursor: pointer;
     font-size: 0.9em;
