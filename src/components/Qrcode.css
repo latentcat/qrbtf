@@ -359,7 +359,6 @@ input[type="number"]{
 
 .dl-btn {
     cursor: pointer;
-    float: left;
     font-size: 0.9em;
     line-height: 2em;
     margin: 0;
@@ -401,6 +400,11 @@ input[type="number"]{
 }
 
 .dl-btn:hover {
+    border-color: #44D7B6;
+    color: #44D7B6;
+}
+
+.dl-btn-active {
     border-color: #44D7B6;
     color: #44D7B6;
 }
@@ -470,6 +474,14 @@ select:-moz-focusring {
     text-shadow: 0 0 0 #000;
 }
 
-.Qr-color-picker {
-    width: 200px;
+.twitter-picker {
+    max-width: calc(100vw - 46px)!important;
+    border: 0px solid rgba(0, 0, 0, 0.12) !important;
+    box-sizing: border-box;
+    border-radius: 10px!important;
+    box-shadow: 0px 3px 6px -4px rgba(0, 0, 0, 0.12), 0px 6px 16px 0px rgba(0, 0, 0, 0.08), 0px 9px 28px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.twitter-picker:nth-last-child(1) input {
+    font: 15px 'Futura', sans-serif !important;
 }
