@@ -215,6 +215,7 @@ td {
 }
 
 .small-input {
+    margin: 0;
     font-size: 0.9em;
     border: rgba(0,0,0,0.12) solid 2px;
     width: calc((100vw - 56px) / 2);
@@ -222,7 +223,6 @@ td {
 
 @media (min-width: 500px) {
     .small-input {
-        margin: 0;
         border: rgba(0,0,0,0.12) solid 3px;
         font-size: 0.8em;
         width: 200px;
