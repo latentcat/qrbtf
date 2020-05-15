@@ -51,6 +51,13 @@ export function gamma(r, g, b) {
     return Math.pow((Math.pow(r, 2.2) + Math.pow(1.5 * g, 2.2) + Math.pow(0.6 * b, 2.2)) / (1 + Math.pow(1.5, 2.2) + Math.pow(0.6, 2.2)), 1/2.2)
 }
 
+export function getExactValue(value, defaultValue) {
+    if (typeof value != "string") return value;
+    if (value.length <= 0) value = defaultValue;
+    if (!isNaN(value)) value = parseInt(value);
+    return value;
+}
+
 export function toBase64(file, width, height) {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');

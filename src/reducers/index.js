@@ -2,6 +2,7 @@ import {getQrcodeData} from "../utils/qrcodeHandler";
 import {actionTypes} from "../constant/ActionTypes";
 import {QRBTF_URL} from "../constant/References";
 import RendererBase from "../components/renderer/RendererBase";
+import {getExactValue} from "../utils/util";
 
 const initialState = {
     selectedIndex: 0,
@@ -53,12 +54,7 @@ export default function appReducer(state = initialState, action) {
                     }
 
                     const newItem = item.slice();
-                    let newValue = action.value;
-                    if (newValue.length <= 0)
-                        newValue = state.paramInfo[action.rendererIndex][action.paramIndex].default;
-
-                    if (!isNaN(newValue)) newValue = parseInt(newValue);
-                    newItem[action.paramIndex] = newValue;
+                    newItem[action.paramIndex] = getExactValue(action.value, state.paramInfo[action.rendererIndex][action.paramIndex].default);
                     return newItem;
                 })
             });

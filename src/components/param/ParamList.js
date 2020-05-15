@@ -5,11 +5,13 @@ import ParamTextViewer from "../../containers/param/ParamTextViewer";
 import ParamSelectViewer from "../../containers/param/ParamSelectViewer";
 import ParamColorViewer from "../../containers/param/ParamColorViewer";
 import ParamUploadViewer from "../../containers/param/ParamUploadViewer";
+import ParamCheckBoxViewer from "../../containers/param/ParamCheckBoxViewer";
 
 const mapTypeToComponent = ({
     [ParamTypes.TEXT_EDITOR]: ParamTextViewer,
     [ParamTypes.SELECTOR]: ParamSelectViewer,
     [ParamTypes.COLOR_EDITOR]: ParamColorViewer,
+    [ParamTypes.CHECK_BOX]: ParamCheckBoxViewer,
     [ParamTypes.UPLOAD_BUTTON]: ParamUploadViewer,
 })
 
