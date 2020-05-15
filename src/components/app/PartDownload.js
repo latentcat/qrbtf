@@ -36,9 +36,7 @@ const PartDownload = ({ value, onSvgDownload, onJpgDownload }) => {
             </div>
             <div>
                 {
-                    imgData.length > 0 ? <div id="dl-image" onClick={() => {
-                        onJpgDownload().then(res => setImgData(res));
-                    }}><div id="dl-image-inner"><img id="dl-image-inner-jpg" src={imgData} alt="点击JPG下载" /></div></div> : null
+                    imgData.length > 0 ? <div id="dl-image"><div id="dl-image-inner"><img id="dl-image-inner-jpg" src={imgData} alt="点击JPG下载" /></div></div> : null
                 }
             </div>
         </div>
