@@ -14,7 +14,8 @@ function listPoints(qrcode, params) {
 
     let width2 = params[0] / 100;
     let width1 = params[1] / 100;
-    let posType = params[2];
+    let width3 = params[2] / 100;
+    let posType = params[3];
     let id = 0;
 
     if (width2 <= 0) width2 = 70;
@@ -39,11 +40,11 @@ function listPoints(qrcode, params) {
                 if (posType == 0) {
                     pointList.push(<rect width={1} height={1} key={id++} fill="#0B2D97" x={x} y={y}/>);
                 } else if (posType == 1) {
-                    pointList.push(<rect width={3 - (1 - width2)} height={3 - (1 - width2)} key={id++} fill="#0B2D97" x={x - 1 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
-                    pointList.push(<rect width={width2} height={3 - (1 - width2)} key={id++} fill="#0B2D97" x={x - 3 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
-                    pointList.push(<rect width={width2} height={3 - (1 - width2)} key={id++} fill="#0B2D97" x={x + 3 + (1 - width2)/2} y={y - 1 + (1 - width2)/2}/>);
-                    pointList.push(<rect width={3 - (1 - width2)} height={width2} key={id++} fill="#0B2D97" x={x - 1 + (1 - width2)/2} y={y - 3 + (1 - width2)/2}/>);
-                    pointList.push(<rect width={3 - (1 - width2)} height={width2} key={id++} fill="#0B2D97" x={x - 1 + (1 - width2)/2} y={y + 3 + (1 - width2)/2}/>);
+                    pointList.push(<rect width={3 - (1 - width3)} height={3 - (1 - width3)} key={id++} fill="#0B2D97" x={x - 1 + (1 - width3)/2} y={y - 1 + (1 - width3)/2}/>);
+                    pointList.push(<rect width={width3} height={3 - (1 - width3)} key={id++} fill="#0B2D97" x={x - 3 + (1 - width3)/2} y={y - 1 + (1 - width3)/2}/>);
+                    pointList.push(<rect width={width3} height={3 - (1 - width3)} key={id++} fill="#0B2D97" x={x + 3 + (1 - width3)/2} y={y - 1 + (1 - width3)/2}/>);
+                    pointList.push(<rect width={3 - (1 - width3)} height={width3} key={id++} fill="#0B2D97" x={x - 1 + (1 - width3)/2} y={y - 3 + (1 - width3)/2}/>);
+                    pointList.push(<rect width={3 - (1 - width3)} height={width3} key={id++} fill="#0B2D97" x={x - 1 + (1 - width3)/2} y={y + 3 + (1 - width3)/2}/>);
                 }
             }
             else if (typeTable[x][y] == QRPointType.POS_OTHER) {
@@ -169,6 +170,11 @@ function getParamInfo() {
             type: ParamTypes.TEXT_EDITOR,
             key: 'x 宽度',
             default: 70,
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '定位点宽度',
+            default: 90,
         },
         {
             type: ParamTypes.SELECTOR,

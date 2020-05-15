@@ -14,6 +14,9 @@ function listPoints(qrcode, params) {
     let size2 = 1.001;
     let height = params[0];
     let height2 = params[1];
+    let upColor = params[2];
+    let leftColor = params[3];
+    let rightColor = params[4];
     let id = 0;
 
     const X = [-Math.sqrt(3)/2, 1/2];
@@ -29,14 +32,14 @@ function listPoints(qrcode, params) {
         for (let y = 0; y < nCount; y++) {
             if (qrcode.isDark(x, y) == false) continue;
             else if (typeTable[x][y] == QRPointType.POS_OTHER || typeTable[x][y] == QRPointType.POS_CENTER) {
-                pointList.push(<rect width={size2} height={size2} key={id++} fill="#FF7F89" x={x + (1 - size2)/2} y={y + (1 - size2)/2} transform={matrixString}/>);
-                pointList.push(<rect width={height2} height={size2} key={id++} fill="#FFEBF3" x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size2)/2 + size2)+','+String(y + (1 - size2)/2)+') '+'skewY(45) '}/>);
-                pointList.push(<rect width={size2} height={height2} key={id++} fill="#FFD7D9" x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size2)/2)+','+String(y + size2 + (1 - size2)/2)+') '+'skewX(45) '}/>);
+                pointList.push(<rect width={size2} height={size2} key={id++} fill={upColor} x={x + (1 - size2)/2} y={y + (1 - size2)/2} transform={matrixString}/>);
+                pointList.push(<rect width={height2} height={size2} key={id++} fill={leftColor} x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size2)/2 + size2)+','+String(y + (1 - size2)/2)+') '+'skewY(45) '}/>);
+                pointList.push(<rect width={size2} height={height2} key={id++} fill={rightColor} x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size2)/2)+','+String(y + size2 + (1 - size2)/2)+') '+'skewX(45) '}/>);
             }
             else {
-                pointList.push(<rect width={size} height={size} key={id++} fill="#FF7F89" x={x + (1 - size)/2} y={y + (1 - size)/2} transform={matrixString}/>);
-                pointList.push(<rect width={height} height={size} key={id++} fill="#FFEBF3" x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size)/2 + size)+','+String(y + (1 - size)/2)+') '+'skewY(45) '}/>);
-                pointList.push(<rect width={size} height={height} key={id++} fill="#FFD7D9" x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size)/2)+','+String(y + size + (1 - size)/2)+') '+'skewX(45) '}/>);
+                pointList.push(<rect width={size} height={size} key={id++} fill={upColor} x={x + (1 - size)/2} y={y + (1 - size)/2} transform={matrixString}/>);
+                pointList.push(<rect width={height} height={size} key={id++} fill={leftColor} x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size)/2 + size)+','+String(y + (1 - size)/2)+') '+'skewY(45) '}/>);
+                pointList.push(<rect width={size} height={height} key={id++} fill={rightColor} x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size)/2)+','+String(y + size + (1 - size)/2)+') '+'skewX(45) '}/>);
             }
         }
     }
@@ -55,6 +58,21 @@ function getParamInfo() {
             type: ParamTypes.TEXT_EDITOR,
             key: '定位点柱体高度',
             default: 0.5,
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '上侧颜色',
+            default: '#FF7F89'
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '左侧颜色',
+            default: '#FFD7D9'
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '右侧颜色',
+            default: '#FFEBF3'
         },
     ];
 }

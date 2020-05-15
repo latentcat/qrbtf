@@ -40,10 +40,10 @@ function listPoints(qrcode, params) {
                     pointList.push(<rect width={1} height={1} key={id++} fill={posColor} x={x} y={y}/>);
                 } else if (posType == 1) {
                     pointList.push(<circle key={id++} fill={posColor} cx={x + 0.5} cy={y + 0.5} r={1.5} />)
-                    pointList.push(<circle key={id++} fill={posColor} strokeWidth="1" stroke="black"  cx={x + 0.5} cy={y + 0.5} r={3} />)
+                    pointList.push(<circle key={id++} fill="none" strokeWidth="1" stroke={posColor}  cx={x + 0.5} cy={y + 0.5} r={3} />)
                 } else if (posType == 2) {
                     pointList.push(<circle key={id++} fill={posColor} cx={x + 0.5} cy={y + 0.5} r={1.5} />)
-                    pointList.push(<circle key={id++} fill="none" strokeWidth="0.15" strokeDasharray="0.5,0.5" stroke="black"  cx={x + 0.5} cy={y + 0.5} r={3} />)
+                    pointList.push(<circle key={id++} fill="none" strokeWidth="0.15" strokeDasharray="0.5,0.5" stroke={posColor}  cx={x + 0.5} cy={y + 0.5} r={3} />)
                     for (let w = 0; w < vw.length; w++) {
                         pointList.push(<circle key={id++} fill={posColor} cx={x + vw[w] + 0.5} cy={y + 0.5} r={0.5} />)
                     }
