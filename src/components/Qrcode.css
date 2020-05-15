@@ -222,6 +222,7 @@ td {
 
 @media (min-width: 500px) {
     .small-input {
+        margin: 0;
         border: rgba(0,0,0,0.12) solid 3px;
         font-size: 0.8em;
         width: 200px;
@@ -229,7 +230,6 @@ td {
 }
 
 .Qr-input {
-    margin: 0;
     caret-color: #44d7b6;
     padding: 0;
     line-height: 2em;
