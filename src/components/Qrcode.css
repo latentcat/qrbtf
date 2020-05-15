@@ -196,7 +196,7 @@ td:nth-child(2) {
 }
 
 td {
-    padding: 0 0 10px 0;
+    padding: 0 0 12px 0;
 }
 
 .big-input {
@@ -229,6 +229,7 @@ td {
 }
 
 .Qr-input {
+    margin: 0;
     caret-color: #44d7b6;
     padding: 0;
     line-height: 2em;
@@ -262,6 +263,7 @@ input[type="number"]{
 }
 
 .Qr-select {
+    margin: 0;
     line-height: 2em;
     box-sizing: border-box;
     border-radius: 3em;
@@ -319,9 +321,14 @@ input[type="number"]{
 
 
 .Qr-table {
-    max-width: 410px;
     width: 100%;
     border-spacing: 0;
+}
+
+@media (min-width: 500px) {
+    .Qr-table {
+        width: 410px;
+    }
 }
 
 .Qr-div-table {
