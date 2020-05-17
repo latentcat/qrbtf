@@ -9,10 +9,12 @@ function listPoints(qrcode, params) {
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
-    let alignType = params[1];
-    let timingType = params[2];
-    let otherColor = params[3];
-    let posColor = params[4];
+    let contrast = params[1];
+    let exposure = params[2];
+    let alignType = params[3];
+    let timingType = params[4];
+    let otherColor = params[5];
+    let posColor = params[6];
 
     let id = 0;
     for (let x = 0; x < nCount; x++) {
@@ -75,6 +77,16 @@ function getParamInfo() {
             default: data,
         },
         {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '对比度',
+            default: 0
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '曝光',
+            default: 0
+        },
+        {
             type: ParamTypes.SELECTOR,
             key: '小定位点样式',
             default: 0,
@@ -114,7 +126,7 @@ export function getViewBox(qrcode) {
     return String(-nCount / 5) + ' ' + String(-nCount / 5) + ' ' + String(nCount + nCount / 5 * 2) + ' ' + String(nCount + nCount / 5 * 2);
 }
 
-function getGrayPointList(imgBase64, size, black, white) {
+function getGrayPointList(params, size, black, white) {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
     let img = document.createElement('img');
@@ -122,7 +134,9 @@ function getGrayPointList(imgBase64, size, black, white) {
     canvas.style.imageRendering = 'pixelated';
     size *= 3;
 
-    img.src = imgBase64;
+    img.src = params[0];
+    let contrast = params[1];
+    let exposure = params[2];
     return new Promise(resolve => {
         img.onload = () => {
             canvas.width = size;
@@ -135,7 +149,7 @@ function getGrayPointList(imgBase64, size, black, white) {
                     let imageData = ctx.getImageData(x, y, 1, 1);
                     let data = imageData.data;
                     let gray = gamma(data[0], data[1], data[2]);
-                    if (Math.random() > gray / 255 && ( x % 3 !== 1 || y % 3 !== 1 ) ) gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={black} />);
+                    if (Math.random() > ((gray / 255) - 0.5) * (contrast + 1) + 0.5 + exposure && ( x % 3 !== 1 || y % 3 !== 1 ) ) gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={black} />);
                 }
             }
             resolve(gpl);
@@ -144,8 +158,7 @@ function getGrayPointList(imgBase64, size, black, white) {
 }
 
 const RendererResImage = ({qrcode, params, setParamInfo}) => {
-    let otherColor = params[3];
-    let posColor = params[4];
+    let otherColor = params[5];
 
     useEffect(() => {
         setParamInfo(getParamInfo());
@@ -153,8 +166,8 @@ const RendererResImage = ({qrcode, params, setParamInfo}) => {
 
     const [gpl, setGPL] = useState([]);
     useMemo(() => {
-        getGrayPointList(params[0], qrcode.getModuleCount(), "#S-black", "#S-white").then(res => setGPL(res));
-    }, [setGPL, params[0], qrcode])
+        getGrayPointList(params, qrcode.getModuleCount(), "#S-black", "#S-white").then(res => setGPL(res));
+    }, [setGPL, params[0], params[1], params[2], qrcode])
 
     return (
         <svg className="Qr-item-svg" width="100%" height="100%" viewBox={getViewBox(qrcode)} fill="white"
