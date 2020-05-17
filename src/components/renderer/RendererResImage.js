@@ -149,7 +149,7 @@ function getGrayPointList(params, size, black, white) {
                     let imageData = ctx.getImageData(x, y, 1, 1);
                     let data = imageData.data;
                     let gray = gamma(data[0], data[1], data[2]);
-                    if (Math.random() > ((gray / 255) - 0.5) * (contrast + 1) + 0.5 + exposure && ( x % 3 !== 1 || y % 3 !== 1 ) ) gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={black} />);
+                    if (Math.random() > ((gray / 255) + exposure - 0.5) * (contrast + 1) + 0.5 && ( x % 3 !== 1 || y % 3 !== 1 ) ) gpl.push(<use key={"g_" + x + "_" + y} x={x} y={y} xlinkHref={black} />);
                 }
             }
             resolve(gpl);
