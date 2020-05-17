@@ -135,8 +135,8 @@ function getGrayPointList(params, size, black, white) {
     size *= 3;
 
     img.src = params[0];
-    let contrast = params[1];
-    let exposure = params[2];
+    let contrast = params[1]/100;
+    let exposure = params[2]/100;
     return new Promise(resolve => {
         img.onload = () => {
             canvas.width = size;
