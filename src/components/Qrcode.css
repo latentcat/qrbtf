@@ -485,12 +485,12 @@ a:hover {
     font-weight: bold;
     padding: 1px 0;
     color: #000000;
-    border-bottom: 1px solid #3e4ca3;
+    border-bottom: 1px solid #000000;
 }
 
 .Qr-article p a:hover {
     color: #000000;
-    border-bottom: 1px solid #3e4ca3;
+    border-bottom: 1px solid #000000;
     text-decoration: none;
 }
 
