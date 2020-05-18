@@ -1,3 +1,4 @@
+
 .Qr-titled {
     background-color: #f5f5f7;
     box-sizing: border-box;
@@ -461,10 +462,56 @@ a:hover {
     font-size: 12px;
 }
 
+.Qr-article {
+    word-wrap: break-word;
+    margin-top: calc((10px + 1vmin) * 2);
+    margin-bottom: calc((10px + 2vmin) * 2);
+    border-spacing: 0;
+}
+
+.Qr-article p {
+    font-size: 14px;
+    line-height: 1.7em;
+    color: #636366;
+    letter-spacing: 0.05em;
+}
+
+.Qr-article p b {
+    font-weight: bold;
+    color: #000000;
+}
+
+.Qr-article p a {
+    font-weight: bold;
+    padding: 1px 0;
+    color: #000000;
+    border-bottom: 1px solid #3e4ca3;
+}
+
+.Qr-article p a:hover {
+    color: #000000;
+    border-bottom: 1px solid #3e4ca3;
+    text-decoration: none;
+}
+
+.Qr-article h2 {
+    font-size: 18px;
+    line-height: 2.5em;
+    letter-spacing: 0.05em;
+}
+
 @media (min-width: 500px) {
     .note-font {
         color: #1D1D1F;
         font-size: 14px;
+    }
+
+    .Qr-article p {
+        font-size: 16px;
+    }
+
+    .Qr-article h2 {
+        font-size: 22px;
     }
 }
 
