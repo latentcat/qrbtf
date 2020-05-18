@@ -9,7 +9,7 @@ const PartMore = () => (
             <p className="Qr-s-subtitle">更多</p>
             <div className="Qr-article">
                 <h2>为什么要做一个二维码生成器？</h2>
-                <p>看这里，我写的 <a href='https://mp.weixin.qq.com/s/_Oy9I9FqPXhfwN9IUhf6_g' rel="noopener noreferrer" target="_blank">文章</a>。</p>
+                <p>看这里，<a href='https://mp.weixin.qq.com/s/_Oy9I9FqPXhfwN9IUhf6_g' rel="noopener noreferrer" target="_blank">这篇文章</a> 简要介绍了我们的初心与愿景。</p>
                 <h2>这个生成器的特别之处在哪里？</h2>
                 <p>普通的二维码样式单一，不能与环境较好的融合。这一个生成器有着 <b>丰富的参数化样式、基于 SVG 的二维码生成能力</b>，在为我们提供精美样式的同时，不限制参数如数值、颜色、背景图片的选择，又因 SVG 有较好的拓展性，可以完美兼容矢量制图流程。</p>
                 <h2>如何使用？</h2>

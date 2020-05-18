@@ -495,9 +495,13 @@ a:hover {
 }
 
 .Qr-article h2 {
+    word-break: break-all;
+    word-wrap: break-word;
     font-size: 18px;
-    line-height: 2.5em;
+    line-height: 1.7em;
     letter-spacing: 0.05em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 @media (min-width: 500px) {
