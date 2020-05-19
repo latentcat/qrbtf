@@ -200,19 +200,87 @@ td {
     padding: 0 0 12px 0;
 }
 
-.big-input {
-    font-size: calc(10px + 2vmin);
+.Qr-input-upload {
+    display: flex;
     margin-top: calc((10px + 2vmin) * 2);
     margin-bottom: calc((10px + 2vmin) * 2);
-    border: rgba(0,0,0,0.12) solid 2px;
-    width: 20em;
     max-width: calc(100vw - 46px);
+    width: 20em;
+}
+
+.big-input {
+    height: calc(2em + 6px);
+    font-size: calc(10px + 2vmin);
+    border: rgba(0,0,0,0.12) solid 2px;
+    margin-right: 10px;
+    flex: 1;
 }
 
 @media (min-width: 500px) {
     .big-input {
         border: rgba(0,0,0,0.12) solid 3px;
     }
+}
+
+.Qr-upload {
+    color: rgba(102,102,102,1);
+    font-size: calc(10px + 2vmin);
+    border: rgba(0,0,0,0.12) solid 2px;
+    width: calc(2em + 6px)!important;
+    height: calc(2em + 6px);
+    cursor: pointer;
+    line-height: 2em;
+    border-radius: 3em;
+    outline: none;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-appearance: none;
+    -moz-text-size-adjust: 100%;
+    background: white;
+    font-family: 'Futura', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 500px) {
+    .Qr-upload {
+        border: rgba(0,0,0,0.12) solid 3px;
+    }
+}
+
+.Qr-upload:hover {
+    border-color: #44D7B6;
+    color: #44D7B6;
+}
+
+.Qr-upload:active {
+    -webkit-transition-duration: 0s; /* Safari */
+    transition-duration: 0s;
+    -moz-transition-duration: 0s;
+    border-color: #3BBC9F;
+    color: #3BBC9F;
+}
+
+.Qr-upload-svg {
+    height: 60%;
+}
+
+.st0 {
+    fill:none;
+    stroke: currentColor;
+    stroke-width:4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
 
 .small-input {
