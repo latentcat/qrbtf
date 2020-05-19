@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import PartDownload from "../../components/app/PartDownload";
-import React from "react";
 import {saveImg, saveSvg} from "../../utils/downloader";
 import {increaseDownloadData, recordDownloadDetail} from "../../api/db";
 import {getParamDetailedValue, outerHtml} from "../../utils/util";

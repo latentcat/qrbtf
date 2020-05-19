@@ -13,6 +13,7 @@
 //   http://www.denso-wave.com/qrcode/faqpatent-e.html
 //
 //---------------------------------------------------------------------
+/* eslint-disable */
 function QR8bitByte(data) {
     this.mode = QRMode.MODE_8BIT_BYTE;
     this.data = data;
@@ -1270,4 +1271,4 @@ QRBitBuffer.prototype = {
 	}
 };
 
-export default QRCode
+exports.qrcode = QRCode;

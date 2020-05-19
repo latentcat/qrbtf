@@ -3,7 +3,7 @@ import '../Qrcode.css';
 
 const currentYear = new Date().getFullYear();
 
-const Footer = () => (
+const PartFooter = () => (
     <div className="Qr-titled">
         <div className="Qr-Centered Qr-footer note-font">
             <div>
@@ -33,4 +33,4 @@ const Footer = () => (
     </div>
 )
 
-export default Footer
+export default PartFooter

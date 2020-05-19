@@ -1,4 +1,4 @@
-import {getQrcodeData} from "../utils/qrcodeHandler";
+import {encodeData} from "../utils/qrcodeHandler";
 import {actionTypes} from "../constant/ActionTypes";
 import {QRBTF_URL} from "../constant/References";
 import RendererBase from "../components/renderer/RendererBase";
@@ -11,7 +11,7 @@ const initialState = {
     correctLevel: 0,
     textUrl: QRBTF_URL,
     history: [],
-    qrcode: getQrcodeData({text: QRBTF_URL, correctLevel: 0}),
+    qrcode: encodeData({text: QRBTF_URL, correctLevel: 0}),
     paramInfo: new Array(16).fill(new Array(16)),
     paramValue: new Array(16).fill(new Array(16))
 }
@@ -23,7 +23,7 @@ export default function appReducer(state = initialState, action) {
             if (!text || text.length == 0) text = QRBTF_URL;
             return Object.assign({}, state, {
                 textUrl: text,
-                qrcode: getQrcodeData({text: text, correctLevel: state.correctLevel})
+                qrcode: encodeData({text: text, correctLevel: state.correctLevel})
             });
         }
         case actionTypes.CHANGE_STYLE: {
@@ -37,7 +37,7 @@ export default function appReducer(state = initialState, action) {
         case actionTypes.CHANGE_CORRECT_LEVEL: {
             return Object.assign({}, state, {
                 correctLevel: parseInt(action.correctLevel),
-                qrcode: getQrcodeData({text: state.textUrl, correctLevel: parseInt(action.correctLevel)})
+                qrcode: encodeData({text: state.textUrl, correctLevel: parseInt(action.correctLevel)})
             })
         }
         case actionTypes.CREATE_PARAM: {

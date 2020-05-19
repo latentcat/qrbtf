@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import {defaultViewBox, rand} from "../../utils/util";
-import {ParamTypes} from "../../constant/ParamTypes";
-import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
