@@ -202,17 +202,50 @@ td {
 
 .Qr-input-upload {
     display: flex;
-    margin-top: calc((10px + 2vmin) * 2);
-    margin-bottom: calc((10px + 2vmin) * 2);
     max-width: calc(100vw - 46px);
     width: 20em;
+}
+
+.Qr-input-upload-div {
+    margin-top: calc((5px + 2vmin) * 2);
+    margin-bottom: calc((10px + 2vmin + 10px) * 2);
+    position: relative;
+}
+
+.Qr-input-upload:hover + .Qr-input-hint {
+    opacity: 0.6;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+
+.Qr-input-hint {
+    opacity: 0;
+    margin-top: 12px;
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.3s; /* Safari */
+    -moz-animation-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+@media (min-width: 500px) {
+    .Qr-input-hint {
+        margin-top: 14px;
+        font-size: 14px;
+    }
 }
 
 .big-input {
     height: calc(2em + 6px);
     font-size: calc(10px + 2vmin);
     border: rgba(0,0,0,0.12) solid 2px;
-    margin-right: 10px;
+    margin-left: 10px;
     flex: 1;
 }
 
@@ -514,6 +547,11 @@ input[type="number"]{
 }
 
 a {
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-appearance: none;
+    -moz-text-size-adjust: 100%;
     color: currentColor;
     text-decoration: none;
 }
