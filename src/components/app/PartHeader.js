@@ -9,7 +9,7 @@ const logoStyle = {
     backgroundPosition: 'left'
 };
 
-const Header = () => (
+const PartHeader = () => (
     <div className="Qr-Centered">
         <div style={logoStyle}>
             <h1 className="Qr-title">&ensp;</h1>
@@ -19,4 +19,4 @@ const Header = () => (
     </div>
 )
 
-export default Header
+export default PartHeader

@@ -1,7 +1,16 @@
 import {ParamTypes} from "../constant/ParamTypes";
-import React from "react";
-
 let seed = 0;
+
+const fileTypes =[
+    'image/jpeg',
+    'image/pjpeg',
+    'image/png'
+]
+
+export function isPicture(file) {
+    return fileTypes.includes(file.type);
+}
+
 
 export function srand(sd) {
     seed = sd;

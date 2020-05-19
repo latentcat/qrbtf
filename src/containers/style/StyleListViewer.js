@@ -1,8 +1,7 @@
-import {connect, useDispatch} from 'react-redux';
-import {changeStyle, createParam} from "../../actions";
+import {connect} from 'react-redux';
+import {changeStyle} from "../../actions";
 import StyleList from "../../components/style/StyleList";
 import RendererViewer from "./RendererViewer";
-import RendererBlank from "../../components/renderer/RendererBlank";
 import RendererBase from "../../components/renderer/RendererBase";
 import RendererDSJ from "../../components/renderer/RendererDSJ";
 import RendererRound from "../../components/renderer/RendererRound";

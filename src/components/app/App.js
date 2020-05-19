@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import '../Qrcode.css';
-import Footer from "../footer/Footer";
-import Header from "../header/Header";
+import PartFooter from "./PartFooter";
+import PartHeader from "./PartHeader";
 import PartMore from "./PartMore";
 import PartParams from "./PartParams";
 import PartDownloadViewer from "../../containers/app/PartDownloadViewer";
@@ -14,12 +14,12 @@ function App() {
             <header className="App-header">
                 <div className="Layout">
                     <div className="Qr-outer">
-                        <Header/>
+                        <PartHeader/>
                         <PartStylesViewer/>
                         <PartParams/>
                         <PartDownloadViewer/>
                         <PartMore/>
-                        <Footer/>
+                        <PartFooter/>
                     </div>
                 </div>
             </header>
