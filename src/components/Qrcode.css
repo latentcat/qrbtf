@@ -27,6 +27,38 @@
     margin-bottom: 0;
 }
 
+.Qr-rel {
+    position: relative;
+}
+
+.Qr-style-hint {
+    opacity: 0;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.3s; /* Safari */
+    -moz-animation-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+#Qr-style:hover .Qr-style-hint {
+    opacity: 0.6;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+
+@media (min-width: 500px) {
+    .Qr-style-hint {
+        font-size: 14px;
+    }
+}
+
 .Qr-s {
     overflow-x: scroll;
     overflow-y: hidden;
