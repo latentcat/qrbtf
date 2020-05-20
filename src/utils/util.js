@@ -82,6 +82,13 @@ export function getExactValue(value, defaultValue) {
     return value;
 }
 
+export function extend(target, options) {
+    for (let name in options) {
+        target[name] = options[name]
+    }
+    return target
+}
+
 export function toBase64(file, width, height) {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');

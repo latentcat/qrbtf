@@ -2,18 +2,16 @@ import {connect} from 'react-redux';
 import {changeStyle} from "../../actions";
 import StyleList from "../../components/style/StyleList";
 import RendererViewer from "./RendererViewer";
-import RendererBase from "../../components/renderer/RendererBase";
 import RendererDSJ from "../../components/renderer/RendererDSJ";
-import RendererRound from "../../components/renderer/RendererRound";
-import RendererRandRound from "../../components/renderer/RendererRandRound";
 import RendererRandRect from "../../components/renderer/RendererRandRect";
 import Renderer25D from "../../components/renderer/Renderer25D";
 import RendererImage from "../../components/renderer/RendererImage";
-import * as React from "react";
 import RendererResImage from "../../components/renderer/RendererResImage";
+import {RendererRandRound, RendererRect, RendererRound} from "../../components/renderer/RendererBase";
+import * as React from "react";
 
 const styles = [
-    {value: "A1", renderer: RendererBase},
+    {value: "A1", renderer: RendererRect},
     {value: "A2", renderer: RendererRound},
     {value: "A3", renderer: RendererRandRound},
     {value: "SP — 1", renderer: RendererDSJ},

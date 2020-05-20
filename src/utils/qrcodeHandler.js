@@ -1,12 +1,6 @@
 import { qrcode as QRCodeEncoder } from "./qrcodeEncoder";
 import jsQR from "jsqr";
-
-function extend(target, options) {
-    for (let name in options) {
-        target[name] = options[name]
-    }
-    return target
-}
+import { extend } from "./util";
 
 export var QRPointType = {
     DATA: 0,

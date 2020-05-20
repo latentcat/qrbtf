@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import {defaultViewBox, rand} from "../../utils/util";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
+import {createRenderer} from "../style/Renderer";
+import {rand} from "../../utils/util";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -71,7 +72,7 @@ function listPoints(qrcode, params) {
     return pointList;
 }
 
-function getParamInfo() {
+function getParamInfoRect() {
     return [
         {
             type: ParamTypes.SELECTOR,
@@ -116,17 +117,107 @@ function getParamInfo() {
     ];
 }
 
-const RendererBase = ({ qrcode, params, setParamInfo}) => {
-    useEffect(() => {
-        setParamInfo(getParamInfo());
-    }, [setParamInfo]);
-
-    return (
-        <svg className="Qr-item-svg" width="100%" height="100%" viewBox={defaultViewBox(qrcode)} fill="white"
-             xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-            {listPoints(qrcode, params)}
-        </svg>
-    )
+function getParamInfoRound() {
+    return [
+        {
+            type: ParamTypes.SELECTOR,
+            key: '信息点样式',
+            default: 1,
+            choices: [
+                "矩形",
+                "圆形",
+                "随机"
+            ]
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '信息点缩放',
+            default: 50
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '信息点不透明度',
+            default: 30,
+        },
+        {
+            type: ParamTypes.SELECTOR,
+            key: '定位点样式',
+            default: 1,
+            choices: [
+                "矩形",
+                "圆形",
+                "行星",
+            ]
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '信息点颜色',
+            default: '#000000'
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '定位点点颜色',
+            default: '#000000'
+        }
+    ];
 }
 
-export default RendererBase
+function getParamInfoRandRound() {
+    return [
+        {
+            type: ParamTypes.SELECTOR,
+            key: '信息点样式',
+            default: 2,
+            choices: [
+                "矩形",
+                "圆形",
+                "随机"
+            ]
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '信息点缩放',
+            default: 80
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '信息点不透明度',
+            default: 100,
+        },
+        {
+            type: ParamTypes.SELECTOR,
+            key: '定位点样式',
+            default: 2,
+            choices: [
+                "矩形",
+                "圆形",
+                "行星",
+            ]
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '信息点颜色',
+            default: '#000000'
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '定位点点颜色',
+            default: '#000000'
+        }
+    ];
+}
+
+export const RendererRect= createRenderer({
+    listPoints: listPoints,
+    getParamInfo: getParamInfoRect,
+});
+
+export const RendererRound = createRenderer({
+    listPoints: listPoints,
+    getParamInfo: getParamInfoRound,
+});
+
+export const RendererRandRound = createRenderer({
+    listPoints: listPoints,
+    getParamInfo: getParamInfoRandRound,
+});

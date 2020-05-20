@@ -1,13 +1,13 @@
 import {encodeData} from "../utils/qrcodeHandler";
 import {actionTypes} from "../constant/ActionTypes";
 import {QRBTF_URL} from "../constant/References";
-import RendererBase from "../components/renderer/RendererBase";
 import {getExactValue} from "../utils/util";
+import {RendererRect} from "../components/renderer/RendererBase";
 
 const initialState = {
     selectedIndex: 0,
     value: 'A1',
-    rendererType: RendererBase,
+    rendererType: RendererRect,
     correctLevel: 0,
     textUrl: QRBTF_URL,
     history: [],
