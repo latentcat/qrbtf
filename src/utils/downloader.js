@@ -10,7 +10,7 @@ export function saveSvg(value, content) {
     a.href = URL.createObjectURL(bl)
     a.download = filename
     a.hidden = true
-    // a.click()
+    a.click()
 }
 
 export function saveImg(value, content, width, height) {
@@ -51,8 +51,8 @@ export function saveImg(value, content, width, height) {
             let data = canvas.toDataURL('image/jpeg', 0.8);
             a.setAttribute('href', data)
             a.setAttribute('target', 'download')
-            // a.setAttribute('download', filename);
-            // a.click();
+            a.setAttribute('download', filename);
+            a.click();
 
             resolve(data)
         };
