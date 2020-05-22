@@ -3,21 +3,26 @@ import * as tcb from 'tcb-js-sdk';
 const app = tcb.init({
     env: 'qrbtf-1d845d'
 });
-const auth = app.auth();
 
-async function login() {
+let isLogin;
+const auth = app.auth();
+const db = app.database();
+const _ = db.command
+
+export async function login() {
     await auth.signInAnonymously();
     const loginState = await auth.getLoginState();
     isLogin = loginState
 }
 
-login();
+export function getDownloadCount(callback) {
+    if (!isLogin) return;
+    db.collection('QRCounter').get().then(res => {
+        if (callback) callback(res);
+    });
+}
 
-let isLogin;
-const db = app.database();
-const _ = db.command
-
-export function increaseDownloadData(value) {
+export function increaseDownloadData(value, callback) {
     if (!isLogin) return;
     db.collection('QRCounter').where({
         value: _.eq(value)
@@ -28,6 +33,8 @@ export function increaseDownloadData(value) {
             }).update({
                 count: _.inc(1),
                 date: new Date().toString()
+            }).then(() => {
+                if (callback) callback();
             }).catch(console.error)
         }
         else {
@@ -35,6 +42,8 @@ export function increaseDownloadData(value) {
                 value: value,
                 count: 1,
                 date: new Date().toString()
+            }).then(() => {
+                if (callback) callback()
             }).catch(console.error)
         }
     })

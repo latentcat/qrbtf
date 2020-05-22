@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import {defaultViewBox} from "../../utils/util";
+import React from "react";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
+import {createRenderer} from "../style/Renderer";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -84,17 +84,10 @@ function viewBox(qrcode) {
     return String(-nCount) + ' ' + String(-nCount / 2) + ' ' + String(nCount * 2) + ' ' + String(nCount * 2);
 }
 
-const Renderer25D = ({ qrcode, params, setParamInfo}) => {
-    useEffect(() => {
-        setParamInfo(getParamInfo());
-    }, [setParamInfo]);
-
-    return (
-        <svg className="Qr-item-svg" width="100%" height="100%" viewBox={viewBox(qrcode)} fill="white"
-             xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-            {listPoints(qrcode, params)}
-        </svg>
-    )
-}
+const Renderer25D = createRenderer({
+    listPoints: listPoints,
+    getParamInfo: getParamInfo,
+    getViewBox: viewBox
+})
 
 export default Renderer25D

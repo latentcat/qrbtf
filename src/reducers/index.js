@@ -1,16 +1,17 @@
 import {encodeData} from "../utils/qrcodeHandler";
 import {actionTypes} from "../constant/ActionTypes";
 import {QRBTF_URL} from "../constant/References";
-import RendererBase from "../components/renderer/RendererBase";
 import {getExactValue} from "../utils/util";
+import {RendererRect} from "../components/renderer/RendererBase";
 
 const initialState = {
     selectedIndex: 0,
     value: 'A1',
-    rendererType: RendererBase,
+    rendererType: RendererRect,
     correctLevel: 0,
     textUrl: QRBTF_URL,
     history: [],
+    downloadData: [],
     qrcode: encodeData({text: QRBTF_URL, correctLevel: 0}),
     paramInfo: new Array(16).fill(new Array(16)),
     paramValue: new Array(16).fill(new Array(16))
@@ -57,6 +58,11 @@ export default function appReducer(state = initialState, action) {
                     newItem[action.paramIndex] = getExactValue(action.value, state.paramInfo[action.rendererIndex][action.paramIndex].default);
                     return newItem;
                 })
+            });
+        }
+        case actionTypes.LOAD_DOWNLOAD_DATA: {
+            return Object.assign({}, state, {
+                downloadData: action.data
             });
         }
         default: return state
