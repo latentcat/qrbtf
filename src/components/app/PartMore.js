@@ -8,6 +8,9 @@ const PartMore = () => (
             <div className="Qr-s-title">More</div>
             <p className="Qr-s-subtitle">更多</p>
             <div className="Qr-article">
+                <h2>最新消息</h2>
+                <p><b>2020.5.23</b><br/>网站开源啦！<a href='https://github.com/ciaochaos/qrbtf' rel="noopener noreferrer" target="_blank">点击访问</a> 我们的 Github。期待你也来参与设计、开发！给个 Star 支持一下不？</p>
+                <p><b>2020.5.22</b><br/>新增 C2 样式、下载计数（好像还不太稳定）、普通二维码上传、颜色选择、背景图片上传、输入提示、桌面端横向滚动提示。</p>
                 <h2>为什么要做一个二维码生成器？</h2>
                 <p>看这里，<a href='https://mp.weixin.qq.com/s/_Oy9I9FqPXhfwN9IUhf6_g' rel="noopener noreferrer" target="_blank">这篇文章</a> 简要介绍了我们的初心与愿景。</p>
                 <h2>这个生成器的特别之处在哪里？</h2>
@@ -25,9 +28,10 @@ const PartMore = () => (
         <div className="Qr-Centered btn-row">
             <div className="div-btn">
                 <LinkButton href={"https://www.yuque.com/qrbtf/docs/donate"} value={"打赏 & 赞助"} />
-                <LinkButton href={"https://www.yuque.com/qrbtf/topics"} value={"问题反馈"} />
+                <LinkButton href={"https://github.com/ciaochaos/qrbtf"} value={"Github"} />
             </div>
             <div className="div-btn">
+                <LinkButton href={"https://www.yuque.com/qrbtf/topics"} value={"问题反馈"} />
                 <LinkButton href={"https://www.yuque.com/qrbtf/docs/coop"} value={"合作咨询"} />
             </div>
         </div>
