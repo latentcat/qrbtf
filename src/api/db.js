@@ -49,7 +49,7 @@ export function increaseDownloadData(value, callback) {
     })
 }
 
-export function recordDownloadDetail({text, value, type, params, history}) {
+export function recordDownloadDetail({text, value, type, params, history}, callback) {
     if (!isLogin) return;
     db.collection('QRDownloadData').add({
         date: new Date().toString(),
@@ -58,5 +58,7 @@ export function recordDownloadDetail({text, value, type, params, history}) {
         type: type,
         params: params,
         history: history
-    }).catch(console.error)
+    }).then(res => {
+        if (callback) callback(res);
+    }).catch(console.error);
 }
