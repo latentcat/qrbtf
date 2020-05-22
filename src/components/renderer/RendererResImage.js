@@ -168,7 +168,7 @@ const RendererResImage = ({qrcode, params, setParamInfo}) => {
     const [gpl, setGPL] = useState([]);
     useMemo(() => {
         getGrayPointList(params, qrcode.getModuleCount(), "#S-black", "#S-white").then(res => setGPL(res));
-    }, [setGPL, params, qrcode])
+    }, [setGPL, params[0], params[1], params[2], qrcode])
 
     return (
         <svg className="Qr-item-svg" width="100%" height="100%" viewBox={getViewBox(qrcode)} fill="white"
