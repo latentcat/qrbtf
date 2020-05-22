@@ -24,3 +24,8 @@ export const changeParam = (rendererIndex, paramIndex, value) => ({
     type: actionTypes.CHANGE_PARAM,
     rendererIndex, paramIndex, value
 })
+
+export const loadDownloadData = (data) => ({
+    type: actionTypes.LOAD_DOWNLOAD_DATA,
+    data
+})

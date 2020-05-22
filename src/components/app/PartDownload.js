@@ -5,19 +5,27 @@ import {isWeiXin} from "../../utils/navigatorUtils";
 
 const WxMessage = () => {
     if (isWeiXin()) {
-        return <div className="note-font" id="wx-message-inner">当前客户端不支持下载 SVG，<br />请下载 JPG 并长按二维码保存。</div>
+        return (
+            <div className="note-font" id="wx-message-inner">
+                当前客户端不支持下载 SVG，<br />
+                请下载 JPG 并长按二维码保存。
+            </div>
+        )
     }
     return null
 }
 
-const PartDownload = ({ value, onSvgDownload, onJpgDownload }) => {
+const PartDownload = ({ value, downloadCount, onSvgDownload, onJpgDownload }) => {
     const [imgData, setImgData] = useState('');
 
     return (
         <div className="Qr-titled">
         <div className="Qr-Centered title-margin">
             <div className="Qr-s-title">Downloads</div>
-            <p className="Qr-s-subtitle">下载二维码 — {value}</p>
+            <p className="Qr-s-subtitle">
+                下载二维码 — {value}
+                <sup className="Gray"> {downloadCount}</sup>
+            </p>
         </div>
         <div className="Qr-Centered">
             <div className="btn-row">

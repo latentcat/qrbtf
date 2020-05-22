@@ -1,11 +1,19 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import PartDownload from "../../components/app/PartDownload";
 import {saveImg, saveSvg} from "../../utils/downloader";
-import {increaseDownloadData, recordDownloadDetail} from "../../api/db";
+import {getDownloadCount, increaseDownloadData, recordDownloadDetail} from "../../api/db";
 import {getParamDetailedValue, outerHtml} from "../../utils/util";
 
-function saveDB(state, type) {
-    increaseDownloadData(state.value)
+function saveDB(state, type, updateDownloadData) {
+    increaseDownloadData(state.value, () => {
+        getDownloadCount((res) => {
+            let downloadData = [];
+            res.data.forEach((item) => {
+                downloadData[item.value] = item.count;
+            });
+            updateDownloadData(downloadData);
+        });
+    });
     recordDownloadDetail({
         text: state.textUrl,
         value: state.value,
@@ -23,14 +31,15 @@ function saveDB(state, type) {
     });
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
     value: state.value,
+    downloadCount: state.downloadData[state.value],
     onSvgDownload: () => {
         saveSvg(state.value, outerHtml(state.selectedIndex))
-        saveDB(state, 'svg')
+        saveDB(state, 'svg', ownProps.updateDownloadData)
     },
     onJpgDownload: () => {
-        saveDB(state, 'jpg')
+        saveDB(state, 'jpg', ownProps.updateDownloadData)
         return saveImg(state.value, outerHtml(state.selectedIndex), 1500, 1500)
     }
 })
