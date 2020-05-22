@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";

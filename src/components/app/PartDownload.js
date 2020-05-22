@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
-import {isWeiXin} from "../../utils/util";
+import {isWeiXin} from "../../utils/navigatorUtils";
 
 const WxMessage = () => {
     if (isWeiXin()) {

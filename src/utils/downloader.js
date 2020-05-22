@@ -1,10 +1,6 @@
 const svgHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n " +
     "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n"
 
-export function isChrome() {
-    return navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-}
-
 export function saveSvg(value, content) {
     let htmlContent = [svgHead + content]
     let bl = new Blob(htmlContent, {type: "image/svg+xml"})

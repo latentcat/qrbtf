@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {genQRInfo} from "../../actions";
 import React, {useRef} from "react";
-import {isPicture} from "../../utils/util";
+import {isPicture} from "../../utils/imageUtils";
 import {decodeData} from "../../utils/qrcodeHandler";
 
 const InputText = ({dispatch}) => {

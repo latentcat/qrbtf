@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import StyleListViewer from "../../containers/style/StyleListViewer";
-import {isPC} from "../../utils/util";
+import {isPC} from "../../utils/navigatorUtils";
 
 const PartStyles = ({ setParamInfo }) => {
     const [loaded, setLoaded] = useState(false);

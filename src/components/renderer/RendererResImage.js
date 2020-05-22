@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from "react";
-import {gamma} from "../../utils/util";
+import {gamma} from "../../utils/imageUtils";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {defaultResImage} from "../../constant/References";

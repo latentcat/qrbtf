@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import {defaultViewBox, rand} from "../../utils/util";
+import React from "react";
+import {rand} from "../../utils/util";
 import {createRenderer} from "../style/Renderer";
 
 function listPoints(qrcode, params) {
