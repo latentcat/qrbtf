@@ -12,7 +12,7 @@ const _ = db.command
 export async function login() {
     await auth.signInAnonymously();
     const loginState = await auth.getLoginState();
-    isLogin = loginState
+    isLogin = loginState;
 }
 
 export function getDownloadCount(callback) {
