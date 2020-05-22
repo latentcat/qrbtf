@@ -26,4 +26,4 @@ npm start
 
 ![QR code style C2](https://blog.ciaochaos.com/projects/qrcode/qr2.jpg)
 
-![QR codes](https://blog.ciaochaos.com/projects/qrcode/qrs.jpg)
+![QR codes](https://blog.ciaochaos.com/projects/qrcode/qrs2.jpg)
