@@ -26,4 +26,14 @@ npm start
 
 ![QR codes](https://blog.ciaochaos.com/projects/qrcode/qrs2.jpg)
 
-![QR code style C2](https://blog.ciaochaos.com/projects/qrcode/qr2.jpg)
+<image src="https://blog.ciaochaos.com/projects/qrcode/qr2.jpg" style="width:300px;" />
+
+## Donation
+
+#### Paypal
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.me/ciaochaos)
+
+#### Alipay
+
+<image src="https://blog.ciaochaos.com/projects/qrcode/alipay.jpeg" style="width:300px;" />
