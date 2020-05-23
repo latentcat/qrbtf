@@ -9,7 +9,8 @@ URL: [qrbtf.com](https://qrbtf.com)
 ## Installation
 
 ``` bash
-cd ..
+git clone https://github.com/ciaochaos/qrbtf.git
+cd qrbtf
 npm install
 npm start
 ```
