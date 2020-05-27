@@ -9,7 +9,8 @@ URL: [qrbtf.com](https://qrbtf.com)
 ## Installation
 
 ``` bash
-cd ..
+git clone https://github.com/ciaochaos/qrbtf.git
+cd qrbtf
 npm install
 npm start
 ```
@@ -26,7 +27,7 @@ npm start
 
 ![QR codes](https://blog.ciaochaos.com/projects/qrcode/qrs2.jpg)
 
-![QR code style C2](https://blog.ciaochaos.com/projects/qrcode/qr2.jpg)
+![QR code style C2](https://blog.ciaochaos.com/projects/qrcode/qrc2.jpg)
 
 ## Donation
 
@@ -36,4 +37,4 @@ npm start
 
 #### Alipay
 
-![Alipay](https://blog.ciaochaos.com/projects/qrcode/alipay.jpeg)
+![Alipay](https://blog.ciaochaos.com/projects/qrcode/alipay2.jpeg)
