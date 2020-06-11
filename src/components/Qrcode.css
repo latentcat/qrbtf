@@ -20,7 +20,9 @@
 .Qr-subtitle {
     margin-top: -1em;
     margin-bottom: 0;
+    line-height: 2em;
 }
+
 
 .Qr-s-subtitle {
     margin-top: 0.25em;
