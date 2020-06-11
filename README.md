@@ -1,10 +1,5 @@
 <h1 align="center">QRBTF</h1>
 
-[![Npm Version][npm-version-image]][npm-version-url]
-[![Build Status][travis-svg]][travis-url]
-[![License][license-image]][license-url]
-[![Downloads][downloads-image]][downloads-url]
-
 <p align="center">
     URL: <a href="https://qrbtf.com" rel="noopener noreferrer" target="_blank">qrbtf.com</a><br />
     QRBTF is a simple web app to beautify your QR code.
