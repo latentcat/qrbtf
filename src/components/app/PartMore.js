@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import LinkButton from "../link/LinkButton";
+import GitHubButton from 'react-github-btn'
 
 const PartMore = () => (
     <div className="Qr-titled-nobg">
@@ -8,6 +9,7 @@ const PartMore = () => (
             <div className="Qr-s-title">More</div>
             <p className="Qr-s-subtitle">更多</p>
             <div className="Qr-article">
+                <GitHubButton href="https://github.com/ciaochaos/qrbtf" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciaochaos/qrbtf on GitHub">Star</GitHubButton>
                 <h2>最新消息</h2>
                 <p><b>2020.6.11</b><br/>QRBTF React 组件发布！快在你的应用中引入 react-qrbtf 吧。<a href='https://github.com/cpunisher/react-qrbtf' rel="noopener noreferrer" target="_blank">访问项目</a>。</p>
                 <p><b>2020.5.23</b><br/>网站开源啦！<a href='https://github.com/ciaochaos/qrbtf' rel="noopener noreferrer" target="_blank">点击访问</a> 我们的 Github。期待你也来参与设计、开发！给个 Star 支持一下不？查看文章 <a href='https://mp.weixin.qq.com/s/GFEMCWQu3e2qhTuBabnHmQ' rel="noopener noreferrer" target="_blank">QRBTF 开源啦！来写个二维码样式吧～</a>。</p>

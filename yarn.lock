@@ -4821,6 +4821,11 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+github-buttons@^2.8.0:
+  version "2.11.0"
+  resolved "https://registry.npm.taobao.org/github-buttons/download/github-buttons-2.11.0.tgz#e05acef43e670be0a93912a1ec67c5432acccfa7"
+  integrity sha1-4FrO9D5nC+CpORKh7GfFQyrMz6c=
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/glob-parent/download/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -8697,6 +8702,13 @@ react-error-overlay@^6.0.7:
   version "6.0.7"
   resolved "https://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha1-Hc+0WatnHVP2YKmRUTyy8KBVMQg=
+
+react-github-btn@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npm.taobao.org/react-github-btn/download/react-github-btn-1.2.0.tgz#464066f999a77c0eed27980260601b51cbe15614"
+  integrity sha1-RkBm+ZmnfA7tJ5gCYGAbUcvhVhQ=
+  dependencies:
+    github-buttons "^2.8.0"
 
 react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.13.1"
