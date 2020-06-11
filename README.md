@@ -1,17 +1,25 @@
-# QRBTF
+<h1 align="center">QRBTF</h1>
 
-QRBTF is a simple online tool to beautify your QR code.
+<p align="center">
+    URL: <a href="https://qrbtf.com" rel="noopener noreferrer" target="_blank">qrbtf.com</a><br />
+    QRBTF is a simple web app to beautify your QR code.
+</p>
+
+<p align="center">
+    <img src="https://blog.ciaochaos.com/projects/qrcode/qrs2.jpg" width="500">
+</p>
+
+## Features
 
 * 8 Art QR Code Styles
 * Parametric Design
 * No Backend Required
 * Support for SVG Downloads
 
-URL: [qrbtf.com](https://qrbtf.com)
+中文介绍: 
 
-中文介绍: [如何制作一个漂亮的二维码](https://mp.weixin.qq.com/s/_Oy9I9FqPXhfwN9IUhf6_g)
-
-<img align="center" src="https://blog.ciaochaos.com/projects/qrcode/qrs2.jpg" width="500">
+* [如何制作一个漂亮的二维码](https://mp.weixin.qq.com/s/_Oy9I9FqPXhfwN9IUhf6_g)
+* [QRBTF 开源啦！来写个二维码样式吧～](https://mp.weixin.qq.com/s/GFEMCWQu3e2qhTuBabnHmQ)
 
 ## QRBTF Website
 
