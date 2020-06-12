@@ -34,12 +34,12 @@ function listPoints(qrcode, params) {
 
     for (let y = 0; y < nCount; y++) {
         for (let x = 0; x < nCount; x++) {
-            if (qrcode.isDark(x, y) == false) continue;
+            if (qrcode.isDark(x, y) === false) continue;
 
-            else if (typeTable[x][y] == QRPointType.POS_CENTER) {
-                if (posType == 0) {
+            else if (typeTable[x][y] === QRPointType.POS_CENTER) {
+                if (posType === 0) {
                     pointList.push(<rect width={1} height={1} key={id++} fill="#0B2D97" x={x} y={y}/>);
-                } else if (posType == 1) {
+                } else if (posType === 1) {
                     pointList.push(<rect width={3 - (1 - width3)} height={3 - (1 - width3)} key={id++} fill="#0B2D97" x={x - 1 + (1 - width3)/2} y={y - 1 + (1 - width3)/2}/>);
                     pointList.push(<rect width={width3} height={3 - (1 - width3)} key={id++} fill="#0B2D97" x={x - 3 + (1 - width3)/2} y={y - 1 + (1 - width3)/2}/>);
                     pointList.push(<rect width={width3} height={3 - (1 - width3)} key={id++} fill="#0B2D97" x={x + 3 + (1 - width3)/2} y={y - 1 + (1 - width3)/2}/>);
@@ -47,8 +47,8 @@ function listPoints(qrcode, params) {
                     pointList.push(<rect width={3 - (1 - width3)} height={width3} key={id++} fill="#0B2D97" x={x - 1 + (1 - width3)/2} y={y + 3 + (1 - width3)/2}/>);
                 }
             }
-            else if (typeTable[x][y] == QRPointType.POS_OTHER) {
-                if (posType == 0) {
+            else if (typeTable[x][y] === QRPointType.POS_OTHER) {
+                if (posType === 0) {
                     pointList.push(<rect width={1} height={1} key={id++} fill="#0B2D97" x={x} y={y}/>);
                 }
             }

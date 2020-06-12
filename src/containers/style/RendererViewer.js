@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => ({
     rendererIndex: ownProps.index,
     qrcode: state.qrcode,
     params: fillEmptyWith(state.paramValue[ownProps.index].slice(), 0),
-    selected: state.selectedIndex == ownProps.index,
+    selected: state.selectedIndex === ownProps.index,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

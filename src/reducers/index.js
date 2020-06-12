@@ -21,7 +21,7 @@ export default function appReducer(state = initialState, action) {
     switch (action.type) {
         case actionTypes.GENERATE_QR_INFO: {
             let text = action.text;
-            if (!text || text.length == 0) text = QRBTF_URL;
+            if (!text || text.length === 0) text = QRBTF_URL;
             return Object.assign({}, state, {
                 textUrl: text,
                 qrcode: encodeData({text: text, correctLevel: state.correctLevel})
@@ -50,7 +50,7 @@ export default function appReducer(state = initialState, action) {
         case actionTypes.CHANGE_PARAM: {
             return Object.assign({}, state, {
                 paramValue: state.paramValue.map((item, index) => {
-                    if (index != action.rendererIndex) {
+                    if (index !== action.rendererIndex) {
                         return item;
                     }
 

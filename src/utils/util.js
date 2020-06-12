@@ -17,7 +17,7 @@ export function fillEmptyWith(arr, value) {
 }
 
 export function getParamDetailedValue(item, paramValue) {
-    if (item.type == ParamTypes.SELECTOR) return item.choices[paramValue];
+    if (item.type === ParamTypes.SELECTOR) return item.choices[paramValue];
     return paramValue;
 }
 

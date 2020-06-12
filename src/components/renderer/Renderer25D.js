@@ -30,8 +30,8 @@ function listPoints(qrcode, params) {
 
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
-            if (qrcode.isDark(x, y) == false) continue;
-            else if (typeTable[x][y] == QRPointType.POS_OTHER || typeTable[x][y] == QRPointType.POS_CENTER) {
+            if (qrcode.isDark(x, y) === false) continue;
+            else if (typeTable[x][y] === QRPointType.POS_OTHER || typeTable[x][y] === QRPointType.POS_CENTER) {
                 pointList.push(<rect width={size2} height={size2} key={id++} fill={upColor} x={x + (1 - size2)/2} y={y + (1 - size2)/2} transform={matrixString}/>);
                 pointList.push(<rect width={height2} height={size2} key={id++} fill={leftColor} x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size2)/2 + size2)+','+String(y + (1 - size2)/2)+') '+'skewY(45) '}/>);
                 pointList.push(<rect width={size2} height={height2} key={id++} fill={rightColor} x={0} y={0} transform={matrixString+'translate('+String(x + (1 - size2)/2)+','+String(y + size2 + (1 - size2)/2)+') '+'skewX(45) '}/>);

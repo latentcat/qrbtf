@@ -10,18 +10,15 @@ function listPoints(qrcode, params) {
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
-    let contrast = params[1];
-    let exposure = params[2];
     let alignType = params[3];
     let timingType = params[4];
-    let otherColor = params[5];
     let posColor = params[6];
 
     let id = 0;
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
             const posX = 3 * x, posY = 3 * y;
-            if (typeTable[x][y] == QRPointType.ALIGN_CENTER || typeTable[x][y] == QRPointType.ALIGN_OTHER) {
+            if (typeTable[x][y] === QRPointType.ALIGN_CENTER || typeTable[x][y] === QRPointType.ALIGN_OTHER) {
                 if (qrcode.isDark(x, y)) {
                     if (alignType === 2) {
                         pointList.push(<use key={id++} xlinkHref="#B-black" x={posX - 0.03} y={posY - 0.03}/>)
@@ -35,7 +32,7 @@ function listPoints(qrcode, params) {
                         pointList.push(<use key={id++} xlinkHref="#B-white" x={posX - 0.03} y={posY - 0.03}/>)
                     }
                 }
-            } else if (typeTable[x][y] == QRPointType.TIMING) {
+            } else if (typeTable[x][y] === QRPointType.TIMING) {
                 if (qrcode.isDark(x, y)) {
                     if (timingType === 2) {
                         pointList.push(<use key={id++} xlinkHref="#B-black" x={posX - 0.03} y={posY - 0.03}/>)
@@ -49,11 +46,11 @@ function listPoints(qrcode, params) {
                         pointList.push(<use key={id++} xlinkHref="#B-white" x={posX - 0.03} y={posY - 0.03}/>)
                     }
                 }
-            } else if (typeTable[x][y] == QRPointType.POS_CENTER) {
+            } else if (typeTable[x][y] === QRPointType.POS_CENTER) {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(<use key={id++} fill={posColor} xlinkHref="#B" x={posX - 0.03} y={posY - 0.03}/>)
                 }
-            } else if (typeTable[x][y] == QRPointType.POS_OTHER) {
+            } else if (typeTable[x][y] === QRPointType.POS_OTHER) {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(<use key={id++} fill={posColor} xlinkHref="#B" x={posX - 0.03} y={posY - 0.03}/>)
                 } else {

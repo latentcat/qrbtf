@@ -6,7 +6,7 @@ const Renderer = ({ rendererType, ...other }) => (
 )
 
 function areEqual(prevProps, nextProps) {
-    return !(prevProps.selected == true || nextProps.selected == true)
+    return !(prevProps.selected === true || nextProps.selected === true)
 }
 
 export function createRenderer(renderer) {

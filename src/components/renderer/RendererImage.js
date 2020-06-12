@@ -30,28 +30,28 @@ function listPoints(qrcode, params) {
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
 
-            if (typeTable[x][y] == QRPointType.ALIGN_CENTER || typeTable[x][y] == QRPointType.ALIGN_OTHER || typeTable[x][y] == QRPointType.TIMING) {
+            if (typeTable[x][y] === QRPointType.ALIGN_CENTER || typeTable[x][y] === QRPointType.ALIGN_OTHER || typeTable[x][y] === QRPointType.TIMING) {
                 if (qrcode.isDark(x, y)) {
-                    if (type == 0)
+                    if (type === 0)
                         pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill={otherColorDark} x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
-                    else if (type == 1)
+                    else if (type === 1)
                         pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill={otherColorDark} cx={x + 0.5} cy={y + 0.5}/>)
                 } else {
-                    if (type == 0)
+                    if (type === 0)
                         pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill={otherColorLight} x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
-                    else if (type == 1)
+                    else if (type === 1)
                         pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill={otherColorLight} cx={x + 0.5} cy={y + 0.5}/>)
                 }
             }
-            else if (typeTable[x][y] == QRPointType.POS_CENTER) {
+            else if (typeTable[x][y] === QRPointType.POS_CENTER) {
                 if (qrcode.isDark(x, y)) {
-                    if (posType == 0) {
+                    if (posType === 0) {
                         pointList.push(<rect width={1} height={1} key={id++} fill={posColor} x={x} y={y}/>);
-                    } else if (posType == 1) {
+                    } else if (posType === 1) {
                         pointList.push(<circle key={id++} fill="white" cx={x + 0.5} cy={y + 0.5} r={5} />)
                         pointList.push(<circle key={id++} fill={posColor} cx={x + 0.5} cy={y + 0.5} r={1.5} />)
                         pointList.push(<circle key={id++} fill="none" strokeWidth="1" stroke={posColor}  cx={x + 0.5} cy={y + 0.5} r={3} />)
-                    } else if (posType == 2) {
+                    } else if (posType === 2) {
                         pointList.push(<circle key={id++} fill="white" cx={x + 0.5} cy={y + 0.5} r={5} />)
                         pointList.push(<circle key={id++} fill={posColor} cx={x + 0.5} cy={y + 0.5} r={1.5} />)
                         pointList.push(<circle key={id++} fill="none" strokeWidth="0.15" strokeDasharray="0.5,0.5" stroke={posColor}  cx={x + 0.5} cy={y + 0.5} r={3} />)
@@ -65,13 +65,13 @@ function listPoints(qrcode, params) {
                 }
 
             }
-            else if (typeTable[x][y] == QRPointType.POS_OTHER) {
+            else if (typeTable[x][y] === QRPointType.POS_OTHER) {
                 if (qrcode.isDark(x, y)) {
-                    if (posType == 0) {
+                    if (posType === 0) {
                         pointList.push(<rect width={1} height={1} key={id++} fill={posColor} x={x} y={y}/>);
                     }
                 } else {
-                    if (posType == 0) {
+                    if (posType === 0) {
                         pointList.push(<rect width={1} height={1} key={id++} fill="white" x={x} y={y}/>);
                     }
                 }
@@ -79,14 +79,14 @@ function listPoints(qrcode, params) {
             }
             else {
                 if (qrcode.isDark(x, y)) {
-                    if (type == 0)
+                    if (type === 0)
                         pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill={otherColorDark} x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
-                    else if (type == 1)
+                    else if (type === 1)
                         pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill={otherColorDark} cx={x + 0.5} cy={y + 0.5}/>)
                 } else {
-                    if (type == 0)
+                    if (type === 0)
                         pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill={otherColorLight} x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
-                    else if (type == 1)
+                    else if (type === 1)
                         pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill={otherColorLight} cx={x + 0.5} cy={y + 0.5}/>)
                 }
 

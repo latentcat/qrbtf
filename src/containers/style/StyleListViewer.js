@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
     styles: styles.map((style, index) => {
         return {
             value: style.value,
-            selected: state.selectedIndex == index,
+            selected: state.selectedIndex === index,
             renderer: <RendererViewer rendererType={style.renderer} index={index} setParamInfo={setParamInfo}/>
         }
     })
