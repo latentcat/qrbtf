@@ -568,16 +568,29 @@ input[type="number"]{
 }
 
 .Qr-footer {
-    color: #1D1D1F;
-    margin-bottom: -4px;
+    color: #515154;
+    margin-bottom: -1em;
 }
 
 .Gray {
     color: #86868B;
 }
 
+.gray {
+    color: #d2d2d7;
+}
+
 .Qr-footer div {
-    margin-bottom: 4px;
+    margin-bottom: 1em;
+    line-height: 1.5em;
+}
+
+.Qr-footer strong {
+    color: #000000 !important;
+}
+
+.Qr-footer-part span {
+    display: inline-block;
 }
 
 a {
@@ -592,6 +605,7 @@ a {
 
 a:hover {
     text-decoration: underline;
+    color: #1D1D1F;
 }
 
 #wx-message-inner {
@@ -646,7 +660,6 @@ a:hover {
 
 @media (min-width: 500px) {
     .note-font {
-        color: #1D1D1F;
         font-size: 14px;
     }
 
