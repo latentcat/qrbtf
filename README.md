@@ -75,3 +75,7 @@ class Component extends React.Component {
 #### Alipay
 
 <img align="center" src="https://blog.ciaochaos.com/projects/qrcode/alipay2.jpeg" width="300">
+
+## Dependency
+
+* [davidshimjs-qrcode](https://github.com/davidshimjs/qrcodejs)
