@@ -1,5 +1,9 @@
 <h1 align="center">QRBTF</h1>
 
+<div align="center">
+    <img src=".github/qrbtf-logo.svg" width="375">
+</div>
+
 <p align="center">
     URL: <a href="https://qrbtf.com" rel="noopener noreferrer" target="_blank">qrbtf.com</a><br />
     QRBTF is a simple web app to beautify your QR code.
@@ -79,3 +83,7 @@ class Component extends React.Component {
 ## Dependency
 
 * [davidshimjs-qrcode](https://github.com/davidshimjs/qrcodejs)
+
+## LICENSE
+
+[GPLv3](LICENSE)
