@@ -1,8 +1,4 @@
-<h1 align="center">QRBTF</h1>
-
-<div align="center">
-    <img src=".github/qrbtf-logo.svg" width="375">
-</div>
+<h1 align="center"><img alt="QRBTF" src=".github/qrbtf-logo.svg" height="75"></h1>
 
 <p align="center">
     URL: <a href="https://qrbtf.com" rel="noopener noreferrer" target="_blank">qrbtf.com</a><br />
