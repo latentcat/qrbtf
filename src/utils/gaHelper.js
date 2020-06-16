@@ -46,3 +46,10 @@ export function handleUpload() {
         action: 'Click',
     });
 }
+
+export function handleInputUrl() {
+    ReactGA.event({
+        category: 'Input',
+        action: 'Focus',
+    });
+}

@@ -3,7 +3,7 @@ import {genQRInfo} from "../../actions";
 import React, {useRef} from "react";
 import {isPicture} from "../../utils/imageUtils";
 import {decodeData} from "../../utils/qrcodeHandler";
-import {handleUpload} from "../../utils/gaHelper";
+import { handleUpload, handleInputUrl } from "../../utils/gaHelper";
 
 const InputText = ({dispatch}) => {
     const textRef = useRef();
@@ -53,10 +53,14 @@ const InputText = ({dispatch}) => {
                         className="Qr-input big-input"
                         placeholder="https://qrbtf.com"
                         ref={textRef}
-                        onBlur={e => dispatch(genQRInfo(e.target.value))}
+                        onBlur={(e) => {
+                            handleInputUrl();
+                            dispatch(genQRInfo(e.target.value))
+                        }}
                         onKeyPress={(e) => {
                             if (e.key === 'Enter') {
                                 dispatch(genQRInfo(e.target.value));
+                                handleInputUrl();
                                 e.target.blur();
                             }
                         }}
