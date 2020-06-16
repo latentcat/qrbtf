@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import {changeParam} from "../../actions";
 import ParamUpload from "../../components/param/ParamUpload";
 import {isPicture, toBase64} from "../../utils/imageUtils";
+import {handleUpload} from "../../utils/gaHelper";
 
 const mapStateToProps = (state, ownProps) => ({
     rendererIndex: ownProps.rendererIndex,
@@ -15,6 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         if (e.target.files.length > 0) {
             const file = e.target.files[0];
             if (isPicture(file)) {
+                handleUpload();
                 toBase64(file, 500, 500).then(res => {
                     dispatch(changeParam(ownProps.rendererIndex, ownProps.paramIndex, res))
                 })

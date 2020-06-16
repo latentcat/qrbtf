@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types'
 import '../Qrcode.css';
+import {handleLink} from "../../utils/gaHelper";
 
 const LinkButton = ({ href, value }) => (
-    <a href={href} rel="noopener noreferrer" target="_blank">
+    <a onClick={ (e) =>  handleLink(e.target.href)  } href={href} rel="noopener noreferrer" target="_blank">
         <button className="dl-btn">{value}</button>
     </a>
 )

@@ -1,5 +1,5 @@
 import {actionTypes} from "../constant/ActionTypes";
-import ReactGA from "react-ga";
+import {handleStyle} from "../utils/gaHelper";
 
 export const genQRInfo = text => ({
     type: actionTypes.GENERATE_QR_INFO,
@@ -7,12 +7,7 @@ export const genQRInfo = text => ({
 })
 
 export const changeStyle = (rendererIndex, rendererType, value) => {
-    ReactGA.event({
-        category: 'Style',
-        action: 'Switch',
-        value: value
-    });
-
+    handleStyle(value);
     return {
         type: actionTypes.CHANGE_STYLE,
         rendererIndex, rendererType, value
@@ -29,10 +24,13 @@ export const createParam = (paramInfo, paramValue) => ({
     paramInfo, paramValue
 })
 
-export const changeParam = (rendererIndex, paramIndex, value) => ({
-    type: actionTypes.CHANGE_PARAM,
-    rendererIndex, paramIndex, value
-})
+export const changeParam = (rendererIndex, paramIndex, value) => {
+
+    return {
+        type: actionTypes.CHANGE_PARAM,
+        rendererIndex, paramIndex, value
+    };
+}
 
 export const loadDownloadData = (data) => ({
     type: actionTypes.LOAD_DOWNLOAD_DATA,
