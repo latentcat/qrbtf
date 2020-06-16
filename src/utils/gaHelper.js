@@ -8,12 +8,19 @@ export function handleStyle(rendererName) {
     });
 }
 
-export function handleDownloadEvent(rendererName, value) {
+export function handleDownloadSvg(rendererName) {
     ReactGA.event({
         category: 'Style',
-        action: 'Download',
+        action: 'DownloadSvg',
         label: rendererName,
-        value: value
+    });
+}
+
+export function handleDownloadJpg(rendererName) {
+    ReactGA.event({
+        category: 'Style',
+        action: 'DownloadJpg',
+        label: rendererName,
     });
 }
 
