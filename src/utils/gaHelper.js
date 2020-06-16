@@ -42,14 +42,14 @@ export function handleLink(link) {
 
 export function handleUpload() {
     ReactGA.event({
-        category: 'Upload',
-        action: 'Click',
+        category: 'URL',
+        action: 'Upload',
     });
 }
 
 export function handleInputUrl() {
     ReactGA.event({
-        category: 'Input',
-        action: 'Focus',
+        category: 'URL',
+        action: 'Input',
     });
 }
