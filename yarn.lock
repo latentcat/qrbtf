@@ -8703,6 +8703,11 @@ react-error-overlay@^6.0.7:
   resolved "https://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha1-Hc+0WatnHVP2YKmRUTyy8KBVMQg=
 
+react-ga@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/react-ga/download/react-ga-3.0.0.tgz#4d665389cf0c489c36c5fdf97722a7e53efdfc5b"
+  integrity sha1-TWZTic8MSJw2xf35dyKn5T79/Fs=
+
 react-github-btn@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npm.taobao.org/react-github-btn/download/react-github-btn-1.2.0.tgz#464066f999a77c0eed27980260601b51cbe15614"

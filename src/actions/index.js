@@ -1,14 +1,23 @@
 import {actionTypes} from "../constant/ActionTypes";
+import ReactGA from "react-ga";
 
 export const genQRInfo = text => ({
     type: actionTypes.GENERATE_QR_INFO,
     text
 })
 
-export const changeStyle = (rendererIndex, rendererType, value) => ({
-    type: actionTypes.CHANGE_STYLE,
-    rendererIndex, rendererType, value
-})
+export const changeStyle = (rendererIndex, rendererType, value) => {
+    ReactGA.event({
+        category: 'Style',
+        action: 'Switch',
+        value: value
+    });
+
+    return {
+        type: actionTypes.CHANGE_STYLE,
+        rendererIndex, rendererType, value
+    }
+}
 
 export const changeCorrectLevel = (correctLevel) => ({
     type: actionTypes.CHANGE_CORRECT_LEVEL,

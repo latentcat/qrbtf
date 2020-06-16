@@ -10,7 +10,9 @@ import PartStylesViewer from "../../containers/app/PartStylesViewer";
 import {getDownloadCount, login} from "../../api/db";
 import {connect} from 'react-redux';
 import {loadDownloadData} from "../../actions";
+import ReactGA from 'react-ga';
 
+ReactGA.initialize('UA-165845289-1');
 function App({ dispatch }) {
     const updateDownloadData = useCallback((downloadData) => dispatch(loadDownloadData(downloadData)), []);
 
