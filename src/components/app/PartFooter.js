@@ -9,8 +9,8 @@ const PartFooter = () => (
         <div className="Qr-Centered Qr-footer note-font">
             <div>
                 <strong>作者</strong>&emsp;
-                <a
-                    href="https://blog.ciaochaos.com/"
+                <a onClick={ (e) =>  handleLink(e.target.href)  }
+                   href="https://blog.ciaochaos.com/"
                     rel="noopener noreferrer"
                     target="_blank">ciaochaos
                 </a>&emsp;
