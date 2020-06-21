@@ -109,7 +109,7 @@ function listPoints(qrcode, params) {
                                 ava2[x][y + i] = false;
                                 available[x][y + i] = false;
                             }
-                            pointList.push(<line x1={x + 0.5} y1={y + 0.5} x2={x + 0.5} y2={y + end - start - 1 + 0.5} strokeWidth={size} stroke={otherColor} strokeLinecap="round" key={id++}/>)
+                            pointList.push(<line opacity={opacity} x1={x + 0.5} y1={y + 0.5} x2={x + 0.5} y2={y + end - start - 1 + 0.5} strokeWidth={size} stroke={otherColor} strokeLinecap="round" key={id++}/>)
                         }
                     }
                     if (available[x][y]) {
@@ -134,7 +134,7 @@ function listPoints(qrcode, params) {
                                 ava2[x + i][y + i] = false;
                                 available[x + i][y + i] = false;
                             }
-                            pointList.push(<line x1={x + 0.5} y1={y + 0.5} x2={x + end - start - 1 + 0.5} y2={y + end - start - 1 + 0.5} strokeWidth={size} stroke={otherColor} strokeLinecap="round" key={id++}/>)
+                            pointList.push(<line opacity={opacity} x1={x + 0.5} y1={y + 0.5} x2={x + end - start - 1 + 0.5} y2={y + end - start - 1 + 0.5} strokeWidth={size} stroke={otherColor} strokeLinecap="round" key={id++}/>)
                         }
                     }
                     if (available[x][y]) {
@@ -159,7 +159,7 @@ function listPoints(qrcode, params) {
                                 ava2[x - i][y + i] = false;
                                 available[x - i][y + i] = false;
                             }
-                            pointList.push(<line x1={x + 0.5} y1={y + 0.5} x2={x - (end - start - 1) + 0.5} y2={y + (end - start - 1) + 0.5} strokeWidth={size} stroke={otherColor} strokeLinecap="round" key={id++}/>)
+                            pointList.push(<line opacity={opacity} x1={x + 0.5} y1={y + 0.5} x2={x - (end - start - 1) + 0.5} y2={y + (end - start - 1) + 0.5} strokeWidth={size} stroke={otherColor} strokeLinecap="round" key={id++}/>)
                         }
                     }
                     if (available[x][y]) {
