@@ -8,12 +8,14 @@ import Renderer25D from "../../components/renderer/Renderer25D";
 import RendererImage from "../../components/renderer/RendererImage";
 import RendererResImage from "../../components/renderer/RendererResImage";
 import {RendererRandRound, RendererRect, RendererRound} from "../../components/renderer/RendererBase";
+import {RendererLine} from "../../components/renderer/RendererLine";
 import * as React from "react";
 
 const styles = [
     {value: "A1", renderer: RendererRect},
     {value: "A2", renderer: RendererRound},
     {value: "A3", renderer: RendererRandRound},
+    {value: "A — 4", renderer: RendererLine},
     {value: "SP — 1", renderer: RendererDSJ},
     {value: "SP — 2", renderer: RendererRandRect},
     {value: "B1", renderer: Renderer25D},
