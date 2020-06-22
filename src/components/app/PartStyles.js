@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import StyleListViewer from "../../containers/style/StyleListViewer";
 import {isPC} from "../../utils/navigatorUtils";
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 const PartStyles = ({ setParamInfo }) => {
     const [loaded, setLoaded] = useState(false);
@@ -19,9 +20,9 @@ const PartStyles = ({ setParamInfo }) => {
                 {isPC() ? <div className="Qr-style-hint">按住 shift 滚动</div> : null}
             </div>
         </div>
-        <div className="Qr-s" style={{visibility: loaded ? "visible" :"hidden"}}>
+        <ScrollContainer className="Qr-s" style={{visibility: loaded ? "visible" :"hidden"}}>
             {styleList}
-        </div>
+        </ScrollContainer>
     </div>)
 }
 

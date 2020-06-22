@@ -13,6 +13,7 @@
     "react-dom": "^16.13.1",
     "react-ga": "^3.0.0",
     "react-github-btn": "^1.2.0",
+    "react-indiana-drag-scroll": "^1.6.1",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5"
