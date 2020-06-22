@@ -4,6 +4,7 @@ import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
 import LinkTrace from "../link/LinkTrace";
 import RenderDSJ from "./RendererDSJ";
+import {rand} from "../../utils/util";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -40,7 +41,7 @@ function listPoints(qrcode, params) {
 
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
-            if (!available[x][y] || !ava2[x][y] || qrcode.isDark(x, y) === false) continue;
+            if (qrcode.isDark(x, y) === false) continue;
 
             if (typeTable[x][y] === QRPointType.POS_CENTER) {
                 if (posType === 0) {
@@ -192,7 +193,7 @@ function listPoints(qrcode, params) {
                         let end = 0;
                         let ctn = true;
                         while (ctn && x + end < nCount  && y - end >= 0) {
-                            if (qrcode.isDark(x + end, y - end) && ava2[x + end][y - end]) {
+                            if (qrcode.isDark(x + end, y - end) && available[x + end][y - end]) {
                                 end++;
                             } else {
                                 ctn = false;
@@ -210,6 +211,45 @@ function listPoints(qrcode, params) {
                         pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill={otherColor} cx={x + 0.5} cy={y + 0.5}/>)
                     }
                 }
+                if (type === 5) {
+                    if (x === 0 || y === nCount - 1 || ((x > 0 && y < nCount - 1) && (!qrcode.isDark(x - 1, y + 1) || !ava2[x - 1][y + 1]))) {
+                        let start = 0;
+                        let end = 0;
+                        let ctn = true;
+                        while (ctn && x + end < nCount  && y - end >= 0) {
+                            if (qrcode.isDark(x + end, y - end) && ava2[x + end][y - end]) {
+                                end++;
+                            } else {
+                                ctn = false;
+                            }
+                        }
+                        if (end - start > 1) {
+                            for (let i = start; i < end; i++) {
+                                ava2[x + i][y - i] = false;
+                            }
+                            pointList.push(<line opacity={opacity} x1={x + 0.5} y1={y + 0.5} x2={x + (end - start - 1) + 0.5} y2={y - (end - start - 1) + 0.5} strokeWidth={size / 2 * rand(0.3,1)} stroke={otherColor} strokeLinecap="round" key={id++}/>)
+                        }
+                    }
+                    if (y === 0 || x === 0 || ((y > 0 && x > 0) && (!qrcode.isDark(x - 1, y - 1) || !available[x - 1][y - 1]))) {
+                        let start = 0;
+                        let end = 0;
+                        let ctn = true;
+                        while (ctn && y + end < nCount && x + end < nCount) {
+                            if (qrcode.isDark(x + end, y + end) && available[x + end][y + end]) {
+                                end++;
+                            } else {
+                                ctn = false;
+                            }
+                        }
+                        if (end - start > 1) {
+                            for (let i = start; i < end; i++) {
+                                available[x + i][y + i] = false;
+                            }
+                            pointList.push(<line opacity={opacity} x1={x + 0.5} y1={y + 0.5} x2={x + end - start - 1 + 0.5} y2={y + end - start - 1 + 0.5} strokeWidth={size / 2 * rand(0.3,1)} stroke={otherColor} strokeLinecap="round" key={id++}/>)
+                        }
+                    }
+                    pointList.push(<circle opacity={opacity} r={0.5 * rand(0.33,0.9)} key={id++} fill={otherColor} cx={x + 0.5} cy={y + 0.5}/>)
+                }
             }
         }
     }
@@ -222,13 +262,14 @@ function getParamInfoLine() {
         {
             type: ParamTypes.SELECTOR,
             key: '连线方向',
-            default: 1,
+            default: 2,
             choices: [
                 "左右",
                 "上下",
                 "纵横",
                 "左上 — 右下",
-                "右上 — 左下"
+                "右上 — 左下",
+                "交叉"
             ]
         },
         {
@@ -265,11 +306,69 @@ function getParamInfoLine() {
     ];
 }
 
+function getParamInfoLine2() {
+    return [
+        {
+            type: ParamTypes.SELECTOR,
+            key: '连线方向',
+            default: 5,
+            choices: [
+                "左右",
+                "上下",
+                "纵横",
+                "左上 — 右下",
+                "右上 — 左下",
+                "交叉"
+            ]
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '连线粗细',
+            default: 50
+        },
+        {
+            type: ParamTypes.TEXT_EDITOR,
+            key: '连线不透明度',
+            default: 100,
+        },
+        {
+            type: ParamTypes.SELECTOR,
+            key: '定位点样式',
+            default: 0,
+            choices: [
+                "矩形",
+                "圆形",
+                "行星",
+                "圆角矩形",
+            ]
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '连线颜色',
+            default: '#000000'
+        },
+        {
+            type: ParamTypes.COLOR_EDITOR,
+            key: '定位点点颜色',
+            default: '#000000'
+        }
+    ];
+}
+
 export const RendererLine= createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoLine,
 });
 
+export const RendererLine2= createRenderer({
+    listPoints: listPoints,
+    getParamInfo: getParamInfoLine2,
+});
+
 RendererLine.detail = (
     <div>连连看，可选方向</div>
+);
+
+RendererLine2.detail = (
+    <div>交错相连</div>
 );

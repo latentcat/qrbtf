@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Component} from 'react';
 import './App.css';
 import StyleListViewer from "../../containers/style/StyleListViewer";
 import {isPC} from "../../utils/navigatorUtils";
@@ -20,7 +20,11 @@ const PartStyles = ({ setParamInfo }) => {
                 {isPC() ? <div className="Qr-style-hint">拖拽滑动</div> : null}
             </div>
         </div>
-        <ScrollContainer className="Qr-s" style={{visibility: loaded ? "visible" :"hidden"}}>
+        <ScrollContainer
+            className="Qr-s"
+            horizontal={true}
+            vertical={false}
+            style={{visibility: loaded ? "visible" :"hidden"}}>
             {styleList}
         </ScrollContainer>
     </div>)
