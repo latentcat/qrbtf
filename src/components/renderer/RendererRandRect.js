@@ -1,6 +1,7 @@
 import React from "react";
 import {rand} from "../../utils/util";
 import {createRenderer} from "../style/Renderer";
+import {RendererLine} from "./RendererLine";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -47,3 +48,7 @@ const RendererRandRect = createRenderer({
 })
 
 export default RendererRandRect
+
+RendererRandRect.detail = (
+    <div>有一点点骚的配色，很适合你。</div>
+);

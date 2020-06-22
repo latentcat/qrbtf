@@ -2,6 +2,8 @@ import React  from "react";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
+import LinkTrace from "../link/LinkTrace";
+import RenderDSJ from "./RendererDSJ";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -231,3 +233,11 @@ export const RendererFuncB= createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoFuncB,
 });
+
+RendererFuncA.detail = (
+    <div>点干扰。</div>
+);
+
+RendererFuncB.detail = (
+    <div>线干扰。</div>
+);

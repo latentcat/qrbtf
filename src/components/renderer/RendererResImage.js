@@ -3,6 +3,7 @@ import {gamma} from "../../utils/imageUtils";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {defaultResImage} from "../../constant/References";
+import RendererRandRect from "./RendererRandRect";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -185,3 +186,8 @@ const RendererResImage = ({qrcode, params, setParamInfo}) => {
 
 
 export default RendererResImage
+
+
+RendererResImage.detail = (
+    <div>满满科技感的重采样二值化像素点阵，有点东西。</div>
+);

@@ -3,6 +3,7 @@ import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
 import {defaultImage} from "../../constant/References";
+import {RendererRandRound} from "./RendererBase";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -158,3 +159,7 @@ const RendererImage = createRenderer({
 
 
 export default RendererImage
+
+RendererImage.detail = (
+    <div>加了背景图，试试看还能扫描吗？</div>
+);

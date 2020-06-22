@@ -68,6 +68,7 @@
     width: 100vw;
     white-space: nowrap;
     display: flex;
+    margin-bottom: calc((-10px - 2vmin)/2);
 }
 
 .Qr-s::-webkit-scrollbar {
@@ -194,6 +195,10 @@
     color: #000000;
 }
 
+.Qr-item-selected .Qr-item-desc-inner {
+    opacity: 1;
+}
+
 .Qr-item-detail {
     color: rgba(0,0,0,0.3);
     margin-top: 5px;
@@ -205,6 +210,48 @@
     -webkit-transition-duration: 0.2s; /* Safari */
     -moz-animation-duration: 0.2s;
     transition-duration: 0.2s;
+}
+
+.Qr-item-desc {
+}
+
+
+.Qr-item-desc-inner {
+    opacity: 0;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+        width: calc((100vw - 56px) / 2);
+    text-align: left;
+    font-size: 12px;
+    color: rgba(0,0,0,0.6);
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    -moz-animation-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+
+@media (min-width: 500px) {
+    .Qr-item-desc-inner {
+        width: 200px;
+        font-size: 14px;
+    }
+}
+
+
+.Qr-item-desc a {
+    font-weight: bold;
+    padding: 0px 0;
+    color: #000000;
+    border-bottom: 1px solid #000000;
+}
+
+.Qr-item-desc a:hover {
+    color: #000000;
+    border-bottom: 1px solid #000000;
+    text-decoration: none;
 }
 
 tr {

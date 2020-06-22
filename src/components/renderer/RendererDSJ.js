@@ -2,6 +2,8 @@ import React from "react";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
+import LinkTrace from "../link/LinkTrace";
+import {RendererRect} from "./RendererBase";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -192,5 +194,9 @@ const RenderDSJ = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfo,
 })
+
+RenderDSJ.detail = (
+    <div>复刻了 DSJ 的 <LinkTrace href="https://qrbtf.com/img/dsj.jpg" rel="noopener noreferrer" target="_blank">手工作品</LinkTrace>，向时代致敬！</div>
+);
 
 export default RenderDSJ

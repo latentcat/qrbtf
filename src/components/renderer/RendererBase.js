@@ -232,14 +232,13 @@ export const RendererRandRound = createRenderer({
 });
 
 RendererRect.detail = (
-    <p>生成矩形<LinkTrace href="https://zh.wikipedia.org/wiki/QR%E7%A2%BC">二维码</LinkTrace>。</p>
+    <div>最基本的二维码，也有有趣的玩法。</div>
 );
 
 RendererRound.detail = (
-    <p>生成圆形二维码。</p>
+    <div>大厂喜欢的玩法，非常适合在中间放置 Logo。</div>
 );
 
-
 RendererRandRound.detail = (
-    <p>生成随机点圆形二维码。</p>
+    <div>随机圆点，混乱与秩序。</div>
 );

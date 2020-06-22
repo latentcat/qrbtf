@@ -17,8 +17,10 @@ const Style = ({ value, renderer, selected, details, onSelected }) => (
         <div className="Qr-item-detail">
             {value}
         </div>
-        <div className="Qr-item-detail">
-            {details}
+        <div className="Qr-item-desc">
+            <div className="Qr-item-desc-inner">
+                {details}
+            </div>
         </div>
     </div>
 );

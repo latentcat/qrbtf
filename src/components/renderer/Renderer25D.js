@@ -2,6 +2,7 @@ import React from "react";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
+import RendererResImage from "./RendererResImage";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -91,3 +92,7 @@ const Renderer25D = createRenderer({
 })
 
 export default Renderer25D
+
+Renderer25D.detail = (
+    <div>通向三维的半路。可能有一点点难以识别。</div>
+);

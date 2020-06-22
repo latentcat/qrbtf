@@ -2,6 +2,8 @@ import React  from "react";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
+import LinkTrace from "../link/LinkTrace";
+import RenderDSJ from "./RendererDSJ";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -223,3 +225,7 @@ export const RendererLine= createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoLine,
 });
+
+RendererLine.detail = (
+    <div>连连看。可选方向。</div>
+);
