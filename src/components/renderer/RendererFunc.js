@@ -28,29 +28,15 @@ function listPoints(qrcode, params) {
 
     if (size <= 0) size = 1.0
 
-    function f(nCount, x, y, funcType) {
-        const dist = Math.sqrt(Math.pow((nCount - 1)/2 - x, 2) + Math.pow((nCount - 1)/2 - y, 2)) / (nCount / 2 * Math.sqrt(2));
-        let sizeF = 0
-        let colorF = otherColor
-        if (funcType === 0) {
-            sizeF = (1 - Math.cos(Math.PI * dist))/6 + 1/5;
-        }
-        if (funcType === 1) {
-            if (dist > 3/10 && dist < 2/5) {
-                sizeF = 5/10
-                colorF = otherColor2
-            } else {
-                sizeF = 1/5
-            }
-        }
-        return [sizeF, colorF]
+
+    if (funcType === 1) {
+        pointList.push(<circle key={id++} fill="none" strokeWidth={nCount / 15} stroke={otherColor2}  cx={nCount/2} cy={nCount/2} r={nCount/2*Math.sqrt(2)*13/40} />)
     }
 
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
-            if (qrcode.isDark(x, y) === false) continue;
 
-            if (typeTable[x][y] === QRPointType.POS_CENTER) {
+            if (qrcode.isDark(x, y) && typeTable[x][y] === QRPointType.POS_CENTER) {
                 if (posType === 0) {
                     pointList.push(<rect width={1} height={1} key={id++} fill={posColor} x={x} y={y}/>);
                 } else if (posType === 1) {
@@ -70,20 +56,52 @@ function listPoints(qrcode, params) {
                     pointList.push(<path key={id++} d={sq25} stroke={posColor} strokeWidth={100/6 * (1 - (1 - 0.8) * 0.75)} fill="none" transform={'translate('+String(x - 2.5)+','+String(y - 2.5)+') ' + 'scale(' + String(6/100) + ',' + String(6/100) + ')'} />)
                 }
             }
-            else if (typeTable[x][y] === QRPointType.POS_OTHER) {
+            else if (qrcode.isDark(x, y) && typeTable[x][y] === QRPointType.POS_OTHER) {
                 if (posType === 0) {
                     pointList.push(<rect width={1} height={1} key={id++} fill={posColor} x={x} y={y}/>);
                 }
             }
             else {
-                if (type === 0) {
-                    const F = f(nCount, x, y, funcType);
-                    const sizeF = F[0] + 0.2;
-                    pointList.push(<rect opacity={opacity} width={sizeF} height={sizeF} key={id++} fill={otherColor} x={x + (1 - sizeF)/2} y={y + (1 - sizeF)/2}/>)
+                const dist = Math.sqrt(Math.pow((nCount - 1)/2 - x, 2) + Math.pow((nCount - 1)/2 - y, 2)) / (nCount / 2 * Math.sqrt(2));
+                if (funcType === 0) {
+                    let sizeF = (1 - Math.cos(Math.PI * dist))/6 + 1/5;
+                    let colorF = otherColor;
+                    let opacityF = Number(qrcode.isDark(x, y));
+                    if (type === 0) {
+                        sizeF = sizeF + 0.2;
+                        pointList.push(<rect opacity={opacityF} width={sizeF} height={sizeF} key={id++} fill={colorF} x={x + (1 - sizeF)/2} y={y + (1 - sizeF)/2}/>)
+                    }
+                    else if (type === 1) {
+                        pointList.push(<circle opacity={opacityF} r={sizeF} key={id++} fill={colorF} cx={x + 0.5} cy={y + 0.5}/>)
+                    }
                 }
-                else if (type === 1) {
-                    const F = f(nCount, x, y, funcType);
-                    pointList.push(<circle opacity={opacity} r={F[0]} key={id++} fill={F[1]} cx={x + 0.5} cy={y + 0.5}/>)
+                if (funcType === 1) {
+                    let sizeF = 0
+                    let colorF = otherColor
+                    let fillF = colorF
+                    let opacityF = Number(qrcode.isDark(x, y));
+                    if (dist > 5/20 && dist < 8/20) {
+                        sizeF = 5/10
+                        colorF = otherColor2
+                        opacityF = 1
+                    } else {
+                        sizeF = 1/4
+                    }
+                    if (type === 0) {
+                        sizeF = sizeF + 0.2;
+                        if (qrcode.isDark(x, y)) {
+                            pointList.push(<rect opacity={opacityF} width={sizeF} height={sizeF} key={id++} fill={colorF} x={x + (1 - sizeF)/2} y={y + (1 - sizeF)/2}/>)
+                        } else {
+                            pointList.push(<rect opacity={opacityF} width={sizeF} height={sizeF} key={id++} stroke={colorF} strokeWidth={0.2} fill="#FFFFFF" x={x + (1 - sizeF)/2} y={y + (1 - sizeF)/2}/>)
+                        }
+                    }
+                    else if (type === 1) {
+                        if (qrcode.isDark(x, y)) {
+                            pointList.push(<circle opacity={opacityF} r={sizeF} key={id++} fill={colorF} cx={x + 0.5} cy={y + 0.5}/>)
+                        } else {
+                            pointList.push(<circle opacity={opacityF} r={sizeF} key={id++} stroke={colorF} strokeWidth={0.1} fill="#FFFFFF" cx={x + 0.5} cy={y + 0.5}/>)
+                        }
+                    }
                 }
             }
         }
@@ -190,7 +208,7 @@ function getParamInfoFuncB() {
         {
             type: ParamTypes.COLOR_EDITOR,
             key: '信息点颜色 2',
-            default: '#FF8200'
+            default: '#000000'
         },
         {
             type: ParamTypes.COLOR_EDITOR,
