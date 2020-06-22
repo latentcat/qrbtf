@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-    <img src="https://blog.ciaochaos.com/projects/qrcode/qrs2.jpg" width="500">
+    <img src="public/img/QRcodes.jpg">
 </p>
 
 ## Features
