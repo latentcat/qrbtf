@@ -29,7 +29,7 @@ function listPoints(qrcode, params) {
     if (size <= 0) size = 1.0
 
 
-    if (funcType === 1) {
+    if (funcType === 1 && type === 1) {
         pointList.push(<circle key={id++} fill="none" strokeWidth={nCount / 15} stroke={otherColor2}  cx={nCount/2} cy={nCount/2} r={nCount/2*Math.sqrt(2)*13/40} />)
     }
 
@@ -86,13 +86,17 @@ function listPoints(qrcode, params) {
                         opacityF = 1
                     } else {
                         sizeF = 1/4
+                        if (type === 0) {
+                            sizeF = 1/4 - 0.1
+                        }
                     }
                     if (type === 0) {
-                        sizeF = sizeF + 0.2;
+                        sizeF = 2 * sizeF + 0.1;
                         if (qrcode.isDark(x, y)) {
                             pointList.push(<rect opacity={opacityF} width={sizeF} height={sizeF} key={id++} fill={colorF} x={x + (1 - sizeF)/2} y={y + (1 - sizeF)/2}/>)
                         } else {
-                            pointList.push(<rect opacity={opacityF} width={sizeF} height={sizeF} key={id++} stroke={colorF} strokeWidth={0.2} fill="#FFFFFF" x={x + (1 - sizeF)/2} y={y + (1 - sizeF)/2}/>)
+                            sizeF = sizeF - 0.1
+                            pointList.push(<rect opacity={opacityF} width={sizeF} height={sizeF} key={id++} stroke={colorF} strokeWidth={0.1} fill="#FFFFFF" x={x + (1 - sizeF)/2} y={y + (1 - sizeF)/2}/>)
                         }
                     }
                     else if (type === 1) {
