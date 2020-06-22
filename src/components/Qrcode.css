@@ -63,7 +63,7 @@
 
 .Qr-s {
     overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-y: hidden!important;
     width: calc(100vw - var(--scrollbar-width));
     white-space: nowrap;
     display: flex;
