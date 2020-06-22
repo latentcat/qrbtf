@@ -44,6 +44,7 @@ const PartFooter = () => (
                                  target="_blank">Sangmin, Shim</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://github.com/cozmo/jsQR" rel="noopener noreferrer"
                                  target="_blank">Cosmo Wolfe</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span>董斯佳<span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/qCTnkPWEX6AfL2CJua_AqQ" rel="noopener noreferrer"
                                  target="_blank">野生符号</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/NdVsF_FJxqSZOyGionoo1Q" rel="noopener noreferrer"
