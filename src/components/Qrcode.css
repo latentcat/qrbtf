@@ -64,7 +64,6 @@
 .Qr-s {
     overflow-x: scroll;
     overflow-y: hidden;
-    overflow-scrolling: touch;
     width: calc(100vw - var(--scrollbar-width));
     white-space: nowrap;
     display: flex;
@@ -100,8 +99,8 @@
 
 @media (min-width: 1000px) {
     .Qr-box {
-        padding-left: calc((100vw - 1000px) / 2 + 23px);
-        padding-right: calc((100vw - 1000px) / 2 + 13px);
+        padding-left: calc((100vw - var(--scrollbar-width) - 1000px) / 2 + 23px);
+        padding-right: calc((100vw - var(--scrollbar-width) - 1000px) / 2 + 13px);
     }
 }
 
@@ -195,8 +194,12 @@
     color: #000000;
 }
 
-.Qr-item-selected .Qr-item-desc-inner {
+.Qr-item:hover .Qr-item-desc-inner {
     opacity: 1;
+}
+
+.Qr-item-selected .Qr-item-desc-inner {
+    opacity: 1!important;
 }
 
 .Qr-item-detail {
