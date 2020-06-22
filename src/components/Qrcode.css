@@ -196,7 +196,7 @@
 
 .Qr-item-selected .Qr-item-desc-inner {
     opacity: 1!important;
-    display: block;
+    height: auto;
 }
 
 .Qr-item-detail {
@@ -218,12 +218,12 @@
 
 
 .Qr-item-desc-inner {
-    display: none;
+    height: 0;
     opacity: 0;
     word-wrap: break-word;
     word-break: break-all;
     white-space: normal;
-        width: calc((100vw - 56px) / 2);
+    width: calc((100vw - 56px) / 2);
     text-align: left;
     font-size: 12px;
     color: rgba(0,0,0,0.6);
