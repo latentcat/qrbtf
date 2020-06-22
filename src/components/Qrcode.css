@@ -194,8 +194,12 @@
     color: #000000;
 }
 
-.Qr-item-selected .Qr-item-desc-inner {
+.Qr-item:hover .Qr-item-desc-inner {
     opacity: 1;
+}
+
+.Qr-item-selected .Qr-item-desc-inner {
+    opacity: 1!important;
 }
 
 .Qr-item-detail {
