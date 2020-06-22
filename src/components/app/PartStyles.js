@@ -17,7 +17,7 @@ const PartStyles = ({ setParamInfo }) => {
             <div className="Qr-s-title">Styles</div>
             <div className="Qr-s-subtitle Qr-rel">
                 点击选择样式
-                {isPC() ? <div className="Qr-style-hint">按住 shift 滚动</div> : null}
+                {isPC() ? <div className="Qr-style-hint">拖拽滑动</div> : null}
             </div>
         </div>
         <ScrollContainer className="Qr-s" style={{visibility: loaded ? "visible" :"hidden"}}>
