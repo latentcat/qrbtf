@@ -240,5 +240,5 @@ RendererRound.detail = (
 );
 
 RendererRandRound.detail = (
-    <div>随机圆点，混乱与秩序</div>
+    <div>随机圆点，混乱与秩序。源于 <LinkTrace href="https://ncf.cz-studio.cn/" rel="noopener noreferrer" target="_blank">NCFZ</LinkTrace></div>
 );
