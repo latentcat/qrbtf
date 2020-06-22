@@ -100,8 +100,8 @@
 
 @media (min-width: 1000px) {
     .Qr-box {
-        padding-left: calc((100vw - 1000px) / 2 + 23px);
-        padding-right: calc((100vw - 1000px) / 2 + 13px);
+        padding-left: calc((100vw - var(--scrollbar-width) - 1000px) / 2 + 23px);
+        padding-right: calc((100vw - var(--scrollbar-width) - 1000px) / 2 + 13px);
     }
 }
 
