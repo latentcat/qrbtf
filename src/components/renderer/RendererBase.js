@@ -3,6 +3,7 @@ import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
 import {rand} from "../../utils/util";
+import LinkTrace from "../link/LinkTrace";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []
@@ -215,7 +216,7 @@ function getParamInfoRandRound() {
     ];
 }
 
-export const RendererRect= createRenderer({
+export const RendererRect = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoRect,
 });
@@ -229,3 +230,16 @@ export const RendererRandRound = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoRandRound,
 });
+
+RendererRect.detail = (
+    <p>生成矩形<LinkTrace href="https://zh.wikipedia.org/wiki/QR%E7%A2%BC">二维码</LinkTrace>。</p>
+);
+
+RendererRound.detail = (
+    <p>生成圆形二维码。</p>
+);
+
+
+RendererRandRound.detail = (
+    <p>生成随机点圆形二维码。</p>
+);

@@ -6,7 +6,7 @@ function calClassName(selected) {
     return 'Qr-item';
 }
 
-const Style = ({ value, renderer, selected, onSelected }) => (
+const Style = ({ value, renderer, selected, details, onSelected }) => (
     <div className={calClassName(selected)}
          onMouseDown={onSelected}>
         <div className="Qr-item-image">
@@ -16,6 +16,9 @@ const Style = ({ value, renderer, selected, onSelected }) => (
         </div>
         <div className="Qr-item-detail">
             {value}
+        </div>
+        <div className="Qr-item-detail">
+            {details}
         </div>
     </div>
 );

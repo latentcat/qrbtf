@@ -39,6 +39,7 @@ const mapStateToProps = state => ({
         return {
             value: style.value,
             selected: state.selectedIndex === index,
+            details: style.renderer.detail,
             renderer: <RendererViewer rendererType={style.renderer} index={index} setParamInfo={setParamInfo}/>
         }
     })

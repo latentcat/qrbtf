@@ -199,38 +199,7 @@ QRCode.prototype = {
 
 		return pattern;
 	},
-
-	createMovieClip : function(target_mc, instance_name, depth) {
-
-		let qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
-		let cs = 1;
-
-		this.make();
-
-		for (let row = 0; row < this.modules.length; row++) {
-
-			let y = row * cs;
-
-			for (let col = 0; col < this.modules[row].length; col++) {
-
-				let x = col * cs;
-				let dark = this.modules[row][col];
-
-				if (dark) {
-					qr_mc.beginFill(0, 100);
-					qr_mc.moveTo(x, y);
-					qr_mc.lineTo(x + cs, y);
-					qr_mc.lineTo(x + cs, y + cs);
-					qr_mc.lineTo(x, y + cs);
-					qr_mc.endFill();
-				}
-			}
-		}
-
-		return qr_mc;
-	},
-
-	setupTimingPattern : function() {
+    setupTimingPattern : function() {
 
 		for (let r = 8; r < this.moduleCount - 8; r++) {
 			if (this.modules[r][6] != null) {

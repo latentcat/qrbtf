@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import LinkButton from "../link/LinkButton";
 import GitHubButton from 'react-github-btn'
-import {handleLink} from "../../utils/gaHelper";
+import LinkTrace from "../link/LinkTrace";
 
 const PartMore = () => (
     <div className="Qr-titled-nobg">
@@ -12,11 +12,11 @@ const PartMore = () => (
             <div className="Qr-article">
                 <p><GitHubButton className="github-btn" href="https://github.com/ciaochaos/qrbtf" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciaochaos/qrbtf on GitHub">Star</GitHubButton></p>
                 <h2>最新消息</h2>
-                <p><b>2020.6.11</b><br/>QRBTF React 组件发布！快在你的应用中引入 react-qrbtf 吧。<a onClick={ (e) =>  handleLink(e.target.href)  } href='https://github.com/cpunisher/react-qrbtf' rel="noopener noreferrer" target="_blank">访问项目</a>。</p>
-                <p><b>2020.5.23</b><br/>网站开源啦！<a onClick={ (e) =>  handleLink(e.target.href)  } href='https://github.com/ciaochaos/qrbtf' rel="noopener noreferrer" target="_blank">点击访问</a> 我们的 Github。期待你也来参与设计、开发！给个 Star 支持一下不？查看文章 <a onClick={ (e) =>  handleLink(e.target.href)  } href='https://mp.weixin.qq.com/s/GFEMCWQu3e2qhTuBabnHmQ' rel="noopener noreferrer" target="_blank">QRBTF 开源啦！来写个二维码样式吧～</a>。</p>
+                <p><b>2020.6.11</b><br/>QRBTF React 组件发布！快在你的应用中引入 react-qrbtf 吧。<LinkTrace href='https://github.com/cpunisher/react-qrbtf' rel="noopener noreferrer" target="_blank">访问项目</LinkTrace>。</p>
+                <p><b>2020.5.23</b><br/>网站开源啦！<LinkTrace href='https://github.com/ciaochaos/qrbtf' rel="noopener noreferrer" target="_blank">点击访问</LinkTrace> 我们的 Github。期待你也来参与设计、开发！给个 Star 支持一下不？查看文章 <LinkTrace href='https://mp.weixin.qq.com/s/GFEMCWQu3e2qhTuBabnHmQ' rel="noopener noreferrer" target="_blank">QRBTF 开源啦！来写个二维码样式吧～</LinkTrace>。</p>
                 <p><b>2020.5.22</b><br/>新增 C2 样式、下载计数（好像还不太稳定）、普通二维码上传、颜色选择、背景图片上传、输入提示、桌面端横向滚动提示。</p>
                 <h2>为什么要做一个二维码生成器？</h2>
-                <p>看这里，<a onClick={ (e) =>  handleLink(e.target.href)  } href='https://mp.weixin.qq.com/s/_Oy9I9FqPXhfwN9IUhf6_g' rel="noopener noreferrer" target="_blank">如何制作一个漂亮的二维码</a> 这篇文章简要介绍了我们的初心与愿景。</p>
+                <p>看这里，<LinkTrace href='https://mp.weixin.qq.com/s/_Oy9I9FqPXhfwN9IUhf6_g' rel="noopener noreferrer" target="_blank">如何制作一个漂亮的二维码</LinkTrace> 这篇文章简要介绍了我们的初心与愿景。</p>
                 <h2>这个生成器的特别之处在哪里？</h2>
                 <p>普通的二维码样式单一，不能与环境较好的融合。这一个生成器有着 <b>丰富的参数化样式、基于 SVG 的二维码生成能力</b>，在为我们提供精美样式的同时，不限制参数如数值、颜色、背景图片的选择，又因 SVG 有较好的拓展性，可以完美兼容矢量制图流程。</p>
                 <h2>如何使用？</h2>

@@ -20,6 +20,7 @@ function saveDB(state, type, updateDownloadData) {
                             value: value
                         }
                     }
+                    return {}
                 }),
                 history: state.history
             }, () => {
