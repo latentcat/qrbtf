@@ -8,7 +8,7 @@ function calClassName(selected) {
 
 const Style = ({ value, renderer, selected, details, onSelected }) => (
     <div className={calClassName(selected)}
-         onMouseDown={onSelected}>
+         onClick={onSelected}>
         <div className="Qr-item-image">
             <div className="Qr-item-image-inner">
                 {renderer}
