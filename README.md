@@ -62,10 +62,6 @@ class Component extends React.Component {
 }
 ```
 
-## Examples
-
-<img align="center" src="https://blog.ciaochaos.com/projects/qrcode/qrc2.jpg" width="300">
-
 ## Donation
 
 #### Paypal
@@ -74,11 +70,12 @@ class Component extends React.Component {
 
 #### Alipay
 
-<img align="center" src="https://blog.ciaochaos.com/projects/qrcode/alipay2.jpeg" width="300">
+<img align="center" src="https://blog.ciaochaos.com/projects/qrcode/alipay2.jpeg" width="250">
 
 ## Dependency
 
-* [davidshimjs-qrcode](https://github.com/davidshimjs/qrcodejs)
+* [davidshimjs / qrcode](https://github.com/davidshimjs/qrcodejs)
+* [cozmo / jsQR](https://github.com/cozmo/jsQR)
 
 ## LICENSE
 
