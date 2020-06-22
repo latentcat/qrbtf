@@ -194,12 +194,9 @@
     color: #000000;
 }
 
-.Qr-item:hover .Qr-item-desc-inner {
-    opacity: 1;
-}
-
 .Qr-item-selected .Qr-item-desc-inner {
     opacity: 1!important;
+    display: block;
 }
 
 .Qr-item-detail {
@@ -216,10 +213,12 @@
 }
 
 .Qr-item-desc {
+
 }
 
 
 .Qr-item-desc-inner {
+    display: none;
     opacity: 0;
     word-wrap: break-word;
     word-break: break-all;
@@ -248,13 +247,13 @@
     font-weight: bold;
     padding: 0px 0;
     color: #000000;
-    border-bottom: 1px solid #000000;
+    box-sizing: border-box;
+    text-decoration: none;
 }
 
 .Qr-item-desc a:hover {
     color: #000000;
-    border-bottom: 1px solid #000000;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 tr {
