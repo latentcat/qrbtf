@@ -11,10 +11,12 @@ import {getDownloadCount, login} from "../../api/db";
 import {connect} from 'react-redux';
 import {loadDownloadData} from "../../actions";
 import ReactGA from 'react-ga';
+import {setScrollbarWidthProp} from "../../utils/util"
 
 ReactGA.initialize('UA-165845289-1');
 function App({ dispatch }) {
     const updateDownloadData = useCallback((downloadData) => dispatch(loadDownloadData(downloadData)), []);
+    setScrollbarWidthProp()
 
     useEffect(() => {
         login().then(() => {

@@ -65,7 +65,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     overflow-scrolling: touch;
-    width: 100vw;
+    width: calc(100vw - var(--scrollbar-width));
     white-space: nowrap;
     display: flex;
     margin-bottom: calc((-10px - 2vmin)/2);
