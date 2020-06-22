@@ -9,6 +9,7 @@ import RendererImage from "../../components/renderer/RendererImage";
 import RendererResImage from "../../components/renderer/RendererResImage";
 import {RendererRandRound, RendererRect, RendererRound} from "../../components/renderer/RendererBase";
 import {RendererLine} from "../../components/renderer/RendererLine";
+import { RendererFuncA , RendererFuncB } from "../../components/renderer/RendererFunc";
 import * as React from "react";
 
 const styles = [
@@ -16,6 +17,8 @@ const styles = [
     {value: "A2", renderer: RendererRound},
     {value: "A3", renderer: RendererRandRound},
     {value: "A — a1", renderer: RendererLine},
+    {value: "A — b1", renderer: RendererFuncA},
+    {value: "A — b2", renderer: RendererFuncB},
     {value: "SP — 1", renderer: RendererDSJ},
     {value: "SP — 2", renderer: RendererRandRect},
     {value: "B1", renderer: Renderer25D},
