@@ -120,7 +120,7 @@ function getParamInfoFuncA() {
         {
             type: ParamTypes.SELECTOR,
             key: '信息点样式',
-            default: 0,
+            default: 1,
             choices: [
                 "矩形",
                 "圆形",
@@ -143,7 +143,7 @@ function getParamInfoFuncA() {
         {
             type: ParamTypes.SELECTOR,
             key: '定位点样式',
-            default: 0,
+            default: 1,
             choices: [
                 "矩形",
                 "圆形",
