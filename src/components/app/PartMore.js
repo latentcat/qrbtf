@@ -12,6 +12,7 @@ const PartMore = () => (
             <div className="Qr-article">
                 <p><GitHubButton className="github-btn" href="https://github.com/ciaochaos/qrbtf" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciaochaos/qrbtf on GitHub">Star</GitHubButton></p>
                 <h2>最新消息</h2>
+                <p><b>2020.6.22</b><br/>新增 A — a1、A — b1、A — b2 样式，添加样式描述。</p>
                 <p><b>2020.6.11</b><br/>QRBTF React 组件发布！快在你的应用中引入 react-qrbtf 吧。<LinkTrace href='https://github.com/cpunisher/react-qrbtf' rel="noopener noreferrer" target="_blank">访问项目</LinkTrace>。</p>
                 <p><b>2020.5.23</b><br/>网站开源啦！<LinkTrace href='https://github.com/ciaochaos/qrbtf' rel="noopener noreferrer" target="_blank">点击访问</LinkTrace> 我们的 Github。期待你也来参与设计、开发！给个 Star 支持一下不？查看文章 <LinkTrace href='https://mp.weixin.qq.com/s/GFEMCWQu3e2qhTuBabnHmQ' rel="noopener noreferrer" target="_blank">QRBTF 开源啦！来写个二维码样式吧～</LinkTrace>。</p>
                 <p><b>2020.5.22</b><br/>新增 C2 样式、下载计数（好像还不太稳定）、普通二维码上传、颜色选择、背景图片上传、输入提示、桌面端横向滚动提示。</p>
