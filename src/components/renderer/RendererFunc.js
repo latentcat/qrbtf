@@ -235,9 +235,9 @@ export const RendererFuncB= createRenderer({
 });
 
 RendererFuncA.detail = (
-    <div>点干扰。</div>
+    <div>点干扰</div>
 );
 
 RendererFuncB.detail = (
-    <div>线干扰。</div>
+    <div>线干扰</div>
 );

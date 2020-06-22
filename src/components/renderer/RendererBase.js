@@ -232,13 +232,13 @@ export const RendererRandRound = createRenderer({
 });
 
 RendererRect.detail = (
-    <div>最基本的二维码，也有有趣的玩法。</div>
+    <div>最基本的二维码，也有有趣的玩法</div>
 );
 
 RendererRound.detail = (
-    <div>大厂喜欢的玩法，非常适合在中间放置 Logo。</div>
+    <div>大厂喜欢的样式，非常适合在中间放置 Logo</div>
 );
 
 RendererRandRound.detail = (
-    <div>随机圆点，混乱与秩序。</div>
+    <div>随机圆点，混乱与秩序</div>
 );

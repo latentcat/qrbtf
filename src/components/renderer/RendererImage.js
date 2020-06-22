@@ -161,5 +161,5 @@ const RendererImage = createRenderer({
 export default RendererImage
 
 RendererImage.detail = (
-    <div>加了背景图，试试看还能扫描吗？</div>
+    <div>加了背景图，试试看还能扫描吗</div>
 );

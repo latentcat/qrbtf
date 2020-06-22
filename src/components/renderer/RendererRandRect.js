@@ -50,5 +50,5 @@ const RendererRandRect = createRenderer({
 export default RendererRandRect
 
 RendererRandRect.detail = (
-    <div>有一点点骚的配色，很适合你。</div>
+    <div>有一点点骚的配色，很适合你</div>
 );

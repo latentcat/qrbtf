@@ -227,5 +227,5 @@ export const RendererLine= createRenderer({
 });
 
 RendererLine.detail = (
-    <div>连连看。可选方向。</div>
+    <div>连连看，可选方向</div>
 );

@@ -196,7 +196,7 @@ const RenderDSJ = createRenderer({
 })
 
 RenderDSJ.detail = (
-    <div>复刻了 DSJ 的 <LinkTrace href="https://qrbtf.com/img/dsj.jpg" rel="noopener noreferrer" target="_blank">手工作品</LinkTrace>，向时代致敬！</div>
+    <div>复刻了 DSJ 的 <LinkTrace href="https://qrbtf.com/img/dsj.jpg" rel="noopener noreferrer" target="_blank">手工作品</LinkTrace>，向时代致敬</div>
 );
 
 export default RenderDSJ
