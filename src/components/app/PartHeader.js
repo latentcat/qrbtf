@@ -1,17 +1,12 @@
 import React from "react";
 import '../Qrcode.css';
-import logo from "../../qrbtf-logo.svg";
 import InputText from "../../containers/app/InputText";
-
-const logoStyle = {
-    background: `url(${logo})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'left'
-};
+import QrbtfLogo from "../svg/QrbtfLogo";
 
 const PartHeader = () => (
     <div className="Qr-Centered">
-        <div style={logoStyle}>
+        <div>
+            <QrbtfLogo />
             <h1 className="Qr-title">&ensp;</h1>
         </div>
         <p className="Qr-subtitle">参数化二维码生成器 <sup className="Gray">测试版</sup></p>
