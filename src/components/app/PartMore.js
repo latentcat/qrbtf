@@ -10,7 +10,7 @@ const PartMore = () => (
             <div className="Qr-s-title">More</div>
             <p className="Qr-s-subtitle">更多</p>
             <div className="Qr-article">
-                <p><GitHubButton className="github-btn" href="https://github.com/ciaochaos/qrbtf" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciaochaos/qrbtf on GitHub">Star</GitHubButton></p>
+                <p><GitHubButton href="https://github.com/ciaochaos/qrbtf" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciaochaos/qrbtf on GitHub">Star</GitHubButton></p>
                 <h2>最新消息</h2>
                 <p><b>2020.6.23</b><br/>新增深色模式。</p>
                 <p><b>2020.6.22</b><br/>新增 A — a1、A — a2、A — b1、A — b2 样式，添加样式描述，新增桌面端横向拖拽滑动。</p>
