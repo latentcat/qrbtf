@@ -62,6 +62,11 @@ class Component extends React.Component {
 }
 ```
 
+## Author
+
+* [ciaochaos](https://github.com/ciaochaos)
+* [CPunisher](https://github.com/CPunisher)
+
 ## Donation
 
 #### Paypal

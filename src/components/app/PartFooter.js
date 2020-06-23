@@ -49,6 +49,8 @@ const PartFooter = () => (
                                  target="_blank">野生符号</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/NdVsF_FJxqSZOyGionoo1Q" rel="noopener noreferrer"
                                  target="_blank">JaBi 扎比</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="http://nav.6soluo.com/" rel="noopener noreferrer"
+                                 target="_blank">一为</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/J-odC4GPd9N2V7QRhEJ23g" rel="noopener noreferrer"
                                  target="_blank">木子淇</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/yy7knjp9MJ3LEuMF42gtqw" rel="noopener noreferrer"
