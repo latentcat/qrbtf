@@ -662,7 +662,7 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: #1D1D1F;
+    color: currentColor;
 }
 
 #wx-message-inner {
