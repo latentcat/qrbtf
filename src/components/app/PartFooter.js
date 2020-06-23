@@ -47,6 +47,8 @@ const PartFooter = () => (
                 <span>董斯佳<span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/qCTnkPWEX6AfL2CJua_AqQ" rel="noopener noreferrer"
                                  target="_blank">野生符号</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://github.com/kongxiangyan" rel="noopener noreferrer"
+                                 target="_blank">Cigaret</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/NdVsF_FJxqSZOyGionoo1Q" rel="noopener noreferrer"
                                  target="_blank">JaBi 扎比</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="http://nav.6soluo.com/" rel="noopener noreferrer"

@@ -1,6 +1,6 @@
 
 .Qr-titled {
-    background-color: #f5f5f7;
+    background-color: var(--content-bg-color);
     box-sizing: border-box;
     padding-top: calc((10px + 2vmin) * 2);
     padding-bottom: calc((10px + 2vmin) * 2);
@@ -121,6 +121,7 @@
     /*padding: 23px;*/
     overflow: hidden;
     display: flex;
+    opacity: var(--qr-opacity);
     background-color: white;
     width: calc((100vw - 56px) / 2);
     height: calc((100vw - 56px) / 2);
@@ -184,14 +185,19 @@
 
 .Qr-item-selected .Qr-item-image {
     border-color: #44D7B6 !important;
+    opacity: 1!important;
 }
 
 .Qr-item-selected .Qr-item-detail {
-    color: #000000;
+    opacity: 1;
+}
+
+.Qr-item:hover .Qr-item-image {
+    opacity: var(--qr-opacity-hover);
 }
 
 .Qr-item:hover .Qr-item-detail {
-    color: #000000;
+    opacity: 1;
 }
 
 .Qr-item-selected .Qr-item-desc-inner {
@@ -200,7 +206,8 @@
 }
 
 .Qr-item-detail {
-    color: rgba(0,0,0,0.3);
+    opacity: 0.3;
+    color: var(--font-color);
     margin-top: 5px;
     font-size: 1em;
     text-align: left;
@@ -226,7 +233,7 @@
     width: calc((100vw - 56px) / 2);
     text-align: left;
     font-size: 12px;
-    color: rgba(0,0,0,0.6);
+    color: var(--input-font-color);
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
@@ -246,13 +253,12 @@
 .Qr-item-desc a {
     font-weight: bold;
     padding: 0px 0;
-    color: #000000;
+    color: var(--font-color);
     box-sizing: border-box;
     text-decoration: none;
 }
 
 .Qr-item-desc a:hover {
-    color: #000000;
     text-decoration: underline;
 }
 
@@ -327,21 +333,21 @@ td {
 .big-input {
     height: calc(2em + 6px);
     font-size: calc(10px + 2vmin);
-    border: rgba(0,0,0,0.12) solid 2px;
+    border: var(--border-color) solid 2px;
     margin-left: 10px;
     flex: 1;
 }
 
 @media (min-width: 500px) {
     .big-input {
-        border: rgba(0,0,0,0.12) solid 3px;
+        border: var(--border-color) solid 3px;
     }
 }
 
 .Qr-upload {
-    color: rgba(102,102,102,1);
+    color: var(--upload-color);
     font-size: calc(10px + 2vmin);
-    border: rgba(0,0,0,0.12) solid 2px;
+    border: var(--border-color) solid 2px;
     width: calc(2em + 6px)!important;
     height: calc(2em + 6px);
     cursor: pointer;
@@ -361,7 +367,7 @@ td {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -moz-appearance: none;
     -moz-text-size-adjust: 100%;
-    background: white;
+    background: var(--bg-color);
     font-family: 'Futura', sans-serif;
     display: flex;
     justify-content: center;
@@ -370,13 +376,13 @@ td {
 
 @media (min-width: 500px) {
     .Qr-upload {
-        border: rgba(0,0,0,0.12) solid 3px;
+        border: var(--border-color) solid 3px;
     }
 }
 
 .Qr-upload:hover {
-    border-color: #44D7B6;
-    color: #44D7B6;
+    border-color: var(--border-color-focus);
+    color: var(--border-color-focus);
 }
 
 .Qr-upload:active {
@@ -402,13 +408,13 @@ td {
 .small-input {
     margin: 0;
     font-size: 0.9em;
-    border: rgba(0,0,0,0.12) solid 2px;
+    border: var(--border-color) solid 2px;
     width: calc((100vw - 56px) / 2);
 }
 
 @media (min-width: 500px) {
     .small-input {
-        border: rgba(0,0,0,0.12) solid 3px;
+        border: var(--border-color) solid 3px;
         font-size: 0.8em;
         width: 200px;
     }
@@ -435,7 +441,8 @@ td {
     -moz-appearance: none;
     -moz-text-size-adjust: 100%;
     font-family: 'Futura', sans-serif;
-    color: rgba(0,0,0,0.6);
+    color: var(--input-font-color);
+    background-color: var(--bg-color);
 }
 
 input::-webkit-outer-spin-button,
@@ -466,16 +473,16 @@ input[type="number"]{
     -moz-appearance: none;
     -moz-text-size-adjust: 100%;
     font-family: 'Futura', sans-serif;
-    color: rgba(0,0,0,0.6);
+    color: var(--input-font-color);
     font-size: 0.9em;
-    border: rgba(0,0,0,0.12) solid 2px;
+    border: var(--border-color) solid 2px;
     width: calc((100vw - 56px) / 2);
     padding-left: 1em;
 }
 
 @media (min-width: 500px) {
     .Qr-select {
-        border: rgba(0,0,0,0.12) solid 3px;
+        border: var(--border-color) solid 3px;
         width: 200px;
         font-size: 0.8em;
     }
@@ -483,7 +490,7 @@ input[type="number"]{
 
 .Qr-input::placeholder {
     font-family: 'Futura', sans-serif;
-    color: rgba(0,0,0,0.18);
+    color: var(--border-color);
 }
 
 .Qr-Centered {
@@ -495,13 +502,13 @@ input[type="number"]{
 }
 
 .Qr-input:focus {
-    border-color: #44D7B6;
-    color: #000000;
+    border-color: var(--border-color-focus);
+    color: var(--input-font-color-focus);
 }
 
 .Qr-select:focus {
-    border-color: #44D7B6;
-    color: #000000;
+    border-color: var(--border-color-focus);
+    color: var(--input-font-color-focus);
 }
 
 
@@ -556,7 +563,7 @@ input[type="number"]{
     outline: none;
     padding: 0;
     box-sizing: border-box;
-    border: rgba(0,0,0,0.12) solid 2px;
+    border: var(--border-color) solid 2px;
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
@@ -568,13 +575,14 @@ input[type="number"]{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -moz-appearance: none;
     -moz-text-size-adjust: 100%;
-    background: white;
+    background: var(--bg-color);
     font-family: 'Futura', sans-serif;
+    color: var(--input-font-color);
 }
 
 @media (min-width: 500px) {
     .dl-btn {
-        border: rgba(0,0,0,0.12) solid 3px;
+        border: var(--border-color) solid 3px;
         font-size: 0.8em;
     }
 }
@@ -589,21 +597,21 @@ input[type="number"]{
 }
 
 .dl-btn:hover {
-    border-color: #44D7B6;
-    color: #44D7B6;
+    border-color: var(--border-color-focus);
+    color: var(--border-color-focus);
 }
 
 .dl-btn-active {
-    border-color: #44D7B6;
-    color: #44D7B6;
+    border-color: var(--border-color-focus);
+    color: var(--border-color-focus);
 }
 
 .dl-btn:active {
     -webkit-transition-duration: 0s; /* Safari */
     transition-duration: 0s;
     -moz-transition-duration: 0s;
-    border-color: #3BBC9F;
-    color: #3BBC9F;
+    border-color: var(--border-color-active);
+    color: var(--border-color-active);
 }
 
 @media (min-width: 500px) {
@@ -617,16 +625,16 @@ input[type="number"]{
 }
 
 .Qr-footer {
-    color: #515154;
+    color: var(--footer-font-color);
     margin-bottom: -1em;
 }
 
 .Gray {
-    color: #86868B;
+    color: var(--footer-font-color-lighter);
 }
 
 .gray {
-    color: #d2d2d7;
+    color: var(--footer-font-color-lighter);
 }
 
 .Qr-footer div {
@@ -635,7 +643,7 @@ input[type="number"]{
 }
 
 .Qr-footer strong {
-    color: #000000 !important;
+    color: var(--font-color) !important;
 }
 
 .Qr-footer-part span {
@@ -675,25 +683,25 @@ a:hover {
 .Qr-article p {
     font-size: 14px;
     line-height: 1.7em;
-    color: #636366;
+    color: var(--p-font-color);
     letter-spacing: 0.05em;
 }
 
 .Qr-article p b {
     font-weight: bold;
-    color: #000000;
+    color: var(--font-color);
 }
 
 .Qr-article p a {
     font-weight: bold;
     padding: 1px 0;
-    color: #000000;
-    border-bottom: 1px solid #000000;
+    color: var(--font-color);
+    border-bottom: 1px solid var(--font-color);
 }
 
 .Qr-article p a:hover {
-    color: #000000;
-    border-bottom: 1px solid #000000;
+    color: var(--font-color);
+    border-bottom: 1px solid var(--font-color);
     text-decoration: none;
 }
 
@@ -723,7 +731,7 @@ a:hover {
 
 select {
     padding: 0;
-    background-color: #FFFFFF;
+    background-color: var(--bg-color);
 }
 
 select:-moz-focusring {

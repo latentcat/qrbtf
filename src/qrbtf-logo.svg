@@ -42,7 +42,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M2407.3796,576c0-52.6933,0-105.3867,0-158.08
 		c0-2.0784,0.0005-4.1568-0.0034-6.2352c-0.0012-0.6671-0.0029-1.3342-0.0054-2.0013c-0.0046-1.2442-0.0117-2.4883-0.0237-3.7325
@@ -103,7 +103,7 @@
         ></animate>
         <line
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           x1="2259.0596" y1="576" x2="2259.0596" y2="288"
         />
@@ -138,7 +138,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M2555.6995,576c0-52.6933,0-105.3867,0-158.08
 		c0-2.0784,0.0005-4.1568-0.0034-6.2352c-0.0012-0.6671-0.0027-1.3342-0.0054-2.0013c-0.0044-1.2442-0.0115-2.4883-0.0234-3.7325
@@ -203,7 +203,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M2119.0391,432
 		c0-6.5931-0.6033-13.1685-1.803-19.6516c-1.2717-6.8726-3.2068-13.6031-5.7795-20.1017
@@ -252,7 +252,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M1810.8269,342.4639
 		c-7.9363-5.353-16.5452-9.6255-25.6079-12.7087c-9.4066-3.2003-19.2096-5.0871-29.1322-5.6072
@@ -345,7 +345,7 @@
         ></animate>
         <line
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           x1="1230.6259" y1="324" x2="1461.0259" y2="324"
         />
@@ -380,7 +380,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M1460.1464,121.7508
 		c-2.4275-1.7637-4.9656-3.3752-7.5939-4.8225c-1.3143-0.7236-2.6511-1.4062-4.0079-2.0463
@@ -434,7 +434,7 @@
         ></animate>
         <line
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           x1="959.2219" y1="324" x2="1189.6219" y2="324"
         />
@@ -469,7 +469,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M1074.422,208.8c0,76.8,0,153.6,0,230.4
 		c0,1.4623-0.0001,2.9246-0.0015,4.3869c-0.0012,1.447-0.0035,2.894-0.0063,4.341c-0.0033,1.5402-0.0071,3.0804-0.0095,4.6206
@@ -518,7 +518,7 @@
         ></animate>
         <line
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           x1="679.5572" y1="72" x2="679.5572" y2="576"
         />
@@ -553,7 +553,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M679.5572,432
 		c0,6.5931,0.6033,13.1685,1.8029,19.6516c1.2719,6.8726,3.2069,13.6031,5.7796,20.1017
@@ -602,7 +602,7 @@
         ></animate>
         <line
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           x1="468.0493" y1="576" x2="468.0493" y2="288"
         />
@@ -637,7 +637,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M582.3699,337.7508
 		c-2.1679-1.5751-4.424-3.0288-6.7539-4.3526c-1.1687-0.664-2.3559-1.2954-3.56-1.8929c-1.204-0.5976-2.4249-1.1613-3.6605-1.6905
@@ -691,7 +691,7 @@
         ></animate>
         <path
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           d="M324,432c0-6.5931-0.6033-13.1685-1.8029-19.6516
 		c-1.2718-6.8726-3.2069-13.6031-5.7796-20.1017c-5.4315-13.7201-13.6146-26.1785-24.0485-36.6128
@@ -736,7 +736,7 @@
         ></animate>
         <line
           fill="none"
-          stroke="#000000"
+          stroke="currentColor"
           stroke-linejoin="round"
           x1="324" y1="288" x2="324" y2="756"
         />
