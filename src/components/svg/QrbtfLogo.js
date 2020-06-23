@@ -150,7 +150,7 @@ function QrbtfLogo(props) {
                     d="M1810.827 342.464a107.986 107.986 0 00-54.74-18.316 108 108 0 1054.74 197.388"
                 />
             </g>
-            <g>
+            <g opacity="0">
                 <animateTransform
                     attributeName="transform"
                     type="translate"
@@ -187,7 +187,17 @@ function QrbtfLogo(props) {
                     dur="1.75s"
                     additive="sum"
                 />
-                <path d="M1553.483 530.172a45.826 45.826 0 00-62.697-42.61 45.823 45.823 0 00-28.959 42.61A45.823 45.823 0 001507.655 576a45.823 45.823 0 0045.828-45.828z" />
+                <animate
+                    attributeType="CSS"
+                    attributeName="opacity"
+                    begin="0.1s"
+                    values="0; 1"
+                    dur="0.1s"
+                    fill="freeze"
+                    calcMode="spline"
+                    keySplines="0.8 0 0.2 1"
+                />
+                <path fill="currentColor" d="M1553.483 530.172a45.826 45.826 0 00-62.697-42.61 45.823 45.823 0 00-28.959 42.61A45.823 45.823 0 001507.655 576a45.823 45.823 0 0045.828-45.828z" />
             </g>
             <g fill="none" strokeWidth={18}>
                 <g strokeDasharray="235,235" strokeDashoffset={235}>

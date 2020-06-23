@@ -19,6 +19,7 @@
     --qr-opacity: calc(1);
     --qr-opacity-hover: calc(1);
     --upload-color: rgba(102,102,102,1);
+    --b-w: rgba(0,0,0,1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,6 +37,7 @@
         --qr-opacity: calc(0.5);
         --qr-opacity-hover: calc(0.65);
         --upload-color: rgba(150,150,150,1);
+        --b-w: rgba(255,255,255,1);
     }
 }
 

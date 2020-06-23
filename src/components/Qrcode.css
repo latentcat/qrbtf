@@ -11,14 +11,19 @@
     padding-bottom: calc((10px + 2vmin) * 2);
 }
 
+.Qr-title-svg {
+    height: 1.4em;
+}
+
 .Qr-title {
+    color: var(--b-w);
     margin-top: 2.25em;
     font-weight: bold;
     font-size: 2.25em;
 }
 
 .Qr-subtitle {
-    margin-top: -1em;
+    margin-top: -1.5em;
     margin-bottom: 0;
     line-height: 2em;
 }
