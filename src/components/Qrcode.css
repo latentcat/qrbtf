@@ -272,6 +272,7 @@ tr {
 td:nth-child(1) {
     font-size: 0.9em;
     white-space: nowrap;
+    color: var(--input-font-color);
 }
 
 @media (min-width: 500px) {
