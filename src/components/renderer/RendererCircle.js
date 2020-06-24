@@ -124,12 +124,12 @@ function getParamInfo() {
         {
             type: ParamTypes.COLOR_EDITOR,
             key: '圆圈颜色',
-            default: '#000000'
+            default: '#8ED1FC'
         },
         {
             type: ParamTypes.COLOR_EDITOR,
             key: '定位点颜色',
-            default: '#000000'
+            default: '#0693E3'
         }
     ]
 }
