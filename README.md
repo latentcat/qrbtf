@@ -11,7 +11,7 @@
 
 ## Features
 
-* 8 Art QR Code Styles
+* Various Art QR Code Styles
 * Parametric Design
 * No Backend Required
 * Support for SVG Downloads
@@ -55,9 +55,21 @@ import React from 'react'
 import { QRNormal } from 'react-qrbtf'
 
 class Component extends React.Component {
-    
+
     render() {
-        return <QRNormal value="https://qrbtf.com" />
+        return (
+            <QRNormal
+                value="react-qrbtf"
+                className="my-qrcode"
+                styles={{ svg: {width: "200px"} }}
+                type="round"
+                size={50}
+                opacity={80}
+                posType="planet"
+                otherColor="#33CCCC"
+                posColor="#009999"
+            />
+        )
     }
 }
 ```
