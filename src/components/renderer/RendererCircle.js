@@ -143,7 +143,7 @@ const RenderCircle = createRenderer({
 })
 
 RenderCircle.detail = (
-    <div>圆圆圈圈</div>
+    <div>圆圆圈圈，气气泡泡</div>
 );
 
 export default RenderCircle
