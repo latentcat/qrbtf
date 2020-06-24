@@ -57,7 +57,7 @@ function listPoints(qrcode, params) {
                         }
                     }
                     if (ctn && qrcode.isDark(x + 1, y) && qrcode.isDark(x + 1, y + 2) && qrcode.isDark(x, y + 1) && qrcode.isDark(x + 2, y + 1)) {
-                        g1.push(<circle key={id++} cx={x + 1 + 0.5} cy={y + 1 + 0.5} r={1} fill="#FFFFFF" stroke={otherColor} strokeWidth={rand(0.33,0.5)} />)
+                        g1.push(<circle key={id++} cx={x + 1 + 0.5} cy={y + 1 + 0.5} r={1} fill="#FFFFFF" stroke={otherColor} strokeWidth={rand(0.33,0.6)} />)
                         available[x + 1][y] = false;
                         available[x][y + 1] = false;
                         available[x + 2][y + 1] = false;
@@ -82,14 +82,14 @@ function listPoints(qrcode, params) {
                 }
                 if (available[x][y] && y < nCount - 1) {
                     if (qrcode.isDark(x, y) && qrcode.isDark(x, y + 1)) {
-                        pointList.push(<circle key={id++} cx={x + 0.5} cy={y + 1} r={0.5} fill="#FFFFFF" stroke={otherColor} strokeWidth={rand(0.33,0.4)} />)
+                        pointList.push(<circle key={id++} cx={x + 0.5} cy={y + 1} r={0.5 * rand(0.9,1.1)} fill="#FFFFFF" stroke={otherColor} strokeWidth={rand(0.4,0.5)} />)
                         available[x][y] = false;
                         available[x][y + 1] = false;
                     }
                 }
                 if (available[x][y] && x < nCount - 1) {
                     if (qrcode.isDark(x, y) && qrcode.isDark(x + 1, y)) {
-                        pointList.push(<circle key={id++} cx={x + 1} cy={y + 0.5} r={0.5} fill="#FFFFFF" stroke={otherColor} strokeWidth={rand(0.33,0.4)} />)
+                        pointList.push(<circle key={id++} cx={x + 1} cy={y + 0.5} r={0.5 * rand(0.9,1.1)} fill="#FFFFFF" stroke={otherColor} strokeWidth={rand(0.36,0.5)} />)
                         available[x][y] = false;
                         available[x + 1][y] = false;
                     }
@@ -99,7 +99,7 @@ function listPoints(qrcode, params) {
                         pointList.push(<circle r={0.5 * rand(0.33,0.9)} key={id++} fill={otherColor} cx={x + 0.5} cy={y + 0.5}/>)
                     } else if (typeTable[x][y] === QRPointType.DATA) {
                         if (rand(0,1) > 0.8) {
-                            g2.push(<circle r={0.5 * rand(0.7,1.3)} key={id++} fill="#FFFFFF" stroke={otherColor} strokeWidth={rand(0.1,0.3)} cx={x + 0.5} cy={y + 0.5}/>)
+                            g2.push(<circle r={0.5 * rand(0.7,1.3)} key={id++} fill="#FFFFFF" stroke={otherColor} strokeWidth={rand(0.15,0.33)} cx={x + 0.5} cy={y + 0.5}/>)
                         }
                     }
                 }
