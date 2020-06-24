@@ -346,7 +346,7 @@ function getParamInfoLine() {
         },
         {
             type: ParamTypes.COLOR_EDITOR,
-            key: '定位点点颜色',
+            key: '定位点颜色',
             default: '#000000'
         }
     ];
@@ -396,7 +396,7 @@ function getParamInfoLine2() {
         },
         {
             type: ParamTypes.COLOR_EDITOR,
-            key: '定位点点颜色',
+            key: '定位点颜色',
             default: '#000000'
         }
     ];

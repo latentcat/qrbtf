@@ -3,6 +3,7 @@ import {changeStyle} from "../../actions";
 import StyleList from "../../components/style/StyleList";
 import RendererViewer from "./RendererViewer";
 import RendererDSJ from "../../components/renderer/RendererDSJ";
+import RendererCircle from "../../components/renderer/RendererCircle"
 import RendererRandRect from "../../components/renderer/RendererRandRect";
 import Renderer25D from "../../components/renderer/Renderer25D";
 import RendererImage from "../../components/renderer/RendererImage";
@@ -22,6 +23,7 @@ const styles = [
     {value: "A — b2", renderer: RendererFuncB},
     {value: "SP — 1", renderer: RendererDSJ},
     {value: "SP — 2", renderer: RendererRandRect},
+    {value: "SP — 3", renderer: RendererCircle},
     {value: "B1", renderer: Renderer25D},
     {value: "C1", renderer: RendererImage},
     {value: "C2", renderer: RendererResImage},

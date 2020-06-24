@@ -118,7 +118,7 @@ function getParamInfoRect() {
         },
         {
             type: ParamTypes.COLOR_EDITOR,
-            key: '定位点点颜色',
+            key: '定位点颜色',
             default: '#000000'
         }
     ];
@@ -164,7 +164,7 @@ function getParamInfoRound() {
         },
         {
             type: ParamTypes.COLOR_EDITOR,
-            key: '定位点点颜色',
+            key: '定位点颜色',
             default: '#000000'
         }
     ];
@@ -210,7 +210,7 @@ function getParamInfoRandRound() {
         },
         {
             type: ParamTypes.COLOR_EDITOR,
-            key: '定位点点颜色',
+            key: '定位点颜色',
             default: '#000000'
         }
     ];
