@@ -42,7 +42,7 @@ npm start
 
 ## React Component (react-qrbtf)
 
-See [github.com/cpunisher/react-qrbtf](https://github.com/cpunisher/react-qrbtf) for more information.
+See [CPunisher / react-qrbtf](https://github.com/cpunisher/react-qrbtf) for more information.
 
 ``` bash
 npm install react-qrbtf --save
