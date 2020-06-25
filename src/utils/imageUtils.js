@@ -8,20 +8,22 @@ export function isPicture(file) {
     return fileTypes.includes(file.type);
 }
 
-export function toBase64(file, width, height) {
+export function toBase64(file) {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
     let img = document.createElement('img');
-
-    canvas.setAttribute('width', width);
-    canvas.setAttribute('height', height);
     img.setAttribute('src', URL.createObjectURL(file));
 
     return new Promise(resolve => {
         img.onload = () => {
-            ctx.fillStyle = 'white'
-            ctx.fillRect(0, 0, width, height)
-            ctx.drawImage(img, 0, 0, width, height);
+            let size = Math.min(img.width, img.height);
+
+            canvas.setAttribute('width', size);
+            canvas.setAttribute('height', size);
+
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, size, size);
+            ctx.drawImage(img, (img.width - size) / 2, (img.height - size) / 2, size, size, 0, 0, size, size);
 
             resolve(canvas.toDataURL(file.type, 0.9));
         };
