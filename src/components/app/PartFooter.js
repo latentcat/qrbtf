@@ -60,6 +60,8 @@ const PartFooter = () => (
                                  target="_blank">木子淇</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/yy7knjp9MJ3LEuMF42gtqw" rel="noopener noreferrer"
                                  target="_blank">编程如画</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://mp.weixin.qq.com/s/YWStNIYUZ7UmcHGhIwE6eg" rel="noopener noreferrer"
+                                 target="_blank">JZ Creative</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/5r3PNDSaQb3sOXtDQt3Jnw" rel="noopener noreferrer"
                                  target="_blank">工具狂人</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.v2ex.com/t/675982"
