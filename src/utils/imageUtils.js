@@ -8,7 +8,7 @@ export function isPicture(file) {
     return fileTypes.includes(file.type);
 }
 
-export function toBase64(file) {
+export function toBase64(file, aspectRatio) {
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
     let img = document.createElement('img');
@@ -16,14 +16,22 @@ export function toBase64(file) {
 
     return new Promise(resolve => {
         img.onload = () => {
-            let size = Math.min(img.width, img.height);
-
-            canvas.setAttribute('width', size);
-            canvas.setAttribute('height', size);
+            let width, height;
+            if (img.width < img.height) {
+                width = img.width;
+                height = width / aspectRatio;
+            }
+            else {
+                height = img.height;
+                width = height * aspectRatio;
+            }
+            console.log(width + ' ' + height)
+            canvas.setAttribute('width', width);
+            canvas.setAttribute('height', height);
 
             ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, size, size);
-            ctx.drawImage(img, (img.width - size) / 2, (img.height - size) / 2, size, size, 0, 0, size, size);
+            ctx.fillRect(0, 0, width, height);
+            ctx.drawImage(img, (img.width - width) / 2, (img.height - height) / 2, width, height, 0, 0, width, height);
 
             resolve(canvas.toDataURL(file.type, 0.9));
         };

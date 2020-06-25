@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             const file = e.target.files[0];
             if (isPicture(file)) {
                 handleUpload();
-                toBase64(file, 500, 500).then(res => {
+                toBase64(file, 1.0).then(res => {
                     dispatch(changeParam(ownProps.rendererIndex, ownProps.paramIndex, res))
                 })
             }
