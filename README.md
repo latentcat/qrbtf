@@ -74,6 +74,10 @@ class Component extends React.Component {
 }
 ```
 
+## Third-Party Project
+
+* [gexin1 / beautify-qrcode](https://github.com/gexin1/beautify-qrcode)
+
 ## Author
 
 * [ciaochaos](https://github.com/ciaochaos)
