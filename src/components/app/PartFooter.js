@@ -7,7 +7,7 @@ const currentYear = new Date().getFullYear();
 const PartFooter = () => (
     <div className="Qr-titled">
         <div className="Qr-Centered Qr-footer note-font">
-            <div>
+            <div className="Qr-footer-part">
                 <strong>作者</strong>&emsp;
                 <LinkTrace
                     href="https://blog.ciaochaos.com/"
