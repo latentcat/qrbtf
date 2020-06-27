@@ -14,9 +14,9 @@ import { RendererFuncA, RendererFuncB } from "../../components/renderer/Renderer
 import * as React from "react";
 
 const styles = [
+    {value: "A1", renderer: RendererRect},
     {value: "C2", renderer: RendererResImage},
     {value: "SP — 1", renderer: RendererDSJ},
-    {value: "A1", renderer: RendererRect},
     {value: "A2", renderer: RendererRound},
     {value: "A3", renderer: RendererRandRound},
     {value: "A — a1", renderer: RendererLine},
