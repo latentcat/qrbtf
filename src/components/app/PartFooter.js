@@ -20,6 +20,10 @@ const PartFooter = () => (
                     target="_blank">CPunisher
                 </LinkTrace>
                 <span className="gray">&ensp;丨&ensp;</span>
+                <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/privacy" rel="noopener noreferrer"
+                                 target="_blank">隐私政策</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/terms" rel="noopener noreferrer"
+                                 target="_blank">使用条款</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/contact" rel="noopener noreferrer" target="_blank">
                     联系我们</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/coop"
