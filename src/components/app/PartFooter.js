@@ -26,6 +26,8 @@ const PartFooter = () => (
                                  target="_blank">使用条款</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/contact" rel="noopener noreferrer" target="_blank">
                     联系我们</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/api" rel="noopener noreferrer" target="_blank">
+                    API 接口 <sup>测试</sup></LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/coop"
                                  rel="noopener noreferrer" target="_blank">合作咨询</LinkTrace></span>
             </div>
