@@ -189,5 +189,5 @@ export default RendererResImage
 
 
 RendererResImage.detail = (
-    <div>满满科技感的重采样二值化像素点阵，有点东西。建议增大容错率、URL 长度以提高像素采样信息的丰富度</div>
+    <div>满满科技感的重采样二值化像素点阵，有点东西</div>
 );
