@@ -72,6 +72,8 @@ const PartFooter = () => (
                                  target="_blank">JZ Creative</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/5r3PNDSaQb3sOXtDQt3Jnw" rel="noopener noreferrer"
                                  target="_blank">工具狂人</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://sspai.com/post/61118" rel="noopener noreferrer"
+                                 target="_blank">少数派</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.v2ex.com/t/675982"
                                  rel="noopener noreferrer" target="_blank">V2EX</LinkTrace></span>
             </div>
