@@ -44,7 +44,7 @@ const PartMore = () => {
                             {
                                 pictures.map((url) => (
                                         <LazyLoad offsetVertical={200}>
-                                            <ImageZoom zoom={zoom.current} background={"rgba(0, 0, 0, 0.75)"} className="Qr-gallery-image" src={url}/>
+                                            <ImageZoom zoom={zoom.current} background={"rgba(0, 0, 0, 0.8)"} className="Qr-gallery-image" src={url}/>
                                         </LazyLoad>
                                     )
                                 )
