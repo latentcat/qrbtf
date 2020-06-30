@@ -10,8 +10,8 @@ import LinkTrace from "../link/LinkTrace";
 import {isPC} from "../../utils/navigatorUtils";
 
 const pictures = [
-    'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery02.jpg?sign=e9619d9e70adc33f9e5da775410220f5&t=1593501268',
-    'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery01.jpg?sign=0e29c9617c920148f6e8061386b69de0&t=1593501253',
+    'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery02.jpg?sign=5891c0a78a0220aefd58293ee4ec7db7&t=1593527651',
+    'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery01.jpg?sign=f97850ff371131dcf5891b7185c6c16b&t=1593527984',
 ]
 
 const PartMore = () => {
@@ -26,22 +26,6 @@ const PartMore = () => {
                     {isPC() ? <div className="Qr-style-hint">拖拽滑动</div> : null}
                 </div>
             </div>
-            <ScrollContainer
-                className="Qr-s Qr-s-gallery"
-                hideScrollbars={false}
-                horizontal={true}
-                vertical={false}>
-                <div className="Qr-box">
-                    {
-                        pictures.map((url) => (
-                                <LazyLoad offsetVertical={200}>
-                                    <ImageZoom zoom={zoom.current} background={"rgba(0, 0, 0, 0)"} className="Qr-gallery-image" src={url}/>
-                                </LazyLoad>
-                            )
-                        )
-                    }
-                </div>
-            </ScrollContainer>
             <div className="title-margin">
                 <div className="Qr-article">
                     <div className="Qr-Centered">
@@ -49,6 +33,25 @@ const PartMore = () => {
                                          data-color-scheme="no-preference: light; light: light; dark: dark;"
                                          data-icon="octicon-star" data-size="large" data-show-count="true"
                                          aria-label="Star ciaochaos/qrbtf on GitHub">Star</GitHubButton></p>
+                        <h2>设计分享</h2>
+                    </div>
+                    <ScrollContainer
+                        className="Qr-s Qr-s-gallery"
+                        hideScrollbars={false}
+                        horizontal={true}
+                        vertical={false}>
+                        <div className="Qr-box">
+                            {
+                                pictures.map((url) => (
+                                        <LazyLoad offsetVertical={200}>
+                                            <ImageZoom zoom={zoom.current} background={"rgba(0, 0, 0, 0.75)"} className="Qr-gallery-image" src={url}/>
+                                        </LazyLoad>
+                                    )
+                                )
+                            }
+                        </div>
+                    </ScrollContainer>
+                    <div className="Qr-Centered">
                         <h2>最新消息</h2>
                         <p><b>2020.6.29</b><br/>新的反馈渠道！我们开始征集好玩的二维码设计啦，可以是推送尾图、海报等等，快来上传吧。<LinkTrace
                             href='https://qrbtf-com.mikecrm.com/J2wjEEq' rel="noopener noreferrer"
