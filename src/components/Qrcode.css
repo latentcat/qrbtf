@@ -141,10 +141,26 @@
     transition-duration: 0.2s;
 }
 
+.Qr-gallery-image {
+    box-sizing: border-box;
+    height: calc((100vw - 56px) / 2);
+    margin-right: 10px;
+    border: var(--border-color) solid 1px;
+    font-size: 18px;
+    margin-top: 0.5em;
+}
+
+.Qr-s-gallery {
+    margin-bottom: 0;
+}
+
 @media (min-width: 500px) {
     .Qr-item-image {
         border: rgba(0,0,0,0.12) solid 3px;
         width: 200px;
+        height: 200px;
+    }
+    .Qr-gallery-image {
         height: 200px;
     }
 }

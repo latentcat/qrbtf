@@ -12,7 +12,6 @@ import {connect} from 'react-redux';
 import {loadDownloadData} from "../../actions";
 import ReactGA from 'react-ga';
 import {setScrollbarWidthProp} from "../../utils/util"
-import PartGallery from "./PartGallery";
 
 ReactGA.initialize('UA-165845289-1');
 function App({ dispatch }) {
@@ -40,7 +39,6 @@ function App({ dispatch }) {
                         <PartStylesViewer/>
                         <PartParams/>
                         <PartDownloadViewer updateDownloadData={updateDownloadData}/>
-                        <PartGallery/>
                         <PartMore/>
                         <PartFooter/>
                     </div>
