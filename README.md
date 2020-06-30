@@ -42,7 +42,7 @@ npm start
 
 ## React Component (react-qrbtf)
 
-See [github.com/cpunisher/react-qrbtf](https://github.com/cpunisher/react-qrbtf) for more information.
+See [CPunisher / react-qrbtf](https://github.com/cpunisher/react-qrbtf) for more information.
 
 ``` bash
 npm install react-qrbtf --save
@@ -73,6 +73,10 @@ class Component extends React.Component {
     }
 }
 ```
+
+## Third-Party Project
+
+* [gexin1 / beautify-qrcode](https://github.com/gexin1/beautify-qrcode)
 
 ## Author
 

@@ -12,6 +12,7 @@ const PartMore = () => (
             <div className="Qr-article">
                 <p><GitHubButton href="https://github.com/ciaochaos/qrbtf" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ciaochaos/qrbtf on GitHub">Star</GitHubButton></p>
                 <h2>最新消息</h2>
+                <p><b>2020.6.29</b><br/>新的反馈渠道！我们开始征集好玩的二维码设计啦，可以是推送尾图、海报等等，快来上传吧。<LinkTrace href='https://qrbtf-com.mikecrm.com/J2wjEEq' rel="noopener noreferrer" target="_blank">点击提交</LinkTrace>。</p>
                 <p><b>2020.6.24</b><br/>新增深色模式，新增 SP — 3 样式。</p>
                 <p><b>2020.6.22</b><br/>新增 A — a1、A — a2、A — b1、A — b2 样式，添加样式描述，新增桌面端横向拖拽滑动。</p>
                 <p><b>2020.6.11</b><br/>QRBTF React 组件发布！快在你的应用中引入 react-qrbtf 吧。<LinkTrace href='https://github.com/cpunisher/react-qrbtf' rel="noopener noreferrer" target="_blank">访问项目</LinkTrace>。</p>
@@ -37,7 +38,7 @@ const PartMore = () => (
                 <LinkButton href={"https://github.com/ciaochaos/qrbtf"} value={"Github"} />
             </div>
             <div className="div-btn">
-                <LinkButton href={"https://github.com/ciaochaos/qrbtf/issues"} value={"反馈"} />
+                <LinkButton href={"https://qrbtf-com.mikecrm.com/J2wjEEq"} value={"反馈"} />
                 <LinkButton href={"https://mp.weixin.qq.com/s/GFEMCWQu3e2qhTuBabnHmQ"} value={"开发"} />
             </div>
         </div>

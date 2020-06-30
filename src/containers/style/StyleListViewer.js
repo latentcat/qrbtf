@@ -15,18 +15,18 @@ import * as React from "react";
 
 const styles = [
     {value: "A1", renderer: RendererRect},
+    {value: "C2", renderer: RendererResImage},
+    {value: "SP — 1", renderer: RendererDSJ},
     {value: "A2", renderer: RendererRound},
     {value: "A3", renderer: RendererRandRound},
     {value: "A — a1", renderer: RendererLine},
+    {value: "A — b2", renderer: RendererFuncB},
+    {value: "SP — 3", renderer: RendererCircle},
+    {value: "C1", renderer: RendererImage},
+    {value: "B1", renderer: Renderer25D},
     {value: "A — a2", renderer: RendererLine2},
     {value: "A — b1", renderer: RendererFuncA},
-    {value: "A — b2", renderer: RendererFuncB},
-    {value: "SP — 1", renderer: RendererDSJ},
     {value: "SP — 2", renderer: RendererRandRect},
-    {value: "SP — 3", renderer: RendererCircle},
-    {value: "B1", renderer: Renderer25D},
-    {value: "C1", renderer: RendererImage},
-    {value: "C2", renderer: RendererResImage},
 ]
 
 const paramInfoBuffer = new Array(16).fill(new Array(16))

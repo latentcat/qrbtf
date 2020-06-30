@@ -7,7 +7,7 @@ const currentYear = new Date().getFullYear();
 const PartFooter = () => (
     <div className="Qr-titled">
         <div className="Qr-Centered Qr-footer note-font">
-            <div>
+            <div className="Qr-footer-part">
                 <strong>作者</strong>&emsp;
                 <LinkTrace
                     href="https://blog.ciaochaos.com/"
@@ -20,8 +20,14 @@ const PartFooter = () => (
                     target="_blank">CPunisher
                 </LinkTrace>
                 <span className="gray">&ensp;丨&ensp;</span>
+                <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/privacy" rel="noopener noreferrer"
+                                 target="_blank">隐私政策</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/terms" rel="noopener noreferrer"
+                                 target="_blank">使用条款</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/contact" rel="noopener noreferrer" target="_blank">
                     联系我们</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/api" rel="noopener noreferrer" target="_blank">
+                    API 接口 <sup>测试</sup></LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.yuque.com/qrbtf/docs/coop"
                                  rel="noopener noreferrer" target="_blank">合作咨询</LinkTrace></span>
             </div>
@@ -58,12 +64,16 @@ const PartFooter = () => (
                                  target="_blank">React.js Example</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/J-odC4GPd9N2V7QRhEJ23g" rel="noopener noreferrer"
                                  target="_blank">木子淇</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://github.com/gexin1/beautify-qrcode" rel="noopener noreferrer"
+                                 target="_blank">River</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/yy7knjp9MJ3LEuMF42gtqw" rel="noopener noreferrer"
                                  target="_blank">编程如画</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/YWStNIYUZ7UmcHGhIwE6eg" rel="noopener noreferrer"
                                  target="_blank">JZ Creative</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://mp.weixin.qq.com/s/5r3PNDSaQb3sOXtDQt3Jnw" rel="noopener noreferrer"
                                  target="_blank">工具狂人</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://sspai.com/post/61118" rel="noopener noreferrer"
+                                 target="_blank">少数派</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.v2ex.com/t/675982"
                                  rel="noopener noreferrer" target="_blank">V2EX</LinkTrace></span>
             </div>
