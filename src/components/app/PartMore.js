@@ -12,6 +12,7 @@ import {isPC} from "../../utils/navigatorUtils";
 const pictures = [
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery02.jpg?sign=5891c0a78a0220aefd58293ee4ec7db7&t=1593527651',
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery01.jpg?sign=f97850ff371131dcf5891b7185c6c16b&t=1593527984',
+    'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery03.jpg?sign=86b896e0c7f9c66881a78a969551e47b&t=1593531244',
 ]
 
 const PartMore = () => {
