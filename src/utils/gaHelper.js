@@ -57,7 +57,15 @@ export function handleInputUrl() {
 export function handleScroll(label) {
     ReactGA.event({
         category: 'ScrollContainer',
-        action: 'scroll',
+        action: 'Scroll',
         label: label
+    });
+}
+
+export function handleZoom(url) {
+    ReactGA.event({
+        category: 'Image',
+        action: 'Zoom',
+        label: url
     });
 }

@@ -8,7 +8,7 @@ import LinkButton from "../link/LinkButton";
 import ImageZoom from "../../containers/app/ImageZoom";
 import LinkTrace from "../link/LinkTrace";
 import {isPC} from "../../utils/navigatorUtils";
-import {handleScroll} from "../../utils/gaHelper";
+import {handleScroll, handleZoom} from "../../utils/gaHelper";
 
 const pictures = [
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery04.jpg',
@@ -103,11 +103,14 @@ const PartMore = () => {
 }
 
 const Gallery = ({ contents }) => {
-    const zoom = React.useRef(mediumZoom());
+    const zoom = mediumZoom();
+    const zoomRef = React.useRef(zoom);
+    zoom.on('open', event => {handleZoom(event.target.src)})
+
     return (
-        contents.map((url) => (
-                <LazyLoad offsetVertical={200}>
-                    <ImageZoom zoom={zoom.current} background={"rgba(0, 0, 0, 0.8)"} className="Qr-gallery-image" src={url}/>
+        contents.map((url, index) => (
+                <LazyLoad key={'lazy_gallery_' + index} offsetVertical={200}>
+                    <ImageZoom key={'gallery_' + index} zoom={zoomRef.current} background={"rgba(0, 0, 0, 0.8)"} className="Qr-gallery-image" src={url}/>
                 </LazyLoad>
             )
         )
