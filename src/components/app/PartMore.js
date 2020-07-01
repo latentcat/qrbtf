@@ -104,9 +104,9 @@ const PartMore = () => {
 
 const Gallery = ({ contents }) => {
     const zoom = mediumZoom();
-    const zoomRef = React.useRef(zoom);
     zoom.on('open', event => {handleZoom(event.target.src)})
 
+    const zoomRef = React.useRef(zoom);
     return (
         contents.map((url, index) => (
                 <LazyLoad key={'lazy_gallery_' + index} offsetVertical={200}>
