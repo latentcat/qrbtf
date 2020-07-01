@@ -1,5 +1,5 @@
 import React from 'react';
-import {handleLink} from "../../utils/GAHelper";
+import {handleLink} from "../../utils/gaHelper";
 
 const LinkTrace = (props) => {
     return (

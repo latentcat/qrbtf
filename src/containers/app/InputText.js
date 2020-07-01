@@ -3,7 +3,7 @@ import {genQRInfo} from "../../actions";
 import React, {useRef} from "react";
 import {isPicture} from "../../utils/imageUtils";
 import {decodeData} from "../../utils/qrcodeHandler";
-import { handleUpload, handleInputUrl } from "../../utils/GAHelper";
+import { handleUpload, handleInputUrl } from "../../utils/gaHelper";
 
 const InputText = ({dispatch}) => {
     const textRef = useRef();

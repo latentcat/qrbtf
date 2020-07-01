@@ -3,7 +3,7 @@ import PartDownload from "../../components/app/PartDownload";
 import {saveImg, saveSvg} from "../../utils/downloader";
 import {getDownloadCount, increaseDownloadData, recordDownloadDetail} from "../../api/TcbHandler";
 import {getParamDetailedValue, outerHtml} from "../../utils/util";
-import {handleDownloadJpg, handleDownloadSvg} from "../../utils/GAHelper";
+import {handleDownloadJpg, handleDownloadSvg} from "../../utils/gaHelper";
 
 function saveDB(state, type, updateDownloadData) {
     return new Promise(resolve => {
