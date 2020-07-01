@@ -11,6 +11,7 @@ import {isPC} from "../../utils/navigatorUtils";
 import {handleScroll} from "../../utils/GAHelper";
 
 const pictures = [
+    'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery04.jpg',
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery02.jpg',
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery01.jpg',
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery03.jpg',
@@ -103,7 +104,6 @@ const PartMore = () => {
 
 const Gallery = ({ contents }) => {
     const zoom = React.useRef(mediumZoom());
-
     return (
         contents.map((url) => (
                 <LazyLoad offsetVertical={200}>
