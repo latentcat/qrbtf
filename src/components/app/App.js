@@ -7,7 +7,7 @@ import PartMore from "./PartMore";
 import PartParams from "./PartParams";
 import PartDownloadViewer from "../../containers/app/PartDownloadViewer";
 import PartStylesViewer from "../../containers/app/PartStylesViewer";
-import {getDownloadCount, login} from "../../api/db";
+import {getDownloadCount, login} from "../../api/TcbHandler";
 import {connect} from 'react-redux';
 import {loadDownloadData} from "../../actions";
 import ReactGA from 'react-ga';

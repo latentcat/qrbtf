@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import PartDownload from "../../components/app/PartDownload";
 import {saveImg, saveSvg} from "../../utils/downloader";
-import {getDownloadCount, increaseDownloadData, recordDownloadDetail} from "../../api/db";
+import {getDownloadCount, increaseDownloadData, recordDownloadDetail} from "../../api/TcbHandler";
 import {getParamDetailedValue, outerHtml} from "../../utils/util";
-import {handleDownloadJpg, handleDownloadSvg} from "../../utils/gaHelper";
+import {handleDownloadJpg, handleDownloadSvg} from "../../utils/GAHelper";
 
 function saveDB(state, type, updateDownloadData) {
     return new Promise(resolve => {

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {changeParam} from "../../actions";
 import ParamUpload from "../../components/param/ParamUpload";
 import {isPicture, toBase64} from "../../utils/imageUtils";
-import {handleUpload} from "../../utils/gaHelper";
+import {handleUpload} from "../../utils/GAHelper";
 
 const mapStateToProps = (state, ownProps) => ({
     rendererIndex: ownProps.rendererIndex,

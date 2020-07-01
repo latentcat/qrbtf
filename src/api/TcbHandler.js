@@ -10,6 +10,7 @@ const db = app.database();
 const _ = db.command
 
 export async function login() {
+    if (isLogin) return;
     await auth.signInAnonymously();
     const loginState = await auth.getLoginState();
     isLogin = loginState;

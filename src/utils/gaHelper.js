@@ -53,3 +53,11 @@ export function handleInputUrl() {
         action: 'Input',
     });
 }
+
+export function handleScroll(label) {
+    ReactGA.event({
+        category: 'ScrollContainer',
+        action: 'scroll',
+        label: label
+    });
+}

@@ -3,6 +3,7 @@ import './App.css';
 import StyleListViewer from "../../containers/style/StyleListViewer";
 import {isPC} from "../../utils/navigatorUtils";
 import ScrollContainer from 'react-indiana-drag-scroll'
+import {handleScroll} from "../../utils/GAHelper";
 
 const PartStyles = ({ setParamInfo }) => {
     const [loaded, setLoaded] = useState(false);
@@ -22,6 +23,7 @@ const PartStyles = ({ setParamInfo }) => {
         </div>
         <ScrollContainer
             className="Qr-s"
+            onStartScroll={(e) => handleScroll('style')}
             hideScrollbars={false}
             horizontal={true}
             vertical={false}

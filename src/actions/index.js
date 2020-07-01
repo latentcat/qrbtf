@@ -1,5 +1,5 @@
 import {actionTypes} from "../constant/ActionTypes";
-import {handleStyle} from "../utils/gaHelper";
+import {handleStyle} from "../utils/GAHelper";
 
 export const genQRInfo = text => ({
     type: actionTypes.GENERATE_QR_INFO,
