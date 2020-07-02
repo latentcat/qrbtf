@@ -13,7 +13,21 @@ import {loadDownloadData} from "../../actions";
 import ReactGA from 'react-ga';
 import {setScrollbarWidthProp} from "../../utils/util"
 
-ReactGA.initialize('UA-165845289-1');
+ReactGA.initialize(
+    [
+        {
+            trackingId: 'UA-165845289-1',
+            gaOptions: {
+                name: 'trackerUA',
+            }
+        },
+        {
+            trackingId: 'G-3NKS6ZG27V',
+            gaOptions: { name: 'trackerG' }
+        }
+    ],
+    { debug: true, alwaysSendToDefaultTracker: false }
+);
 function App({ dispatch }) {
     const updateDownloadData = useCallback((downloadData) => dispatch(loadDownloadData(downloadData)), []);
     setScrollbarWidthProp()
