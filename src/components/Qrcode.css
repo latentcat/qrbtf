@@ -213,7 +213,7 @@
 }
 
 .Qr-item:hover .Qr-item-image {
-    opacity: var(--qr-opacity-hover);
+    opacity: 1!important;
 }
 
 .Qr-item:hover .Qr-item-detail {
@@ -223,6 +223,10 @@
 .Qr-item-selected .Qr-item-desc-inner {
     opacity: 1!important;
     height: auto;
+}
+
+#Qr-style:hover .Qr-item-image {
+    opacity: var(--qr-opacity-hover);
 }
 
 .Qr-item-detail {
