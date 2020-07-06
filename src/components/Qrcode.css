@@ -788,4 +788,5 @@ select:-moz-focusring {
 .medium-zoom-overlay {
     -webkit-backdrop-filter: saturate(180%) blur(10px);
     backdrop-filter: saturate(180%) blur(10px);
+    background: var(--zoom-bg-color)!important;
 }

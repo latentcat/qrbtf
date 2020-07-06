@@ -20,6 +20,7 @@
     --qr-opacity-hover: calc(1);
     --upload-color: rgba(102,102,102,1);
     --b-w: rgba(0,0,0,1);
+    --zoom-bg-color: rgba(255,255,255,0.8);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,6 +39,8 @@
         --qr-opacity-hover: calc(0.65);
         --upload-color: rgba(150,150,150,1);
         --b-w: rgba(255,255,255,1);
+        --zoom-bg-color: rgba(0,0,0,0.8);
+
     }
 }
 
