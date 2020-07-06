@@ -21,6 +21,7 @@
     --upload-color: rgba(102,102,102,1);
     --b-w: rgba(0,0,0,1);
     --zoom-bg-color: rgba(255,255,255,0.8);
+    --zoom-img-bg-color: rgba(255,255,255,0.5);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,6 +41,7 @@
         --upload-color: rgba(150,150,150,1);
         --b-w: rgba(255,255,255,1);
         --zoom-bg-color: rgba(0,0,0,0.8);
+        --zoom-img-bg-color: rgba(0,0,0,0.5);
 
     }
 }

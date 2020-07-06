@@ -790,3 +790,7 @@ select:-moz-focusring {
     backdrop-filter: saturate(180%) blur(10px);
     background: var(--zoom-bg-color)!important;
 }
+
+.medium-zoom-image--opened {
+    background: var(--zoom-img-bg-color)!important;
+}
