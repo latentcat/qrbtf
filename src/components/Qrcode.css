@@ -784,3 +784,8 @@ select:-moz-focusring {
     -moz-appearance: none;
     -moz-text-size-adjust: 100%;
 }
+
+.medium-zoom-overlay {
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: saturate(180%) blur(10px);
+}
