@@ -76,6 +76,14 @@ const PartFooter = () => (
                                  target="_blank">少数派</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.creative-tim.com/blog/web-development/best-reactjs-project-examples/" rel="noopener noreferrer"
                                  target="_blank">Creative Tim</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://mp.weixin.qq.com/s/bg69nfB0MK8_bd4yEErxIA" rel="noopener noreferrer"
+                                 target="_blank">PPT 进化论</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://mp.weixin.qq.com/s/AoxOxZcBmo_1FK71CHviGQ" rel="noopener noreferrer"
+                                 target="_blank">旁门左道</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://www.iplaysoft.com/qrbtf.html" rel="noopener noreferrer"
+                                 target="_blank">异次元</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
+                <span><LinkTrace href="https://mp.weixin.qq.com/s/zSzH8WilPsACmF1K2cWPVA" rel="noopener noreferrer"
+                                 target="_blank">Topbook</LinkTrace><span className="gray">&ensp;丨&ensp;</span></span>
                 <span><LinkTrace href="https://www.v2ex.com/t/675982"
                                  rel="noopener noreferrer" target="_blank">V2EX</LinkTrace></span>
             </div>
