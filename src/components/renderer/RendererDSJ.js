@@ -3,7 +3,6 @@ import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
 import LinkTrace from "../link/LinkTrace";
-import {RendererRect} from "./RendererBase";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []

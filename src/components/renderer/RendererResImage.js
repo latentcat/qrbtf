@@ -3,7 +3,6 @@ import {gamma} from "../../utils/imageUtils";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {defaultResImage} from "../../constant/References";
-import RendererRandRect from "./RendererRandRect";
 
 function listPoints(qrcode, params) {
     if (!qrcode) return []

@@ -8,7 +8,7 @@ import LinkButton from "../link/LinkButton";
 import ImageZoom from "../../containers/app/ImageZoom";
 import LinkTrace from "../link/LinkTrace";
 import {isPC} from "../../utils/navigatorUtils";
-import {handleScroll, handleZoom} from "../../utils/gaHelper";
+import {handleScroll} from "../../utils/gaHelper";
 
 const pictures = [
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery04.jpg',

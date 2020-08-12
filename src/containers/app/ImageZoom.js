@@ -10,7 +10,7 @@ const ImageZoom = ({ zoom, ...other }) => {
         zoomRef.current.attach(image);
     }
 
-    return <img ref={attachZoom} {...other} />
+    return <img alt={"zoom"} ref={attachZoom} {...other} />
 };
 
 export default ImageZoom;
