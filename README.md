@@ -98,6 +98,6 @@ class Component extends React.Component {
 * [davidshimjs / qrcode](https://github.com/davidshimjs/qrcodejs)
 * [cozmo / jsQR](https://github.com/cozmo/jsQR)
 
-## LICENSE
+## License
 
 [GPLv3](LICENSE)
