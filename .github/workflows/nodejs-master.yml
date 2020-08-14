@@ -28,7 +28,7 @@ jobs:
         run: sudo chmod 775 ./build/ && ls
 
       - name: Upload COS
-        uses: ciaochaos/tencent-cos-action@master
+        uses: zkqiang/tencent-cos-action@v0.1.0
         with:
           args: delete -r -f / && upload -r ./build/ /
           secret_id: ${{ secrets.SECRET_ID }}
