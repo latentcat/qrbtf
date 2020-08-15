@@ -36,3 +36,17 @@ export const loadDownloadData = (data) => ({
     type: actionTypes.LOAD_DOWNLOAD_DATA,
     data
 })
+
+export const changeTitle = (title) => {
+    return {
+        type: actionTypes.CHANGE_TITLE,
+        title
+    }
+}
+
+export const changeIcon = (icon) => {
+    return {
+        type: actionTypes.CHANGE_ICON,
+        icon
+    }
+}

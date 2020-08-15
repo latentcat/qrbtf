@@ -1,5 +1,5 @@
 import {changeCorrectLevel} from "../../actions";
-import ParamCorrectLevel from "../../components/param/ParamCorrectLevel";
+import ParamCorrectLevel from "../../components/param/disposable/ParamCorrectLevel";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => ({

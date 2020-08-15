@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import ParamListViewer from "../../containers/param/ParamListViewer";
 import ParamCorrectLevelViewer from "../../containers/param/ParamCorrectLevelViewer";
+import ParamTitleViewer from "../../containers/param/disposable/ParamTitleViewer";
+import ParamIconViewer from "../../containers/param/disposable/ParamIconViewer";
 
 const PartParams = () => (
     <div className="Qr-titled-nobg">
@@ -12,6 +14,8 @@ const PartParams = () => (
         <div className="Qr-Centered">
             <div className="Qr-div-table">
                 <ParamCorrectLevelViewer/>
+                <ParamTitleViewer/>
+                <ParamIconViewer/>
                 <ParamListViewer/>
             </div>
         </div>

@@ -13,7 +13,6 @@ function listPoints(qrcode, params) {
     let type = params[0];
     let size = params[1] / 100;
     let funcType = params[1];
-    let opacity = params[2] / 100;
     let posType = params[3];
     let id = 0;
     let otherColor = params[4];

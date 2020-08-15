@@ -7,6 +7,8 @@ const mapStateToProps = (state, ownProps) => ({
     rendererIndex: ownProps.index,
     qrcode: state.qrcode,
     params: fillEmptyWith(state.paramValue[ownProps.index].slice(), 0),
+    title: state.title,
+    icon: state.icon,
     selected: state.selectedIndex === ownProps.index,
 })
 

@@ -13,6 +13,8 @@ const initialState = {
     history: [],
     downloadData: [],
     qrcode: encodeData({text: QRBTF_URL, correctLevel: 0}),
+    icon: { enabled: 0, src: '', scale: 0.33 },
+    title: { enabled: 0, text: '', color: 'black', size: 20, align: 'middle'},
     paramInfo: new Array(16).fill(new Array(16)),
     paramValue: new Array(16).fill(new Array(16))
 }
@@ -63,6 +65,16 @@ export default function appReducer(state = initialState, action) {
         case actionTypes.LOAD_DOWNLOAD_DATA: {
             return Object.assign({}, state, {
                 downloadData: action.data
+            });
+        }
+        case actionTypes.CHANGE_TITLE: {
+            return Object.assign({}, state, {
+                title: Object.assign({}, state.title, action.title)
+            });
+        }
+        case actionTypes.CHANGE_ICON: {
+            return Object.assign({}, state, {
+                icon: Object.assign({}, state.icon, action.icon)
             });
         }
         default: return state
