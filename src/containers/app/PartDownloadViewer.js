@@ -3,7 +3,7 @@ import PartDownload from "../../components/app/PartDownload";
 import {saveImg, saveSvg} from "../../utils/downloader";
 import {getDownloadCount, increaseDownloadData, recordDownloadDetail} from "../../api/TcbHandler";
 import {getParamDetailedValue, outerHtml} from "../../utils/util";
-import {handleDownloadJpg, handleDownloadSvg} from "../../utils/gaHelper";
+import {handleDownloadImg, handleDownloadSvg} from "../../utils/gaHelper";
 
 function saveDB(state, type, updateDownloadData) {
     return new Promise(resolve => {
@@ -45,11 +45,11 @@ const mapStateToProps = (state, ownProps) => ({
         saveDB(state, 'svg', ownProps.updateDownloadData);
         handleDownloadSvg(state.value);
     },
-    onJpgDownload: () => {
+    onImgDownload: (type) => {
         return new Promise(resolve => {
-            saveImg(state.value, outerHtml(state.selectedIndex), 1500, 1500).then((res) => {
-                saveDB(state, 'jpg', ownProps.updateDownloadData).then(() => {
-                    handleDownloadJpg(state.value);
+            saveImg(state.value, outerHtml(state.selectedIndex), 1500, 1500, type).then((res) => {
+                saveDB(state, type, ownProps.updateDownloadData).then(() => {
+                    handleDownloadImg(state.value, type);
                     resolve(res)
                 });
             });

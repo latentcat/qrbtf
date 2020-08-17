@@ -1,6 +1,8 @@
 const svgHead = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n " +
     "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 20010904//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n"
 
+const MIME = { "jpg": "image/jpeg", "png": "image/png" };
+
 export function saveSvg(value, content) {
     let htmlContent = [svgHead + content]
     let bl = new Blob(htmlContent, {type: "image/svg+xml"})
@@ -13,9 +15,11 @@ export function saveSvg(value, content) {
     a.click()
 }
 
-export function saveImg(value, content, width, height) {
+export function saveImg(value, content, width, height, type) {
+    if (!MIME[type]) throw "Error image type";
+
     // Finish creating downloadable data
-    let filename = "QRcode_" + value + ".jpg";
+    let filename = "QRcode_" + value + "." + type;
     const wrap = document.createElement('div');
     wrap.innerHTML = content;
 
@@ -48,7 +52,7 @@ export function saveImg(value, content, width, height) {
             // image opening in a new tab for others.
 
             let a = document.createElement('a');
-            let data = canvas.toDataURL('image/jpeg', 0.8);
+            let data = canvas.toDataURL(MIME[type], 0.8);
             a.setAttribute('href', data)
             a.setAttribute('target', 'download')
             a.setAttribute('download', filename);
