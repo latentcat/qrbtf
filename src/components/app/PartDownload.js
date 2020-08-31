@@ -42,7 +42,7 @@ const PartDownload = ({ value, downloadCount, onSvgDownload, onImgDownload }) =>
         </div>
         <div className="Qr-Centered">
             <div className="btn-row">
-                <div className="div-btn">
+                <div className="div-btn img-dl-btn">
                     <button className="dl-btn" onClick={() => {onImgDownload("jpg").then(res => setImgData(res));}}>JPG</button>
                     <button className="dl-btn" onClick={() => {onImgDownload("png").then(res => setImgData(res));}}>PNG</button>
                     <button className="dl-btn" onClick={onSvgDownload}>SVG</button>

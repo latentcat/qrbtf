@@ -574,7 +574,7 @@ input[type="number"]{
     flex-wrap: wrap;
 }
 
-.div-btn > .dl-btn {
+.div-btn .dl-btn {
     margin: 0 0 10px!important;
 }
 
@@ -656,8 +656,8 @@ input[type="number"]{
 }
 
 @media (min-width: 666px) {
-    .div-btn {
-        max-width: 620px;
+    .img-dl-btn {
+        max-width: 620px!important;
     }
 }
 
