@@ -567,11 +567,11 @@ input[type="number"]{
 }
 
 .div-btn {
-    white-space: nowrap;
-    overflow-x: hidden;
-    display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    width: calc((100vw - 46px) / 1);
+    display: flex;
+    display: -webkit-flex; /* Safari */
+    flex-wrap: wrap;
 }
 
 .ul-btn {
@@ -582,7 +582,7 @@ input[type="number"]{
     cursor: pointer;
     font-size: 0.9em;
     line-height: 2em;
-    margin: 0;
+    margin: 0 0 10px;
     width: calc((100vw - 56px) / 2);
     border-radius: 3em;
     outline: none;
@@ -603,6 +603,7 @@ input[type="number"]{
     background: var(--bg-color);
     font-family: 'Futura', sans-serif;
     color: var(--input-font-color);
+    display: inline-block;
 }
 
 @media (min-width: 500px) {
@@ -640,12 +641,19 @@ input[type="number"]{
 }
 
 @media (min-width: 500px) {
+
     .div-btn {
         max-width: 410px;
     }
 
     .dl-btn {
         width: 200px;
+    }
+}
+
+@media (min-width: 666px) {
+    .div-btn {
+        max-width: 620px;
     }
 }
 
