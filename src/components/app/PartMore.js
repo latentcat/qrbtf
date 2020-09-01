@@ -51,6 +51,7 @@ const PartMore = () => {
                     </ScrollContainer>
                     <div className="Qr-Centered">
                         <h2>最新消息</h2>
+                        <p><b>2020.9.1</b><br/>新增图标插入、 PNG 下载。</p>
                         <p><b>2020.6.29</b><br/>新的反馈渠道！我们开始征集好玩的二维码设计啦，可以是推送尾图、海报等等，快来上传吧。<LinkTrace
                             href='https://qrbtf-com.mikecrm.com/J2wjEEq' rel="noopener noreferrer"
                             target="_blank">点击提交</LinkTrace>。</p>
