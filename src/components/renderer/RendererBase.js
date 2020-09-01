@@ -1,8 +1,8 @@
 import React  from "react";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
-import {createRenderer} from "../style/Renderer";
-import {rand} from "../../utils/util";
+import {createRenderer, defaultDrawIcon} from "../style/Renderer";
+import {getExactValue, rand} from "../../utils/util";
 import LinkTrace from "../link/LinkTrace";
 
 function listPoints(qrcode, params) {
@@ -216,19 +216,43 @@ function getParamInfoRandRound() {
     ];
 }
 
+function drawIcon({ qrcode, icon, params }) {
+    const iconMode = getExactValue(icon.enabled, 0);
+    if (iconMode === 1) {
+        // Wechat
+
+    } else if (iconMode === 2) {
+        // Alipay
+        // const pointList = [];
+        // const iconSize = Number(nCount * (scale > .33 ? .33 : scale));
+        // const iconXY = (nCount - iconSize) / 2;
+        // pointList.push(<image key={id++} xlinkHref={src} width={iconSize - 2} x={iconXY + 1} y={iconXY + 1} />);
+        // return pointList;
+    } else if (iconMode === 3) {
+        // Custom
+        const {src, scale} = icon;
+
+        // default
+        return defaultDrawIcon({ qrcode, icon, params });
+    }
+}
+
 export const RendererRect = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoRect,
+    drawIcon: drawIcon
 });
 
 export const RendererRound = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoRound,
+    drawIcon: drawIcon
 });
 
 export const RendererRandRound = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoRandRound,
+    drawIcon: drawIcon
 });
 
 RendererRect.detail = (

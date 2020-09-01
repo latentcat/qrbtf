@@ -7,7 +7,7 @@ import ParamIconSrcViewer from "../../../containers/param/disposable/ParamIconSr
 
 const IconParams = ({ icon, onChange }) => {
     const { enabled, src, scale } = icon;
-    if (getExactValue(enabled, 0)) {
+    if (getExactValue(enabled, 0) == 3) {
         return (
             <React.Fragment>
                 <FrameworkParam paramName={"图标源"}>
@@ -34,8 +34,10 @@ const ParamIcon = ({icon, onChange}) => (
                 className="Qr-select"
                 value={icon.enabled}
                 onChange={(e) => onChange({...icon, enabled: e.target.value})}>
-                <option value={0}>否</option>
-                <option value={1}>是</option>
+                <option value={0}>无</option>
+                <option value={1}>微信</option>
+                <option value={2}>支付宝</option>
+                <option value={3}>自定义</option>
             </select>
         </FrameworkParam>
         <IconParams icon={icon} onChange={onChange}/>
