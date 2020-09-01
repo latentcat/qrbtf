@@ -44,8 +44,8 @@ export function saveImg(value, content, width, height, type) {
 
     return new Promise(resolve => {
         img.onload = () => {
-            ctx.fillStyle = 'white'
-            ctx.fillRect(0, 0, width, height)
+            ctx.fillStyle = 'white';
+            if (type === 'jpg') ctx.fillRect(0, 0, width, height);
             ctx.drawImage(img, 0, 0, width, height);
             // `download` attr is not well supported
             // Will result in a download popup for chrome and the
