@@ -12,6 +12,7 @@ import { RendererRandRound, RendererRect, RendererRound } from "../../components
 import { RendererLine, RendererLine2 } from "../../components/renderer/RendererLine";
 import { RendererFuncA, RendererFuncB } from "../../components/renderer/RendererFunc";
 import * as React from "react";
+import RendererImageFill from "../../components/renderer/RendererImageFill";
 
 const styles = [
     {value: "A1", renderer: RendererRect},
@@ -23,6 +24,7 @@ const styles = [
     {value: "A3", renderer: RendererRandRound},
     {value: "A — b2", renderer: RendererFuncB},
     {value: "C1", renderer: RendererImage},
+    {value: "C3", renderer: RendererImageFill},
     {value: "B1", renderer: Renderer25D},
     {value: "A — a2", renderer: RendererLine2},
     {value: "A — b1", renderer: RendererFuncA},
