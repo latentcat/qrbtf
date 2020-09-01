@@ -169,13 +169,13 @@ let defaultDrawIcon = function ({ qrcode, params, title, icon }) {
         const iconEnabled = getExactValue(icon.enabled, 0);
         const {src, scale} = icon;
 
-        const iconSize = Number(nCount * (scale > 33 ? 33 : scale) / 100);
-        const iconXY = (nCount - iconSize) / 2;
+        const iconSize = Number(nCount * (scale > 33 ? 33 : scale) / 100 * 3);
+        const iconXY = (nCount*3 - iconSize) / 2;
 
         if (icon && iconEnabled) {
             const randomIdDefs = getIdNum();
             const randomIdClips = getIdNum();
-            pointList.push(<path d={sq25} stroke="#FFF" strokeWidth={100/iconSize * 1} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />);
+            pointList.push(<path d={sq25} stroke="#FFF" strokeWidth={100/iconSize * 3} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />);
             pointList.push(
                 <g key={id++}>
                     <defs>
@@ -208,8 +208,8 @@ let builtinDrawIcon = function ({ qrcode, params, title, icon }) {
         const iconMode = getExactValue(icon.enabled, 0);
         const {src, scale} = icon;
 
-        const iconSize = Number(nCount * (scale > 33 ? 33 : scale) / 100);
-        const iconXY = (nCount - iconSize) / 2;
+        const iconSize = Number(nCount * (scale > 33 ? 33 : scale) / 100 * 3);
+        const iconXY = (nCount*3 - iconSize) / 2;
 
         const WeChatIconSmall = (
             <g>
@@ -255,7 +255,7 @@ let builtinDrawIcon = function ({ qrcode, params, title, icon }) {
         if (icon && iconMode) {
             const randomIdDefs = getIdNum();
             const randomIdClips = getIdNum();
-            pointList.push(<path d={sq25} stroke="#FFF" strokeWidth={100/iconSize * 1} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />);
+            pointList.push(<path d={sq25} stroke="#FFF" strokeWidth={100/iconSize * 3} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />);
             pointList.push(
                 <g key={id++}>
                     <defs>
