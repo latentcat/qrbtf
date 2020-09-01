@@ -7,8 +7,13 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onChange: (icon) => {
+    onBlur: (icon) => {
         dispatch(changeIcon(icon))
+    },
+    onKeyPress: (e, icon) => {
+        if (e.key === 'Enter') {
+            dispatch(changeIcon(icon))
+        }
     }
 })
 

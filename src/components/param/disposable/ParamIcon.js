@@ -5,14 +5,14 @@ import FrameworkParam from "../FrameworkParam";
 import {getExactValue} from "../../../utils/util";
 import ParamIconSrcViewer from "../../../containers/param/disposable/ParamIconSrcViewer";
 
-const IconParams = ({ icon, onChange }) => {
+const IconParams = ({ icon, onBlur, onKeyPress }) => {
     const { enabled, src, scale } = icon;
     const components = [];
 
     if (getExactValue(enabled, 0) == 1) {
         components.push(
             <FrameworkParam paramName={"图标源"}>
-                <ParamIconSrcViewer icon={icon} onChange={onChange}/>
+                <ParamIconSrcViewer icon={icon} onChange={onBlur}/>
             </FrameworkParam>
         );
     }
@@ -23,8 +23,9 @@ const IconParams = ({ icon, onChange }) => {
                 <input
                     type="number"
                     className="Qr-input small-input"
-                    value={scale}
-                    onChange={(e) => onChange({...icon, scale: e.target.value})}
+                    defaultValue={scale}
+                    onBlur={(e) => onBlur({...icon, scale: e.target.value})}
+                    onKeyPress={(e) => onKeyPress(e, {...icon, scale: e.target.value})}
                 />
             </FrameworkParam>
         )
@@ -32,13 +33,13 @@ const IconParams = ({ icon, onChange }) => {
     return components;
 }
 
-const ParamIcon = ({icon, onChange}) => (
+const ParamIcon = ({icon, onBlur, onKeyPress}) => (
     <React.Fragment>
         <FrameworkParam paramName={"图标"}>
             <select
                 className="Qr-select"
-                value={icon.enabled}
-                onChange={(e) => onChange({...icon, enabled: e.target.value})}>
+                defaultValue={icon.enabled}
+                onChange={(e) => onBlur({...icon, enabled: e.target.value})}>
                 <option value={0}>无</option>
                 <option value={1}>自定义</option>
                 <option value={2}>微信 — 小</option>
@@ -47,7 +48,7 @@ const ParamIcon = ({icon, onChange}) => (
                 <option value={5}>支付宝</option>
             </select>
         </FrameworkParam>
-        <IconParams icon={icon} onChange={onChange}/>
+        <IconParams icon={icon} onBlur={onBlur} onKeyPress={onKeyPress}/>
     </React.Fragment>
 )
 
