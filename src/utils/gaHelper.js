@@ -16,10 +16,10 @@ export function handleDownloadSvg(rendererName) {
     });
 }
 
-export function handleDownloadJpg(rendererName) {
+export function handleDownloadImg(rendererName, type) {
     ReactGA.event({
         category: 'Style',
-        action: 'DownloadJpg',
+        action: 'Download' + type.charAt(0).toUpperCase() + type.slice(1),
         label: rendererName,
     });
 }

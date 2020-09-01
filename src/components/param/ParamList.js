@@ -6,6 +6,7 @@ import ParamSelectViewer from "../../containers/param/ParamSelectViewer";
 import ParamColorViewer from "../../containers/param/ParamColorViewer";
 import ParamUploadViewer from "../../containers/param/ParamUploadViewer";
 import ParamCheckBoxViewer from "../../containers/param/ParamCheckBoxViewer";
+import FrameworkParam from "./FrameworkParam";
 
 const mapTypeToComponent = ({
     [ParamTypes.TEXT_EDITOR]: ParamTextViewer,
@@ -18,19 +19,12 @@ const mapTypeToComponent = ({
 const ParamList = ({ rendererIndex, paramInfo }) => (
     paramInfo.map((item, paramIndex) => {
         return (
-            <table className="Qr-table" key={"tr_" + rendererIndex + "_" + paramIndex}>
-                <tbody>
-                    <tr>
-                        <td>{item.key}</td>
-                        <td>
-                            {React.createElement(mapTypeToComponent[item.type], {
-                                rendererIndex: rendererIndex,
-                                paramIndex: paramIndex
-                            })}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <FrameworkParam key={"tr_" + rendererIndex + "_" + paramIndex} paramName={item.key}>
+                {React.createElement(mapTypeToComponent[item.type], {
+                    rendererIndex: rendererIndex,
+                    paramIndex: paramIndex
+                })}
+            </FrameworkParam>
         );
     })
 )

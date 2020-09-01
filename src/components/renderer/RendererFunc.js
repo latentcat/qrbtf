@@ -3,7 +3,7 @@ import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
 
-function listPoints(qrcode, params) {
+function listPoints({ qrcode, params, icon }) {
     if (!qrcode) return []
 
     const nCount = qrcode.getModuleCount();
@@ -13,7 +13,6 @@ function listPoints(qrcode, params) {
     let type = params[0];
     let size = params[1] / 100;
     let funcType = params[1];
-    let opacity = params[2] / 100;
     let posType = params[3];
     let id = 0;
     let otherColor = params[4];
