@@ -43,7 +43,7 @@ let defaultDrawIcon = function ({ qrcode, params, title, icon }) {
 export function createRenderer(renderer) {
     renderer = extend({
         getViewBox: defaultViewBox,
-        listPoints: (qrcode, params) => { return []; },
+        listPoints: ({ qrcode, params, icon }) => { return []; },
         getParamInfo: () => {return []; },
         beginRendering: ({ qrcode, params, setParamInfo }) => {},
         beforeListing: ({ qrcode, params, setParamInfo }) => {},
@@ -60,7 +60,7 @@ export function createRenderer(renderer) {
             <svg className="Qr-item-svg" width="100%" height="100%" viewBox={renderer.getViewBox(qrcode)} fill="white"
                  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 {renderer.beforeListing({ qrcode, params, setParamInfo })}
-                {renderer.listPoints(qrcode, params)}
+                {renderer.listPoints({ qrcode, params, icon })}
                 {renderer.drawIcon({ qrcode, params, title, icon })}
             </svg>
         );

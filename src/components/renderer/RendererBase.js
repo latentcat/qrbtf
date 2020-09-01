@@ -5,7 +5,7 @@ import {createRenderer, defaultDrawIcon} from "../style/Renderer";
 import {getExactValue, rand} from "../../utils/util";
 import LinkTrace from "../link/LinkTrace";
 
-function listPoints(qrcode, params) {
+function listPoints({ qrcode, params, icon }) {
     if (!qrcode) return []
 
     const nCount = qrcode.getModuleCount();

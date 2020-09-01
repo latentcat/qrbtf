@@ -4,9 +4,9 @@ import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {defaultResImage} from "../../constant/References";
 
-function listPoints(qrcode, params) {
+function listPoints({ qrcode, params, icon }) {
     if (!qrcode) return []
-
+console.log(icon)
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
@@ -155,7 +155,7 @@ function getGrayPointList(params, size, black, white) {
     })
 }
 
-const RendererResImage = ({qrcode, params, setParamInfo}) => {
+const RendererResImage = ({qrcode, params, setParamInfo, icon}) => {
     let otherColor = params[5];
 
     useEffect(() => {
@@ -178,7 +178,7 @@ const RendererResImage = ({qrcode, params, setParamInfo}) => {
                 <rect id="B" width={3.08} height={3.08}/>
                 <rect id="S" width={1.02} height={1.02}/>
             </defs>
-            {gpl.concat(listPoints(qrcode, params))}
+            {gpl.concat(listPoints({ qrcode, params, icon }))}
         </svg>
     )
 }

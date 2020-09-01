@@ -7,24 +7,29 @@ import ParamIconSrcViewer from "../../../containers/param/disposable/ParamIconSr
 
 const IconParams = ({ icon, onChange }) => {
     const { enabled, src, scale } = icon;
+    const components = [];
+
     if (getExactValue(enabled, 0) == 3) {
-        return (
-            <React.Fragment>
-                <FrameworkParam paramName={"图标源"}>
-                    <ParamIconSrcViewer icon={icon} onChange={onChange}/>
-                </FrameworkParam>
-                <FrameworkParam paramName={"图标缩放"}>
-                    <input
-                        type="number"
-                        className="Qr-input small-input"
-                        value={scale}
-                        onChange={(e) => onChange({...icon, scale: e.target.value})}
-                    />
-                </FrameworkParam>
-            </React.Fragment>
+        components.push(
+            <FrameworkParam paramName={"图标源"}>
+                <ParamIconSrcViewer icon={icon} onChange={onChange}/>
+            </FrameworkParam>
+        );
+    }
+
+    if (getExactValue(enabled, 0) != 0) {
+        components.push(
+            <FrameworkParam paramName={"图标缩放"}>
+                <input
+                    type="number"
+                    className="Qr-input small-input"
+                    value={scale}
+                    onChange={(e) => onChange({...icon, scale: e.target.value})}
+                />
+            </FrameworkParam>
         )
     }
-    return null;
+    return components;
 }
 
 const ParamIcon = ({icon, onChange}) => (

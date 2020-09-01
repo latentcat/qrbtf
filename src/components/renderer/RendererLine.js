@@ -4,7 +4,7 @@ import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
 import {rand} from "../../utils/util";
 
-function listPoints(qrcode, params) {
+function listPoints({ qrcode, params, icon }) {
     if (!qrcode) return []
 
     const nCount = qrcode.getModuleCount();
