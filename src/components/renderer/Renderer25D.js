@@ -2,7 +2,7 @@ import React from "react";
 import {ParamTypes} from "../../constant/ParamTypes";
 import {getTypeTable, QRPointType} from "../../utils/qrcodeHandler";
 import {createRenderer} from "../style/Renderer";
-import {getExactValue} from "../../utils/util";
+import {getExactValue, getIdNum} from "../../utils/util";
 
 const X = [ Math.sqrt(3)/2, 1/2];
 const Y = [-Math.sqrt(3)/2, 1/2];
@@ -95,6 +95,9 @@ let defaultDrawIcon = function ({ qrcode, params, title, icon }) {
         const iconXY = (nCount - iconSize) / 2;
 
         if (icon && iconEnabled) {
+
+            const randomIdDefs = getIdNum();
+            const randomIdClips = getIdNum();
             pointList.push(
                 <g transform={matrixString}>
                     <path d={sq25} stroke="#FFF" strokeWidth={100/iconSize * 1} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />
@@ -103,15 +106,16 @@ let defaultDrawIcon = function ({ qrcode, params, title, icon }) {
             pointList.push(
                 <g key={id++} transform={matrixString}>
                     <defs>
-                        <path id="defs-path" d={sq25} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />                    </defs>
-                    <clipPath id="clip-path">
-                        <use xlinkHref="#defs-path"  overflow="visible"/>
+                        <path id={"defs-path" + randomIdDefs} d={sq25} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />                    </defs>
+                    <clipPath id={"clip-path" + randomIdClips}>
+                        <use xlinkHref={"#defs-path" + randomIdDefs}  overflow="visible"/>
                     </clipPath>
-                    <g clipPath="url(#clip-path)">
+                    <g clipPath={"url(#clip-path" + randomIdClips + ")"}>
                         <image overflow="visible" key={id++} xlinkHref={src} width={iconSize} x={iconXY} y={iconXY} />
                     </g>
                 </g>
             );
+
         }
     }
 
@@ -176,6 +180,8 @@ let builtinDrawIcon = function ({ qrcode, params, title, icon }) {
         }
 
         if (icon && iconMode) {
+            const randomIdDefs = getIdNum();
+            const randomIdClips = getIdNum();
             pointList.push(
                 <g transform={matrixString}>
                     <path d={sq25} stroke="#FFF" strokeWidth={100/iconSize * 1} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />
@@ -184,11 +190,11 @@ let builtinDrawIcon = function ({ qrcode, params, title, icon }) {
             pointList.push(
                 <g key={id++} transform={matrixString}>
                     <defs>
-                        <path id="defs-path" d={sq25} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />                    </defs>
-                    <clipPath id="clip-path">
-                        <use xlinkHref="#defs-path"  overflow="visible"/>
+                        <path id={"defs-path" + randomIdDefs} d={sq25} fill="#FFF" transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} />                    </defs>
+                    <clipPath id={"clip-path" + randomIdClips}>
+                        <use xlinkHref={"#defs-path" + randomIdDefs}  overflow="visible"/>
                     </clipPath>
-                    <g clipPath="url(#clip-path)">
+                    <g clipPath={"url(#clip-path" + randomIdClips + ")"}>
                         <g transform={'translate('+String(iconXY)+','+String(iconXY)+') ' + 'scale(' + String(iconSize/100) + ',' + String(iconSize/100) + ')'} >
                             {builtinIcon()}
                         </g>

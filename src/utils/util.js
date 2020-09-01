@@ -1,9 +1,16 @@
 import {ParamTypes} from "../constant/ParamTypes";
 let seed = 0;
 
+let idNum = 0;
+
 export function rand(min, max) {
     seed = (seed * 9301 + 49297) % 233280;
     return min + (seed / 233280.0) * (max - min);
+}
+
+export function getIdNum() {
+    idNum += 1
+    return idNum.toString()
 }
 
 export function fillEmptyWith(arr, value) {
