@@ -13,7 +13,7 @@ const initialState = {
     history: [],
     downloadData: [],
     qrcode: encodeData({text: QRBTF_URL, correctLevel: 0}),
-    icon: { enabled: 0, src: '', scale: 0.33 },
+    icon: { enabled: 0, src: '', scale: 25 },
     title: { enabled: 0, text: '', color: 'black', size: 20, align: 'middle'},
     paramInfo: new Array(16).fill(new Array(16)),
     paramValue: new Array(16).fill(new Array(16))

@@ -7,8 +7,19 @@ import LinkTrace from "../link/LinkTrace";
 
 function listPoints({ qrcode, params, icon }) {
     if (!qrcode) return []
-
     const nCount = qrcode.getModuleCount();
+
+    const iconEnabled = getExactValue(icon.enabled, 0);
+
+    const {src, scale} = icon;
+
+    const iconSize = Number(nCount * (scale > .33 ? .33 : scale));
+    const iconXY = (nCount - iconSize) / 2;
+
+    function nearIcon(x, y) {
+        return Math.pow((nCount - 1) / 2 - x, 2) + Math.pow((nCount - 1) / 2 - y, 2) < Math.pow(iconSize / 2, 2);
+    }
+
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
 
@@ -65,12 +76,14 @@ function listPoints({ qrcode, params, icon }) {
                 }
             }
             else {
-                if (type === 0)
+                if (type === 0) {
                     pointList.push(<rect opacity={opacity} width={size} height={size} key={id++} fill={otherColor} x={x + (1 - size)/2} y={y + (1 - size)/2}/>)
-                else if (type === 1)
+                } else if (type === 1) {
+                    if (!(iconEnabled && nearIcon(x, y))) {}
                     pointList.push(<circle opacity={opacity} r={size / 2} key={id++} fill={otherColor} cx={x + 0.5} cy={y + 0.5}/>)
-                else if (type === 2)
+                } else if (type === 2) {
                     pointList.push(<circle opacity={opacity}  key={id++} fill={otherColor} cx={x + 0.5} cy={y + 0.5} r={0.5 * rand(0.33,1.0)} />)
+                }
             }
         }
     }
@@ -216,43 +229,19 @@ function getParamInfoRandRound() {
     ];
 }
 
-function drawIcon({ qrcode, icon, params }) {
-    const iconMode = getExactValue(icon.enabled, 0);
-    if (iconMode === 1) {
-        // Wechat
-
-    } else if (iconMode === 2) {
-        // Alipay
-        // const pointList = [];
-        // const iconSize = Number(nCount * (scale > .33 ? .33 : scale));
-        // const iconXY = (nCount - iconSize) / 2;
-        // pointList.push(<image key={id++} xlinkHref={src} width={iconSize - 2} x={iconXY + 1} y={iconXY + 1} />);
-        // return pointList;
-    } else if (iconMode === 3) {
-        // Custom
-        const {src, scale} = icon;
-
-        // default
-        return defaultDrawIcon({ qrcode, icon, params });
-    }
-}
-
 export const RendererRect = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoRect,
-    drawIcon: drawIcon
 });
 
 export const RendererRound = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoRound,
-    drawIcon: drawIcon
 });
 
 export const RendererRandRound = createRenderer({
     listPoints: listPoints,
     getParamInfo: getParamInfoRandRound,
-    drawIcon: drawIcon
 });
 
 RendererRect.detail = (

@@ -176,6 +176,7 @@
     border: rgba(0,0,0,0.12) solid 2px;
     width: calc((100vw - 56px) / 2);
     height: calc((100vw - 56px) / 2);
+    background: rgba(255,255,255,0.5);
 }
 
 @media (min-width: 500px) {
