@@ -3,6 +3,11 @@ import './App.css';
 import PropTypes from 'prop-types';
 import {isWeiXin} from "../../utils/navigatorUtils";
 
+function parseValue(value) {
+    if (value < 10000) return value;
+    return (value / 10000).toFixed(1) + "万";
+}
+
 const WxMessage = () => {
     if (isWeiXin()) {
         return (
@@ -37,7 +42,7 @@ const PartDownload = ({ value, downloadCount, onSvgDownload, onImgDownload }) =>
             <div className="Qr-s-title">Downloads</div>
             <p className="Qr-s-subtitle">
                 下载二维码 — {value}
-                <sup className="Gray"> {downloadCount}</sup>
+                <sup className="Gray"> {parseValue(downloadCount)}</sup>
             </p>
         </div>
         <div className="Qr-Centered">
