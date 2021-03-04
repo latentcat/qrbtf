@@ -5,7 +5,15 @@ import {isWeiXin} from "../../utils/navigatorUtils";
 
 function parseValue(value) {
     if (value < 10000) return value;
-    return (value / 10000).toFixed(1) + "万";
+    return
+}
+
+const CountComponent = ({ value }) => {
+    if (value >= 10000) value = (value / 10000).toFixed(1);
+    if (!isNaN(value)) {
+        return <sup className="Gray">{value + "万"}</sup>
+    }
+    return null;
 }
 
 const WxMessage = () => {
@@ -17,7 +25,7 @@ const WxMessage = () => {
             </div>
         )
     }
-    return null
+    return null;
 }
 
 const ImgBox = ({ imgData }) => {
@@ -41,8 +49,8 @@ const PartDownload = ({ value, downloadCount, onSvgDownload, onImgDownload }) =>
         <div className="Qr-Centered title-margin">
             <div className="Qr-s-title">Downloads</div>
             <p className="Qr-s-subtitle">
-                下载二维码 — {value}
-                <sup className="Gray"> {parseValue(downloadCount)}</sup>
+                <span>下载二维码 — {value}</span>
+                <CountComponent value={downloadCount} />
             </p>
         </div>
         <div className="Qr-Centered">
