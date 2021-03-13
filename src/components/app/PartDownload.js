@@ -3,17 +3,10 @@ import './App.css';
 import PropTypes from 'prop-types';
 import {isWeiXin} from "../../utils/navigatorUtils";
 
-function parseValue(value) {
-    if (value < 10000) return value;
-    return
-}
-
 const CountComponent = ({ value }) => {
-    if (value >= 10000) value = (value / 10000).toFixed(1);
-    if (!isNaN(value)) {
-        return <sup className="Gray">{value + "万"}</sup>
-    }
-    return null;
+    if (isNaN(value)) return null;
+    if (value >= 10000) value = (value / 10000).toFixed(1) + "万";
+    return <sup className="Gray">{value}</sup>
 }
 
 const WxMessage = () => {
