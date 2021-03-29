@@ -17,7 +17,7 @@ const ParamUpload = ({ rendererIndex, paramIndex, onChange }) => (
             key={"input_" + rendererIndex + "_" + paramIndex}
             id="image_upload"
             hidden={true}
-            accept=".jpg, .jpeg, .png"
+            accept="image/*"
             onChange={onChange}
         />
     </React.Fragment>
