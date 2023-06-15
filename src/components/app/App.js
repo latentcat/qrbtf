@@ -13,6 +13,19 @@ import {loadDownloadData} from "../../actions";
 import ReactGA from 'react-ga';
 import {setScrollbarWidthProp} from "../../utils/util"
 
+import { i18n } from '@lingui/core'
+import { I18nProvider } from '@lingui/react'
+
+import { messages as enMessages } from '../../locales/en/messages'
+import { messages as chMessages } from '../../locales/ch/messages'
+import LanguageSwitcher from './langSwitcher';
+
+i18n.load({
+    en: enMessages,
+    ch: chMessages,
+})
+i18n.activate('en')
+
 ReactGA.initialize('UA-165845289-1');
 
 ReactGA.addTrackers(
@@ -52,12 +65,15 @@ function App({ dispatch }) {
             <header className="App-header">
                 <div className="Layout">
                     <div className="Qr-outer">
-                        <PartHeader/>
-                        <PartStylesViewer/>
-                        <PartParams/>
-                        <PartDownloadViewer updateDownloadData={updateDownloadData}/>
-                        <PartMore/>
-                        <PartFooter/>
+                        <I18nProvider i18n={i18n}>
+                            <LanguageSwitcher />
+                            <PartHeader />
+                            <PartStylesViewer />
+                            <PartParams />
+                            <PartDownloadViewer updateDownloadData={updateDownloadData} />
+                            <PartMore />
+                            <PartFooter />
+                        </I18nProvider>
                     </div>
                 </div>
             </header>

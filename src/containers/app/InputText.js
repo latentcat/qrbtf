@@ -4,6 +4,7 @@ import React, {useRef} from "react";
 import {isPicture} from "../../utils/imageUtils";
 import {decodeData} from "../../utils/qrcodeHandler";
 import { handleUpload, handleInputUrl } from "../../utils/gaHelper";
+import { Trans } from '@lingui/macro';
 
 const InputText = ({dispatch}) => {
     const textRef = useRef();
@@ -67,7 +68,9 @@ const InputText = ({dispatch}) => {
                     />
                 </div>
                 <div className="Qr-input-hint">
-                    上传普通二维码或输入网址
+                    <Trans>
+                        上传普通二维码或输入网址
+                    </Trans>
                 </div>
             </div>
         </React.Fragment>);

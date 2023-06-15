@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import {isWeiXin} from "../../utils/navigatorUtils";
+import { Trans } from '@lingui/react';
 
 const CountComponent = ({ value }) => {
     if (isNaN(value)) return null;
@@ -13,8 +14,7 @@ const WxMessage = () => {
     if (isWeiXin()) {
         return (
             <div className="note-font" id="wx-message-inner">
-                当前客户端不支持下载 SVG，<br />
-                请下载 JPG 并长按二维码保存。
+                <Trans id='WxMessage'>当前客户端不支持下载 SVG,<br /> 请下载 JPG 并长按二维码保存</Trans>
             </div>
         )
     }
@@ -42,7 +42,10 @@ const PartDownload = ({ value, downloadCount, onSvgDownload, onImgDownload }) =>
         <div className="Qr-Centered title-margin">
             <div className="Qr-s-title">Downloads</div>
             <p className="Qr-s-subtitle">
-                <span>下载二维码 — {value}</span>
+                    <span>
+                        <Trans id='下载二维码 — '>下载二维码 —</Trans>
+                        {value}
+                    </span>
                 <CountComponent value={downloadCount} />
             </p>
         </div>

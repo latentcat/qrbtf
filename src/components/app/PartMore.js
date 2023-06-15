@@ -9,7 +9,7 @@ import ImageZoom from "../../containers/app/ImageZoom";
 import LinkTrace from "../link/LinkTrace";
 import {isPC} from "../../utils/navigatorUtils";
 import {handleScroll} from "../../utils/gaHelper";
-
+import { Trans } from "@lingui/macro"
 const pictures = [
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery04.jpg',
     'https://7172-qrbtf-1d845d-1255694434.tcb.qcloud.la/QrbtfGallery/gallery02.jpg',
@@ -24,11 +24,14 @@ const PartMore = () => {
     return (
         <div className="Qr-titled-nobg">
             <div className="Qr-Centered title-margin">
+                <Trans >
+
                 <div className="Qr-s-title">More</div>
                 <p className="Qr-s-subtitle">更多</p>
                 <div className="Qr-s-subtitle Qr-rel">
                     {isPC() ? <div className="Qr-style-hint">拖拽滑动</div> : null}
                 </div>
+                </Trans>
             </div>
             <div className="title-margin">
                 <div className="Qr-article">
@@ -37,7 +40,10 @@ const PartMore = () => {
                                          data-color-scheme="no-preference: light; light: light; dark: dark;"
                                          data-icon="octicon-star" data-size="large" data-show-count="true"
                                          aria-label="Star ciaochaos/qrbtf on GitHub">Star</GitHubButton></p>
-                        <h2>设计分享</h2>
+                        <h2><Trans>
+                            设计分享
+                        </Trans>
+                        </h2>
                     </div>
                     <ScrollContainer
                         className="Qr-s Qr-s-gallery"
