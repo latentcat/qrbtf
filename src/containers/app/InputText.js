@@ -69,6 +69,9 @@ const InputText = ({dispatch}) => {
                 <div className="Qr-input-hint">
                     上传普通二维码或输入网址
                 </div>
+                <a className="Qr-new-discord" href="https://discord.gg/V9CNuqYfte" target='_blank'>
+                    New！加入  QRBTF Discord
+                </a>
             </div>
         </React.Fragment>);
 }

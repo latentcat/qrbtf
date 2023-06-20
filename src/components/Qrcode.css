@@ -349,8 +349,17 @@ td {
     transition-duration: 0.3s;
 }
 
+.Qr-new-discord {
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    bottom: -54px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 @media (min-width: 500px) {
-    .Qr-input-hint {
+    .Qr-input-hint, .Qr-new-discord {
         margin-top: 14px;
         font-size: 14px;
     }
