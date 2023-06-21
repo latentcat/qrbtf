@@ -24,7 +24,7 @@ ReactGA.addTrackers(
             }
         },
         {
-            trackingId: 'G-3NKS6ZG27V',
+            trackingId: 'G-XKEWNQ1T0E',
             gaOptions: { name: 'trackerG' }
         }
     ],
