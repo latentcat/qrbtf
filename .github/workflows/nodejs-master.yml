@@ -20,17 +20,17 @@ jobs:
           node-version: "12.x"
 
       - name: Build project
-        run: yarn && yarn build
+        run: yarn && yarn generate
         env:
           CI: false
 
       - name: Authenticate
-        run: sudo chmod 775 ./build/ && ls
+        run: sudo chmod 775 ./.output/public/ && ls
 
       - name: Upload COS
         uses: ciaochaos/tencent-cos-action@master
         with:
-          args: delete -r -f / && upload -r ./build/ /
+          args: delete -r -f / && upload -r ./.output/public/ /
           secret_id: ${{ secrets.SECRET_ID }}
           secret_key: ${{ secrets.SECRET_KEY }}
           bucket: ${{ secrets.BUCKET }}
