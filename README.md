@@ -83,16 +83,6 @@ class Component extends React.Component {
 * [ciaochaos](https://github.com/ciaochaos)
 * [CPunisher](https://github.com/CPunisher)
 
-## Donation
-
-#### Paypal
-
-[![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.me/ciaochaos)
-
-#### Alipay
-
-<img align="center" src="https://blog.ciaochaos.com/projects/qrcode/alipay2.jpeg" width="250">
-
 ## Dependency
 
 * [davidshimjs / qrcode](https://github.com/davidshimjs/qrcodejs)
