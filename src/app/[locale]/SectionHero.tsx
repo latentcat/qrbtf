@@ -9,7 +9,7 @@ export function SectionHero() {
     <div className="mt-24 lg:mt-36">
       <Container>
         <div>
-          <h1 className="text-4xl lg:text-6xl font-bold">
+          <h1 className="text-4xl lg:text-5xl font-bold">
             {t('title')}
           </h1>
           <p className="text-lg mt-6 opacity-70">
