@@ -1,5 +1,5 @@
 import {useTranslations} from "next-intl";
-import {Container} from "@/components/Components";
+import {Container} from "@/components/Containers";
 import {Input} from "@/components/ui/input";
 
 
