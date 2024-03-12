@@ -8,6 +8,7 @@ import {LucideDownload} from "lucide-react";
 import {Badge} from "@/components/ui/badge";
 import {Label} from "@/components/ui/label";
 import {cn} from "@/lib/utils";
+import {QrTest} from "@/components/QrTest";
 
 
 export function SectionParams() {
@@ -57,10 +58,13 @@ export function SectionParams() {
                   <LucideDownload className="w-4 h-4 mr-1"/>{t('download')}
                 </Badge>
               </Label>
-              <div className="relative border rounded-xl bg-accent/30 w-full">
+              <div className="relative border rounded-xl bg-accent/30 w-full overflow-hidden">
                 <AspectRatio ratio={1}/>
                 <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
                   <QrCodeIcon className="w-12 h-12 opacity-20"/>
+                </div>
+                <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                  <QrTest />
                 </div>
               </div>
             </div>
