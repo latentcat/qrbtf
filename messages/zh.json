@@ -2,7 +2,10 @@
   "index": {
     "hero": {
       "title": "QRBTF",
-      "subtitle": "参数化二维码生成器。"
+      "subtitle": "参数化二维码生成器。",
+      "join_discord": "加入 Discord",
+      "by": "来自 ",
+      "period": "。"
     }
   }
 }

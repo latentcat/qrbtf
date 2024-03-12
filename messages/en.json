@@ -2,7 +2,10 @@
   "index": {
     "hero": {
       "title": "QRBTF",
-      "subtitle": "Parametric QR code generator."
+      "subtitle": "Parametric QR code generator.",
+      "join_discord": "Join our server",
+      "by": " By ",
+      "period": "."
     },
     "params": {
       "generate": "Generate"

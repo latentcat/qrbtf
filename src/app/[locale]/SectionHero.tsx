@@ -25,15 +25,20 @@ export function SectionHero() {
             {t('title')}
           </h1>
 
-          <p className="text-lg mt-6 opacity-70">
+          <p className="text-lg mt-6 text-foreground/70">
             {t('subtitle')}
+            {t('by')}
+            <Link href="https://latentcat.com" target="_blank" className="text-foreground underline font-semibold">
+              Latent Cat
+            </Link>
+            {t('period')}
           </p>
 
           <div className="mt-6 flex gap-3">
             <Link href="https://discord.gg/V9CNuqYfte" target="_blank">
               <Button size="sm" variant="secondary">
                 <FontAwesomeIcon icon={faDiscord} className={cn("h-5 w-5 block mr-2")} />
-                Join our server
+                {t('join_discord')}
               </Button>
             </Link>
             <Link href="https://github.com/latentcat/qrbtf" target="_blank">
