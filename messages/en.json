@@ -3,6 +3,9 @@
     "hero": {
       "title": "QRBTF",
       "subtitle": "Parametric QR code generator."
+    },
+    "params": {
+      "generate": "Generate"
     }
   }
 }

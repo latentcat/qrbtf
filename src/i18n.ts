@@ -3,12 +3,17 @@ import {getRequestConfig} from 'next-intl/server';
 
 // Can be imported from a shared config
 const locales = ['en', 'zh'];
+import deepmerge from 'deepmerge';
 
 export default getRequestConfig(async ({locale}) => {
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale as any)) notFound();
 
+  const userMessages = (await import(`../messages/${locale}.json`)).default;
+  const defaultMessages = (await import(`../messages/en.json`)).default;
+  const messages = deepmerge(defaultMessages, userMessages);
+
   return {
-    messages: (await import(`../messages/${locale}.json`)).default
+    messages: messages
   };
 });
