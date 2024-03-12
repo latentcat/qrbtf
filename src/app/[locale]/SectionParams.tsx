@@ -7,7 +7,7 @@ export function SectionParams() {
   return (
     <div className="">
       <Container>
-        <h2 className="mt-12 mb-4 text-2xl font-bold">A1</h2>
+        <h2 className="mt-9 mb-4 text-2xl font-bold">A1</h2>
         <div className="flex items-center w-full justify-between">
           <div>Parameter name</div>
           <div

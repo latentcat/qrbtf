@@ -12,10 +12,10 @@ export function SectionHero() {
           <h1 className="text-4xl lg:text-5xl font-bold">
             {t('title')}
           </h1>
-          <p className="text-lg mt-6 opacity-70">
+          <p className="text-lg mt-4 opacity-70">
             {t('subtitle')}
           </p>
-          <div className="mt-6 max-w-lg">
+          <div className="mt-6 w-full sm:max-w-lg">
             <Input
               placeholder="https://qrbtf.com"
             />

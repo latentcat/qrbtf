@@ -11,7 +11,7 @@ export function SectionGenerate() {
         <Button className="w-full sm:w-48">
           Generate
         </Button>
-        <div className="mt-12">
+        <div className="mt-9">
           <div className="border rounded-xl bg-accent/30 w-full sm:w-96">
             <AspectRatio ratio={1} />
           </div>
