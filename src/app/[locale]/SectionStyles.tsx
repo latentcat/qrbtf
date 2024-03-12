@@ -24,7 +24,7 @@ export function SectionStyles() {
                   </div>
                 ))}
 
-                <div className="w-3 shrink-0"/>
+                <div className="w-6 shrink-0"/>
 
               </div>
             </div>

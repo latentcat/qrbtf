@@ -34,7 +34,7 @@ export function SectionParams() {
             <Button className="w-full">
               {t('generate')}
             </Button>
-            <div className="mt-3">
+            <div className="mt-6">
               <div className="border rounded-xl bg-accent/30 w-full">
                 <AspectRatio ratio={1}/>
               </div>
