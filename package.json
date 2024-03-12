@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@heroicons/react": "^2.1.1",
     "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
@@ -43,6 +49,7 @@
     "date-fns": "^3.4.0",
     "deepmerge": "^4.3.1",
     "embla-carousel-react": "^8.0.0",
+    "framer-motion": "^11.0.12",
     "input-otp": "^1.1.0",
     "jotai": "^2.7.0",
     "lucide-react": "^0.356.0",
