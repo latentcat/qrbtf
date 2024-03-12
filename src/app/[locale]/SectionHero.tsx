@@ -10,6 +10,7 @@ import {GitHubButton} from "@/components/GitHubButton";
 import {Badge} from "@/components/ui/badge";
 import {LucideScan} from "lucide-react";
 import {ScanButton} from "@/components/ScanButton";
+import {Label} from "@/components/ui/label";
 
 
 export function SectionHero() {
@@ -47,16 +48,16 @@ export function SectionHero() {
           </div>
 
           <div className="mt-6 w-full sm:max-w-lg">
-            <div className="flex justify-between text-sm font-semibold mb-1">
-              <h3>URL</h3>
+            <Label className="flex justify-between text-sm font-medium mb-1.5">
+              {t('url')}
               <div className="flex items-center gap-3">
                 <div className="text-sm">
                   10
                   <span className="opacity-50">/255</span>
                 </div>
-                <ScanButton />
+                <ScanButton name={t('scan')} />
               </div>
-            </div>
+            </Label>
             <Input
               placeholder="https://qrbtf.com"
             />

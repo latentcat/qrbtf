@@ -5,7 +5,7 @@ import {LucideScan} from "lucide-react";
 import {useRef} from "react";
 
 
-export function ScanButton() {
+export function ScanButton(props: { name: string }) {
 
   const scanRef = useRef<HTMLInputElement>(null);
 
@@ -17,7 +17,7 @@ export function ScanButton() {
         className="rounded-md hover:bg-accent cursor-pointer"
         variant="outline"
       >
-        <LucideScan className="w-4 h-4 mr-1"/>Scan
+        <LucideScan className="w-4 h-4 mr-1"/>{props.name}
       </Badge>
     </>
   )

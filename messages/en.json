@@ -5,10 +5,18 @@
       "subtitle": "Parametric QR code generator.",
       "join_discord": "Join our server",
       "by": " By ",
-      "period": "."
+      "period": ".",
+      "url": "URL",
+      "scan": "Scan"
     },
     "params": {
-      "generate": "Generate"
+      "param_name": "Parameter name",
+      "generate": "Generate",
+      "qrcode_output": "QR code output",
+      "download": "Download"
     }
+  },
+  "footer": {
+    "reserve_rights": "All rights reserved."
   }
 }

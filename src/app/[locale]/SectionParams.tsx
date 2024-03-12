@@ -3,6 +3,11 @@ import {Container} from "@/components/Containers";
 import {Slider} from "@/components/ui/slider";
 import {Button} from "@/components/ui/button";
 import {useTranslations} from "next-intl";
+import {QrCodeIcon} from "@heroicons/react/24/outline";
+import {LucideDownload} from "lucide-react";
+import {Badge} from "@/components/ui/badge";
+import {Label} from "@/components/ui/label";
+import {cn} from "@/lib/utils";
 
 
 export function SectionParams() {
@@ -16,7 +21,7 @@ export function SectionParams() {
           <div className="grow">
             <h2 className="mb-4 text-2xl font-bold">A1</h2>
             <div className="flex items-center w-full justify-between">
-              <div>Parameter name</div>
+              <Label>{t('param_name')}</Label>
               <div
                 className="w-48"
               >
@@ -35,8 +40,28 @@ export function SectionParams() {
               {t('generate')}
             </Button>
             <div className="mt-6">
-              <div className="border rounded-xl bg-accent/30 w-full">
+
+              <Label
+                className="flex items-center justify-between mb-1.5"
+                htmlFor="output_image"
+              >
+                {t('qrcode_output')}
+                <Badge
+                  // onClick={() => downloadImage()}
+                  className={cn(
+                    "rounded-md hover:bg-accent cursor-pointer",
+                    false ? "" : "opacity-50 pointer-events-none"
+                  )}
+                  variant="outline"
+                >
+                  <LucideDownload className="w-4 h-4 mr-1"/>{t('download')}
+                </Badge>
+              </Label>
+              <div className="relative border rounded-xl bg-accent/30 w-full">
                 <AspectRatio ratio={1}/>
+                <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                  <QrCodeIcon className="w-12 h-12 opacity-20"/>
+                </div>
               </div>
             </div>
           </div>

@@ -5,7 +5,18 @@
       "subtitle": "参数化二维码生成器。",
       "join_discord": "加入 Discord",
       "by": "来自 ",
-      "period": "。"
+      "period": "。",
+      "url": "URL 链接",
+      "scan": "扫描"
+    },
+    "params": {
+      "param_name": "参数名",
+      "generate": "生成",
+      "qrcode_output": "二维码输出",
+      "download": "下载"
     }
+  },
+  "footer": {
+    "reserve_rights": "保留所有权利。"
   }
 }

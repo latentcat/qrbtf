@@ -1,5 +1,6 @@
 import {AspectRatio} from "@/components/ui/aspect-ratio";
 import {Container} from "@/components/Containers";
+import {QrCodeIcon} from "@heroicons/react/24/outline";
 
 
 const styleList = [0, 1, 2, 3, 4, 5, 6]
@@ -18,8 +19,11 @@ export function SectionStyles() {
 
                 {styleList.map((item, index) => (
                   <div key={index} className="snap-start pl-6 -ml-3 sm:pl-0 sm:ml-0">
-                    <div className="w-[calc((100vw-(12px)*5)/2)] sm:w-48 border rounded-xl bg-accent/30">
+                    <div className="relative w-[calc((100vw-(12px)*5)/2)] sm:w-48 border rounded-xl bg-accent/30">
                       <AspectRatio ratio={1}/>
+                      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                        <QrCodeIcon className="w-8 h-8 opacity-20" />
+                      </div>
                     </div>
                   </div>
                 ))}
