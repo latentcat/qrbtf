@@ -51,3 +51,4 @@ export function MidRealLogoFull(props: React.ComponentPropsWithoutRef<'svg'>) {
 
   )
 }
+

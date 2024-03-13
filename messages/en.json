@@ -24,7 +24,9 @@
     },
     "refs": {
       "title": "References",
-      "subtitle": ""
+      "subtitle": "",
+      "aigc": "AIGC Docs(Chinese)",
+      "hf": "Hugging Face Org."
     },
     "team": {
       "title": "Team",

@@ -3,6 +3,8 @@ import {Container} from "@/components/Containers";
 import {SectionTitle} from "@/components/Titles";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import {Button} from "@/components/ui/button";
+import Link from "next/link";
+import {BookIcon, HuggingFaceIcon} from "@/components/LogosBrand";
 
 
 export function SectionRefs() {
@@ -16,9 +18,18 @@ export function SectionRefs() {
           <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
 
           <div className="mt-3 flex gap-3">
-            <Button variant="secondary" size="sm">
-              AIGC All in One
-            </Button>
+            <Link href="https://aigc.latentcat.com" target="_blank">
+              <Button variant="secondary" size="sm">
+                <BookIcon className="w-4 h-4 mr-2" />
+                {t('aigc')}
+              </Button>
+            </Link>
+            <Link href="https://huggingface.co/latentcat" target="_blank">
+              <Button variant="secondary" size="sm">
+                <HuggingFaceIcon className="w-5 h-5 mr-2" />
+                {t('hf')}
+              </Button>
+            </Link>
           </div>
         </div>
       </Container>

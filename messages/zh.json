@@ -24,7 +24,9 @@
     },
     "refs": {
       "title": "参考",
-      "subtitle": ""
+      "subtitle": "",
+      "aigc": "AIGC 文档",
+      "hf": "Hugging Face 组织"
     },
     "team": {
       "title": "团队",

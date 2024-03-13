@@ -7,7 +7,7 @@ export function Footer() {
   const t = useTranslations('footer');
 
   return (
-    <div className="_border-t py-9 lg:py-12 flex flex-col mt-24">
+    <div className="_border-t py-9 lg:py-12 flex flex-col mt-16">
       <Container>
         <p className="text-sm text-zinc-400 dark:text-zinc-500">
           &copy; {new Date().getFullYear()} {" "}
