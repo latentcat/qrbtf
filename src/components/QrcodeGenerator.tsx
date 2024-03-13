@@ -22,15 +22,16 @@ type Namespace = NamespaceKeys<IntlMessages, NestedKeyOf<IntlMessages>>
 
 interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
-  namespace: Namespace
+  title: string
+  subtitle: string
   qrcodeModule: QrbtfModule<P>
   params: ConfigType<P>[];
   defaultValues: DefaultValues<P>
 }
 
 export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
-  const t = useTranslations(props.namespace);
-  const t2 = useTranslations("index.params");
+
+  const t = useTranslations("index.params");
 
   const { children, className, params, defaultValues, ...restProps } = props;
 
@@ -40,8 +41,6 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const componentProps = useWatch({ control: form.control }) as P;
 
   const renderControls = (item: ConfigType<P>) => {
-
-
 
     return (
       <FormField
@@ -67,36 +66,39 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   return (
     <div>
       <Container>
-        <div className="mt-9 flex flex-col _md:flex-row">
+        <div className="mt-9 flex flex-col md:flex-row gap-9">
 
-          <div>
-            <h2 className="text-2xl font-bold">
-              {t('title')}
-            </h2>
-            <p className="mt-2 mb-4 opacity-50">
-              {t('desc')}
-            </p>
+
+          <div className="grow">
+            <div>
+              <h2 className="text-2xl font-bold">
+                {props.title}
+              </h2>
+              <p className="mt-2 mb-4 opacity-50">
+                {props.subtitle}
+              </p>
+            </div>
+
+            <div>
+
+              <Form {...form}>
+                <form className="not-prose divide-y">
+                  {params.map((param, index) => (
+                    <div
+                      key={param.name}
+                      className="py-1.5 flex flex-col items-stretch justify-center min-h-[60px]"
+                    >
+                      {renderControls(param)}
+                    </div>
+                  ))}
+                </form>
+              </Form>
+            </div>
           </div>
 
-          <div>
-
-            <Form {...form}>
-              <form className="not-prose divide-y">
-                {params.map((param, index) => (
-                  <div
-                    key={param.name}
-                    className="py-1.5 flex flex-col items-stretch justify-center min-h-[60px]"
-                  >
-                    {renderControls(param)}
-                  </div>
-                ))}
-              </form>
-            </Form>
-          </div>
-
-          <div className="mt-6 shrink-0 w-full sm:w-[396px] _md:w-72 lg:w-[396px]">
+          <div className="shrink-0 w-full sm:w-[396px] md:w-72 lg:w-[396px]">
             <Button className="w-full mb-6 hidden">
-              {t2('generate')}
+              {t('generate')}
             </Button>
             <div className="">
 
@@ -104,7 +106,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                 className="flex items-center justify-between mb-1.5"
                 htmlFor="output_image"
               >
-                {t2('qrcode_output')}
+                {t('qrcode_output')}
                 <Badge
                   // onClick={() => downloadImage()}
                   className={cn(
@@ -113,7 +115,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                   )}
                   variant="outline"
                 >
-                  <LucideDownload className="w-4 h-4 mr-1"/>{t2('download')}
+                  <LucideDownload className="w-4 h-4 mr-1"/>{t('download')}
                 </Badge>
               </Label>
               <div className="relative border rounded-xl bg-accent/30 w-full overflow-hidden">

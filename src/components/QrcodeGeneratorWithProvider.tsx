@@ -10,16 +10,16 @@ interface Props<P extends {}> extends React.ComponentProps<typeof QrcodeGenerato
 
 export default function QrcodeGeneratorWithProvider<P extends {}>(props: Props<P>) {
 
-  const {namespace, ...rest} = props
+  const {...rest} = props
   const messages = useMessages();
 
   return (
     <NextIntlClientProvider
       messages={
-        pick(messages, [namespace, "index.params"])
+        pick(messages, ["index.params"])
       }
     >
-      <QrcodeGenerator namespace={namespace} {...rest} />
+      <QrcodeGenerator {...rest} />
     </NextIntlClientProvider>
   );
 }

@@ -3,7 +3,30 @@ import React from "react";
 
 
 export interface QrbtfRendererCommonProps {
-  correctLevel: "7" | "15" | "25" | "30"
+  correct_level: "7" | "15" | "25" | "30"
+}
+
+
+type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps> & ParamType
+
+type GetCommonParamsProps = Record<keyof QrbtfRendererCommonProps, {
+  label: string;
+  desc: string
+}>
+
+export function getCommonParams(props: GetCommonParamsProps): CommonParamsType[] {
+  return [
+    {
+      type: "number",
+      name: "correct_level",
+      label: props.correct_level.label,
+      desc:  props.correct_level.desc,
+      config: {
+        min: 0,
+        max: 100,
+      }
+    },
+  ]
 }
 
 
