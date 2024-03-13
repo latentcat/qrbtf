@@ -14,6 +14,26 @@
       "generate": "Generate",
       "qrcode_output": "QR code output",
       "download": "Download"
+    },
+    "qa": {
+      "title": "FAQ",
+      "subtitle": ""
+    },
+    "refs": {
+      "title": "References",
+      "subtitle": ""
+    },
+    "team": {
+      "title": "Team",
+      "subtitle": ""
+    },
+    "sponsor": {
+      "title": "Sponsor",
+      "subtitle": ""
+    },
+    "changelog": {
+      "title": "Changelog",
+      "subtitle": ""
     }
   },
   "qrcodes": {
