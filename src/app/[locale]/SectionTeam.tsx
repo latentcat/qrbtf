@@ -44,7 +44,7 @@ export function SectionTeam() {
           <div className="mt-3 leading-7">
             {links.map((item, index) => (
               <Fragment key={item.name}>
-                <Link href={item.url} target="_blank" className="text-foreground underline font-semibold">
+                <Link href={item.url} target="_blank" className="text-foreground underline font-medium">
                   {item.name}
                 </Link>
                 {index < links.length - 1 && (
