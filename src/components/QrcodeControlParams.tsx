@@ -20,7 +20,7 @@ interface ParamItemProps {
 
 function ParamItem(props: ParamItemProps) {
   return (
-    <FormItem className="flex items-center py-1.5">
+    <FormItem className="flex items-center py-1.5 space-y-0">
       {props.children}
     </FormItem>
   )
