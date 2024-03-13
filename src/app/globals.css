@@ -121,24 +121,24 @@ body {
   overflow-y: scroll;
 }
 
-::-webkit-scrollbar {
+.fixed-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
 
-::-webkit-scrollbar:horizontal {
+.fixed-scrollbar::-webkit-scrollbar:horizontal {
   height: 6px;
 }
 
-::-webkit-scrollbar-track,::-webkit-scrollbar-corner {
+.fixed-scrollbar::-webkit-scrollbar-track,::-webkit-scrollbar-corner {
   background: transparent;
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+.fixed-scrollbar::-webkit-scrollbar-thumb {
   background: #27272a;
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.fixed-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
 }
