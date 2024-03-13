@@ -11,6 +11,7 @@ import {Badge} from "@/components/ui/badge";
 import {LucideScan} from "lucide-react";
 import {ScanButton} from "@/components/ScanButton";
 import {Label} from "@/components/ui/label";
+import {QrbtfLogo} from "@/components/Logos";
 
 
 export function SectionHero() {
@@ -22,11 +23,15 @@ export function SectionHero() {
       <Container>
         <div>
 
-          <h1 className="text-4xl lg:text-5xl font-bold">
+          <h1 className="text-4xl lg:text-5xl font-bold hidden">
             {t('title')}
           </h1>
 
-          <p className="text-lg mt-6 text-foreground/70">
+          <p>
+            <QrbtfLogo className="h-12 lg:h-14"/>
+          </p>
+
+          <p className="text-base lg:text-lg mt-6 text-foreground/70">
             {t('subtitle')}
             {t('by')}
             <Link href="https://latentcat.com" target="_blank" className="text-foreground underline font-semibold">

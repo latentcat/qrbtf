@@ -15,4 +15,25 @@ export const qrStyleList: QrStyleItemProps[] = [
   {
     id: "sp1",
   },
+  {
+    id: "a1c",
+  },
+  {
+    id: "sp3",
+  },
+  {
+    id: "a2",
+  },
+  {
+    id: "a3",
+  },
+  {
+    id: "a1r",
+  },
+  {
+    id: "a1x",
+  },
+  {
+    id: "a1g",
+  },
 ]
