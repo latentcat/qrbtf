@@ -2,23 +2,134 @@
 
 import {NamespaceKeys, NestedKeyOf, useTranslations} from "next-intl";
 import {Container} from "@/components/Containers";
+import {ConfigType, QrbtfModule} from "@/lib/qrbtf_lib/qrcodes/common";
+import {Form, FormField} from "@/components/ui/form";
+import {DefaultValues, useForm, useWatch} from "react-hook-form";
+import {ParamBooleanControl, ParamNumberControl} from "@/components/QrcodeControlParams";
+import {HTMLAttributes} from "react";
+import {Label} from "@/components/ui/label";
+import {Slider} from "@/components/ui/slider";
+import {Button} from "@/components/ui/button";
+import {Badge} from "@/components/ui/badge";
+import {cn} from "@/lib/utils";
+import {LucideDownload} from "lucide-react";
+import {AspectRatio} from "@/components/ui/aspect-ratio";
+import {QrCodeIcon} from "@heroicons/react/24/outline";
+import {QrTest} from "@/components/QrTest";
 
 
 type Namespace = NamespaceKeys<IntlMessages, NestedKeyOf<IntlMessages>>
 
-interface QrcodeGeneratorProps {
+interface QrcodeGeneratorProps<P extends {}>
+  extends HTMLAttributes<HTMLDivElement> {
   namespace: Namespace
+  qrcodeModule: QrbtfModule<P>
+  params: ConfigType<P>[];
+  defaultValues: DefaultValues<P>
 }
 
-export function QrcodeGenerator(props: QrcodeGeneratorProps) {
+export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const t = useTranslations(props.namespace);
+  const t2 = useTranslations("index.params");
+
+  const { children, className, params, defaultValues, ...restProps } = props;
+
+  const form = useForm<P>({
+    defaultValues: defaultValues
+  });
+  const componentProps = useWatch({ control: form.control }) as P;
+
+  const renderControls = (item: ConfigType<P>) => {
+
+
+
+    return (
+      <FormField
+        control={form.control}
+        name={item.name}
+        render={({ field }) => {
+
+          switch (item.type) {
+            case "number":
+              return (
+                <ParamNumberControl<P> field={field} {...item} />
+              )
+            case "boolean":
+              return (
+                <ParamBooleanControl<P> field={field} {...item} />
+              )
+          }
+        }}
+      />
+    )
+  }
+
   return (
     <div>
       <Container>
-        <div>
-          <h2 className="mt-9 mb-4 text-2xl font-bold">
-            {t('title')}
-          </h2>
+        <div className="mt-9 flex flex-col _md:flex-row">
+
+          <div>
+            <h2 className="text-2xl font-bold">
+              {t('title')}
+            </h2>
+            <p className="mt-2 mb-4 opacity-50">
+              {t('desc')}
+            </p>
+          </div>
+
+          <div>
+
+            <Form {...form}>
+              <form className="not-prose divide-y">
+                {params.map((param, index) => (
+                  <div
+                    key={param.name}
+                    className="py-1.5 flex flex-col items-stretch justify-center min-h-[60px]"
+                  >
+                    {renderControls(param)}
+                  </div>
+                ))}
+              </form>
+            </Form>
+          </div>
+
+          <div className="mt-6 shrink-0 w-full sm:w-[396px] _md:w-72 lg:w-[396px]">
+            <Button className="w-full mb-6 hidden">
+              {t2('generate')}
+            </Button>
+            <div className="">
+
+              <Label
+                className="flex items-center justify-between mb-1.5"
+                htmlFor="output_image"
+              >
+                {t2('qrcode_output')}
+                <Badge
+                  // onClick={() => downloadImage()}
+                  className={cn(
+                    "rounded-md hover:bg-accent cursor-pointer",
+                    false ? "" : "opacity-50 pointer-events-none"
+                  )}
+                  variant="outline"
+                >
+                  <LucideDownload className="w-4 h-4 mr-1"/>{t2('download')}
+                </Badge>
+              </Label>
+              <div className="relative border rounded-xl bg-accent/30 w-full overflow-hidden">
+                <AspectRatio ratio={1}/>
+                <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                  <QrCodeIcon className="w-12 h-12 opacity-20"/>
+                </div>
+                <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                  <div>
+                    {props.qrcodeModule.renderer(componentProps)}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </Container>
     </div>

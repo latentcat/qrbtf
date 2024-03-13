@@ -4,11 +4,11 @@ import {QrcodeGenerator} from "@/components/QrcodeGenerator";
 import React from "react";
 
 
-interface Props {
+interface Props<P extends {}> extends React.ComponentProps<typeof QrcodeGenerator<P>> {
 
 }
 
-export default function QrcodeGeneratorWithProvider(props: Props & React.ComponentProps<typeof QrcodeGenerator>) {
+export default function QrcodeGeneratorWithProvider<P extends {}>(props: Props<P>) {
 
   const {namespace, ...rest} = props
   const messages = useMessages();
@@ -16,7 +16,7 @@ export default function QrcodeGeneratorWithProvider(props: Props & React.Compone
   return (
     <NextIntlClientProvider
       messages={
-        pick(messages, namespace)
+        pick(messages, [namespace, "index.params"])
       }
     >
       <QrcodeGenerator namespace={namespace} {...rest} />

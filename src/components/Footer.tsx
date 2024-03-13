@@ -13,8 +13,7 @@ export function Footer() {
           &copy; {new Date().getFullYear()} {" "}
           <Link href="https://latentcat.com" target="_blank" className="border-b">
             Latent Cat
-          </Link>
-          {" "}. {t('reserve_rights')}
+          </Link>. {t('reserve_rights')}
         </p>
         <p className="safe-pb" />
       </Container>
