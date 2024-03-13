@@ -19,7 +19,7 @@ export function SectionHero() {
 
 
   return (
-    <div className="mt-24 lg:mt-36">
+    <div className="mt-28 lg:mt-40">
       <Container>
         <div>
 
