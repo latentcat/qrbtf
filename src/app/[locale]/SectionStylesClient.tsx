@@ -75,7 +75,7 @@ export function SectionStylesClient() {
     <div className="mt-9">
 
       <Container>
-        <Label className="flex justify-between text-sm font-medium mb-1.5">
+        <Label className="flex justify-between text-sm font-medium mb-2">
           {t('title')}
         </Label>
       </Container>
