@@ -39,7 +39,11 @@ export function SectionStyles() {
             <AspectRatio ratio={1}/>
             <div
               className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white">
-              <QrCodeIcon className="w-8 h-8 opacity-20"/>
+              <QrCodeIcon className="w-8 h-8 opacity-20 text-black"/>
+            </div>
+            <div
+              className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+              <img src={`/assets/qrcodes/${item.id}.svg`} alt="" className="block w-full h-full bg-white"/>
             </div>
             <div
               className={cn(

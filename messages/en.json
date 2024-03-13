@@ -18,5 +18,8 @@
   },
   "footer": {
     "reserve_rights": "All rights reserved."
+  },
+  "loading": {
+    "loading_msg": "Loading"
   }
 }

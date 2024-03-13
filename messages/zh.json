@@ -18,5 +18,8 @@
   },
   "footer": {
     "reserve_rights": "保留所有权利。"
+  },
+  "loading": {
+    "loading_msg": "加载中"
   }
 }
