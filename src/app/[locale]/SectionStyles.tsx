@@ -1,11 +1,66 @@
+"use client"
+
 import {AspectRatio} from "@/components/ui/aspect-ratio";
-import {Container} from "@/components/Containers";
 import {QrCodeIcon} from "@heroicons/react/24/outline";
+import {QrStyleItemProps, qrStyleList} from "@/lib/qr_style_list";
+import { motion } from "framer-motion";
+import {transitionDampingMd, transitionMd} from "@/lib/animations";
+import {cn} from "@/lib/utils";
+import {Link, usePathname} from "@/navigation";
 
 
-const styleList = [0, 1, 2, 3, 4, 5, 6]
 
 export function SectionStyles() {
+
+  const pathname = usePathname()
+
+  const render = (item: QrStyleItemProps, index: number) => {
+    const itemPath = item.id === "a1" ? "" : item.id
+    const isActive = pathname.split("/")[1] === itemPath
+    return (
+      <div
+        key={index}
+        className={cn(
+          "snap-start pl-6 -ml-3 sm:pl-0 sm:ml-0 transition-opacity",
+          isActive ? "" : "dark:opacity-70"
+        )}
+      >
+        <Link href={`/${itemPath}`}>
+          <motion.div
+            className={cn(
+              "relative w-[calc((100vw-(12px)*5)/2)] sm:w-48 rounded-2xl bg-accent/30 overflow-hidden",
+            )}
+            whileTap={{
+              scale: 0.95,
+              opacity: 0.8,
+            }}
+            transition={transitionDampingMd}
+          >
+            <AspectRatio ratio={1}/>
+            <div
+              className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white">
+              <QrCodeIcon className="w-8 h-8 opacity-20"/>
+            </div>
+            <div
+              className={cn(
+                "absolute top-0 left-0 w-full h-full rounded-2xl",
+                isActive ? "ring-[5px] ring-background ring-inset" : "",
+              )}
+            >
+            </div>
+            <div
+              className={cn(
+                "absolute top-0 left-0 w-full h-full rounded-2xl ring ring-inset",
+                isActive ? "ring-2 ring-foreground" : "ring-1 ring-border",
+              )}
+            >
+            </div>
+          </motion.div>
+        </Link>
+      </div>
+    )
+  }
+
   return (
     <div className="mt-9">
       <div className="overflow-x-auto no-scrollbar snap-x sm:snap-none snap-mandatory">
@@ -17,15 +72,8 @@ export function SectionStyles() {
 
                 <div className="w-3 shrink-0 sm:hidden"/>
 
-                {styleList.map((item, index) => (
-                  <div key={index} className="snap-start pl-6 -ml-3 sm:pl-0 sm:ml-0">
-                    <div className="relative w-[calc((100vw-(12px)*5)/2)] sm:w-48 border rounded-xl bg-accent/30">
-                      <AspectRatio ratio={1}/>
-                      <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-                        <QrCodeIcon className="w-8 h-8 opacity-20" />
-                      </div>
-                    </div>
-                  </div>
+                {qrStyleList.map((item, index) => (
+                  render(item, index)
                 ))}
 
                 <div className="w-6 shrink-0"/>

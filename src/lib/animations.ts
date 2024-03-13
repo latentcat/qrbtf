@@ -37,3 +37,11 @@ export const transitionXl = {
   duration: 1.0,
   bounce: 0,
 }
+
+
+export const transitionDampingMd = {
+  type: 'spring',
+  stiffness: 400,
+  damping: 40,
+  mass: 1,
+}

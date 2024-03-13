@@ -9,10 +9,8 @@ export default function Home() {
   const t = useTranslations('index');
 
   return (
-    <div>
-      <SectionHero />
-      <SectionStyles />
+    <>
       <SectionParams />
-    </div>
+    </>
   );
 }
