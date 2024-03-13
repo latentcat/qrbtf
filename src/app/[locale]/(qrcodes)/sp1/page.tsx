@@ -1,9 +1,10 @@
-
-
+import QrcodeGeneratorWithProvider from "@/components/QrcodeGeneratorWithProvider";
 
 
 export default function Page() {
   return (
-    <div>SP - 1</div>
-  )
+    <QrcodeGeneratorWithProvider
+      namespace="qrcodes.sp1"
+    />
+  );
 }

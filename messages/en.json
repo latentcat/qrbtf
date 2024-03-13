@@ -16,6 +16,16 @@
       "download": "Download"
     }
   },
+  "qrcodes": {
+    "c2": {
+      "title": "C2",
+      "test": "Test"
+    },
+    "sp1": {
+      "title": "SP-1",
+      "test": "Test"
+    }
+  },
   "footer": {
     "reserve_rights": "All rights reserved."
   },
