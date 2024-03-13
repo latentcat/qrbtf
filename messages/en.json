@@ -78,6 +78,11 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, zh {Chinese} en {English} other {Unknown}}"
+    "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"
+  },
+  "ModeToggle": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }
