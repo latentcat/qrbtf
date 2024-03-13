@@ -1,6 +1,7 @@
 import {Container} from "@/components/Containers";
 import Link from "next/link";
 import {useTranslations} from "next-intl";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 
 export function Footer() {
@@ -9,7 +10,10 @@ export function Footer() {
   return (
     <div className="_border-t py-9 lg:py-12 flex flex-col mt-16">
       <Container>
-        <p className="text-sm text-zinc-400 dark:text-zinc-500">
+        <div className="text-sm text-muted-foreground mb-2">
+          <LocaleSwitcher />
+        </div>
+        <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} {" "}
           <Link href="https://latentcat.com" target="_blank" className="border-b">
             Latent Cat

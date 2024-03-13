@@ -75,5 +75,9 @@
   },
   "loading": {
     "loading_msg": "加载中"
+  },
+  "LocaleSwitcher": {
+    "label": "Label",
+    "locale": "{locale, select, zh {Chinese} en {English} other {Unknown}}"
   }
 }

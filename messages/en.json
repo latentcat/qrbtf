@@ -75,5 +75,9 @@
   },
   "loading": {
     "loading_msg": "Loading"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, zh {Chinese} en {English} other {Unknown}}"
   }
 }
