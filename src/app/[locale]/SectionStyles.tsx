@@ -55,7 +55,7 @@ export function SectionStyles() {
             <div
               className={cn(
                 "absolute top-0 left-0 w-full h-full rounded-2xl ring ring-inset",
-                isActive ? "ring-2 ring-foreground" : "ring-1 ring-border",
+                isActive ? "ring-2 ring-foreground" : "ring-1 ring-border dark:hidden",
               )}
             >
             </div>
