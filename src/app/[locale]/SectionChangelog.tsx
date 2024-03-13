@@ -54,28 +54,28 @@ export function SectionChangelog() {
           <div className="mt-6">
             <ChangeStep
               title="2024.3"
-              content="QRBTF v3 released. Remade from the ground up using Next.js."
+              content={t('message.5')}
             />
             <ChangeStep
               title="2023.7"
-              content="QRBTF.AI released. Built on Nuxt.js."
+              content={t('message.4')}
             />
             <ChangeStep
               title="2023.6"
-              content="Introducing the world's first AI generated QR code."
+              content={t('message.3')}
               link="Reddit"
               url="https://www.reddit.com/r/StableDiffusion/comments/141hg9x/controlnet_for_qr_code/"
             />
             <ChangeStep
               title="2020.6"
-              content="Release of react-qrbtf component library."
+              content={t('message.2')}
               link="GitHub"
               url="https://github.com/CPunisher/react-qrbtf"
             />
             <ChangeStep
               isEnd
               title="2020.5"
-              content="QRBTF v1 is open source."
+              content={t('message.1')}
               link="GitHub"
               url="https://github.com/latentcat/qrbtf"
             />

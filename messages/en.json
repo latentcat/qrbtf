@@ -9,6 +9,9 @@
       "url": "URL",
       "scan": "Scan"
     },
+    "style": {
+      "title": "Style"
+    },
     "params": {
       "param_name": "Parameter name",
       "generate": "Generate",
@@ -33,7 +36,14 @@
     },
     "changelog": {
       "title": "Changelog",
-      "subtitle": ""
+      "subtitle": "",
+      "message": {
+        "1": "QRBTF v1 is open source.",
+        "2": "Release of react-qrbtf component library.",
+        "3": "Introducing the world's first AI generated QR code.",
+        "4": "QRBTF.AI released. Built on Nuxt.js.",
+        "5": "QRBTF v3 released. Remade from the ground up using Next.js."
+      }
     }
   },
   "qrcodes": {

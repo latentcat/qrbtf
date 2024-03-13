@@ -38,7 +38,7 @@ function ParamLabel(props: ParamLabelProps) {
         {props.label}
       </FormLabel>
       {props.desc && (
-        <FormDescription>
+        <FormDescription className="text-xs">
           {props.desc}
         </FormDescription>
       )}

@@ -3,6 +3,32 @@ import {Container} from "@/components/Containers";
 import {SectionTitle} from "@/components/Titles";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import {Button} from "@/components/ui/button";
+import {Fragment} from "react";
+import Link from "next/link";
+
+
+const links = [
+  {
+    name: "Latent Cat",
+    url: "https://latentcat.com",
+  },
+  {
+    name: "@ciaochaos",
+    url: "https://github.com/ciaochaos",
+  },
+  {
+    name: "@cpunisher",
+    url: "https://github.com/cpunisher",
+  },
+  {
+    name: "@chenbaiyujason",
+    url: "https://github.com/chenbaiyujason",
+  },
+  {
+    name: "@zhaohan-wang",
+    url: "https://github.com/zhaohan-wang",
+  },
+]
 
 
 export function SectionTeam() {
@@ -15,8 +41,17 @@ export function SectionTeam() {
         <div className="md:pr-72 lg:pr-96">
           <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
 
-          <div className="mt-3 flex gap-3">
-            Latent Cat, @ciaochaos, @cpunisher, @chenbaiyujason, @zhaohan-wang
+          <div className="mt-3 leading-7">
+            {links.map((item, index) => (
+              <Fragment key={item.name}>
+                <Link href={item.url} target="_blank" className="text-foreground underline font-semibold">
+                  {item.name}
+                </Link>
+                {index < links.length - 1 && (
+                  <>,{" "}</>
+                )}
+              </Fragment>
+            ))}
           </div>
         </div>
       </Container>
