@@ -8,39 +8,20 @@ export interface QrbtfRendererCommonProps {
 type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps> &
   ParamType;
 
-type GetCommonParamsProps = Record<
-  keyof QrbtfRendererCommonProps,
-  {
-    label: string;
-    desc: string;
-  }
->;
-
-export function getCommonParams(
-  props: GetCommonParamsProps
-): CommonParamsType[] {
+export function useCommonParams(): CommonParamsType[] {
+  const tCommon = useTranslations("qrcodes.common");
   return [
     {
       type: "number",
       name: "correct_level",
-      label: props.correct_level.label,
-      desc: props.correct_level.desc,
+      label: tCommon("correct_level.label"),
+      desc: tCommon("correct_level.desc"),
       config: {
         min: 0,
         max: 100,
       },
     },
   ];
-}
-
-export function useCommonParams(): CommonParamsType[] {
-  const tCommon = useTranslations("qrcodes.common");
-  return getCommonParams({
-    correct_level: {
-      label: tCommon("correct_level.label"),
-      desc: tCommon("correct_level.desc"),
-    },
-  });
 }
 
 import { Path } from "react-hook-form";
