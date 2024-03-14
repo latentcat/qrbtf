@@ -16,7 +16,7 @@ import {LucideDownload} from "lucide-react";
 import {AspectRatio} from "@/components/ui/aspect-ratio";
 import {QrCodeIcon} from "@heroicons/react/24/outline";
 import {QrTest} from "@/components/QrTest";
-import {SectionTitle} from "@/components/Titles";
+import {SectionTitle, StyleTitle} from "@/components/Titles";
 
 
 type Namespace = NamespaceKeys<IntlMessages, NestedKeyOf<IntlMessages>>
@@ -24,6 +24,7 @@ type Namespace = NamespaceKeys<IntlMessages, NestedKeyOf<IntlMessages>>
 interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
   title: string
+  label?: string
   subtitle: string
   qrcodeModule: QrbtfModule<P>
   params: ConfigType<P>[];
@@ -72,7 +73,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
 
           <div className="grow">
             <div className="sticky top-9">
-              <SectionTitle title={props.title} subtitle={props.subtitle} />
+              <StyleTitle title={props.title} label={props.label} subtitle={props.subtitle} />
 
               <div>
 
