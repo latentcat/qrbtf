@@ -76,6 +76,11 @@
   "loading": {
     "loading_msg": "加载中"
   },
+  "not_found": {
+    "title": "页面不存在",
+    "tagline": "很抱歉，我们无法找到你所需的页面。",
+    "home": "返回首页"
+  },
   "LocaleSwitcher": {
     "label": "Label",
     "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"

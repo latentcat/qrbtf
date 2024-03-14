@@ -29,7 +29,9 @@ export function StyleTitle(props: StyleTitleProps) {
       <h2 className="flex items-center">
         <span className="text-2xl font-bold">{props.title}</span>
         {props.label && (
-          <span className="text-lg font-medium leading-none text-foreground/100 ml-1.5 h-7 w-7 border rounded-lg flex items-center justify-center">{props.label}</span>
+          <span className="text-lg font-medium leading-none text-foreground/100 ml-1.5 h-7 w-7 border rounded-lg flex items-center justify-center">
+            {props.label.toUpperCase()}
+          </span>
         )}
       </h2>
       {props.subtitle && (

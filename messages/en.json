@@ -76,6 +76,11 @@
   "loading": {
     "loading_msg": "Loading"
   },
+  "not_found": {
+    "title": "Page not found",
+    "tagline": "Sorry, we couldn’t find the page you’re looking for.",
+    "home": "Go back home"
+  },
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"
