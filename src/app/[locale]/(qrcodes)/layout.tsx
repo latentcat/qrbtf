@@ -22,7 +22,7 @@ export default function RootLayout({
       <SectionStyles />
       {children}
       <Container>
-        <div className="flex flex-col md:flex-row gap-9 mt-12">
+        <div className="flex flex-col md:flex-row gap-x-9 gap-y-12 mt-12">
           <div className="grow flex flex-col gap-12">
             <SectionQA/>
             <SectionRefs/>
