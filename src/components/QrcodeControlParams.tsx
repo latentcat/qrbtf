@@ -9,7 +9,20 @@ import { Switch } from "@/components/ui/switch"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import {Badge} from "@/components/ui/badge";
-import {CommonControlProps, ParamBooleanControlProps, ParamNumberControlProps} from "@/lib/qrbtf_lib/qrcodes/common";
+import {
+  CommonControlProps,
+  ParamBooleanControlProps,
+  ParamNumberControlProps,
+  ParamSelectControlProps
+} from "@/lib/qrbtf_lib/qrcodes/common";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 
 
 type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & { field: ControllerRenderProps<P, Path<P>> }
@@ -99,6 +112,29 @@ export function ParamBooleanControl<P extends FieldValues>(props: ControlCommonP
             checked={props.field.value}
             onCheckedChange={(value) => props.field.onChange(value)}
           />
+        </FormControl>
+      </ParamValue>
+    </ParamItem>
+  )
+}
+
+
+export function ParamSelectControl<P extends FieldValues>(props: ControlCommonProps<P> & ParamSelectControlProps) {
+  return (
+    <ParamItem>
+      <ParamLabel label={props.label} desc={props.desc}/>
+      <ParamValue>
+        <FormControl>
+          <Select value={props.field.value} onValueChange={props.field.onChange}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent>
+              {props.config?.values.map((item, index) => (
+                <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </FormControl>
       </ParamValue>
     </ParamItem>

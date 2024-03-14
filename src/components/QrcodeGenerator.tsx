@@ -7,7 +7,7 @@ import { Form, FormField } from "@/components/ui/form";
 import { DefaultValues, useForm, useWatch } from "react-hook-form";
 import {
   ParamBooleanControl,
-  ParamNumberControl,
+  ParamNumberControl, ParamSelectControl,
 } from "@/components/QrcodeControlParams";
 import { HTMLAttributes } from "react";
 import { Label } from "@/components/ui/label";
@@ -52,6 +52,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
               return <ParamNumberControl<P> field={field} {...item} />;
             case "boolean":
               return <ParamBooleanControl<P> field={field} {...item} />;
+            case "select":
+              return <ParamSelectControl<P> field={field} {...item} />;
           }
         }}
       />

@@ -8,20 +8,43 @@ export interface QrbtfRendererCommonProps extends React.ComponentPropsWithoutRef
 type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps> &
   ParamType;
 
-export function useCommonParams(): CommonParamsType[] {
+export function useCommonParams() {
   const tCommon = useTranslations("qrcodes.common");
-  return [
+  const commonParams: CommonParamsType[] = [
     {
-      type: "number",
+      type: "select",
       name: "correct_level",
       label: tCommon("correct_level.label"),
       desc: tCommon("correct_level.desc"),
       config: {
-        min: 0,
-        max: 100,
+        values: [
+          {
+            value: "7",
+            label: "7%",
+          },
+          {
+            value: "15",
+            label: "15%",
+          },
+          {
+            value: "25",
+            label: "25%",
+          },
+          {
+            value: "30",
+            label: "30%",
+          },
+        ],
       },
     },
-  ];
+  ]
+  const commonDefault: QrbtfRendererCommonProps = {
+    correct_level: "15"
+  }
+  return {
+    commonParams,
+    commonDefault
+  }
 }
 
 import { Path } from "react-hook-form";
@@ -56,7 +79,24 @@ export interface ParamBooleanControlProps {
   };
 }
 
-export type ParamType = (ParamNumberControlProps | ParamBooleanControlProps) & {
+
+interface SelectValue {
+  label: string
+  value: string
+}
+
+export interface ParamSelectControlProps {
+  type: "select";
+  config?: {
+    values: SelectValue[]
+  };
+}
+
+export type ParamType = (
+  ParamNumberControlProps |
+  ParamBooleanControlProps |
+  ParamSelectControlProps
+  ) & {
   // uuid: string
 };
 

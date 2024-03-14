@@ -62,9 +62,21 @@
       "title": "A1",
       "subtitle": "The basic",
 
-      "contrast": {
-        "label": "Contrast",
-        "desc": "Contrast"
+      "content_point_type": {
+        "label": "content_point_type",
+        "desc": "content_point_type"
+      },
+      "content_point_scale": {
+        "label": "content_point_scale",
+        "desc": "content_point_scale"
+      },
+      "content_point_opacity": {
+        "label": "content_point_opacity",
+        "desc": "content_point_opacity"
+      },
+      "content_point_color": {
+        "label": "content_point_color",
+        "desc": "content_point_color"
       }
     },
     "c2": {

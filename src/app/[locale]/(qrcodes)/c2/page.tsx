@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 
 export default function Page() {
   const t = useTranslations("qrcodes.c2");
-  const commonParams = useCommonParams();
+  const { commonParams, commonDefault} = useCommonParams();
 
   const params: ConfigType<QrbtfRendererC2Props>[] = [
     ...commonParams,
@@ -25,9 +25,9 @@ export default function Page() {
   ];
 
   const defaultValues: QrbtfRendererC2Props = {
+    ...commonDefault,
     brightness: 0,
     contrast: 1,
-    correct_level: "7",
   };
 
   return (
