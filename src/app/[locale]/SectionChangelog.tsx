@@ -71,11 +71,17 @@ export function SectionChangelog() {
           url="https://github.com/CPunisher/react-qrbtf"
         />
         <ChangeStep
-          isEnd
           title="2020.5"
           content={t('message.1')}
           link="GitHub"
           url="https://github.com/latentcat/qrbtf"
+        />
+        <ChangeStep
+          isEnd
+          title="2020.5"
+          content={t('message.0')}
+          link={t('post')}
+          url="https://mp.weixin.qq.com/s/_Oy9I9FqPXhfwN9IUhf6_g"
         />
       </div>
     </div>

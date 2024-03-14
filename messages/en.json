@@ -39,7 +39,9 @@
     "changelog": {
       "title": "Changelog",
       "subtitle": "",
+      "post": "Post (Chinese)",
       "message": {
+        "0": "QRBTF v1 released.",
         "1": "QRBTF v1 is open source.",
         "2": "Release of react-qrbtf component library.",
         "3": "Introducing the world's first AI generated QR code.",

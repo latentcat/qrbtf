@@ -39,7 +39,9 @@
     "changelog": {
       "title": "更新记录",
       "subtitle": "",
+      "post": "文章",
       "message": {
+        "0": "QRBTF v1 发布。",
         "1": "QRBTF v1 开源。",
         "2": "发布 react-qrbtf 组件库。",
         "3": "首次实现生成式 AI 二维码。",
