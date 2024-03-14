@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import React from "react";
 
-export interface QrbtfRendererCommonProps {
+export interface QrbtfRendererCommonProps extends React.ComponentPropsWithoutRef<'svg'> {
   correct_level: "7" | "15" | "25" | "30";
 }
 

@@ -62,6 +62,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
     <div>
       <Container>
         <div className="mt-9 flex flex-col md:flex-row gap-9">
+
           <div className="grow">
             <div className="sticky top-9">
               <StyleTitle
@@ -113,8 +114,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                   <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
                     <QrCodeIcon className="w-12 h-12 opacity-20" />
                   </div>
-                  <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-                    <div>{props.qrcodeModule.renderer(componentProps)}</div>
+                  <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white">
+                    <props.qrcodeModule.renderer {...componentProps} className="w-full"/>
                   </div>
                 </div>
               </div>
