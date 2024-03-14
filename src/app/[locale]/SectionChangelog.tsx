@@ -46,42 +46,38 @@ export function SectionChangelog() {
 
 
   return (
-    <div className="mt-12">
-      <Container>
-        <div className="md:pr-72 lg:pr-96">
-          <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
+    <div className="">
+      <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
 
-          <div className="mt-6">
-            <ChangeStep
-              title="2024.3"
-              content={t('message.5')}
-            />
-            <ChangeStep
-              title="2023.7"
-              content={t('message.4')}
-            />
-            <ChangeStep
-              title="2023.6"
-              content={t('message.3')}
-              link="Reddit"
-              url="https://www.reddit.com/r/StableDiffusion/comments/141hg9x/controlnet_for_qr_code/"
-            />
-            <ChangeStep
-              title="2020.6"
-              content={t('message.2')}
-              link="GitHub"
-              url="https://github.com/CPunisher/react-qrbtf"
-            />
-            <ChangeStep
-              isEnd
-              title="2020.5"
-              content={t('message.1')}
-              link="GitHub"
-              url="https://github.com/latentcat/qrbtf"
-            />
-          </div>
-        </div>
-      </Container>
+      <div className="mt-6">
+        <ChangeStep
+          title="2024.3"
+          content={t('message.5')}
+        />
+        <ChangeStep
+          title="2023.7"
+          content={t('message.4')}
+        />
+        <ChangeStep
+          title="2023.6"
+          content={t('message.3')}
+          link="Reddit"
+          url="https://www.reddit.com/r/StableDiffusion/comments/141hg9x/controlnet_for_qr_code/"
+        />
+        <ChangeStep
+          title="2020.6"
+          content={t('message.2')}
+          link="GitHub"
+          url="https://github.com/CPunisher/react-qrbtf"
+        />
+        <ChangeStep
+          isEnd
+          title="2020.5"
+          content={t('message.1')}
+          link="GitHub"
+          url="https://github.com/latentcat/qrbtf"
+        />
+      </div>
     </div>
   )
 }

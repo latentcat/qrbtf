@@ -12,19 +12,15 @@ export function SectionSponsor() {
 
 
   return (
-    <div className="mt-12">
-      <Container>
-        <div className="md:pr-72 lg:pr-96">
-          <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
+    <div className="">
+      <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
 
-          <div className="mt-9 flex gap-3">
-            <Link href="https://midreal.ai" target="_blank">
-              <MidRealLogoFull className="h-12"/>
-            </Link>
-            <span className="hidden">MidReal.ai</span>
-          </div>
-        </div>
-      </Container>
+      <div className="mt-9 flex gap-3">
+        <Link href="https://midreal.ai" target="_blank">
+          <MidRealLogoFull className="h-12"/>
+        </Link>
+        <span className="hidden">MidReal.ai</span>
+      </div>
     </div>
   )
 }

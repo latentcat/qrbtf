@@ -36,25 +36,21 @@ export function SectionTeam() {
 
 
   return (
-    <div className="mt-12">
-      <Container>
-        <div className="md:pr-72 lg:pr-96">
-          <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
+    <div className="">
+      <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
 
-          <div className="mt-3 leading-7">
-            {links.map((item, index) => (
-              <Fragment key={item.name}>
-                <Link href={item.url} target="_blank" className="text-foreground underline font-medium">
-                  {item.name}
-                </Link>
-                {index < links.length - 1 && (
-                  <>,{" "}</>
-                )}
-              </Fragment>
-            ))}
-          </div>
-        </div>
-      </Container>
+      <div className="mt-3 leading-7">
+        {links.map((item, index) => (
+          <Fragment key={item.name}>
+            <Link href={item.url} target="_blank" className="text-foreground underline font-medium">
+              {item.name}
+            </Link>
+            {index < links.length - 1 && (
+              <>,{" "}</>
+            )}
+          </Fragment>
+        ))}
+      </div>
     </div>
   )
 }
