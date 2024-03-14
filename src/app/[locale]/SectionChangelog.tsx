@@ -23,7 +23,7 @@ function ChangeStep(props: ChangeStepProps) {
       </div>
       <div className="grow">
         <h3 className="font-semibold">{props.title}</h3>
-        <p className="mb-6 mt-1 text-muted-foreground">
+        <p className="text-sm mb-6 mt-1 text-muted-foreground">
           {props.content}{"  "}
           {props.url && (
             <Link
