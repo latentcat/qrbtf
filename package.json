@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@heroicons/react": "^2.1.1",
     "@hookform/resolvers": "^3.3.4",
+    "@paulmillr/qr": "^0.1.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -57,7 +58,6 @@
     "next": "14.1.3",
     "next-intl": "^3.9.4",
     "next-themes": "^0.2.1",
-    "qrcode": "^1.5.3",
     "react": "^18",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
@@ -72,7 +72,6 @@
   "devDependencies": {
     "@types/lodash": "^4.17.0",
     "@types/node": "^20",
-    "@types/qrcode": "^1.5.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",

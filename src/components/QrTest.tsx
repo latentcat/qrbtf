@@ -1,17 +1,19 @@
-"use client"
+"use client";
 
-
-import {getQrcodeObject, renderSvg} from "@/lib/qrbtf_lib";
-import {useEffect} from "react";
+import { encode } from "@/lib/qrbtf_lib/encoder";
+import { useEffect } from "react";
 
 export function QrTest() {
-
   return (
-    <div
-      className="w-full"
-      dangerouslySetInnerHTML={{__html: renderSvg()}}
-    >
-
+    <div className="w-full">
+      <div
+        onClick={() => {
+          const arr = encode("qrbtf");
+          console.log(arr);
+        }}
+      >
+        Test
+      </div>
     </div>
-  )
+  );
 }
