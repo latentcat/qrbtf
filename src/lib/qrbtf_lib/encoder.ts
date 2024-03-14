@@ -58,8 +58,12 @@ export enum QRPointType {
 export function encode(
   text: string,
   options?: Parameters<typeof encodeQR>[2]
-): QRPointType[][] {
-  const table = encodeQR(text, "raw", options);
+): [boolean[][], QRPointType[][]] {
+  const table = encodeQR(text, "raw", {
+    border: 0,
+    scale: 1,
+    ...options,
+  });
   const nCount = table.length;
   const typeNumber = (nCount - 17) / 4;
   const position = PATTERN_POSITION_TABLE[typeNumber];
@@ -70,22 +74,28 @@ export function encode(
     [nCount - 4, 3],
   ];
 
+  const set = (x: number, y: number, type: QRPointType) => {
+    if (table[x][y]) {
+      typeTable[x][y] = type;
+    }
+  };
+
   let typeTable: QRPointType[][] = new Array(nCount);
   for (let i = 0; i < nCount; i++)
     typeTable[i] = new Array(nCount).fill(QRPointType.EMPTY);
 
   for (let i = 8; i < nCount - 7; i++) {
-    typeTable[i][6] = typeTable[6][i] = QRPointType.TIMING;
+    set(i, 6, QRPointType.TIMING);
+    set(6, i, QRPointType.TIMING);
   }
 
   for (let i = 0; i < position.length; i++) {
     for (let j = 0; j < position.length; j++) {
-      typeTable[position[i]][position[j]] = QRPointType.ALIGN_CENTER;
+      set(position[i], position[j], QRPointType.ALIGN_CENTER);
       for (let r = -2; r <= 2; r++) {
         for (let c = -2; c <= 2; c++) {
           if (!(r === 0 && c === 0)) {
-            typeTable[position[i] + r][position[j] + c] =
-              QRPointType.ALIGN_OTHER;
+            set(position[i] + r, position[j] + c, QRPointType.ALIGN_OTHER);
           }
         }
       }
@@ -103,29 +113,29 @@ export function encode(
           PD[i][1] + c < nCount
         )
           if (!(r === 0 && c === 0))
-            typeTable[PD[i][0] + r][PD[i][1] + c] = QRPointType.POS_OTHER;
+            set(PD[i][0] + r, PD[i][1] + c, QRPointType.POS_OTHER);
       }
     }
   }
 
   for (let i = 0; i <= 8; i++) {
-    if (i !== 6) typeTable[i][8] = typeTable[8][i] = QRPointType.FORMAT;
-    if (i < 7) typeTable[nCount - i - 1][8] = QRPointType.FORMAT;
-    if (i < 8) typeTable[8][nCount - i - 1] = QRPointType.FORMAT;
+    if (i !== 6) set(i, 8, QRPointType.FORMAT), set(8, i, QRPointType.FORMAT);
+    if (i < 7) set(nCount - i - 1, 8, QRPointType.FORMAT);
+    if (i < 8) set(8, nCount - i - 1, QRPointType.FORMAT);
   }
 
   for (let i = nCount - 11; i <= nCount - 9; i++) {
     for (let j = 0; j <= 5; j++) {
-      typeTable[i][j] = typeTable[j][i] = QRPointType.VERSION;
+      set(i, j, QRPointType.VERSION);
+      set(j, i, QRPointType.VERSION);
     }
   }
 
   for (let i = 0; i < nCount; i++) {
     for (let j = 0; j < nCount; j++) {
-      if (typeTable[i][j] === QRPointType.EMPTY && table[i][j])
-        typeTable[i][j] = QRPointType.DATA;
+      if (typeTable[i][j] === QRPointType.EMPTY) set(i, j, QRPointType.DATA);
     }
   }
 
-  return typeTable;
+  return [table, typeTable];
 }

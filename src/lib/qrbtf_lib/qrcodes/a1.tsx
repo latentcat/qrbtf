@@ -7,14 +7,14 @@ import {
 import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
 
-interface RenderC2OwnProps {
+interface RenderA1OwnProps {
   contrast: number;
   brightness: number;
 }
 
-export type QrbtfRendererC2Props = RenderC2OwnProps & QrbtfRendererCommonProps;
+export type QrbtfRendererA1Props = RenderA1OwnProps & QrbtfRendererCommonProps;
 
-function QrbtfRendererC2(props: QrbtfRendererC2Props) {
+function QrbtfRendererA1(props: QrbtfRendererA1Props) {
   const [table, typeTable] = useMemo(() => encode("qrbtf"), []);
   const points = useMemo(() => {
     const points: React.ReactNode[] = [];
@@ -91,6 +91,6 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props) {
   );
 }
 
-export const qrbtfModuleC2: QrbtfModule<QrbtfRendererC2Props> = {
-  renderer: QrbtfRendererC2,
+export const qrbtfModuleA1: QrbtfModule<QrbtfRendererA1Props> = {
+  renderer: QrbtfRendererA1,
 };
