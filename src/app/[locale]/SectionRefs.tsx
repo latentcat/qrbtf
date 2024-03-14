@@ -28,6 +28,12 @@ export function SectionRefs() {
             {t('hf')}
           </Button>
         </Link>
+        <Link href="https://antfu.me/posts/ai-qrcode-101" target="_blank">
+          <Button variant="secondary" size="sm">
+            <BookIcon className="w-4 h-4 mr-2"/>
+            {t('antfu')}
+          </Button>
+        </Link>
       </div>
     </div>
   )
