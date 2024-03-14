@@ -1,73 +1,84 @@
-
+import { useTranslations } from "next-intl";
 import React from "react";
 
-
 export interface QrbtfRendererCommonProps {
-  correct_level: "7" | "15" | "25" | "30"
+  correct_level: "7" | "15" | "25" | "30";
 }
 
+type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps> &
+  ParamType;
 
-type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps> & ParamType
+type GetCommonParamsProps = Record<
+  keyof QrbtfRendererCommonProps,
+  {
+    label: string;
+    desc: string;
+  }
+>;
 
-type GetCommonParamsProps = Record<keyof QrbtfRendererCommonProps, {
-  label: string;
-  desc: string
-}>
-
-export function getCommonParams(props: GetCommonParamsProps): CommonParamsType[] {
+export function getCommonParams(
+  props: GetCommonParamsProps
+): CommonParamsType[] {
   return [
     {
       type: "number",
       name: "correct_level",
       label: props.correct_level.label,
-      desc:  props.correct_level.desc,
+      desc: props.correct_level.desc,
       config: {
         min: 0,
         max: 100,
-      }
+      },
     },
-  ]
+  ];
 }
 
+export function useCommonParams(): CommonParamsType[] {
+  const tCommon = useTranslations("qrcodes.common");
+  return getCommonParams({
+    correct_level: {
+      label: tCommon("correct_level.label"),
+      desc: tCommon("correct_level.desc"),
+    },
+  });
+}
 
-import {Path} from "react-hook-form";
+import { Path } from "react-hook-form";
 
 export interface QrbtfModule<P> {
-  renderer: (props: P) => React.ReactNode
+  renderer: (props: P) => React.ReactNode;
 }
 
-
 export interface CommonControlProps<P> {
-  type: ParamTypeLiteralAll
-  name: Path<P>
-  label: string
-  desc?: string
+  type: ParamTypeLiteralAll;
+  name: Path<P>;
+  label: string;
+  desc?: string;
 }
 
 export interface ParamNumberControlProps {
-  type: 'number'
+  type: "number";
   config?: {
-    default?: number
-    optional?: boolean
-    min?: number
-    max?: number
-    step?: number
-  }
+    default?: number;
+    optional?: boolean;
+    min?: number;
+    max?: number;
+    step?: number;
+  };
 }
 
 export interface ParamBooleanControlProps {
-  type: 'boolean'
+  type: "boolean";
   config?: {
-    status: string
-    finished?: boolean
-  }
+    status: string;
+    finished?: boolean;
+  };
 }
-
 
 export type ParamType = (ParamNumberControlProps | ParamBooleanControlProps) & {
   // uuid: string
 };
 
-export type ParamTypeLiteralAll = ParamType['type'];
+export type ParamTypeLiteralAll = ParamType["type"];
 
-export type ConfigType<P> = CommonControlProps<P> & ParamType
+export type ConfigType<P> = CommonControlProps<P> & ParamType;
