@@ -13,7 +13,7 @@ export function Footer() {
   const messages = useMessages();
 
   return (
-    <div className="_border-t py-9 lg:py-12 flex flex-col mt-16">
+    <div className="_border-t py-9 lg:py-12 flex flex-col mt-12">
       <Container>
         <div className="text-sm text-muted-foreground mb-2 flex gap-4">
           <LocaleSwitcher />
