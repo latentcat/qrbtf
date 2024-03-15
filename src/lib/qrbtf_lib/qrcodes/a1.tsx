@@ -2,11 +2,13 @@
 
 import {
   QrbtfRendererCommonProps,
-  QrbtfModule, QrbtfRendererUrlProps, QrbtfRendererPositioningProps,
+  QrbtfModule,
+  QrbtfRendererUrlProps,
+  QrbtfRendererPositioningProps,
 } from "@/lib/qrbtf_lib/qrcodes/common";
 import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
-import {sq25} from "@/lib/qrbtf_lib/constants";
+import { sq25 } from "@/lib/qrbtf_lib/constants";
 
 interface RenderA1OwnProps {
   content_point_type: "square" | "circle";
@@ -15,15 +17,15 @@ interface RenderA1OwnProps {
   content_point_color: string;
 }
 
-export type QrbtfRendererA1Props = RenderA1OwnProps & QrbtfRendererPositioningProps & QrbtfRendererCommonProps;
-
+export type QrbtfRendererA1Props = RenderA1OwnProps &
+  QrbtfRendererPositioningProps &
+  QrbtfRendererCommonProps;
 
 function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
-
   const [table, typeTable] = useMemo(
-    () => encode(props.url, {ecc: props.correct_level}),
-    [props.url, props.correct_level]
-  )
+    () => encode(props.url, { ecc: props.correct_level }),
+    [props.url, props.correct_level],
+  );
   const points = useMemo(() => {
     const points: React.ReactNode[] = [];
 
@@ -31,12 +33,12 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
     const contentPointSizeHalf = contentPointSize / 2;
     const contentPointOffset = (1 - contentPointSize) / 2;
 
-    const positioningPointSize = contentPointSize < 1 ? 1 : contentPointSize
+    const positioningPointSize = contentPointSize < 1 ? 1 : contentPointSize;
 
     let id = 0;
     const vw = [3, -3];
     const vh = [3, -3];
-    
+
     for (let x = 0; x < table.length; x++) {
       for (let y = 0; y < table.length; y++) {
         switch (typeTable[x][y]) {
@@ -52,8 +54,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   fill={props.positioning_point_color}
                   x={x}
                   y={y}
-                />
-              )
+                />,
+              );
             } else if (props.positioning_point_type === "circle") {
               points.push(
                 <circle
@@ -62,8 +64,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   cx={x + 0.5}
                   cy={y + 0.5}
                   r={1.5}
-                />
-              )
+                />,
+              );
               points.push(
                 <circle
                   key={id++}
@@ -73,8 +75,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   cx={x + 0.5}
                   cy={y + 0.5}
                   r={3}
-                />
-              )
+                />,
+              );
             } else if (props.positioning_point_type === "planet") {
               points.push(
                 <circle
@@ -83,8 +85,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   cx={x + 0.5}
                   cy={y + 0.5}
                   r={1.5}
-                />
-              )
+                />,
+              );
               points.push(
                 <circle
                   key={id++}
@@ -95,8 +97,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   cx={x + 0.5}
                   cy={y + 0.5}
                   r={3}
-                />
-              )
+                />,
+              );
               for (let w = 0; w < vw.length; w++) {
                 points.push(
                   <circle
@@ -105,8 +107,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                     cx={x + vw[w] + 0.5}
                     cy={y + 0.5}
                     r={0.5}
-                  />
-                )
+                  />,
+                );
               }
               for (let h = 0; h < vh.length; h++) {
                 points.push(
@@ -116,8 +118,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                     cx={x + 0.5}
                     cy={y + vh[h] + 0.5}
                     r={0.5}
-                  />
-                )
+                  />,
+                );
               }
             } else if (props.positioning_point_type === "rounded") {
               points.push(
@@ -127,18 +129,29 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   cx={x + 0.5}
                   cy={y + 0.5}
                   r={1.5}
-                />
-              )
+                />,
+              );
               points.push(
                 <path
                   key={id++}
                   d={sq25}
                   stroke={props.positioning_point_color}
-                  strokeWidth={100/6 * (1 - (1 - contentPointSize) * 0.75)}
+                  strokeWidth={(100 / 6) * (1 - (1 - contentPointSize) * 0.75)}
                   fill="none"
-                  transform={'translate('+String(x - 2.5)+','+String(y - 2.5)+') ' + 'scale(' + String(6/100) + ',' + String(6/100) + ')'}
-                />
-              )
+                  transform={
+                    "translate(" +
+                    String(x - 2.5) +
+                    "," +
+                    String(y - 2.5) +
+                    ") " +
+                    "scale(" +
+                    String(6 / 100) +
+                    "," +
+                    String(6 / 100) +
+                    ")"
+                  }
+                />,
+              );
             }
             break;
           case QRPointType.POS_OTHER:
@@ -151,8 +164,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   fill={props.positioning_point_color}
                   x={x}
                   y={y}
-                />
-              )
+                />,
+              );
             }
             break;
           case QRPointType.ALIGN_CENTER:
@@ -170,7 +183,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   x={x + contentPointOffset}
                   y={y + contentPointOffset}
                 />,
-              )
+              );
             } else {
               points.push(
                 <circle
@@ -181,7 +194,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   cx={x + 0.5}
                   cy={y + 0.5}
                 />,
-              )
+              );
             }
         }
       }

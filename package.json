@@ -89,6 +89,6 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md}": "prettier --write"
+    "*.{js,jsx,ts,tsx,md}": "yarn format"
   }
 }
