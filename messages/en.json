@@ -102,6 +102,10 @@
       "contrast": {
         "label": "Contrast",
         "desc": "Contrast"
+      },
+      "background": {
+        "label": "Background",
+        "desc": "Background"
       }
     },
     "sp1": {

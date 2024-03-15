@@ -7,6 +7,7 @@ import { Form, FormField } from "@/components/ui/form";
 import { DefaultValues, useForm, useWatch } from "react-hook-form";
 import {
   ParamBooleanControl,
+  ParamImageControl,
   ParamNumberControl,
   ParamSelectControl,
 } from "@/components/QrcodeControlParams";
@@ -21,8 +22,8 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
 import { QrTest } from "@/components/QrTest";
 import { SectionTitle, StyleTitle } from "@/components/Titles";
-import {useAtomValue} from "jotai";
-import {urlAtom} from "@/lib/states";
+import { useAtomValue } from "jotai";
+import { urlAtom } from "@/lib/states";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -36,7 +37,7 @@ export interface QrcodeGeneratorProps<P extends {}>
 
 export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const t = useTranslations("index.params");
-  const url = useAtomValue(urlAtom)
+  const url = useAtomValue(urlAtom);
 
   const { children, className, params, defaultValues, ...restProps } = props;
 
@@ -58,6 +59,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
               return <ParamBooleanControl<P> field={field} {...item} />;
             case "select":
               return <ParamSelectControl<P> field={field} {...item} />;
+            case "image":
+              return <ParamImageControl<P> field={field} {...item} />;
           }
         }}
       />
@@ -123,7 +126,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                     {props.qrcodeModule.renderer({
                       className: "w-full",
                       url: url || "https://qrbtf.com",
-                      ...componentProps
+                      ...componentProps,
                     })}
                   </div>
                 </div>

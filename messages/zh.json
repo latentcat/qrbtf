@@ -102,6 +102,10 @@
       "contrast": {
         "label": "对比度",
         "desc": "采样图像的明暗对比"
+      },
+      "background": {
+        "label": "背景",
+        "desc": "背景"
       }
     },
     "sp1": {

@@ -22,12 +22,19 @@ export default function Page() {
         max: 100,
       },
     },
+    {
+      type: "image",
+      name: "background",
+      label: t("background.label"),
+      desc: t("background.desc"),
+    },
   ];
 
   const defaultValues: QrbtfRendererC2Props = {
     ...commonDefault,
     brightness: 0,
     contrast: 1,
+    background: "",
   };
 
   return (

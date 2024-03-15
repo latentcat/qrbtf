@@ -2,13 +2,13 @@ import { useTranslations } from "next-intl";
 import React from "react";
 
 export interface QrbtfRendererUrlProps {
-  url: string
+  url: string;
 }
 
-export interface QrbtfRendererCommonProps extends React.ComponentPropsWithoutRef<'svg'> {
-  correct_level: 'low' | 'medium' | 'quartile' | 'high'
+export interface QrbtfRendererCommonProps
+  extends React.ComponentPropsWithoutRef<"svg"> {
+  correct_level: "low" | "medium" | "quartile" | "high";
 }
-
 
 type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps> &
   ParamType;
@@ -44,20 +44,18 @@ export function useCommonParams() {
     },
   ];
   const commonDefault: QrbtfRendererCommonProps = {
-    correct_level: "medium"
-  }
+    correct_level: "medium",
+  };
   return {
     commonParams,
     commonDefault,
   };
 }
 
-
 export interface QrbtfRendererPositioningProps {
   positioning_point_type: "square" | "circle" | "planet" | "rounded";
   positioning_point_color: string;
 }
-
 
 type PositioningParamsType = CommonControlProps<QrbtfRendererPositioningProps> &
   ParamType;
@@ -105,7 +103,7 @@ export function usePositioningParams() {
   const positioningDefault: QrbtfRendererPositioningProps = {
     positioning_point_type: "square",
     positioning_point_color: "#000000",
-  }
+  };
   return {
     positioningParams,
     positioningDefault,
@@ -156,10 +154,15 @@ export interface ParamSelectControlProps {
   };
 }
 
+export interface ParamImageControlProps {
+  type: "image";
+}
+
 export type ParamType = (
   | ParamNumberControlProps
   | ParamBooleanControlProps
   | ParamSelectControlProps
+  | ParamImageControlProps
 ) & {
   // uuid: string
 };

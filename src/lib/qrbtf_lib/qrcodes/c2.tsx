@@ -10,6 +10,7 @@ import { QRPointType, encode } from "../encoder";
 interface RenderC2OwnProps {
   contrast: number;
   brightness: number;
+  background: string;
 }
 
 export type QrbtfRendererC2Props = RenderC2OwnProps & QrbtfRendererCommonProps;

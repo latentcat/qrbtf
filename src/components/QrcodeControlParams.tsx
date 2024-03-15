@@ -5,8 +5,8 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Slider } from "@/components/ui/slider";
-import { cn } from "@/lib/utils";
-import React from "react";
+import { cn, toBase64 } from "@/lib/utils";
+import React, { ChangeEvent, ChangeEventHandler } from "react";
 import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
 import { Switch } from "@/components/ui/switch";
 
@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   CommonControlProps,
   ParamBooleanControlProps,
+  ParamImageControlProps,
   ParamNumberControlProps,
   ParamSelectControlProps,
 } from "@/lib/qrbtf_lib/qrcodes/common";
@@ -26,6 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Label } from "./ui/label";
 
 type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
   field: ControllerRenderProps<P, Path<P>>;
@@ -137,6 +139,30 @@ export function ParamSelectControl<P extends FieldValues>(
               ))}
             </SelectContent>
           </Select>
+        </FormControl>
+      </ParamValue>
+    </ParamItem>
+  );
+}
+
+export function ParamImageControl<P extends FieldValues>(
+  props: ControlCommonProps<P> & ParamImageControlProps,
+) {
+  const onImageUpload: ChangeEventHandler<HTMLInputElement> = async (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const base64 = await toBase64(file, 1.0);
+      console.log(base64);
+      props.field.onChange(base64);
+    }
+  };
+
+  return (
+    <ParamItem>
+      <ParamLabel label={props.label} desc={props.desc} />
+      <ParamValue>
+        <FormControl>
+          <Input type="file" accept="image/*" onChange={onImageUpload} />
         </FormControl>
       </ParamValue>
     </ParamItem>
