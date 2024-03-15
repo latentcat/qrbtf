@@ -5,7 +5,7 @@ export interface QrbtfRendererCommonProps extends React.ComponentPropsWithoutRef
   correct_level: 'low' | 'medium' | 'quartile' | 'high'
 }
 
-export interface QrbtfRendererCommonPropsWithURL extends QrbtfRendererCommonProps {
+export interface QrbtfRendererUrlProps {
   url: string
 }
 
