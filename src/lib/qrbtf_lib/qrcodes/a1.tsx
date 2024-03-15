@@ -76,7 +76,6 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
             if (props.positioning_point_type === "square") {
               points.push(
                 <rect
-                  opacity={props.positioning_point_opacity}
                   width={1}
                   height={1}
                   key={points.length}
