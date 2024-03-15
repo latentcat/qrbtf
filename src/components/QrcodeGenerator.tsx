@@ -72,7 +72,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
       <Container>
         <div className="mt-9 flex flex-col md:flex-row gap-9">
           <div className="grow">
-            <div className="sticky top-9">
+            <div className="_sticky _top-9">
               <StyleTitle
                 title={props.title}
                 label={props.label}
