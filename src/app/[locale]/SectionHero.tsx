@@ -61,7 +61,7 @@ export function SectionHero() {
             </Link>
           </div>
 
-          <div className="mt-6w-full sm:max-w-lg">
+          <div className="mt-6 w-full sm:max-w-lg">
             <Label className="flex justify-between text-sm font-medium mb-1.5">
               {t("url")}
               <div className="flex items-center gap-3">

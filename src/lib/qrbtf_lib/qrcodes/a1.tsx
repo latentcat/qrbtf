@@ -26,8 +26,9 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
   const points = useMemo(() => {
     const points: React.ReactNode[] = [];
 
-    const contentPointSize = props.content_point_scale;
-    const contentPointOffset = (1 - props.content_point_scale) / 2;
+    const contentPointSize = props.content_point_scale * 1.01;
+    const contentPointSizeHalf = contentPointSize / 2;
+    const contentPointOffset = (1 - contentPointSize) / 2;
 
     for (let x = 0; x < table.length; x++) {
       for (let y = 0; y < table.length; y++) {
@@ -62,17 +63,30 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
           case QRPointType.ALIGN_OTHER:
           case QRPointType.TIMING:
           default:
-            points.push(
-              <rect
-                opacity={props.content_point_opacity}
-                width={contentPointSize}
-                height={contentPointSize}
-                key={points.length}
-                fill={props.content_point_color}
-                x={x + contentPointOffset}
-                y={y + contentPointOffset}
-              />,
-            );
+            if (props.content_point_type === "square") {
+              points.push(
+                <rect
+                  opacity={props.content_point_opacity}
+                  width={contentPointSize}
+                  height={contentPointSize}
+                  key={points.length}
+                  fill={props.content_point_color}
+                  x={x + contentPointOffset}
+                  y={y + contentPointOffset}
+                />,
+              )
+            } else {
+              points.push(
+                <circle
+                  opacity={props.content_point_opacity}
+                  r={contentPointSizeHalf}
+                  key={points.length}
+                  fill={props.content_point_color}
+                  cx={x + 0.5}
+                  cy={y + 0.5}
+                />,
+              )
+            }
         }
       }
     }
