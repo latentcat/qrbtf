@@ -103,9 +103,21 @@
         "label": "Contrast",
         "desc": "Contrast"
       },
+      "brightness": {
+        "label": "Brightness",
+        "desc": "Brightness"
+      },
       "background": {
         "label": "Background",
         "desc": "Background"
+      },
+      "align_type": {
+        "label": "Align Type",
+        "desc": "Align Type"
+      },
+      "timing_type": {
+        "label": "Timing Type",
+        "desc": "Timing Type"
       }
     },
     "sp1": {

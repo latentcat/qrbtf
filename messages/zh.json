@@ -103,9 +103,21 @@
         "label": "对比度",
         "desc": "采样图像的明暗对比"
       },
+      "brightness": {
+        "label": "曝光度",
+        "desc": "曝光度"
+      },
       "background": {
         "label": "背景",
         "desc": "背景"
+      },
+      "align_type": {
+        "label": "小定位点样式",
+        "desc": "小定位点样式"
+      },
+      "timing_type": {
+        "label": "时钟样式",
+        "desc": "时钟样式"
       }
     },
     "sp1": {
