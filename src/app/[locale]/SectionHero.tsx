@@ -12,6 +12,10 @@ import {LucideScan} from "lucide-react";
 import {ScanButton} from "@/components/ScanButton";
 import {Label} from "@/components/ui/label";
 import {QrbtfLogo} from "@/components/Logos";
+import {useState} from "react";
+import {urlAtom} from "@/lib/states";
+import {useAtom} from "jotai";
+import {UrlInput} from "@/components/hero/UrlInput";
 
 
 export function SectionHero() {
@@ -63,9 +67,7 @@ export function SectionHero() {
                 <ScanButton name={t('scan')} />
               </div>
             </Label>
-            <Input
-              placeholder="https://qrbtf.com"
-            />
+            <UrlInput />
           </div>
 
         </div>

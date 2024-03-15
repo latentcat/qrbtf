@@ -2516,7 +2516,7 @@ jiti@^1.19.1:
 
 jotai@^2.7.0:
   version "2.7.0"
-  resolved "https://registry.npmmirror.com/jotai/-/jotai-2.7.0.tgz#50efe98b94ec742e1c4cf3f4307c2cac4766392c"
+  resolved "https://registry.npmjs.org/jotai/-/jotai-2.7.0.tgz#50efe98b94ec742e1c4cf3f4307c2cac4766392c"
   integrity sha512-4qsyFKu4MprI39rj2uoItyhu24NoCHzkOV7z70PQr65SpzV6CSyhQvVIfbNlNqOIOspNMdf5OK+kTXLvqe63Jw==
 
 "js-tokens@^3.0.0 || ^4.0.0":

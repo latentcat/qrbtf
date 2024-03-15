@@ -2,7 +2,11 @@ import { useTranslations } from "next-intl";
 import React from "react";
 
 export interface QrbtfRendererCommonProps extends React.ComponentPropsWithoutRef<'svg'> {
-  correct_level: "7" | "15" | "25" | "30";
+  correct_level: 'low' | 'medium' | 'quartile' | 'high'
+}
+
+export interface QrbtfRendererCommonPropsWithURL extends QrbtfRendererCommonProps {
+  url: string
 }
 
 type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps> &
@@ -19,19 +23,19 @@ export function useCommonParams() {
       config: {
         values: [
           {
-            value: "7",
+            value: "low",
             label: "7%",
           },
           {
-            value: "15",
+            value: "medium",
             label: "15%",
           },
           {
-            value: "25",
+            value: "quartile",
             label: "25%",
           },
           {
-            value: "30",
+            value: "high",
             label: "30%",
           },
         ],
@@ -39,7 +43,7 @@ export function useCommonParams() {
     },
   ]
   const commonDefault: QrbtfRendererCommonProps = {
-    correct_level: "15"
+    correct_level: "medium"
   }
   return {
     commonParams,
@@ -50,7 +54,7 @@ export function useCommonParams() {
 import { Path } from "react-hook-form";
 
 export interface QrbtfModule<P> {
-  renderer: (props: P) => React.ReactNode;
+  renderer: (props: P & { url: string }) => React.ReactNode;
 }
 
 export interface CommonControlProps<P> {

@@ -2,7 +2,7 @@
 
 import {
   QrbtfRendererCommonProps,
-  QrbtfModule,
+  QrbtfModule, QrbtfRendererCommonPropsWithURL,
 } from "@/lib/qrbtf_lib/qrcodes/common";
 import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
@@ -14,11 +14,14 @@ interface RenderA1OwnProps {
   content_point_color: string
 }
 
-export type QrbtfRendererA1Props = RenderA1OwnProps & QrbtfRendererCommonProps;
+export type QrbtfRendererA1Props = RenderA1OwnProps & QrbtfRendererCommonPropsWithURL;
 
 function QrbtfRendererA1(props: QrbtfRendererA1Props) {
 
-  const [table, typeTable] = useMemo(() => encode("https://qrbtf.com"), []);
+  const [table, typeTable] = useMemo(
+    () => encode(props.url, {ecc: props.correct_level}),
+    [props.url, props.correct_level]
+  )
   const points = useMemo(() => {
     const points: React.ReactNode[] = [];
 
