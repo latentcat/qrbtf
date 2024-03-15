@@ -54,7 +54,7 @@ export function useCommonParams() {
 
 
 export interface QrbtfRendererPositioningProps {
-  positioning_point_type: "square" | "circle";
+  positioning_point_type: "square" | "circle" | "planet" | "rounded";
   positioning_point_color: string;
 }
 
@@ -79,6 +79,14 @@ export function usePositioningParams() {
           {
             value: "circle",
             label: "Circle",
+          },
+          {
+            value: "planet",
+            label: "Planet",
+          },
+          {
+            value: "rounded",
+            label: "Rounded",
           },
         ],
       },
