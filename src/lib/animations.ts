@@ -1,5 +1,3 @@
-
-
 export const fadeAnimations = {
   visible: {
     opacity: 1,
@@ -9,7 +7,7 @@ export const fadeAnimations = {
     opacity: 0,
     scale: 0.8,
   },
-}
+};
 
 export const opacityAnimations = {
   visible: {
@@ -18,30 +16,29 @@ export const opacityAnimations = {
   hidden: {
     opacity: 0,
   },
-}
+};
 
 export const transitionMd = {
-  type: 'spring',
+  type: "spring",
   duration: 0.3,
   bounce: 0,
-}
+};
 
 export const transitionLg = {
-  type: 'spring',
+  type: "spring",
   duration: 0.5,
   bounce: 0,
-}
+};
 
 export const transitionXl = {
-  type: 'spring',
+  type: "spring",
   duration: 1.0,
   bounce: 0,
-}
-
+};
 
 export const transitionDampingMd = {
-  type: 'spring',
+  type: "spring",
   stiffness: 400,
   damping: 40,
   mass: 1,
-}
+};

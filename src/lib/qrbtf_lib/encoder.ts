@@ -57,7 +57,7 @@ export enum QRPointType {
 
 export function encode(
   text: string,
-  options?: Parameters<typeof encodeQR>[2]
+  options?: Parameters<typeof encodeQR>[2],
 ): [boolean[][], QRPointType[][]] {
   const table = encodeQR(text, "raw", {
     border: 0,

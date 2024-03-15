@@ -1,8 +1,6 @@
-
-
 interface SectionTitleProps {
-  title: string
-  subtitle?: string
+  title: string;
+  subtitle?: string;
 }
 
 export function SectionTitle(props: SectionTitleProps) {
@@ -13,14 +11,13 @@ export function SectionTitle(props: SectionTitleProps) {
         <p className="mt-2 mb-4 opacity-50">{props.subtitle}</p>
       )}
     </div>
-  )
+  );
 }
 
-
 interface StyleTitleProps {
-  title: string
-  label?: string
-  subtitle?: string
+  title: string;
+  label?: string;
+  subtitle?: string;
 }
 
 export function StyleTitle(props: StyleTitleProps) {
@@ -38,5 +35,5 @@ export function StyleTitle(props: StyleTitleProps) {
         <p className="mt-2 mb-4 opacity-50">{props.subtitle}</p>
       )}
     </div>
-  )
+  );
 }

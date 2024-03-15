@@ -1,11 +1,14 @@
 import QrcodeGeneratorWithProvider from "@/components/QrcodeGeneratorWithProvider";
 import { ConfigType, useCommonParams } from "@/lib/qrbtf_lib/qrcodes/common";
 import { useTranslations } from "next-intl";
-import {qrbtfModuleA1, QrbtfRendererA1Props} from "@/lib/qrbtf_lib/qrcodes/a1";
+import {
+  qrbtfModuleA1,
+  QrbtfRendererA1Props,
+} from "@/lib/qrbtf_lib/qrcodes/a1";
 
 export default function Page() {
   const t = useTranslations("qrcodes.a1");
-  const { commonParams , commonDefault } = useCommonParams();
+  const { commonParams, commonDefault } = useCommonParams();
 
   const params: ConfigType<QrbtfRendererA1Props>[] = [
     ...commonParams,
@@ -66,7 +69,7 @@ export default function Page() {
     content_point_type: "square",
     content_point_scale: 1,
     content_point_opacity: 1,
-    content_point_color: "#000000"
+    content_point_color: "#000000",
   };
 
   return (

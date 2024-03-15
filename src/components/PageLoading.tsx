@@ -1,6 +1,5 @@
-import {Container} from "@/components/Containers";
-import {Loader2} from "lucide-react";
-
+import { Container } from "@/components/Containers";
+import { Loader2 } from "lucide-react";
 
 export default function PageLoading() {
   return (
@@ -12,5 +11,5 @@ export default function PageLoading() {
         </div>
       </Container>
     </div>
-  )
+  );
 }

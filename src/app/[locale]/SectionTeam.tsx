@@ -1,11 +1,15 @@
-import {useTranslations} from "next-intl";
-import {Container} from "@/components/Containers";
-import {SectionTitle} from "@/components/Titles";
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
-import {Button} from "@/components/ui/button";
-import {Fragment} from "react";
+import { useTranslations } from "next-intl";
+import { Container } from "@/components/Containers";
+import { SectionTitle } from "@/components/Titles";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Fragment } from "react";
 import Link from "next/link";
-
 
 const links = [
   {
@@ -28,29 +32,29 @@ const links = [
     name: "@zhaohan-wang",
     url: "https://github.com/zhaohan-wang",
   },
-]
-
+];
 
 export function SectionTeam() {
-  const t = useTranslations('index.team');
-
+  const t = useTranslations("index.team");
 
   return (
     <div className="">
-      <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
+      <SectionTitle title={t("title")} subtitle={t("subtitle")} />
 
       <div className="mt-3 leading-7">
         {links.map((item, index) => (
           <Fragment key={item.name}>
-            <Link href={item.url} target="_blank" className="text-foreground underline font-medium">
+            <Link
+              href={item.url}
+              target="_blank"
+              className="text-foreground underline font-medium"
+            >
               {item.name}
             </Link>
-            {index < links.length - 1 && (
-              <>,{" "}</>
-            )}
+            {index < links.length - 1 && <>, </>}
           </Fragment>
         ))}
       </div>
     </div>
-  )
+  );
 }

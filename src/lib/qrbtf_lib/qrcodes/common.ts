@@ -1,7 +1,8 @@
 import { useTranslations } from "next-intl";
 import React from "react";
 
-export interface QrbtfRendererCommonProps extends React.ComponentPropsWithoutRef<'svg'> {
+export interface QrbtfRendererCommonProps
+  extends React.ComponentPropsWithoutRef<"svg"> {
   correct_level: "7" | "15" | "25" | "30";
 }
 
@@ -37,14 +38,14 @@ export function useCommonParams() {
         ],
       },
     },
-  ]
+  ];
   const commonDefault: QrbtfRendererCommonProps = {
-    correct_level: "15"
-  }
+    correct_level: "15",
+  };
   return {
     commonParams,
-    commonDefault
-  }
+    commonDefault,
+  };
 }
 
 import { Path } from "react-hook-form";
@@ -79,24 +80,23 @@ export interface ParamBooleanControlProps {
   };
 }
 
-
 interface SelectValue {
-  label: string
-  value: string
+  label: string;
+  value: string;
 }
 
 export interface ParamSelectControlProps {
   type: "select";
   config?: {
-    values: SelectValue[]
+    values: SelectValue[];
   };
 }
 
 export type ParamType = (
-  ParamNumberControlProps |
-  ParamBooleanControlProps |
-  ParamSelectControlProps
-  ) & {
+  | ParamNumberControlProps
+  | ParamBooleanControlProps
+  | ParamSelectControlProps
+) & {
   // uuid: string
 };
 

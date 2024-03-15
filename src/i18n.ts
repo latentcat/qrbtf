@@ -1,12 +1,12 @@
-import {notFound} from 'next/navigation';
-import {getRequestConfig} from 'next-intl/server';
+import { notFound } from "next/navigation";
+import { getRequestConfig } from "next-intl/server";
 
 // Can be imported from a shared config
 
-import deepmerge from 'deepmerge';
-import {locales} from "@/navigation";
+import deepmerge from "deepmerge";
+import { locales } from "@/navigation";
 
-export default getRequestConfig(async ({locale}) => {
+export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale as any)) notFound();
 
@@ -15,6 +15,6 @@ export default getRequestConfig(async ({locale}) => {
   const messages = deepmerge(defaultMessages, userMessages);
 
   return {
-    messages: messages
+    messages: messages,
   };
 });

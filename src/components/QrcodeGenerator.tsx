@@ -7,7 +7,8 @@ import { Form, FormField } from "@/components/ui/form";
 import { DefaultValues, useForm, useWatch } from "react-hook-form";
 import {
   ParamBooleanControl,
-  ParamNumberControl, ParamSelectControl,
+  ParamNumberControl,
+  ParamSelectControl,
 } from "@/components/QrcodeControlParams";
 import { HTMLAttributes } from "react";
 import { Label } from "@/components/ui/label";
@@ -64,7 +65,6 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
     <div>
       <Container>
         <div className="mt-9 flex flex-col md:flex-row gap-9">
-
           <div className="grow">
             <div className="sticky top-9">
               <StyleTitle
@@ -103,7 +103,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                     // onClick={() => downloadImage()}
                     className={cn(
                       "rounded-md hover:bg-accent cursor-pointer",
-                      false ? "" : "opacity-50 pointer-events-none"
+                      false ? "" : "opacity-50 pointer-events-none",
                     )}
                     variant="outline"
                   >
@@ -117,7 +117,10 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                     <QrCodeIcon className="w-12 h-12 opacity-20" />
                   </div>
                   <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white">
-                    <props.qrcodeModule.renderer {...componentProps} className="w-full"/>
+                    <props.qrcodeModule.renderer
+                      {...componentProps}
+                      className="w-full"
+                    />
                   </div>
                 </div>
               </div>
