@@ -23,10 +23,56 @@ export default function Page() {
       },
     },
     {
+      type: "number",
+      name: "brightness",
+      label: t("brightness.label"),
+      desc: t("brightness.desc"),
+      config: {
+        min: 0,
+        max: 100,
+      },
+    },
+    {
       type: "image",
       name: "background",
       label: t("background.label"),
       desc: t("background.desc"),
+    },
+    {
+      type: "select",
+      name: "align_type",
+      label: t("align_type.label"),
+      desc: t("align_type.desc"),
+      config: {
+        values: [
+          {
+            label: "无",
+            value: "none",
+          },
+          {
+            label: "黑白",
+            value: "black-white",
+          },
+        ],
+      },
+    },
+    {
+      type: "select",
+      name: "timing_type",
+      label: t("timing_type.label"),
+      desc: t("timing_type.desc"),
+      config: {
+        values: [
+          {
+            label: "无",
+            value: "none",
+          },
+          {
+            label: "黑白",
+            value: "black-white",
+          },
+        ],
+      },
     },
   ];
 
@@ -35,6 +81,8 @@ export default function Page() {
     brightness: 0,
     contrast: 1,
     background: "",
+    align_type: "none",
+    timing_type: "none",
   };
 
   return (
