@@ -23,11 +23,11 @@ export default function Page() {
         values: [
           {
             value: "square",
-            label: "Square",
+            label: t("square"),
           },
           {
             value: "circle",
-            label: "Circle",
+            label: t("circle"),
           },
         ],
       },

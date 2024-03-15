@@ -63,18 +63,14 @@
         "label": "Positioning type",
         "desc": ""
       },
-      "positioning_point_scale": {
-        "label": "Positioning scale",
-        "desc": ""
-      },
-      "positioning_point_opacity": {
-        "label": "Positioning opacity",
-        "desc": ""
-      },
       "positioning_point_color": {
         "label": "Positioning color",
         "desc": ""
-      }
+      },
+      "square": "Square",
+      "circle": "Circle",
+      "planet": "Planet",
+      "rounded": "Rounded Square"
     },
     "a1": {
       "title": "A1",
@@ -95,7 +91,9 @@
       "content_point_color": {
         "label": "Content color",
         "desc": ""
-      }
+      },
+      "square": "Square",
+      "circle": "Circle"
     },
     "c2": {
       "title": "C2",

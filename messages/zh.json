@@ -58,6 +58,43 @@
         "desc": "即二维码容错率"
       }
     },
+    "positioning": {
+      "positioning_point_type": {
+        "label": "定位点类型",
+        "desc": ""
+      },
+      "positioning_point_color": {
+        "label": "定位点颜色",
+        "desc": ""
+      },
+      "square": "方形",
+      "circle": "圆形",
+      "planet": "行星",
+      "rounded": "圆角矩形"
+    },
+    "a1": {
+      "title": "A1",
+      "subtitle": "基本样式",
+
+      "content_point_type": {
+        "label": "信息点类型",
+        "desc": ""
+      },
+      "content_point_scale": {
+        "label": "信息点缩放",
+        "desc": ""
+      },
+      "content_point_opacity": {
+        "label": "信息点不透明度",
+        "desc": ""
+      },
+      "content_point_color": {
+        "label": "信息点颜色",
+        "desc": ""
+      },
+      "square": "方形",
+      "circle": "圆形"
+    },
     "c2": {
       "title": "C2",
       "subtitle": "1/3 像素点阵",

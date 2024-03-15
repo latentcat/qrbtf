@@ -74,19 +74,19 @@ export function usePositioningParams() {
         values: [
           {
             value: "square",
-            label: "Square",
+            label: t("square"),
           },
           {
             value: "circle",
-            label: "Circle",
+            label: t("circle"),
           },
           {
             value: "planet",
-            label: "Planet",
+            label: t("planet"),
           },
           {
             value: "rounded",
-            label: "Rounded",
+            label: t("rounded"),
           },
         ],
       },
