@@ -7,7 +7,7 @@ import {
 import React from "react";
 
 export default function QrcodeGeneratorWithProvider<P extends {}>(
-  props: QrcodeGeneratorProps<P>
+  props: QrcodeGeneratorProps<P>,
 ) {
   const messages = useMessages();
 

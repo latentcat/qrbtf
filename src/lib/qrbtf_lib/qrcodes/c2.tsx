@@ -35,7 +35,7 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props) {
                 fill="#0000FF"
                 x={x}
                 y={y}
-              />
+              />,
             );
             break;
           case QRPointType.POS_CENTER:
@@ -47,7 +47,7 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props) {
                 fill="#00FF00"
                 x={x}
                 y={y}
-              />
+              />,
             );
             break;
           case QRPointType.POS_OTHER:
@@ -59,7 +59,7 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props) {
                 fill="#FF0000"
                 x={x}
                 y={y}
-              />
+              />,
             );
             break;
           default:
@@ -72,7 +72,7 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props) {
                 fill="#00FFFF"
                 x={x}
                 y={y}
-              />
+              />,
             );
         }
       }

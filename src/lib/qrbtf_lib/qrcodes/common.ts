@@ -41,14 +41,14 @@ export function useCommonParams() {
         ],
       },
     },
-  ]
+  ];
   const commonDefault: QrbtfRendererCommonProps = {
     correct_level: "medium"
   }
   return {
     commonParams,
-    commonDefault
-  }
+    commonDefault,
+  };
 }
 
 import { Path } from "react-hook-form";
@@ -83,24 +83,23 @@ export interface ParamBooleanControlProps {
   };
 }
 
-
 interface SelectValue {
-  label: string
-  value: string
+  label: string;
+  value: string;
 }
 
 export interface ParamSelectControlProps {
   type: "select";
   config?: {
-    values: SelectValue[]
+    values: SelectValue[];
   };
 }
 
 export type ParamType = (
-  ParamNumberControlProps |
-  ParamBooleanControlProps |
-  ParamSelectControlProps
-  ) & {
+  | ParamNumberControlProps
+  | ParamBooleanControlProps
+  | ParamSelectControlProps
+) & {
   // uuid: string
 };
 

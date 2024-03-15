@@ -1,19 +1,23 @@
-import {FormControl, FormDescription, FormItem, FormLabel} from "@/components/ui/form";
-import {Slider} from "@/components/ui/slider";
-import {cn} from "@/lib/utils";
+import {
+  FormControl,
+  FormDescription,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { Slider } from "@/components/ui/slider";
+import { cn } from "@/lib/utils";
 import React from "react";
-import {ControllerRenderProps, FieldValues, Path} from "react-hook-form";
-import { Switch } from "@/components/ui/switch"
+import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
+import { Switch } from "@/components/ui/switch";
 
-
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
-import {Badge} from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import {
   CommonControlProps,
   ParamBooleanControlProps,
   ParamNumberControlProps,
-  ParamSelectControlProps
+  ParamSelectControlProps,
 } from "@/lib/qrbtf_lib/qrcodes/common";
 import {
   Select,
@@ -21,14 +25,14 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
-
-
-type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & { field: ControllerRenderProps<P, Path<P>> }
+type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
+  field: ControllerRenderProps<P, Path<P>>;
+};
 
 interface ParamItemProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 function ParamItem(props: ParamItemProps) {
@@ -36,47 +40,39 @@ function ParamItem(props: ParamItemProps) {
     <FormItem className="flex items-center py-1.5 space-y-0">
       {props.children}
     </FormItem>
-  )
+  );
 }
 
 interface ParamLabelProps {
-  label: string
-  desc?: string
+  label: string;
+  desc?: string;
 }
 
 function ParamLabel(props: ParamLabelProps) {
   return (
     <div className="flex flex-col items-start gap-1 grow">
-      <FormLabel>
-        {props.label}
-      </FormLabel>
+      <FormLabel>{props.label}</FormLabel>
       {props.desc && (
-        <FormDescription className="text-xs">
-          {props.desc}
-        </FormDescription>
+        <FormDescription className="text-xs">{props.desc}</FormDescription>
       )}
     </div>
-  )
+  );
 }
 
 interface ParamValueProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 function ParamValue(props: ParamValueProps) {
-  return (
-    <div className="flex items-center gap-2 w-48">
-      {props.children}
-    </div>
-  )
+  return <div className="flex items-center gap-2 w-48">{props.children}</div>;
 }
 
-
-export function ParamNumberControl<P extends FieldValues>(props: ControlCommonProps<P> & ParamNumberControlProps) {
-
+export function ParamNumberControl<P extends FieldValues>(
+  props: ControlCommonProps<P> & ParamNumberControlProps,
+) {
   return (
     <ParamItem>
-      <ParamLabel label={props.label} desc={props.desc}/>
+      <ParamLabel label={props.label} desc={props.desc} />
       <ParamValue>
         <FormControl>
           <Slider
@@ -97,15 +93,15 @@ export function ParamNumberControl<P extends FieldValues>(props: ControlCommonPr
         </FormControl>
       </ParamValue>
     </ParamItem>
-  )
+  );
 }
 
-
-
-export function ParamBooleanControl<P extends FieldValues>(props: ControlCommonProps<P> & ParamBooleanControlProps) {
+export function ParamBooleanControl<P extends FieldValues>(
+  props: ControlCommonProps<P> & ParamBooleanControlProps,
+) {
   return (
     <ParamItem>
-      <ParamLabel label={props.label} desc={props.desc}/>
+      <ParamLabel label={props.label} desc={props.desc} />
       <ParamValue>
         <FormControl>
           <Switch
@@ -115,28 +111,34 @@ export function ParamBooleanControl<P extends FieldValues>(props: ControlCommonP
         </FormControl>
       </ParamValue>
     </ParamItem>
-  )
+  );
 }
 
-
-export function ParamSelectControl<P extends FieldValues>(props: ControlCommonProps<P> & ParamSelectControlProps) {
+export function ParamSelectControl<P extends FieldValues>(
+  props: ControlCommonProps<P> & ParamSelectControlProps,
+) {
   return (
     <ParamItem>
-      <ParamLabel label={props.label} desc={props.desc}/>
+      <ParamLabel label={props.label} desc={props.desc} />
       <ParamValue>
         <FormControl>
-          <Select value={props.field.value} onValueChange={props.field.onChange}>
+          <Select
+            value={props.field.value}
+            onValueChange={props.field.onChange}
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select a fruit" />
             </SelectTrigger>
             <SelectContent>
               {props.config?.values.map((item, index) => (
-                <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </FormControl>
       </ParamValue>
     </ParamItem>
-  )
+  );
 }

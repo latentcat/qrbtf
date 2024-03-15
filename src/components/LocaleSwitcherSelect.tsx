@@ -33,7 +33,7 @@ export default function LocaleSwitcherSelect({
     <label
       className={clsx(
         "relative flex items-center",
-        isPending && "transition-opacity [&:disabled]:opacity-30"
+        isPending && "transition-opacity [&:disabled]:opacity-30",
       )}
     >
       <p className="sr-only">{label}</p>

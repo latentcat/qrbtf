@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button'
-import {Link} from "@/navigation";
-import {useTranslations} from "next-intl";
-import {Container} from "@/components/Containers";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/navigation";
+import { useTranslations } from "next-intl";
+import { Container } from "@/components/Containers";
 
 export default function NotFound() {
   const t = useTranslations("not_found");
@@ -13,18 +13,18 @@ export default function NotFound() {
             404
           </p>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            {t('title')}
+            {t("title")}
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            {t('tagline')}
+            {t("tagline")}
           </p>
           <Link href="/">
             <Button variant="secondary" className="mt-6">
-              {t('home')}
+              {t("home")}
             </Button>
           </Link>
         </div>
       </Container>
     </div>
-  )
+  );
 }

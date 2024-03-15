@@ -8,10 +8,10 @@ import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
 
 interface RenderA1OwnProps {
-  content_point_type: "square" | "circle"
-  content_point_scale: number
-  content_point_opacity: number
-  content_point_color: string
+  content_point_type: "square" | "circle";
+  content_point_scale: number;
+  content_point_opacity: number;
+  content_point_color: string;
 }
 
 export type QrbtfRendererA1Props = RenderA1OwnProps & QrbtfRendererCommonPropsWithURL;
@@ -25,8 +25,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props) {
   const points = useMemo(() => {
     const points: React.ReactNode[] = [];
 
-    const contentPointSize = props.content_point_scale
-    const contentPointOffset = (1 - props.content_point_scale) / 2
+    const contentPointSize = props.content_point_scale;
+    const contentPointOffset = (1 - props.content_point_scale) / 2;
 
     for (let x = 0; x < table.length; x++) {
       for (let y = 0; y < table.length; y++) {
@@ -42,7 +42,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props) {
                 fill="#00FF00"
                 x={x}
                 y={y}
-              />
+              />,
             );
             break;
           case QRPointType.POS_OTHER:
@@ -54,7 +54,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props) {
                 fill="#FF0000"
                 x={x}
                 y={y}
-              />
+              />,
             );
             break;
           case QRPointType.ALIGN_CENTER:
@@ -70,7 +70,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props) {
                 fill={props.content_point_color}
                 x={x + contentPointOffset}
                 y={y + contentPointOffset}
-              />
+              />,
             );
         }
       }

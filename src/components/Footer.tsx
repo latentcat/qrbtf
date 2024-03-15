@@ -1,15 +1,18 @@
-import {Container} from "@/components/Containers";
+import { Container } from "@/components/Containers";
 import Link from "next/link";
-import {NextIntlClientProvider, useMessages, useTranslations} from "next-intl";
+import {
+  NextIntlClientProvider,
+  useMessages,
+  useTranslations,
+} from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
-import {ModeToggle} from "@/components/ModeToggle";
+import { ModeToggle } from "@/components/ModeToggle";
 import pick from "lodash/pick";
-import {SectionStylesClient} from "@/app/[locale]/SectionStylesClient";
+import { SectionStylesClient } from "@/app/[locale]/SectionStylesClient";
 import React from "react";
 
-
 export function Footer() {
-  const t = useTranslations('footer');
+  const t = useTranslations("footer");
   const messages = useMessages();
 
   return (
@@ -18,22 +21,23 @@ export function Footer() {
         <div className="text-sm text-muted-foreground mb-2 flex gap-4">
           <LocaleSwitcher />
 
-          <NextIntlClientProvider
-            messages={
-              pick(messages, ["ModeToggle"])
-            }
-          >
+          <NextIntlClientProvider messages={pick(messages, ["ModeToggle"])}>
             <ModeToggle />
           </NextIntlClientProvider>
         </div>
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} {" "}
-          <Link href="https://latentcat.com" target="_blank" className="border-b">
+          &copy; {new Date().getFullYear()}{" "}
+          <Link
+            href="https://latentcat.com"
+            target="_blank"
+            className="border-b"
+          >
             Latent Cat
-          </Link>. {t('reserve_rights')}
+          </Link>
+          . {t("reserve_rights")}
         </p>
         <p className="safe-pb" />
       </Container>
     </div>
-  )
+  );
 }

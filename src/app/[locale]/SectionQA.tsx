@@ -1,22 +1,19 @@
-import {useTranslations} from "next-intl";
-import {Container} from "@/components/Containers";
+import { useTranslations } from "next-intl";
+import { Container } from "@/components/Containers";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import {SectionTitle} from "@/components/Titles";
-
-
+} from "@/components/ui/accordion";
+import { SectionTitle } from "@/components/Titles";
 
 export function SectionQA() {
-  const t = useTranslations('index.qa');
-
+  const t = useTranslations("index.qa");
 
   return (
     <div className="">
-      <SectionTitle title={t('title')} subtitle={t('subtitle')}/>
+      <SectionTitle title={t("title")} subtitle={t("subtitle")} />
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -25,7 +22,6 @@ export function SectionQA() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
     </div>
-  )
+  );
 }

@@ -1,7 +1,3 @@
-
-
 export default function QrcodeBase() {
-  return (
-    <div></div>
-  )
+  return <div></div>;
 }

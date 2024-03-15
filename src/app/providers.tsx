@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes/dist/types"
-import {Provider} from "jotai";
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { type ThemeProviderProps } from "next-themes/dist/types";
+import { Provider } from "jotai";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -13,9 +13,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      <Provider>
-        {children}
-      </Provider>
+      <Provider>{children}</Provider>
     </NextThemesProvider>
-  )
+  );
 }
