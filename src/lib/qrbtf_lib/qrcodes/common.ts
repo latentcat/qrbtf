@@ -1,13 +1,14 @@
 import { useTranslations } from "next-intl";
 import React from "react";
 
+export interface QrbtfRendererUrlProps {
+  url: string
+}
+
 export interface QrbtfRendererCommonProps extends React.ComponentPropsWithoutRef<'svg'> {
   correct_level: 'low' | 'medium' | 'quartile' | 'high'
 }
 
-export interface QrbtfRendererUrlProps {
-  url: string
-}
 
 type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps> &
   ParamType;
@@ -48,6 +49,58 @@ export function useCommonParams() {
   return {
     commonParams,
     commonDefault,
+  };
+}
+
+
+export interface QrbtfRendererPositioningProps {
+  positioning_point_type: "square" | "circle";
+  positioning_point_color: string;
+}
+
+
+type PositioningParamsType = CommonControlProps<QrbtfRendererPositioningProps> &
+  ParamType;
+
+export function usePositioningParams() {
+  const t = useTranslations("qrcodes.positioning");
+  const positioningParams: PositioningParamsType[] = [
+    {
+      type: "select",
+      name: "positioning_point_type",
+      label: t("positioning_point_type.label"),
+      desc: t("positioning_point_type.desc"),
+      config: {
+        values: [
+          {
+            value: "square",
+            label: "Square",
+          },
+          {
+            value: "circle",
+            label: "Circle",
+          },
+        ],
+      },
+    },
+    // {
+    //   type: "color",
+    //   name: "positioning_point_color",
+    //   label: t("contrast.label"),
+    //   desc: t("contrast.desc"),
+    //   config: {
+    //     min: 0,
+    //     max: 100,
+    //   },
+    // },
+  ];
+  const positioningDefault: QrbtfRendererPositioningProps = {
+    positioning_point_type: "square",
+    positioning_point_color: "#000000",
+  }
+  return {
+    positioningParams,
+    positioningDefault,
   };
 }
 

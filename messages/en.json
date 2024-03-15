@@ -55,7 +55,25 @@
     "common": {
       "correct_level": {
         "label": "Correct level",
-        "desc": "Correct level"
+        "desc": ""
+      }
+    },
+    "positioning": {
+      "positioning_point_type": {
+        "label": "Positioning type",
+        "desc": ""
+      },
+      "positioning_point_scale": {
+        "label": "Positioning scale",
+        "desc": ""
+      },
+      "positioning_point_opacity": {
+        "label": "Positioning opacity",
+        "desc": ""
+      },
+      "positioning_point_color": {
+        "label": "Positioning color",
+        "desc": ""
       }
     },
     "a1": {
@@ -63,20 +81,20 @@
       "subtitle": "The basic",
 
       "content_point_type": {
-        "label": "content_point_type",
-        "desc": "content_point_type"
+        "label": "Content type",
+        "desc": ""
       },
       "content_point_scale": {
-        "label": "content_point_scale",
-        "desc": "content_point_scale"
+        "label": "Content scale",
+        "desc": ""
       },
       "content_point_opacity": {
-        "label": "content_point_opacity",
-        "desc": "content_point_opacity"
+        "label": "Content opacity",
+        "desc": ""
       },
       "content_point_color": {
-        "label": "content_point_color",
-        "desc": "content_point_color"
+        "label": "Content color",
+        "desc": ""
       }
     },
     "c2": {
