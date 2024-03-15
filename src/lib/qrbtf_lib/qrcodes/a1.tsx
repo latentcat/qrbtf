@@ -6,6 +6,7 @@ import {
 } from "@/lib/qrbtf_lib/qrcodes/common";
 import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
+import {sq25} from "@/lib/qrbtf_lib/constants";
 
 interface RenderA1OwnProps {
   content_point_type: "square" | "circle";
@@ -32,6 +33,10 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
 
     const positioningPointSize = contentPointSize < 1 ? 1 : contentPointSize
 
+    let id = 0;
+    const vw = [3, -3];
+    const vh = [3, -3];
+    
     for (let x = 0; x < table.length; x++) {
       for (let y = 0; y < table.length; y++) {
         switch (typeTable[x][y]) {
@@ -43,7 +48,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                 <rect
                   width={1}
                   height={1}
-                  key={points.length}
+                  key={id++}
                   fill={props.positioning_point_color}
                   x={x}
                   y={y}
@@ -52,7 +57,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
             } else if (props.positioning_point_type === "circle") {
               points.push(
                 <circle
-                  key={points.length}
+                  key={id++}
                   fill={props.positioning_point_color}
                   cx={x + 0.5}
                   cy={y + 0.5}
@@ -61,13 +66,77 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
               )
               points.push(
                 <circle
-                  key={points.length}
+                  key={id++}
                   fill="none"
                   strokeWidth="1"
                   stroke={props.positioning_point_color}
                   cx={x + 0.5}
                   cy={y + 0.5}
                   r={3}
+                />
+              )
+            } else if (props.positioning_point_type === "planet") {
+              points.push(
+                <circle
+                  key={id++}
+                  fill={props.positioning_point_color}
+                  cx={x + 0.5}
+                  cy={y + 0.5}
+                  r={1.5}
+                />
+              )
+              points.push(
+                <circle
+                  key={id++}
+                  fill="none"
+                  strokeWidth="0.15"
+                  strokeDasharray="0.5,0.5"
+                  stroke={props.positioning_point_color}
+                  cx={x + 0.5}
+                  cy={y + 0.5}
+                  r={3}
+                />
+              )
+              for (let w = 0; w < vw.length; w++) {
+                points.push(
+                  <circle
+                    key={id++}
+                    fill={props.positioning_point_color}
+                    cx={x + vw[w] + 0.5}
+                    cy={y + 0.5}
+                    r={0.5}
+                  />
+                )
+              }
+              for (let h = 0; h < vh.length; h++) {
+                points.push(
+                  <circle
+                    key={id++}
+                    fill={props.positioning_point_color}
+                    cx={x + 0.5}
+                    cy={y + vh[h] + 0.5}
+                    r={0.5}
+                  />
+                )
+              }
+            } else if (props.positioning_point_type === "rounded") {
+              points.push(
+                <circle
+                  key={id++}
+                  fill={props.positioning_point_color}
+                  cx={x + 0.5}
+                  cy={y + 0.5}
+                  r={1.5}
+                />
+              )
+              points.push(
+                <path
+                  key={id++}
+                  d={sq25}
+                  stroke={props.positioning_point_color}
+                  strokeWidth={100/6 * (1 - (1 - contentPointSize) * 0.75)}
+                  fill="none"
+                  transform={'translate('+String(x - 2.5)+','+String(y - 2.5)+') ' + 'scale(' + String(6/100) + ',' + String(6/100) + ')'}
                 />
               )
             }
@@ -78,7 +147,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                 <rect
                   width={1}
                   height={1}
-                  key={points.length}
+                  key={id++}
                   fill={props.positioning_point_color}
                   x={x}
                   y={y}
@@ -96,7 +165,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                   opacity={props.content_point_opacity}
                   width={contentPointSize}
                   height={contentPointSize}
-                  key={points.length}
+                  key={id++}
                   fill={props.content_point_color}
                   x={x + contentPointOffset}
                   y={y + contentPointOffset}
@@ -107,7 +176,7 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
                 <circle
                   opacity={props.content_point_opacity}
                   r={contentPointSizeHalf}
-                  key={points.length}
+                  key={id++}
                   fill={props.content_point_color}
                   cx={x + 0.5}
                   cy={y + 0.5}

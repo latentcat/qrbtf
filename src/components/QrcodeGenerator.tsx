@@ -122,7 +122,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                   <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white">
                     {props.qrcodeModule.renderer({
                       className: "w-full",
-                      url: url,
+                      url: url || "https://qrbtf.com",
                       ...componentProps
                     })}
                   </div>
