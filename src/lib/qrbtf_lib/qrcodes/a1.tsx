@@ -41,9 +41,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
 
     for (let x = 0; x < table.length; x++) {
       for (let y = 0; y < table.length; y++) {
+        if (!table[x][y]) continue;
         switch (typeTable[x][y]) {
-          case QRPointType.EMPTY:
-            continue;
           case QRPointType.POS_CENTER:
             if (props.positioning_point_type === "square") {
               points.push(
@@ -200,7 +199,16 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
       }
     }
     return points;
-  }, [table.length, typeTable, props]);
+  }, [
+    props.content_point_scale,
+    props.positioning_point_type,
+    props.content_point_type,
+    props.positioning_point_color,
+    props.content_point_opacity,
+    props.content_point_color,
+    table,
+    typeTable,
+  ]);
 
   const viewBox = `${-table.length / 5} ${-table.length / 5} ${
     (7 * table.length) / 5
