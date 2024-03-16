@@ -18,6 +18,14 @@
       "qrcode_output": "二维码输出",
       "download": "下载"
     },
+    "status": {
+      "title": "统计",
+      "subtitle": "",
+      "github_stars": "GitHub 标星",
+      "generate_count": "AI 二维码生成次数",
+      "download_count": "二维码下载次数",
+      "page_view": "页面访问量"
+    },
     "qa": {
       "title": "常见问题",
       "subtitle": ""
