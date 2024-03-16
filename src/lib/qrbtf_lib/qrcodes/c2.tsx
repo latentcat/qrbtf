@@ -33,8 +33,6 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
         const posX = 3 * x;
         const posY = 3 * y;
         switch (typeTable[x][y]) {
-          case QRPointType.EMPTY:
-            continue;
           case QRPointType.ALIGN_CENTER:
           case QRPointType.ALIGN_OTHER:
             if (table[x][y]) {
@@ -121,16 +119,19 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
                 );
               }
             }
+            break;
           case QRPointType.POS_CENTER:
-            points.push(
-              <use
-                key={points.length}
-                fill="black"
-                xlinkHref="#B"
-                x={posX - 0.03}
-                y={posY - 0.03}
-              />,
-            );
+            if (table[x][y]) {
+              points.push(
+                <use
+                  key={points.length}
+                  fill="black"
+                  xlinkHref="#B"
+                  x={posX - 0.03}
+                  y={posY - 0.03}
+                />,
+              );
+            }
             break;
           case QRPointType.POS_OTHER:
             if (table[x][y]) {
@@ -155,14 +156,16 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
             }
             break;
           default:
-            points.push(
-              <use
-                key={points.length}
-                xlinkHref="#S-black"
-                x={posX + 1}
-                y={posY + 1}
-              />,
-            );
+            if (table[x][y]) {
+              points.push(
+                <use
+                  key={points.length}
+                  xlinkHref="#S-black"
+                  x={posX + 1}
+                  y={posY + 1}
+                />,
+              );
+            }
         }
       }
     }
@@ -224,7 +227,7 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
         <rect id="B" width={3.08} height={3.08} />
         <rect id="S" width={1.02} height={1.02} />
       </defs>
-      {[...grayPoints, points]}
+      {[...grayPoints, ...points]}
     </svg>
   );
 }

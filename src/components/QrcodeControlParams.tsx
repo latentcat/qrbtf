@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/form";
 import { Slider } from "@/components/ui/slider";
 import { cn, toBase64 } from "@/lib/utils";
-import React, { ChangeEvent, ChangeEventHandler } from "react";
+import React, { ChangeEvent, ChangeEventHandler, useRef } from "react";
 import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
 import { Switch } from "@/components/ui/switch";
 
@@ -28,6 +28,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "./ui/label";
+import { Button } from "./ui/button";
 
 type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
   field: ControllerRenderProps<P, Path<P>>;
@@ -156,13 +157,30 @@ export function ParamImageControl<P extends FieldValues>(
       props.field.onChange(base64);
     }
   };
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <ParamItem>
       <ParamLabel label={props.label} desc={props.desc} />
       <ParamValue>
         <FormControl>
-          <Input type="file" accept="image/*" onChange={onImageUpload} />
+          <>
+            <Input
+              ref={inputRef}
+              className="hidden"
+              type="file"
+              accept="image/*"
+              onChange={onImageUpload}
+            />
+            <Button
+              onClick={(evt) => {
+                evt.preventDefault();
+                inputRef.current?.click();
+              }}
+            >
+              Upload
+            </Button>
+          </>
         </FormControl>
       </ParamValue>
     </ParamItem>
