@@ -7,6 +7,7 @@ import { SectionTeam } from "@/app/[locale]/SectionTeam";
 import { SectionChangelog } from "@/app/[locale]/SectionChangelog";
 import { SectionSponsor } from "@/app/[locale]/SectionSponsor";
 import { Container } from "@/components/Containers";
+import { SectionStatus } from "@/app/[locale]/SectionStatus";
 
 export default function RootLayout({
   children,
@@ -23,6 +24,7 @@ export default function RootLayout({
       <Container>
         <div className="flex flex-col md:flex-row gap-x-9 gap-y-12 mt-12">
           <div className="grow flex flex-col gap-12">
+            <SectionStatus />
             <SectionQA />
             <SectionRefs />
             <SectionTeam />

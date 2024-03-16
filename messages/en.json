@@ -18,6 +18,14 @@
       "qrcode_output": "QR code output",
       "download": "Download"
     },
+    "status": {
+      "title": "Statistics",
+      "subtitle": "",
+      "github_stars": "GitHub Stars",
+      "generate_count": "AI QR Code Generated",
+      "download_count": "QR Code Downloaded",
+      "page_view": "Page View"
+    },
     "qa": {
       "title": "FAQ",
       "subtitle": ""

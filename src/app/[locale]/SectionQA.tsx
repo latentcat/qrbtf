@@ -14,7 +14,7 @@ export function SectionQA() {
   return (
     <div className="">
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
-      <div className="mt-3">
+      <div className="_mt-3">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
             <AccordionTrigger>Is it accessible?</AccordionTrigger>
