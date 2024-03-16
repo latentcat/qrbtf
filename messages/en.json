@@ -117,7 +117,8 @@
       },
       "background": {
         "label": "Background",
-        "desc": "Background"
+        "desc": "Background",
+        "button_label": "Upload"
       },
       "align_type": {
         "label": "Align Type",

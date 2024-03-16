@@ -37,6 +37,9 @@ export default function Page() {
       name: "background",
       label: t("background.label"),
       desc: t("background.desc"),
+      config: {
+        buttonLabel: t("background.button_label"),
+      },
     },
     {
       type: "select",

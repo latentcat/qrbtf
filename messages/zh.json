@@ -109,7 +109,8 @@
       },
       "background": {
         "label": "背景",
-        "desc": "背景"
+        "desc": "背景",
+        "button_label": "上传"
       },
       "align_type": {
         "label": "小定位点样式",

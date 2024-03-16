@@ -156,6 +156,9 @@ export interface ParamSelectControlProps {
 
 export interface ParamImageControlProps {
   type: "image";
+  config?: {
+    buttonLabel?: string;
+  };
 }
 
 export type ParamType = (

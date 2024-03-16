@@ -177,8 +177,10 @@ export function ParamImageControl<P extends FieldValues>(
                 evt.preventDefault();
                 inputRef.current?.click();
               }}
+              className="w-full font-normal"
+              variant="outline"
             >
-              Upload
+              {props.config?.buttonLabel || "Button"}
             </Button>
           </>
         </FormControl>
