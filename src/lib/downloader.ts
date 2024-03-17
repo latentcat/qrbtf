@@ -8,7 +8,7 @@ function saveSvg(name: string, content: string) {
   let htmlContent = [svgHead + content];
   let bl = new Blob(htmlContent, { type: "image/svg+xml" });
   let a = document.createElement("a");
-  let filename = "QRcode_" + name + ".svg";
+  let filename = "qrcode_" + name + ".svg";
 
   a.href = URL.createObjectURL(bl);
   a.download = filename;
