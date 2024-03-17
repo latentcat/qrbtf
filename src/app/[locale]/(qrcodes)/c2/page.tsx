@@ -5,6 +5,7 @@ import {
 } from "@/lib/qrbtf_lib/qrcodes/c2";
 import { ConfigType, useCommonParams } from "@/lib/qrbtf_lib/qrcodes/common";
 import { useTranslations } from "next-intl";
+import DefaultBackground from "/public/assets/images/c2_background.inline.png";
 
 export default function Page() {
   const t = useTranslations("qrcodes.c2");
@@ -83,7 +84,7 @@ export default function Page() {
     ...commonDefault,
     brightness: 0,
     contrast: 1,
-    background: "",
+    background: DefaultBackground as unknown as string,
     align_type: "none",
     timing_type: "none",
   };

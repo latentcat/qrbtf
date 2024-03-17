@@ -174,7 +174,6 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
 
   const [grayPoints, setGrayPoints] = useState<React.ReactNode[]>([]);
   useEffect(() => {
-    console.log(brightness);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     const img = document.createElement("img");

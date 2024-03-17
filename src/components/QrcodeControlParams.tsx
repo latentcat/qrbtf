@@ -155,7 +155,6 @@ export function ParamImageControl<P extends FieldValues>(
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       const base64 = await toBase64(file, 1.0);
-      console.log(base64);
       props.field.onChange(base64);
     }
   };

@@ -13,7 +13,6 @@ export function GitHubButton() {
   useEffect(() => {
     fetch("/api/stars").then(async (res) => {
       const data = await res.json();
-      console.log(data);
       if (data.hasOwnProperty("star_count")) {
         setStarCount(data["star_count"]);
       } else {
