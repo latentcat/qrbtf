@@ -47,12 +47,24 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
             if (props.positioning_point_type === "square") {
               points.push(
                 <rect
-                  width={1}
-                  height={1}
                   key={id++}
                   fill={props.positioning_point_color}
-                  x={x}
-                  y={y}
+                  x={x + 0.5 - 1.5}
+                  y={y + 0.5 - 1.5}
+                  width={3}
+                  height={3}
+                />,
+              );
+              points.push(
+                <rect
+                  key={id++}
+                  fill="none"
+                  strokeWidth="1"
+                  stroke={props.positioning_point_color}
+                  x={x + 0.5 - 3}
+                  y={y + 0.5 - 3}
+                  width={6}
+                  height={6}
                 />,
               );
             } else if (props.positioning_point_type === "circle") {
@@ -154,18 +166,6 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
             }
             break;
           case QRPointType.POS_OTHER:
-            if (props.positioning_point_type === "square") {
-              points.push(
-                <rect
-                  width={1}
-                  height={1}
-                  key={id++}
-                  fill={props.positioning_point_color}
-                  x={x}
-                  y={y}
-                />,
-              );
-            }
             break;
           case QRPointType.ALIGN_CENTER:
           case QRPointType.ALIGN_OTHER:

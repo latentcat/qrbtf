@@ -22,6 +22,7 @@ import {toBase64} from "@/lib/image_utils";
 import {Colorful, hexToHsva, HsvaColor, hsvaToHex, Hue, Saturation} from "@uiw/react-color";
 import {AspectRatio} from "@/components/ui/aspect-ratio";
 import {BACKGROUND_IMG} from "@uiw/react-color-alpha";
+import {LucideUpload} from "lucide-react";
 
 type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
   field: ControllerRenderProps<P, Path<P>>;
@@ -72,7 +73,7 @@ export function ParamNumberControl<P extends FieldValues>(
       <ParamValue>
         <FormControl>
           <Slider
-            value={props.field.value ? [props.field.value] : undefined}
+            value={props.field.value !== undefined ? [props.field.value] : undefined}
             min={props.config?.min || 0}
             max={props.config?.max || 100}
             step={props.config?.step || 1}
@@ -280,7 +281,7 @@ export function ParamImageControl<P extends FieldValues>(
               className="w-full font-normal"
               variant="outline"
             >
-              {props.config?.buttonLabel || "Button"}
+              <LucideUpload className="w-4 h-4 mr-1.5" />{props.config?.buttonLabel || "Button"}
             </Button>
           </>
         </FormControl>

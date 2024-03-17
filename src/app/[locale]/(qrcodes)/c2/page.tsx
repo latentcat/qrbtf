@@ -19,8 +19,9 @@ export default function Page() {
       label: t("contrast.label"),
       desc: t("contrast.desc"),
       config: {
-        min: 0,
-        max: 100,
+        min: -1,
+        max: 1,
+        step: 0.01,
       },
     },
     {
@@ -29,8 +30,9 @@ export default function Page() {
       label: t("brightness.label"),
       desc: t("brightness.desc"),
       config: {
-        min: 0,
-        max: 100,
+        min: -1,
+        max: 1,
+        step: 0.01,
       },
     },
     {
@@ -83,7 +85,7 @@ export default function Page() {
   const defaultValues: QrbtfRendererC2Props = {
     ...commonDefault,
     brightness: 0,
-    contrast: 1,
+    contrast: 0,
     background: DefaultBackground as unknown as string,
     align_type: "none",
     timing_type: "none",
