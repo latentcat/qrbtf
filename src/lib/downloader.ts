@@ -64,30 +64,34 @@ function saveImg(
   };
 }
 
-export function download(
+export async function download(
   name: string,
   content: HTMLElement,
   type: "svg" | "jpg" | "png",
 ) {
-  fetch("/api/update_count", {
-    method: "POST",
-    body: JSON.stringify({
-      collection_name: "counter_style",
-      name: name,
-    }),
-  });
+  const doDownload = () => {
+    if (type === "svg") {
+      saveSvg(name, content.innerHTML);
+    } else {
+      saveImg(name, content.innerHTML, type);
+    }
+  };
 
-  fetch("/api/update_count", {
-    method: "POST",
-    body: JSON.stringify({
-      collection_name: "counter_global",
-      name: "download_count",
+  // WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=270102
+  Promise.all([
+    fetch("/api/update_count", {
+      method: "POST",
+      body: JSON.stringify({
+        collection_name: "counter_style",
+        name: name,
+      }),
     }),
-  });
-
-  if (type === "svg") {
-    saveSvg(name, content.innerHTML);
-  } else {
-    saveImg(name, content.innerHTML, type);
-  }
+    fetch("/api/update_count", {
+      method: "POST",
+      body: JSON.stringify({
+        collection_name: "counter_global",
+        name: "download_count",
+      }),
+    }),
+  ]).finally(() => doDownload());
 }
