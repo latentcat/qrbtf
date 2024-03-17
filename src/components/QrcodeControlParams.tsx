@@ -178,7 +178,7 @@ export function ParamColorControl<P extends FieldValues>(
                   }}
                 />
               </AspectRatio>
-              <div className="h-3" />
+              <div className="h-2" />
               <Hue
                 className="rounded-md"
                 style={{
