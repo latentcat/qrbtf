@@ -89,16 +89,14 @@ export function usePositioningParams() {
         ],
       },
     },
-    // {
-    //   type: "color",
-    //   name: "positioning_point_color",
-    //   label: t("contrast.label"),
-    //   desc: t("contrast.desc"),
-    //   config: {
-    //     min: 0,
-    //     max: 100,
-    //   },
-    // },
+    {
+      type: "color",
+      name: "positioning_point_color",
+      label: t("positioning_point_color.label"),
+      desc: t("positioning_point_color.desc"),
+      config: {
+      },
+    },
   ];
   const positioningDefault: QrbtfRendererPositioningProps = {
     positioning_point_type: "square",
