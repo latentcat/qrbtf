@@ -69,12 +69,6 @@ export function download(
   content: HTMLElement,
   type: "svg" | "jpg" | "png",
 ) {
-  if (type === "svg") {
-    saveSvg(name, content.innerHTML);
-  } else {
-    saveImg(name, content.innerHTML, type);
-  }
-
   fetch("/api/update_count", {
     method: "POST",
     body: JSON.stringify({
@@ -90,4 +84,10 @@ export function download(
       name: "download_count",
     }),
   });
+
+  if (type === "svg") {
+    saveSvg(name, content.innerHTML);
+  } else {
+    saveImg(name, content.innerHTML, type);
+  }
 }
