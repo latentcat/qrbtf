@@ -21,10 +21,10 @@
     "status": {
       "title": "Statistics",
       "subtitle": "",
-      "github_stars": "GitHub Stars",
-      "generate_count": "AI QR Code Generated",
-      "download_count": "QR Code Downloaded",
-      "page_view": "Page View"
+      "github_stars": "GitHub stars",
+      "generate_count": "AI QR code generated",
+      "download_count": "Total downloads",
+      "page_view": "Page view"
     },
     "qa": {
       "title": "FAQ",

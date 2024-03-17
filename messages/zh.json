@@ -23,7 +23,7 @@
       "subtitle": "",
       "github_stars": "GitHub 标星",
       "generate_count": "AI 二维码生成次数",
-      "download_count": "二维码下载次数",
+      "download_count": "总下载量",
       "page_view": "页面访问量"
     },
     "qa": {
