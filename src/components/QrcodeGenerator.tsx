@@ -23,6 +23,12 @@ import { StyleTitle } from "@/components/Titles";
 import { useAtomValue } from "jotai";
 import { urlAtom } from "@/lib/states";
 import { download } from "@/lib/downloader";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -108,21 +114,36 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                   htmlFor="output_image"
                 >
                   {t("qrcode_output")}
-                  <Badge
-                    onClick={() =>
-                      qrcodeWrapperRef.current &&
-                      download(
-                        currentQrcodeType,
-                        qrcodeWrapperRef.current,
-                        "svg",
-                      )
-                    }
-                    className={cn("rounded-md hover:bg-accent cursor-pointer")}
-                    variant="outline"
-                  >
-                    <LucideDownload className="w-4 h-4 mr-1" />
-                    {t("download")}
-                  </Badge>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <Badge
+                        className={cn(
+                          "rounded-md hover:bg-accent cursor-pointer",
+                        )}
+                        variant="outline"
+                      >
+                        <LucideDownload className="w-4 h-4 mr-1" />
+                        {t("download")}
+                      </Badge>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      {(["svg", "jpg", "png"] as const).map((type) => (
+                        <DropdownMenuItem
+                          key={type}
+                          onClick={() =>
+                            qrcodeWrapperRef.current &&
+                            download(
+                              currentQrcodeType,
+                              qrcodeWrapperRef.current,
+                              type,
+                            )
+                          }
+                        >
+                          {type.toLocaleUpperCase()}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </Label>
                 <div className="relative border rounded-xl bg-accent/30 w-full overflow-hidden">
                   <AspectRatio ratio={1} />
