@@ -155,8 +155,10 @@ export function ParamColorControl<P extends FieldValues>(
         </FormControl>
         <FormControl>
           <Popover>
-            <PopoverTrigger className="absolute top-2 left-2">
-              <div className="w-6 h-6 rounded-sm border" style={{ background: props.field.value }} />
+            <PopoverTrigger className="absolute top-0 left-0">
+              <div className="p-2">
+                <div className="w-6 h-6 rounded-sm border" style={{background: props.field.value}}/>
+              </div>
             </PopoverTrigger>
             <PopoverContent className="w-64">
               <AspectRatio ratio={1}>
