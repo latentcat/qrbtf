@@ -4,22 +4,20 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
 import { QrStyleItemProps, qrStyleList } from "@/lib/qr_style_list";
 import { motion } from "framer-motion";
-import { transitionDampingMd, transitionMd } from "@/lib/animations";
-import { cn } from "@/lib/utils";
-import { Link, usePathname } from "@/navigation";
+import { transitionDampingMd } from "@/lib/animations";
+import { cn, useCurrentQrcodeType } from "@/lib/utils";
+import { Link } from "@/navigation";
 import { Label } from "@/components/ui/label";
-import { ScanButton } from "@/components/ScanButton";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
 
 export function SectionStylesClient() {
   const t = useTranslations("index.style");
-
-  const pathname = usePathname();
+  const currentQrcodeType = useCurrentQrcodeType();
 
   const render = (item: QrStyleItemProps, index: number) => {
     const itemPath = item.id === "a1" ? "" : item.id;
-    const isActive = pathname.split("/")[1] === itemPath;
+    const isActive = currentQrcodeType === item.id;
     return (
       <div
         key={index}

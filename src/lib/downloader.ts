@@ -74,4 +74,20 @@ export function download(
   } else {
     saveImg(name, content.innerHTML, type);
   }
+
+  fetch("/api/update_count", {
+    method: "POST",
+    body: JSON.stringify({
+      collection_name: "counter_style",
+      name: name,
+    }),
+  });
+
+  fetch("/api/update_count", {
+    method: "POST",
+    body: JSON.stringify({
+      collection_name: "counter_global",
+      name: "download_count",
+    }),
+  });
 }

@@ -15,7 +15,7 @@ import { HTMLAttributes, useRef } from "react";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { cn, useCurrentQrcodeType } from "@/lib/utils";
 import { LucideDownload } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
@@ -45,7 +45,9 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   });
   const componentProps = useWatch({ control: form.control }) as P;
 
+  // Download
   const qrcodeWrapperRef = useRef<HTMLDivElement | null>(null);
+  const currentQrcodeType = useCurrentQrcodeType();
 
   const renderControls = (item: ConfigType<P>) => {
     return (
@@ -109,7 +111,11 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                   <Badge
                     onClick={() =>
                       qrcodeWrapperRef.current &&
-                      download("test", qrcodeWrapperRef.current, "svg")
+                      download(
+                        currentQrcodeType,
+                        qrcodeWrapperRef.current,
+                        "svg",
+                      )
                     }
                     className={cn("rounded-md hover:bg-accent cursor-pointer")}
                     variant="outline"
