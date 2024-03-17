@@ -58,16 +58,14 @@ export default function Page() {
         step: 0.01,
       },
     },
-    // {
-    //   type: "color",
-    //   name: "content_point_color",
-    //   label: t("contrast.label"),
-    //   desc: t("contrast.desc"),
-    //   config: {
-    //     min: 0,
-    //     max: 100,
-    //   },
-    // },
+    {
+      type: "color",
+      name: "content_point_color",
+      label: t("content_point_color.label"),
+      desc: t("content_point_color.desc"),
+      config: {
+      },
+    },
   ];
 
   const defaultValues: QrbtfRendererA1Props = {

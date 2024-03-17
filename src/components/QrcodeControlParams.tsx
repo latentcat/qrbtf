@@ -1,3 +1,5 @@
+"use client"
+
 import {
   FormControl,
   FormDescription,
@@ -13,8 +15,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
+import {
   CommonControlProps,
-  ParamBooleanControlProps,
+  ParamBooleanControlProps, ParamColorControlProps,
   ParamImageControlProps,
   ParamNumberControlProps,
   ParamSelectControlProps,
@@ -29,6 +37,7 @@ import {
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { toBase64 } from "@/lib/image_utils";
+import {HuePicker, SketchPicker} from 'react-color';
 
 type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
   field: ControllerRenderProps<P, Path<P>>;
@@ -67,7 +76,7 @@ interface ParamValueProps {
 }
 
 function ParamValue(props: ParamValueProps) {
-  return <div className="flex items-center gap-2 w-48">{props.children}</div>;
+  return <div className="relative flex items-center gap-2 w-48">{props.children}</div>;
 }
 
 export function ParamNumberControl<P extends FieldValues>(
@@ -95,6 +104,50 @@ export function ParamNumberControl<P extends FieldValues>(
               props.field.onChange(parseInt(value.target.value))
             }
           />
+        </FormControl>
+      </ParamValue>
+    </ParamItem>
+  );
+}
+
+export function ParamColorControl<P extends FieldValues>(
+  props: ControlCommonProps<P> & ParamColorControlProps,
+) {
+  return (
+    <ParamItem>
+      <ParamLabel label={props.label} desc={props.desc} />
+      <ParamValue>
+        <FormControl>
+          <Input
+            value={props.field.value}
+            className="w-full shrink-0 pl-10"
+            onChange={(value) =>
+              props.field.onChange(value.target.value)
+            }
+          />
+        </FormControl>
+        <FormControl>
+          <Popover>
+            <PopoverTrigger className="absolute top-2 left-2">
+              <div className="w-6 h-6 rounded-sm border" style={{ background: props.field.value }} />
+            </PopoverTrigger>
+            <PopoverContent className="w-64">
+              <SketchPicker
+                color={ props.field.value }
+                onChange={(value) =>
+                  props.field.onChange(value.hex)
+                }
+              />
+              <HuePicker
+                className="w-full"
+                styles={{ default: { picker: { width: "100%" } } }}
+                color={ props.field.value }
+                onChange={(value) =>
+                  props.field.onChange(value.hex)
+                }
+              />
+            </PopoverContent>
+          </Popover>
         </FormControl>
       </ParamValue>
     </ParamItem>

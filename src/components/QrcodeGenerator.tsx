@@ -6,7 +6,7 @@ import { ConfigType, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/common";
 import { Form, FormField } from "@/components/ui/form";
 import { DefaultValues, useForm, useWatch } from "react-hook-form";
 import {
-  ParamBooleanControl,
+  ParamBooleanControl, ParamColorControl,
   ParamImageControl,
   ParamNumberControl,
   ParamSelectControl,
@@ -64,6 +64,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
           switch (item.type) {
             case "number":
               return <ParamNumberControl<P> field={field} {...item} />;
+            case "color":
+              return <ParamColorControl<P> field={field} {...item} />;
             case "boolean":
               return <ParamBooleanControl<P> field={field} {...item} />;
             case "select":
@@ -126,7 +128,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                         {t("download")}
                       </Badge>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent align="end">
                       {(["svg", "jpg", "png"] as const).map((type) => (
                         <DropdownMenuItem
                           key={type}
@@ -139,7 +141,9 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                             )
                           }
                         >
-                          {type.toLocaleUpperCase()}
+                          <span className="_font-mono">
+                            {type.toLocaleUpperCase()}
+                          </span>
                         </DropdownMenuItem>
                       ))}
                     </DropdownMenuContent>

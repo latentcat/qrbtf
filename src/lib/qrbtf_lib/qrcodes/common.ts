@@ -126,11 +126,15 @@ export interface CommonControlProps<P> {
 export interface ParamNumberControlProps {
   type: "number";
   config?: {
-    default?: number;
-    optional?: boolean;
     min?: number;
     max?: number;
     step?: number;
+  };
+}
+
+export interface ParamColorControlProps {
+  type: "color";
+  config?: {
   };
 }
 
@@ -163,6 +167,7 @@ export interface ParamImageControlProps {
 
 export type ParamType = (
   | ParamNumberControlProps
+  | ParamColorControlProps
   | ParamBooleanControlProps
   | ParamSelectControlProps
   | ParamImageControlProps
