@@ -1,12 +1,26 @@
-"use client"
+"use client";
 
-import {FormControl, FormDescription, FormItem, FormLabel,} from "@/components/ui/form";
-import {Slider} from "@/components/ui/slider";
-import React, {ChangeEventHandler, CSSProperties, useMemo, useRef} from "react";
-import {ControllerRenderProps, FieldValues, Path} from "react-hook-form";
-import {Switch} from "@/components/ui/switch";
-import {Input} from "@/components/ui/input";
-import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
+import {
+  FormControl,
+  FormDescription,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { Slider } from "@/components/ui/slider";
+import React, {
+  ChangeEventHandler,
+  CSSProperties,
+  useMemo,
+  useRef,
+} from "react";
+import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
+import { Switch } from "@/components/ui/switch";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 import {
   CommonControlProps,
@@ -15,14 +29,29 @@ import {
   ParamImageControlProps,
   ParamNumberControlProps,
   ParamSelectControlProps,
+  ParamTextControlProps,
 } from "@/lib/qrbtf_lib/qrcodes/common";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select";
-import {Button} from "./ui/button";
-import {toBase64} from "@/lib/image_utils";
-import {Colorful, hexToHsva, HsvaColor, hsvaToHex, Hue, Saturation} from "@uiw/react-color";
-import {AspectRatio} from "@/components/ui/aspect-ratio";
-import {BACKGROUND_IMG} from "@uiw/react-color-alpha";
-import {LucideUpload} from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "./ui/button";
+import { toBase64 } from "@/lib/image_utils";
+import {
+  Colorful,
+  hexToHsva,
+  HsvaColor,
+  hsvaToHex,
+  Hue,
+  Saturation,
+} from "@uiw/react-color";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { BACKGROUND_IMG } from "@uiw/react-color-alpha";
+import { LucideUpload } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
   field: ControllerRenderProps<P, Path<P>>;
@@ -61,7 +90,11 @@ interface ParamValueProps {
 }
 
 function ParamValue(props: ParamValueProps) {
-  return <div className="relative flex items-center gap-2 w-48">{props.children}</div>;
+  return (
+    <div className="relative flex justify-end items-center gap-2 w-48">
+      {props.children}
+    </div>
+  );
 }
 
 export function ParamNumberControl<P extends FieldValues>(
@@ -73,7 +106,9 @@ export function ParamNumberControl<P extends FieldValues>(
       <ParamValue>
         <FormControl>
           <Slider
-            value={props.field.value !== undefined ? [props.field.value] : undefined}
+            value={
+              props.field.value !== undefined ? [props.field.value] : undefined
+            }
             min={props.config?.min || 0}
             max={props.config?.max || 100}
             step={props.config?.step || 1}
@@ -95,20 +130,42 @@ export function ParamNumberControl<P extends FieldValues>(
   );
 }
 
+export function ParamTextControl<P extends FieldValues>(
+  props: ControlCommonProps<P> & ParamTextControlProps,
+) {
+  return (
+    <div className="flex flex-col gap-1.5 py-2.5">
+      <ParamLabel label={props.label} />
+      <FormControl className="w-full">
+        <Textarea
+          placeholder={props.config?.placeholder}
+          value={props.field.value}
+          className="resize-none w-full shrink-0"
+          onChange={(value) => props.field.onChange(value.target.value)}
+        />
+      </FormControl>
+      <FormDescription>{props.desc}</FormDescription>
+    </div>
+  );
+}
 
-const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement> & { color: string }) => {
+const Pointer = ({
+  style,
+  color,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & { color: string }) => {
   const stylePointer = {
-    '--colorful-pointer-background-color': '#fff',
-    '--colorful-pointer-border': '2px solid #fff',
+    "--colorful-pointer-background-color": "#fff",
+    "--colorful-pointer-border": "2px solid #fff",
     height: 28,
     width: 28,
-    position: 'absolute',
-    transform: 'translate(-14px, -4px)',
-    boxShadow: '0 2px 4px rgb(0 0 0 / 20%)',
-    borderRadius: '50%',
+    position: "absolute",
+    transform: "translate(-14px, -4px)",
+    boxShadow: "0 2px 4px rgb(0 0 0 / 20%)",
+    borderRadius: "50%",
     background: `url(${BACKGROUND_IMG})`,
-    backgroundColor: 'var(--colorful-pointer-background-color)',
-    border: 'var(--colorful-pointer-border)',
+    backgroundColor: "var(--colorful-pointer-background-color)",
+    border: "var(--colorful-pointer-border)",
     zIndex: 1,
     ...style,
   } as CSSProperties;
@@ -117,9 +174,9 @@ const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement
       <div
         style={{
           backgroundColor: color,
-          borderRadius: '50%',
-          height: ' 100%',
-          width: '100%',
+          borderRadius: "50%",
+          height: " 100%",
+          width: "100%",
         }}
       />
     </div>
@@ -129,17 +186,19 @@ const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement
 export function ParamColorControl<P extends FieldValues>(
   props: ControlCommonProps<P> & ParamColorControlProps,
 ) {
-
   const hsva = useMemo(() => {
-      try {
-        return hexToHsva(props.field.value)
-      } catch {
-        const newHsva: HsvaColor = {
-          a: 0, h: 0, s: 0, v: 0
-        }
-        return newHsva
-      }
-  }, [props.field.value])
+    try {
+      return hexToHsva(props.field.value);
+    } catch {
+      const newHsva: HsvaColor = {
+        a: 0,
+        h: 0,
+        s: 0,
+        v: 0,
+      };
+      return newHsva;
+    }
+  }, [props.field.value]);
 
   return (
     <ParamItem>
@@ -149,16 +208,17 @@ export function ParamColorControl<P extends FieldValues>(
           <Input
             value={props.field.value}
             className="w-full shrink-0 pl-10"
-            onChange={(value) =>
-              props.field.onChange(value.target.value)
-            }
+            onChange={(value) => props.field.onChange(value.target.value)}
           />
         </FormControl>
         <FormControl>
           <Popover>
             <PopoverTrigger className="absolute top-0 left-0">
               <div className="p-2">
-                <div className="w-6 h-6 rounded-sm border" style={{background: props.field.value}}/>
+                <div
+                  className="w-6 h-6 rounded-sm border"
+                  style={{ background: props.field.value }}
+                />
               </div>
             </PopoverTrigger>
             <PopoverContent className="w-64">
@@ -171,11 +231,20 @@ export function ParamColorControl<P extends FieldValues>(
                   }}
                   radius="4px 4px 4px 4px"
                   pointer={({ left, top, color }) => (
-                    <Pointer style={{ left, top, transform: 'translate(-16px, -16px)' }} color={hsvaToHex(hsva)} />
+                    <Pointer
+                      style={{
+                        left,
+                        top,
+                        transform: "translate(-16px, -16px)",
+                      }}
+                      color={hsvaToHex(hsva)}
+                    />
                   )}
                   hsva={hsva}
                   onChange={(newColor) => {
-                    props.field.onChange(hsvaToHex({ ...hsva, ...newColor, a: hsva.a }))
+                    props.field.onChange(
+                      hsvaToHex({ ...hsva, ...newColor, a: hsva.a }),
+                    );
                   }}
                 />
               </AspectRatio>
@@ -187,10 +256,15 @@ export function ParamColorControl<P extends FieldValues>(
                 }}
                 height={20}
                 radius="4px 4px 4px 4px"
-                pointer={({ left }) => <Pointer style={{ left }} color={`hsl(${hsva.h || 0}deg 100% 50%)`} />}
+                pointer={({ left }) => (
+                  <Pointer
+                    style={{ left }}
+                    color={`hsl(${hsva.h || 0}deg 100% 50%)`}
+                  />
+                )}
                 hue={hsva.h}
                 onChange={(newHue) => {
-                  props.field.onChange(hsvaToHex({ ...hsva, ...newHue }))
+                  props.field.onChange(hsvaToHex({ ...hsva, ...newHue }));
                 }}
               />
             </PopoverContent>
@@ -281,7 +355,8 @@ export function ParamImageControl<P extends FieldValues>(
               className="w-full font-normal"
               variant="outline"
             >
-              <LucideUpload className="w-4 h-4 mr-1.5" />{props.config?.buttonLabel || "Button"}
+              <LucideUpload className="w-4 h-4 mr-1.5" />
+              {props.config?.buttonLabel || "Button"}
             </Button>
           </>
         </FormControl>

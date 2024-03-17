@@ -136,9 +136,50 @@
     "g1": {
       "title": "G1",
       "subtitle": "Generative AI QR code",
-      "contrast": {
-        "label": "Contrast",
-        "desc": "Contrast"
+      "prompt": {
+        "label": "Prompt",
+        "desc": "English keywords to generate QR code image, separate by \",\".",
+        "placeholder": "https://qrbtf.com"
+      },
+      "negative_prompt": {
+        "label": "Negative prompt",
+        "desc": "Something you don't want.",
+        "placeholder": "Input your negative prompt here..."
+      },
+      "seed": {
+        "label": "Seed",
+        "desc": ""
+      },
+      "control_strength": {
+        "label": "Control strength",
+        "desc": ""
+      },
+      "prompt_tuning": {
+        "label": "Prompt tuning",
+        "desc": ""
+      },
+      "restoration_rate": {
+        "label": "Restoration rate",
+        "desc": ""
+      },
+      "size": {
+        "label": "Size",
+        "desc": ""
+      },
+      "padding_ratio": {
+        "label": "Padding ratio",
+        "desc": ""
+      },
+      "correct_level": {
+        "label": "Correct level",
+        "desc": ""
+      },
+      "anchor_style": {
+        "label": "Correct level",
+        "desc": "",
+        "square": "Square",
+        "circle": "Circle",
+        "minimal": "Minimal"
       }
     }
   },

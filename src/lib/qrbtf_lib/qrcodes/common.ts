@@ -94,8 +94,7 @@ export function usePositioningParams() {
       name: "positioning_point_color",
       label: t("positioning_point_color.label"),
       desc: t("positioning_point_color.desc"),
-      config: {
-      },
+      config: {},
     },
   ];
   const positioningDefault: QrbtfRendererPositioningProps = {
@@ -110,16 +109,18 @@ export function usePositioningParams() {
 
 import { Path } from "react-hook-form";
 
-export type QrbtfModule<P> = QrbtfModuleSvgRenderer<P> | QrbtfModuleApiFetcher<P>
+export type QrbtfModule<P> =
+  | QrbtfModuleSvgRenderer<P>
+  | QrbtfModuleApiFetcher<P>;
 
 export interface QrbtfModuleSvgRenderer<P> {
-  type: "svg_renderer"
+  type: "svg_renderer";
   renderer: (props: P & { url: string }) => React.ReactNode;
 }
 
 export interface QrbtfModuleApiFetcher<P> {
-  type: "api_fetcher"
-  fetcher: (props: P & { url: string }) =>  Generator<any>;
+  type: "api_fetcher";
+  fetcher: (props: P & { url: string }) => Generator<any>;
   visualizer: (props: { data: any }) => React.ReactNode;
 }
 
@@ -139,10 +140,17 @@ export interface ParamNumberControlProps {
   };
 }
 
+export interface ParamTextControlProps {
+  type: "text";
+  config?: {
+    placeholder?: string;
+    maxLength?: number;
+  };
+}
+
 export interface ParamColorControlProps {
   type: "color";
-  config?: {
-  };
+  config?: {};
 }
 
 export interface ParamBooleanControlProps {
@@ -174,6 +182,7 @@ export interface ParamImageControlProps {
 
 export type ParamType = (
   | ParamNumberControlProps
+  | ParamTextControlProps
   | ParamColorControlProps
   | ParamBooleanControlProps
   | ParamSelectControlProps

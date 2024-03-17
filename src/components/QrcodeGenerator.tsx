@@ -6,10 +6,12 @@ import { ConfigType, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/common";
 import { Form, FormField } from "@/components/ui/form";
 import { DefaultValues, useForm, useWatch } from "react-hook-form";
 import {
-  ParamBooleanControl, ParamColorControl,
+  ParamBooleanControl,
+  ParamColorControl,
   ParamImageControl,
   ParamNumberControl,
   ParamSelectControl,
+  ParamTextControl,
 } from "@/components/QrcodeControlParams";
 import { HTMLAttributes, useRef } from "react";
 import { Label } from "@/components/ui/label";
@@ -29,7 +31,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import {useImageService} from "@/lib/image_service";
+import { useImageService } from "@/lib/image_service";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -44,7 +46,7 @@ export interface QrcodeGeneratorProps<P extends {}>
 export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const t = useTranslations("index.params");
   const url = useAtomValue(urlAtom);
-  const { onSubmit, resData } = useImageService()
+  const { onSubmit, resData } = useImageService();
 
   const { children, className, params, defaultValues, ...restProps } = props;
 
@@ -66,6 +68,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
           switch (item.type) {
             case "number":
               return <ParamNumberControl<P> field={field} {...item} />;
+            case "text":
+              return <ParamTextControl<P> field={field} {...item} />;
             case "color":
               return <ParamColorControl<P> field={field} {...item} />;
             case "boolean":
@@ -94,7 +98,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
 
               <div>
                 <Form {...form}>
-                  <form className="not-prose divide-y">
+                  <form className="not-prose _divide-y">
                     {params.map((param) => (
                       <div
                         key={param.name}
@@ -167,7 +171,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                     ref={qrcodeWrapperRef}
                     className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white"
                   >
-                    {props.qrcodeModule.type === "svg_renderer" &&(
+                    {props.qrcodeModule.type === "svg_renderer" && (
                       <>
                         {props.qrcodeModule.renderer({
                           className: "w-full",
@@ -176,10 +180,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                         })}
                       </>
                     )}
-                    {props.qrcodeModule.type === "api_fetcher" &&(
-                      <>
-                        {props.qrcodeModule.visualizer({ data: resData })}
-                      </>
+                    {props.qrcodeModule.type === "api_fetcher" && (
+                      <>{props.qrcodeModule.visualizer({ data: resData })}</>
                     )}
                   </div>
                 </div>
