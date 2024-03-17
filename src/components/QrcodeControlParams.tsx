@@ -1,43 +1,27 @@
 "use client"
 
-import {
-  FormControl,
-  FormDescription,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
-import { Slider } from "@/components/ui/slider";
-import React, { ChangeEvent, ChangeEventHandler, useRef } from "react";
-import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
-import { Switch } from "@/components/ui/switch";
-
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import {FormControl, FormDescription, FormItem, FormLabel,} from "@/components/ui/form";
+import {Slider} from "@/components/ui/slider";
+import React, {ChangeEventHandler, CSSProperties, useMemo, useRef} from "react";
+import {ControllerRenderProps, FieldValues, Path} from "react-hook-form";
+import {Switch} from "@/components/ui/switch";
+import {Input} from "@/components/ui/input";
+import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
 
 import {
   CommonControlProps,
-  ParamBooleanControlProps, ParamColorControlProps,
+  ParamBooleanControlProps,
+  ParamColorControlProps,
   ParamImageControlProps,
   ParamNumberControlProps,
   ParamSelectControlProps,
 } from "@/lib/qrbtf_lib/qrcodes/common";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "./ui/label";
-import { Button } from "./ui/button";
-import { toBase64 } from "@/lib/image_utils";
-import {HuePicker, SketchPicker} from 'react-color';
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select";
+import {Button} from "./ui/button";
+import {toBase64} from "@/lib/image_utils";
+import {Colorful, hexToHsva, HsvaColor, hsvaToHex, Hue, Saturation} from "@uiw/react-color";
+import {AspectRatio} from "@/components/ui/aspect-ratio";
+import {BACKGROUND_IMG} from "@uiw/react-color-alpha";
 
 type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
   field: ControllerRenderProps<P, Path<P>>;
@@ -110,9 +94,52 @@ export function ParamNumberControl<P extends FieldValues>(
   );
 }
 
+
+const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement> & { color: string }) => {
+  const stylePointer = {
+    '--colorful-pointer-background-color': '#fff',
+    '--colorful-pointer-border': '2px solid #fff',
+    height: 28,
+    width: 28,
+    position: 'absolute',
+    transform: 'translate(-14px, -4px)',
+    boxShadow: '0 2px 4px rgb(0 0 0 / 20%)',
+    borderRadius: '50%',
+    background: `url(${BACKGROUND_IMG})`,
+    backgroundColor: 'var(--colorful-pointer-background-color)',
+    border: 'var(--colorful-pointer-border)',
+    zIndex: 1,
+    ...style,
+  } as CSSProperties;
+  return (
+    <div {...props} style={stylePointer}>
+      <div
+        style={{
+          backgroundColor: color,
+          borderRadius: '50%',
+          height: ' 100%',
+          width: '100%',
+        }}
+      />
+    </div>
+  );
+};
+
 export function ParamColorControl<P extends FieldValues>(
   props: ControlCommonProps<P> & ParamColorControlProps,
 ) {
+
+  const hsva = useMemo(() => {
+      try {
+        return hexToHsva(props.field.value)
+      } catch {
+        const newHsva: HsvaColor = {
+          a: 0, h: 0, s: 0, v: 0
+        }
+        return newHsva
+      }
+  }, [props.field.value])
+
   return (
     <ParamItem>
       <ParamLabel label={props.label} desc={props.desc} />
@@ -132,19 +159,36 @@ export function ParamColorControl<P extends FieldValues>(
               <div className="w-6 h-6 rounded-sm border" style={{ background: props.field.value }} />
             </PopoverTrigger>
             <PopoverContent className="w-64">
-              <SketchPicker
-                color={ props.field.value }
-                onChange={(value) =>
-                  props.field.onChange(value.hex)
-                }
-              />
-              <HuePicker
-                className="w-full"
-                styles={{ default: { picker: { width: "100%" } } }}
-                color={ props.field.value }
-                onChange={(value) =>
-                  props.field.onChange(value.hex)
-                }
+              <AspectRatio ratio={1}>
+                <Saturation
+                  className="rounded-md"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  radius="4px 4px 4px 4px"
+                  pointer={({ left, top, color }) => (
+                    <Pointer style={{ left, top, transform: 'translate(-16px, -16px)' }} color={hsvaToHex(hsva)} />
+                  )}
+                  hsva={hsva}
+                  onChange={(newColor) => {
+                    props.field.onChange(hsvaToHex({ ...hsva, ...newColor, a: hsva.a }))
+                  }}
+                />
+              </AspectRatio>
+              <div className="h-3" />
+              <Hue
+                className="rounded-md"
+                style={{
+                  width: "100%",
+                }}
+                height={20}
+                radius="4px 4px 4px 4px"
+                pointer={({ left }) => <Pointer style={{ left }} color={`hsl(${hsva.h || 0}deg 100% 50%)`} />}
+                hue={hsva.h}
+                onChange={(newHue) => {
+                  props.field.onChange(hsvaToHex({ ...hsva, ...newHue }))
+                }}
               />
             </PopoverContent>
           </Popover>

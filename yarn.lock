@@ -208,11 +208,6 @@
   resolved "https://registry.npmmirror.com/@humanwhocodes/object-schema/-/object-schema-2.0.2.tgz#d9fae00a2d5cb40f92cfe64b47ad749fbc38f917"
   integrity sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==
 
-"@icons/material@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.npmjs.org/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
-  integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
-
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
   resolved "https://registry.npmmirror.com/@isaacs/cliui/-/cliui-8.0.2.tgz#b37667b7bc181c168782259bab42474fbf52b550"
@@ -1038,14 +1033,6 @@
   resolved "https://registry.npmmirror.com/@types/prop-types/-/prop-types-15.7.11.tgz#2596fb352ee96a1379c657734d4b913a613ad563"
   integrity sha512-ga8y9v9uyeiLdpKddhxYQkxNDrfvuPrlFb0N1qnZZByvcElJaXthF1UhvCh9TLWJBEHeNtdnbysW7Y6Uq8CVng==
 
-"@types/react-color@^3.0.12":
-  version "3.0.12"
-  resolved "https://registry.npmjs.org/@types/react-color/-/react-color-3.0.12.tgz#231e75f11dd6805bdf1c954774588fefc8172f30"
-  integrity sha512-pr3uKE3lSvf7GFo1Rn2K3QktiZQFFrSgSGJ/3iMvSOYWt2pPAJ97rVdVfhWxYJZ8prAEXzoP2XX//3qGSQgu7Q==
-  dependencies:
-    "@types/react" "*"
-    "@types/reactcss" "*"
-
 "@types/react-dom@^18":
   version "18.2.21"
   resolved "https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.2.21.tgz#b8c81715cebdebb2994378616a8d54ace54f043a"
@@ -1061,13 +1048,6 @@
     "@types/prop-types" "*"
     "@types/scheduler" "*"
     csstype "^3.0.2"
-
-"@types/reactcss@*":
-  version "1.2.12"
-  resolved "https://registry.npmjs.org/@types/reactcss/-/reactcss-1.2.12.tgz#57f6f046e7aafbe0288689bd96a2d5664378ca7b"
-  integrity sha512-BrXUQ86/wbbFiZv8h/Q1/Q1XOsaHneYmCb/tHe9+M8XBAAUc2EHfdY0DY22ZZjVSaXr5ix7j+zsqO2eGZub8lQ==
-  dependencies:
-    "@types/react" "*"
 
 "@types/scheduler@*":
   version "0.16.8"
@@ -1131,6 +1111,207 @@
   dependencies:
     "@typescript-eslint/types" "6.21.0"
     eslint-visitor-keys "^3.4.1"
+
+"@uiw/color-convert@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/color-convert/-/color-convert-2.1.1.tgz#621e40d859f15a2cc4b9db15ab5b57f7537a47ac"
+  integrity sha512-L421mBAT2NRsmYv7BQvofOEwV0iKee1upPVxMjo2NnkJWyIu4I+H1RxK9m3uT8yvcOlStZhv7BQBsFyJCGmIMg==
+
+"@uiw/react-color-alpha@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-alpha/-/react-color-alpha-2.1.1.tgz#6f3dbe70c22cf2ab026c0d13443195e78b22842f"
+  integrity sha512-6wvWLn4Dgb3jIaveLdjhSg2RJIWKJbRU/uHSFtEd8rvXebRt9P7NFr5YsnkHDBUitx9KFxRL6kaI/GQCYU+8nA==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-drag-event-interactive" "2.1.1"
+
+"@uiw/react-color-block@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-block/-/react-color-block-2.1.1.tgz#3dd1ba9ce5b2e2694700d34a5d7b01e9ce879df8"
+  integrity sha512-c4xA42z7aLou8jBjxwLgUYZ+SiaZbVMADPLE/CcBi8EY/NcvvvtrL2wJGqE0g2Aqfey5RjB7nFxUeqSG1N00aA==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-editable-input" "2.1.1"
+    "@uiw/react-color-swatch" "2.1.1"
+
+"@uiw/react-color-chrome@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-chrome/-/react-color-chrome-2.1.1.tgz#7e2009774f26a69aa2dd44cb9d6825df73067801"
+  integrity sha512-tv51lG6Wol8skiclLXXc8yf5nAVig5OjYtuNxsnFr165GP1YJ/mdnS7OIprYF/wP5mz66W7K0iz/8hAIof5/ug==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-alpha" "2.1.1"
+    "@uiw/react-color-editable-input" "2.1.1"
+    "@uiw/react-color-editable-input-hsla" "2.1.1"
+    "@uiw/react-color-editable-input-rgba" "2.1.1"
+    "@uiw/react-color-github" "2.1.1"
+    "@uiw/react-color-hue" "2.1.1"
+    "@uiw/react-color-saturation" "2.1.1"
+
+"@uiw/react-color-circle@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-circle/-/react-color-circle-2.1.1.tgz#0b11a067b227b055b41a58848be88a392e570725"
+  integrity sha512-t/Wr6eT9GLOzywaTmJclOZ3NuirJlMk8eVxoLKM7eRePbN5WowIEMwug/towSU3YrBrEbSSWjZRhfVUqdh7kMw==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-swatch" "2.1.1"
+
+"@uiw/react-color-colorful@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-colorful/-/react-color-colorful-2.1.1.tgz#92aec4716def339d81e24fc38a24659f23ed9cad"
+  integrity sha512-7cGRtYv+llXO7Tmpfska9HxjQAbkqBP5P63wned6JD/0lOM4KXELxhWI3044nO/Osi5r3FDsGh0HRqiLgUK75Q==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-alpha" "2.1.1"
+    "@uiw/react-color-hue" "2.1.1"
+    "@uiw/react-color-saturation" "2.1.1"
+
+"@uiw/react-color-compact@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-compact/-/react-color-compact-2.1.1.tgz#2f284b6248d3fda95c90fb0c1da51b8a5627fb56"
+  integrity sha512-Af9skc0Bx3lot2zg58SlpMoQEKqyMbKvr7y2O541Hodc89ykgEDJZXqLrKiKnacBWMZxSAcAHoSFf70RLeoTlw==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-editable-input" "2.1.1"
+    "@uiw/react-color-editable-input-rgba" "2.1.1"
+    "@uiw/react-color-swatch" "2.1.1"
+
+"@uiw/react-color-editable-input-hsla@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-editable-input-hsla/-/react-color-editable-input-hsla-2.1.1.tgz#23d12a2241d2b711c2a95533ea9ef131f647dec4"
+  integrity sha512-2Eqcd0hUa5qLVxT062Vf9vsxS2/6X+AJ6f6Wfs6/UAM6iUWqWPkJxajRmEtFfB6Zv5bcaYjhSZNGgeEf7azAvQ==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-editable-input-rgba" "2.1.1"
+
+"@uiw/react-color-editable-input-rgba@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-editable-input-rgba/-/react-color-editable-input-rgba-2.1.1.tgz#5f51631241ba26b4525664a80c6d45fa0d13e039"
+  integrity sha512-6YtDaBWTXu27MK6s3HZty0qg3mYb4GN/8dI8T39R/qEiMX/SButMfC09pnygN74InyuG8MzobUg2GowfTRUG5A==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-editable-input" "2.1.1"
+
+"@uiw/react-color-editable-input@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-editable-input/-/react-color-editable-input-2.1.1.tgz#0640a61036d2fa88d2c43a81c50099837c721499"
+  integrity sha512-mEohydHWV49iQ3RuH/3My20T7wDtOPzzGEBOMJeHIxMnN6FMwl9U1bAAgDb2ovnt5Ws0PaCWcBjNKHARpVSZ1Q==
+
+"@uiw/react-color-github@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-github/-/react-color-github-2.1.1.tgz#8822023f00e7f184e01268cf963487027bb2767a"
+  integrity sha512-5balACHzjVqrkdEsGXI2Ir4iXQrTAHQ7uRzqY+op41uuciIb8yGI1PecJd2qIjUJhk/kZ4nmp6KAjQEAK2iVIQ==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-swatch" "2.1.1"
+
+"@uiw/react-color-hue@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-hue/-/react-color-hue-2.1.1.tgz#3f9aceaa61386a848587dde3bdb0a380dcdb1097"
+  integrity sha512-IvN2acCV35yRfmbscUQbNfwjKF+g51kMONv9j0zxDlTct2R0x4gatsVjA1tTpLv5UCIkFvhw80xg04QATrJ4Nw==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-alpha" "2.1.1"
+
+"@uiw/react-color-material@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-material/-/react-color-material-2.1.1.tgz#6d4e8517ed7a615c6a07d3d1d8a7be3a215809bb"
+  integrity sha512-Pcp/kpBnTGYXqP0up3rqTdJWKtnD2XdiA5Zdh5bdwqssI+qHo0cVELXOnpwU3LiSCZykTDauvGoOqTWprvox4g==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-editable-input" "2.1.1"
+    "@uiw/react-color-editable-input-rgba" "2.1.1"
+
+"@uiw/react-color-name@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-name/-/react-color-name-2.1.1.tgz#0b0ff703643d0a427506f6b93884b5b4da92c83c"
+  integrity sha512-k+19NgPHPZ88oqzCfAcVd7fT4F6XywkeZkX3DDyRG3Skc8zuGdIS2xT7Ne7ZSQb31UT0+UfuOiwOST+r+kGnFA==
+  dependencies:
+    colors-named "^1.0.1"
+    colors-named-hex "^1.0.1"
+
+"@uiw/react-color-saturation@2.1.1", "@uiw/react-color-saturation@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-saturation/-/react-color-saturation-2.1.1.tgz#3235dd57515c07d628c5b893b2a7ea001cc5ebde"
+  integrity sha512-lg3ElCNuiHt7wsfR9FQpgFcg9zht+GAuVhemvgLq6twR62ZUgFd58in42T1F8l2ZpimXu8SgLGEtvc7XB2i8CQ==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-drag-event-interactive" "2.1.1"
+
+"@uiw/react-color-shade-slider@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-shade-slider/-/react-color-shade-slider-2.1.1.tgz#2b27afe05d2446acf1859bd12112503719f04fcd"
+  integrity sha512-7DO2d53GGFR6fXPS7g3hUNTlQCwNjKSQum90h4HeJa5jxIQiuSpeMVPo6IoG8EAuP88Au5C55SYV+qjNgLvG8Q==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-alpha" "2.1.1"
+
+"@uiw/react-color-sketch@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-sketch/-/react-color-sketch-2.1.1.tgz#b37885baca878d7c9f5a6d32cfc54601d9eb670f"
+  integrity sha512-hiHhwSJnMzRs9mUfOiqekPosQQ60mhzRN1LDfD/z4sW7GHxWgV9sl9jdoBeN3RRS0O4i/qHjNrJqTad6D4rV7g==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-alpha" "2.1.1"
+    "@uiw/react-color-editable-input" "2.1.1"
+    "@uiw/react-color-editable-input-rgba" "2.1.1"
+    "@uiw/react-color-hue" "2.1.1"
+    "@uiw/react-color-saturation" "2.1.1"
+    "@uiw/react-color-swatch" "2.1.1"
+
+"@uiw/react-color-slider@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-slider/-/react-color-slider-2.1.1.tgz#5d10bde69055f15edf333e6f0f8f155a980f9013"
+  integrity sha512-J0nqSpiJS4lZCUudAFo8sFMTZgiPgQ0iR4ADx1Hc5vGJr5KfpGwOVq68cUvqiAqXplUQZPVcjwoBhxl4M4fCzg==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-alpha" "2.1.1"
+
+"@uiw/react-color-swatch@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-swatch/-/react-color-swatch-2.1.1.tgz#6b1f4cfe14671d700b6d76bca7e0c60375d23aaa"
+  integrity sha512-soKsfVgflcKSBx47PaBocKZ0beIXfk9ruE4r9778mGnDDpxc2RC5zPNfvzQkSLKW+siXIS0cscuvb/8s1zK5jw==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+
+"@uiw/react-color-wheel@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-wheel/-/react-color-wheel-2.1.1.tgz#26cddb1235ecb2250a4a5433b5ee00649b269c47"
+  integrity sha512-88TYL9GCStBNULEkZ6qlQt8z/jnAf1ZSJwpbVK1JGUwogPJaMAJt8FRSUfzTNpIwYA8ymgK9Y1seng6Z8YkS9Q==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-drag-event-interactive" "2.1.1"
+
+"@uiw/react-color@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color/-/react-color-2.1.1.tgz#eb8d5b1fbac9a61bf84aa70d1cdbde457904c92e"
+  integrity sha512-RE95rGzlOej848nK0onqxk2N+asrHpp3LEH2h7VJkcdJLOK54jccnGKdCc2seNue3zpCIcwPcR38hOeHhfJLJg==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-alpha" "2.1.1"
+    "@uiw/react-color-block" "2.1.1"
+    "@uiw/react-color-chrome" "2.1.1"
+    "@uiw/react-color-circle" "2.1.1"
+    "@uiw/react-color-colorful" "2.1.1"
+    "@uiw/react-color-compact" "2.1.1"
+    "@uiw/react-color-editable-input" "2.1.1"
+    "@uiw/react-color-editable-input-hsla" "2.1.1"
+    "@uiw/react-color-editable-input-rgba" "2.1.1"
+    "@uiw/react-color-github" "2.1.1"
+    "@uiw/react-color-hue" "2.1.1"
+    "@uiw/react-color-material" "2.1.1"
+    "@uiw/react-color-name" "2.1.1"
+    "@uiw/react-color-saturation" "2.1.1"
+    "@uiw/react-color-shade-slider" "2.1.1"
+    "@uiw/react-color-sketch" "2.1.1"
+    "@uiw/react-color-slider" "2.1.1"
+    "@uiw/react-color-swatch" "2.1.1"
+    "@uiw/react-color-wheel" "2.1.1"
+
+"@uiw/react-drag-event-interactive@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-drag-event-interactive/-/react-drag-event-interactive-2.1.1.tgz#89785ae7c1a1990f49b9b1fc090268f643c57ce1"
+  integrity sha512-hJjoJg9ZASzhY6HFwZSnNhx+BJ5rfqqUnpTm6ZtfjCO5DKRZW3CDios0cmMu2Ojvdu0a9qE9x8CURCUuoCzqxw==
 
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"
@@ -1547,6 +1728,16 @@ colorette@^2.0.20:
   version "2.0.20"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.20.tgz#9eb793e6833067f7235902fcd3b09917a000a95a"
   integrity sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==
+
+colors-named-hex@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/colors-named-hex/-/colors-named-hex-1.0.2.tgz#353165cc548ef0fbd770280bf441ec2dfc1bb386"
+  integrity sha512-k6kq1e1pUCQvSVwIaGFq2l0LrkAPQZWyeuZn1Z8nOiYSEZiKoFj4qx690h2Kd34DFl9Me0gKS6MUwAMBJj8nuA==
+
+colors-named@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/colors-named/-/colors-named-1.0.2.tgz#362dd6b520c08da8d9a77250174f0d5f2cfc5b81"
+  integrity sha512-2ANq2r393PV9njYUD66UdfBcxR1slMqRA3QRTWgCx49JoCJ+kOhyfbQYxKJbPZQIhZUcNjVOs5AlyY1WwXec3w==
 
 commander@11.1.0:
   version "11.1.0"
@@ -2803,17 +2994,12 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash-es@^4.17.15:
-  version "4.17.21"
-  resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
-
 lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.npmmirror.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-lodash@^4.0.1, lodash@^4.17.15, lodash@^4.17.21:
+lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -2852,11 +3038,6 @@ lucide-react@^0.356.0:
   version "0.356.0"
   resolved "https://registry.npmmirror.com/lucide-react/-/lucide-react-0.356.0.tgz#4a8813ece512bffb7a40a6e10a0d6e2e5ac6ad62"
   integrity sha512-MDInjLrmZToccH2UxEshntujBlFwtOofGB22FN/eg39FfGVYV1TT1eMIv2j4rdaTJBpYjUuX7fEo9pwYkNFgwA==
-
-material-colors@^1.2.1:
-  version "1.2.6"
-  resolved "https://registry.npmjs.org/material-colors/-/material-colors-1.2.6.tgz#6d1958871126992ceecc72f4bcc4d8f010865f46"
-  integrity sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==
 
 memory-pager@^1.0.2:
   version "1.5.0"
@@ -3300,7 +3481,7 @@ prettier@^3.2.5:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.2.5.tgz#e52bc3090586e824964a8813b09aba6233b28368"
   integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
 
-prop-types@^15.5.10, prop-types@^15.8.1:
+prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmmirror.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -3318,19 +3499,6 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.npmmirror.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
-
-react-color@^2.19.3:
-  version "2.19.3"
-  resolved "https://registry.npmjs.org/react-color/-/react-color-2.19.3.tgz#ec6c6b4568312a3c6a18420ab0472e146aa5683d"
-  integrity sha512-LEeGE/ZzNLIsFWa1TMe8y5VYqr7bibneWmvJwm1pCn/eNmrabWDh659JSPn9BuaMpEfU83WTOJfnCcjDZwNQTA==
-  dependencies:
-    "@icons/material" "^0.2.4"
-    lodash "^4.17.15"
-    lodash-es "^4.17.15"
-    material-colors "^1.2.1"
-    prop-types "^15.5.10"
-    reactcss "^1.2.0"
-    tinycolor2 "^1.4.1"
 
 react-day-picker@^8.10.0:
   version "8.10.0"
@@ -3394,13 +3562,6 @@ react@^18:
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
-
-reactcss@^1.2.0:
-  version "1.2.3"
-  resolved "https://registry.npmjs.org/reactcss/-/reactcss-1.2.3.tgz#c00013875e557b1cf0dfd9a368a1c3dab3b548dd"
-  integrity sha512-KiwVUcFu1RErkI97ywr8nvx8dNOpT03rbnma0SSalTYjkrPYaEajR4a/MRt6DZ46K6arDRbWMNHF+xH7G7n/8A==
-  dependencies:
-    lodash "^4.0.1"
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -3838,11 +3999,6 @@ thenify-all@^1.0.0:
   integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
-
-tinycolor2@^1.4.1:
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/tinycolor2/-/tinycolor2-1.6.0.tgz#f98007460169b0263b97072c5ae92484ce02d09e"
-  integrity sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
