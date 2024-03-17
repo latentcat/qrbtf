@@ -1,6 +1,6 @@
 "use client";
 
-import { NamespaceKeys, NestedKeyOf, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
 import { ConfigType, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/common";
 import { Form, FormField } from "@/components/ui/form";
@@ -11,19 +11,18 @@ import {
   ParamNumberControl,
   ParamSelectControl,
 } from "@/components/QrcodeControlParams";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useRef } from "react";
 import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { LucideDownload } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
-import { QrTest } from "@/components/QrTest";
-import { SectionTitle, StyleTitle } from "@/components/Titles";
+import { StyleTitle } from "@/components/Titles";
 import { useAtomValue } from "jotai";
 import { urlAtom } from "@/lib/states";
+import { download } from "@/lib/downloader";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -45,6 +44,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
     defaultValues: defaultValues,
   });
   const componentProps = useWatch({ control: form.control }) as P;
+
+  const qrcodeWrapperRef = useRef<HTMLDivElement | null>(null);
 
   const renderControls = (item: ConfigType<P>) => {
     return (
@@ -106,11 +107,11 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                 >
                   {t("qrcode_output")}
                   <Badge
-                    // onClick={() => downloadImage()}
-                    className={cn(
-                      "rounded-md hover:bg-accent cursor-pointer",
-                      false ? "" : "opacity-50 pointer-events-none",
-                    )}
+                    onClick={() =>
+                      qrcodeWrapperRef.current &&
+                      download("test", qrcodeWrapperRef.current, "svg")
+                    }
+                    className={cn("rounded-md hover:bg-accent cursor-pointer")}
                     variant="outline"
                   >
                     <LucideDownload className="w-4 h-4 mr-1" />
@@ -122,7 +123,10 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                   <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
                     <QrCodeIcon className="w-12 h-12 opacity-20" />
                   </div>
-                  <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white">
+                  <div
+                    ref={qrcodeWrapperRef}
+                    className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white"
+                  >
                     {props.qrcodeModule.renderer({
                       className: "w-full",
                       url: url || "https://qrbtf.com",

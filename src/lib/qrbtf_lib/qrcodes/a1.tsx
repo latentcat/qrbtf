@@ -215,7 +215,12 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
   } ${(7 * table.length) / 5}`;
 
   return (
-    <svg viewBox={viewBox} {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox={viewBox}
+      {...props}
+    >
       {points}
     </svg>
   );

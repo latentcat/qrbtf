@@ -7,7 +7,7 @@ import {
 } from "@/lib/qrbtf_lib/qrcodes/common";
 import React, { useEffect, useMemo, useState } from "react";
 import { QRPointType, encode } from "../encoder";
-import { gamma } from "@/lib/utils";
+import { gamma } from "@/lib/image_utils";
 
 interface RenderC2OwnProps {
   contrast: number;
@@ -218,7 +218,12 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
   } ${(21 * table.length) / 5}`;
 
   return (
-    <svg viewBox={viewBox} {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      viewBox={viewBox}
+      {...props}
+    >
       <defs>
         <rect id="B-black" fill="black" width={3.08} height={3.08} />
         <rect id="B-white" fill="white" width={3.08} height={3.08} />
