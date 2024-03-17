@@ -174,6 +174,7 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
 
   const [grayPoints, setGrayPoints] = useState<React.ReactNode[]>([]);
   useEffect(() => {
+    console.log(brightness);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     const img = document.createElement("img");
@@ -201,7 +202,8 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
           const gray = gamma(data[0], data[1], data[2]);
           if (
             Math.random() >
-              (gray / 255 + brightness - 0.5) * (contrast + 1) + 0.5 &&
+              (gray / 255 + brightness / 100 - 0.5) * (contrast / 100 + 1) +
+                0.5 &&
             (x % 3 !== 1 || y % 3 !== 1)
           )
             gpl.push(

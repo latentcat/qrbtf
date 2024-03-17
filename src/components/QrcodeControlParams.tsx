@@ -89,9 +89,11 @@ export function ParamNumberControl<P extends FieldValues>(
         </FormControl>
         <FormControl>
           <Input
-            value={props.field.value ? props.field.value : undefined}
+            value={props.field.value}
             className="w-16 shrink-0"
-            onChange={(value) => props.field.onChange(value.target.value)}
+            onChange={(value) =>
+              props.field.onChange(parseInt(value.target.value))
+            }
           />
         </FormControl>
       </ParamValue>
