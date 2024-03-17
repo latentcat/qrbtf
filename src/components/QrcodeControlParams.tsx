@@ -134,7 +134,7 @@ export function ParamTextControl<P extends FieldValues>(
   props: ControlCommonProps<P> & ParamTextControlProps,
 ) {
   return (
-    <div className="flex flex-col gap-1.5 py-2.5">
+    <div className="flex flex-col gap-3 py-4">
       <ParamLabel label={props.label} />
       <FormControl className="w-full">
         <Textarea

@@ -139,7 +139,7 @@
       "prompt": {
         "label": "Prompt",
         "desc": "English keywords to generate QR code image, separate by \",\".",
-        "placeholder": "https://qrbtf.com"
+        "placeholder": "Input your positive prompt here..."
       },
       "negative_prompt": {
         "label": "Negative prompt",
@@ -175,7 +175,7 @@
         "desc": ""
       },
       "anchor_style": {
-        "label": "Correct level",
+        "label": "Anchor style",
         "desc": "",
         "square": "Square",
         "circle": "Circle",

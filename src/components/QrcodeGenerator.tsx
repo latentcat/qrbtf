@@ -102,7 +102,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                     {params.map((param) => (
                       <div
                         key={param.name}
-                        className="py-1 flex flex-col items-stretch justify-center min-h-[60px]"
+                        className="_py-1 flex flex-col items-stretch justify-center min-h-[52px]"
                       >
                         {renderControls(param)}
                       </div>

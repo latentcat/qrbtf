@@ -135,7 +135,52 @@
     },
     "g1": {
       "title": "G1",
-      "subtitle": "Generative AI QR code"
+      "subtitle": "生成式 AI 二维码",
+      "prompt": {
+        "label": "提示词",
+        "desc": "二维码的英文提示词，用英文逗号（,）分割。",
+        "placeholder": "输入正面提示词..."
+      },
+      "negative_prompt": {
+        "label": "负面提示词",
+        "desc": "一些你不想要的东西。",
+        "placeholder": "输入负面提示词..."
+      },
+      "seed": {
+        "label": "种子",
+        "desc": ""
+      },
+      "control_strength": {
+        "label": "控制强度",
+        "desc": ""
+      },
+      "prompt_tuning": {
+        "label": "提示词优化",
+        "desc": ""
+      },
+      "restoration_rate": {
+        "label": "画面修复比例",
+        "desc": ""
+      },
+      "size": {
+        "label": "尺寸",
+        "desc": ""
+      },
+      "padding_ratio": {
+        "label": "边距比例",
+        "desc": ""
+      },
+      "correct_level": {
+        "label": "纠错等级",
+        "desc": ""
+      },
+      "anchor_style": {
+        "label": "定位点样式",
+        "desc": "",
+        "square": "方形",
+        "circle": "圆形",
+        "minimal": "最小化"
+      }
     }
   },
   "footer": {
