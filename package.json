@@ -54,6 +54,7 @@
     "deepmerge": "^4.3.1",
     "embla-carousel-react": "^8.0.0",
     "framer-motion": "^11.0.12",
+    "html5-qrcode": "^2.3.8",
     "input-otp": "^1.1.0",
     "jotai": "^2.7.0",
     "lodash": "^4.17.21",
