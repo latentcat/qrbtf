@@ -43,7 +43,7 @@ export function SectionStylesClient() {
             </div>
             <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
               <img
-                src={`/assets/qrcodes/${item.id}.svg`}
+                src={`/assets/qrcodes/${item.image}`}
                 alt=""
                 className="block w-full h-full bg-white"
               />

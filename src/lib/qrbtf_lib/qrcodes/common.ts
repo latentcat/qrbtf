@@ -110,8 +110,17 @@ export function usePositioningParams() {
 
 import { Path } from "react-hook-form";
 
-export interface QrbtfModule<P> {
+export type QrbtfModule<P> = QrbtfModuleSvgRenderer<P> | QrbtfModuleApiFetcher<P>
+
+export interface QrbtfModuleSvgRenderer<P> {
+  type: "svg_renderer"
   renderer: (props: P & { url: string }) => React.ReactNode;
+}
+
+export interface QrbtfModuleApiFetcher<P> {
+  type: "api_fetcher"
+  fetcher: (props: P & { url: string }) =>  Generator<any>;
+  visualizer: (props: { data: any }) => React.ReactNode;
 }
 
 export interface CommonControlProps<P> {

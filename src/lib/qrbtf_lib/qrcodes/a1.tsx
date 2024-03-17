@@ -227,5 +227,6 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
 }
 
 export const qrbtfModuleA1: QrbtfModule<QrbtfRendererA1Props> = {
+  type: "svg_renderer",
   renderer: QrbtfRendererA1,
 };

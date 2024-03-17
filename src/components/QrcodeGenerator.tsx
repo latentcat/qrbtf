@@ -29,6 +29,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import {useImageService} from "@/lib/image_service";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -43,6 +44,7 @@ export interface QrcodeGeneratorProps<P extends {}>
 export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const t = useTranslations("index.params");
   const url = useAtomValue(urlAtom);
+  const { onSubmit, resData } = useImageService()
 
   const { children, className, params, defaultValues, ...restProps } = props;
 
@@ -109,7 +111,14 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
 
           <div className="shrink-0 w-full sm:w-[396px] md:w-72 lg:w-[396px]">
             <div className="sticky top-9">
-              <Button className="w-full mb-6 hidden">{t("generate")}</Button>
+              {props.qrcodeModule.type === "api_fetcher" && (
+                <Button
+                  className="w-full mb-6"
+                  onClick={() => onSubmit(form.getValues())}
+                >
+                  {t("generate")}
+                </Button>
+              )}
               <div className="">
                 <Label
                   className="flex items-center justify-between mb-1.5"
@@ -158,11 +167,20 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                     ref={qrcodeWrapperRef}
                     className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white"
                   >
-                    {props.qrcodeModule.renderer({
-                      className: "w-full",
-                      url: url || "https://qrbtf.com",
-                      ...componentProps,
-                    })}
+                    {props.qrcodeModule.type === "svg_renderer" &&(
+                      <>
+                        {props.qrcodeModule.renderer({
+                          className: "w-full",
+                          url: url || "https://qrbtf.com",
+                          ...componentProps,
+                        })}
+                      </>
+                    )}
+                    {props.qrcodeModule.type === "api_fetcher" &&(
+                      <>
+                        {props.qrcodeModule.visualizer({ data: resData })}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

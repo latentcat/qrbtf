@@ -131,8 +131,11 @@
     },
     "sp1": {
       "title": "SP-1",
-      "desc": "C2",
-      "test": "Test"
+      "subtitle": "C2"
+    },
+    "g1": {
+      "title": "G1",
+      "subtitle": "Generative AI QR code"
     }
   },
   "footer": {
