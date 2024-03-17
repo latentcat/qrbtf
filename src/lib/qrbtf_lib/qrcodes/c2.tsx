@@ -201,8 +201,7 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
           const gray = gamma(data[0], data[1], data[2]);
           if (
             Math.random() >
-              (gray / 255 + brightness - 0.5) * (contrast + 1) +
-                0.5 &&
+              (gray / 255 + brightness - 0.5) * (contrast + 1) + 0.5 &&
             (x % 3 !== 1 || y % 3 !== 1)
           )
             gpl.push(
