@@ -18,7 +18,9 @@ export function SectionStylesClient() {
   const currentQrcodeType = useCurrentQrcodeType();
 
   const ref = useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>
-  const { events } = useDraggable(ref)
+  const { events } = useDraggable(ref, {
+    applyRubberBandEffect: true, // activate rubber band effect
+  })
 
   const render = (item: QrStyleItemProps, index: number) => {
     const itemPath = item.id === "g1" ? "" : item.id;
