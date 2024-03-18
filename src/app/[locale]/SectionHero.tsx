@@ -65,7 +65,7 @@ export function SectionHero() {
             </Link>
           </div>
 
-          <SplitView>
+          <SplitView className="gap-y-0">
             <SplitLeft>
               <div className="mt-6 w-full">
                 <Label className="flex justify-between text-sm font-medium mb-1.5">

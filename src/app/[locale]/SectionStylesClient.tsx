@@ -10,10 +10,17 @@ import { Link } from "@/navigation";
 import { Label } from "@/components/ui/label";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
+import React, {useRef} from "react";
+import {useDraggable} from "react-use-draggable-scroll";
 
 export function SectionStylesClient() {
   const t = useTranslations("index.style");
   const currentQrcodeType = useCurrentQrcodeType();
+
+  const ref = useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>
+  const { events } = useDraggable(ref, {
+    applyRubberBandEffect: true, // activate rubber band effect
+  })
 
   const render = (item: QrStyleItemProps, index: number) => {
     const itemPath = item.id === "g1" ? "/" : `/style/${item.id}`;
@@ -29,7 +36,7 @@ export function SectionStylesClient() {
         <Link href={itemPath}>
           <motion.div
             className={cn(
-              "relative w-[calc((100vw-(12px)*5)/2)] sm:w-48 rounded-2xl bg-accent/30 overflow-hidden",
+              "relative w-[calc((100vw-(12px)*5)/2)] sm:w-[195px] rounded-2xl bg-accent/30 overflow-hidden",
             )}
             whileTap={{
               scale: 0.95,
@@ -73,10 +80,17 @@ export function SectionStylesClient() {
       <Container>
         <Label className="flex justify-between text-sm font-medium mb-2">
           {t("title")}
+          <span className="ml-3 font-normal text-foreground/50">
+            {t("subtitle")}
+          </span>
         </Label>
       </Container>
 
-      <div className="overflow-x-auto no-scrollbar snap-x sm:snap-none snap-mandatory">
+      <div
+        className="overflow-x-auto no-scrollbar snap-x sm:snap-none snap-mandatory"
+        {...events}
+        ref={ref} // add reference and events to the wrapping div
+      >
         <div className="flex flex-col">
           <div className="w-full flex flex-col items-center sm:px-6 lg:px-12">
             <div className="w-full max-w-5xl">

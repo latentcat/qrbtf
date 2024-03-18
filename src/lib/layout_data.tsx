@@ -1,12 +1,22 @@
 import { type Metadata, Viewport } from "next";
 
 export const layoutMetadata: Metadata = {
-  metadataBase: new URL("https://troyni.com"),
+  metadataBase: new URL("https://qrbtf.com"),
   title: {
     template: "%s - QRBTF",
-    default: "QRBTF",
+    default: "QRBTF - AI QR Code",
   },
-  description: "QRBTF",
+  description: "QRBTF - #1 AI QR Code Generator",
+  keywords: [
+    "QR Code",
+    "qrcode",
+    "AI QR Code",
+    "AI qrcode",
+    "Parametric QR Code",
+    "QRBTF",
+    "Mid Real",
+    "midreal",
+  ],
   // openGraph: {
   //   title: 'Troy Ni',
   //   images: encodeURI(`/og?title=${'Troy Ni'}`)

@@ -10,7 +10,8 @@
       "scan": "扫描"
     },
     "style": {
-      "title": "风格"
+      "title": "风格",
+      "subtitle": "左右滑动查看更多"
     },
     "params": {
       "param_name": "参数名",
