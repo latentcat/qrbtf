@@ -2,8 +2,9 @@ import { z } from "zod";
 import { safeParseJSON } from "@/lib/json_handler";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
-
-const ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT || "";
+import { ApiFetcher } from "@/lib/qrbtf_lib/qrcodes/common";
+import { useAtomValue } from "jotai/index";
+import { urlAtom } from "@/lib/states";
 
 const schema = z.union([
   z.object({
@@ -38,11 +39,10 @@ export type ImageResponse = z.infer<typeof schema>;
 export async function genImage(req: object, signal: AbortSignal) {
   const requestJson = JSON.stringify(req);
   console.log(req);
-  const response = await fetch(`${ENDPOINT}/image/create`, {
+  const response = await fetch(`/api/gen_image`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer`,
     },
     body: requestJson,
     signal,
@@ -82,9 +82,12 @@ interface ProgressType {
   status: string;
 }
 
-export function useImageService<P extends object>() {
+export function useImageService<P extends object>(
+  fetcher: ApiFetcher<P> | null,
+) {
   const [currentReq, setCurrentReq] = useState<P | null>(null);
   const [resData, setResData] = useState<any | null>(null);
+  const url = useAtomValue(urlAtom);
 
   // 提交表单，传入的就是 zod 的类型
   function onSubmit(values: P) {
@@ -115,6 +118,9 @@ export function useImageService<P extends object>() {
   // 当当前请求发生变化时执行，并取消执行上一次的请求
   useEffect(() => {
     // 没有请求时不执行
+    if (fetcher === null) return;
+
+    // 没有请求时不执行
     if (currentReq === null) return;
 
     // 定义请求方法
@@ -123,14 +129,15 @@ export function useImageService<P extends object>() {
 
       try {
         // 调用流式请求
-        const call = await genImage(currentReq, signal);
-        if (!call) {
-          //重置进度条
-          setResData(null);
-          return;
-        }
+        // const call = fetcher({url, ...currentReq}, signal);
+        // if (!call) {
+        //   //重置进度条
+        //   setResData(null);
+        //   return;
+        // }
+
         // 类似 Python 中的 async for，rep 返回格式为 zod 导出的 ImageResponse，都在 image_service.ts 中定义，必须严格校验返回格式类型，不通过会报错
-        for await (const res of call()) {
+        for await (const res of fetcher({ url, ...currentReq }, signal)) {
           setResData(res);
         }
       } catch (error: any) {

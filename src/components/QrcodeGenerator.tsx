@@ -46,7 +46,11 @@ export interface QrcodeGeneratorProps<P extends {}>
 export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const t = useTranslations("index.params");
   const url = useAtomValue(urlAtom);
-  const { onSubmit, resData } = useImageService();
+  const { onSubmit, resData } = useImageService(
+    props.qrcodeModule.type === "api_fetcher"
+      ? props.qrcodeModule.fetcher
+      : null,
+  );
 
   const { children, className, params, defaultValues, ...restProps } = props;
 

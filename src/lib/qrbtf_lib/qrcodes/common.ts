@@ -118,9 +118,14 @@ export interface QrbtfModuleSvgRenderer<P> {
   renderer: (props: P & { url: string }) => React.ReactNode;
 }
 
+export type ApiFetcher<P> = (
+  props: P & { url: string },
+  signal: AbortSignal,
+) => AsyncGenerator<any, any, any>;
+
 export interface QrbtfModuleApiFetcher<P> {
   type: "api_fetcher";
-  fetcher: (props: P & { url: string }) => Generator<any>;
+  fetcher: ApiFetcher<P>;
   visualizer: (props: { data: any }) => React.ReactNode;
 }
 
