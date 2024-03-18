@@ -4,9 +4,9 @@ export const layoutMetadata: Metadata = {
   metadataBase: new URL("https://qrbtf.com"),
   title: {
     template: "%s - QRBTF",
-    default: "QRBTF",
+    default: "QRBTF - AI QR Code",
   },
-  description: "QRBTF - AI & Parametric QR Code Generator",
+  description: "QRBTF - #1 AI QR Code Generator",
   keywords: [
     "QR Code",
     "qrcode",
