@@ -1,6 +1,7 @@
 // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
 import { toast } from "sonner";
 import { safeParseJSON } from "@/lib/json_handler";
+import { addCount } from "@/lib/server/count";
 
 function iteratorToStream(iterator: AsyncGenerator<any>) {
   if (!iterator) return;
@@ -58,6 +59,8 @@ async function genImage(req: object) {
 
   const reader = response.body!.getReader();
   const decoder = new TextDecoder("utf-8");
+
+  const result = addCount("counter_global", "generate_count");
 
   return async function* () {
     while (true) {
