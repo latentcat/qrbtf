@@ -36,7 +36,7 @@ export function SectionStylesClient() {
         <Link href={`/${itemPath}`}>
           <motion.div
             className={cn(
-              "relative w-[calc((100vw-(12px)*5)/2)] sm:w-48 rounded-2xl bg-accent/30 overflow-hidden",
+              "relative w-[calc((100vw-(12px)*5)/2)] sm:w-[195px] rounded-2xl bg-accent/30 overflow-hidden",
             )}
             whileTap={{
               scale: 0.95,
