@@ -10,7 +10,8 @@
       "scan": "Scan"
     },
     "style": {
-      "title": "Style"
+      "title": "Style",
+      "subtitle": "Swipe left or right to view more"
     },
     "params": {
       "param_name": "Parameter name",
