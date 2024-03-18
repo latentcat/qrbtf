@@ -3561,6 +3561,11 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
+react-use-draggable-scroll@^0.4.7:
+  version "0.4.7"
+  resolved "https://registry.npmjs.org/react-use-draggable-scroll/-/react-use-draggable-scroll-0.4.7.tgz#86e77caab921ca07b134e9e1d1bc1810aeee4916"
+  integrity sha512-6gCxGPO9WV5dIsBaDrgUKBaac8CY07PkygcArfajijYSNDwAq0girDRjaBuF1+lRqQryoLFQfpVaV2u/Yh6CrQ==
+
 react@^18:
   version "18.2.0"
   resolved "https://registry.npmmirror.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"

@@ -10,10 +10,15 @@ import { Link } from "@/navigation";
 import { Label } from "@/components/ui/label";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
+import React, {useRef} from "react";
+import {useDraggable} from "react-use-draggable-scroll";
 
 export function SectionStylesClient() {
   const t = useTranslations("index.style");
   const currentQrcodeType = useCurrentQrcodeType();
+
+  const ref = useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>
+  const { events } = useDraggable(ref)
 
   const render = (item: QrStyleItemProps, index: number) => {
     const itemPath = item.id === "g1" ? "" : item.id;
@@ -76,7 +81,11 @@ export function SectionStylesClient() {
         </Label>
       </Container>
 
-      <div className="overflow-x-auto no-scrollbar snap-x sm:snap-none snap-mandatory">
+      <div
+        className="overflow-x-auto no-scrollbar snap-x sm:snap-none snap-mandatory"
+        {...events}
+        ref={ref} // add reference and events to the wrapping div
+      >
         <div className="flex flex-col">
           <div className="w-full flex flex-col items-center sm:px-6 lg:px-12">
             <div className="w-full max-w-5xl">

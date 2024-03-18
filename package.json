@@ -69,6 +69,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.0",
     "react-resizable-panels": "^2.0.12",
+    "react-use-draggable-scroll": "^0.4.7",
     "sonner": "^1.4.3",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
