@@ -135,7 +135,10 @@ export function ParamTextControl<P extends FieldValues>(
 ) {
   return (
     <div className="flex flex-col py-4">
-      <ParamLabel label={props.label} />
+      <div>
+        <ParamLabel label={props.label} />
+        {/*{props.config?.actionSlot && props.config?.actionSlot(props.field)}*/}
+      </div>
       <div className="h-3" />
       <FormControl className="w-full">
         <Textarea

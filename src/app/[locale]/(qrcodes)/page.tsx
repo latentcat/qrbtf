@@ -10,6 +10,7 @@ import {
   qrbtfModuleG1,
   QrbtfRendererG1Props,
 } from "@/lib/qrbtf_lib/qrcodes/g1";
+import { GitHubButton } from "@/components/GitHubButton";
 
 export default function Page() {
   const t = useTranslations("qrcodes.g1");

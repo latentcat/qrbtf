@@ -107,7 +107,7 @@ export function usePositioningParams() {
   };
 }
 
-import { Path } from "react-hook-form";
+import { ControllerRenderProps, Path } from "react-hook-form";
 
 export type QrbtfModule<P> =
   | QrbtfModuleSvgRenderer<P>
@@ -145,11 +145,14 @@ export interface ParamNumberControlProps {
   };
 }
 
+type ActionSlotProps = ControllerRenderProps<any, Path<any>>;
+
 export interface ParamTextControlProps {
   type: "text";
   config?: {
     placeholder?: string;
     maxLength?: number;
+    actionSlot?: (props: ActionSlotProps) => React.ReactNode;
   };
 }
 
