@@ -134,8 +134,9 @@ export function ParamTextControl<P extends FieldValues>(
   props: ControlCommonProps<P> & ParamTextControlProps,
 ) {
   return (
-    <div className="flex flex-col gap-3 py-4">
+    <div className="flex flex-col py-4">
       <ParamLabel label={props.label} />
+      <div className="h-3" />
       <FormControl className="w-full">
         <Textarea
           placeholder={props.config?.placeholder}
@@ -144,6 +145,7 @@ export function ParamTextControl<P extends FieldValues>(
           onChange={(value) => props.field.onChange(value.target.value)}
         />
       </FormControl>
+      <div className="h-1.5" />
       <FormDescription>{props.desc}</FormDescription>
     </div>
   );
