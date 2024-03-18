@@ -8,6 +8,6 @@ export function cn(...inputs: ClassValue[]) {
 
 export function useCurrentQrcodeType() {
   const pathname = usePathname();
-  const type = pathname.split("/")[1] || "g1";
+  const type = pathname.split("/")[2] || "g1";
   return type;
 }

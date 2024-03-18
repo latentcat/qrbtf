@@ -16,7 +16,7 @@ export function SectionStylesClient() {
   const currentQrcodeType = useCurrentQrcodeType();
 
   const render = (item: QrStyleItemProps, index: number) => {
-    const itemPath = item.id === "g1" ? "" : item.id;
+    const itemPath = item.id === "g1" ? "/" : `/style/${item.id}`;
     const isActive = currentQrcodeType === item.id;
     return (
       <div
@@ -26,7 +26,7 @@ export function SectionStylesClient() {
           isActive ? "" : "dark:opacity-70",
         )}
       >
-        <Link href={`/${itemPath}`}>
+        <Link href={itemPath}>
           <motion.div
             className={cn(
               "relative w-[calc((100vw-(12px)*5)/2)] sm:w-48 rounded-2xl bg-accent/30 overflow-hidden",
