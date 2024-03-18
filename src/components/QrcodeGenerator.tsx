@@ -1,7 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Container } from "@/components/Containers";
+import {
+  Container,
+  SplitLeft,
+  SplitRight,
+  SplitView,
+} from "@/components/Containers";
 import { ConfigType, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/common";
 import { Form, FormField } from "@/components/ui/form";
 import { DefaultValues, useForm, useWatch } from "react-hook-form";
@@ -91,8 +96,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   return (
     <div>
       <Container>
-        <div className="mt-9 flex flex-col md:flex-row gap-9">
-          <div className="grow">
+        <SplitView className="mt-9">
+          <SplitLeft>
             <div className="_sticky _top-9">
               <StyleTitle
                 title={props.title}
@@ -115,9 +120,9 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                 </Form>
               </div>
             </div>
-          </div>
+          </SplitLeft>
 
-          <div className="shrink-0 w-full sm:w-[396px] md:w-72 lg:w-[396px]">
+          <SplitRight>
             <div className="sticky top-9">
               {props.qrcodeModule.type === "api_fetcher" && (
                 <Button
@@ -171,16 +176,16 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                 <div className="relative border rounded-xl bg-accent/30 w-full overflow-hidden">
                   <AspectRatio ratio={1} />
                   <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-                    <QrCodeIcon className="w-12 h-12 opacity-20" />
+                    {/*<QrCodeIcon className="w-12 h-12 opacity-20" />*/}
                   </div>
                   <div
                     ref={qrcodeWrapperRef}
-                    className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-white"
+                    className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center _bg-white"
                   >
                     {props.qrcodeModule.type === "svg_renderer" && (
                       <>
                         {props.qrcodeModule.renderer({
-                          className: "w-full",
+                          className: "w-full bg-white",
                           url: url || "https://qrbtf.com",
                           ...componentProps,
                         })}
@@ -193,8 +198,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </SplitRight>
+        </SplitView>
       </Container>
     </div>
   );

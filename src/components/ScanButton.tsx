@@ -5,6 +5,7 @@ import { LucideScan } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useAtom } from "jotai/index";
 import { urlAtom } from "@/lib/states";
+import { toast } from "sonner";
 
 export function ScanButton(props: { name: string }) {
   const scanRef = useRef<HTMLInputElement>(null);
@@ -34,12 +35,12 @@ export function ScanButton(props: { name: string }) {
         .then((decodedText) => {
           // 成功后设置 url，蹦出 success toast
           setUrl(decodedText);
-          // toast.success("Scan succeeded")
+          toast.success("Scan succeeded");
         })
         .catch((err) => {
           // 失败时蹦出 error toast
           console.log(`Scan error: ${err}`);
-          // toast.error("Scan error")
+          toast.error("Scan error");
         });
     };
 

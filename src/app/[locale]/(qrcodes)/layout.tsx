@@ -6,7 +6,12 @@ import { SectionQA } from "@/app/[locale]/SectionQA";
 import { SectionTeam } from "@/app/[locale]/SectionTeam";
 import { SectionChangelog } from "@/app/[locale]/SectionChangelog";
 import { SectionSponsor } from "@/app/[locale]/SectionSponsor";
-import { Container } from "@/components/Containers";
+import {
+  Container,
+  SplitLeft,
+  SplitRight,
+  SplitView,
+} from "@/components/Containers";
 import { SectionStatus } from "@/app/[locale]/SectionStatus";
 
 export default function RootLayout({
@@ -22,18 +27,18 @@ export default function RootLayout({
       <SectionStyles />
       {children}
       <Container>
-        <div className="flex flex-col md:flex-row gap-x-9 gap-y-12 mt-12">
-          <div className="grow flex flex-col gap-12">
+        <SplitView className="gap-x-9 gap-y-12 mt-12">
+          <SplitLeft className="flex flex-col gap-12">
             <SectionStatus />
             <SectionQA />
             <SectionRefs />
             <SectionTeam />
             <SectionSponsor />
-          </div>
-          <div className="shrink-0 w-full sm:w-[396px] md:w-72 lg:w-[396px]">
+          </SplitLeft>
+          <SplitRight>
             <SectionChangelog />
-          </div>
-        </div>
+          </SplitRight>
+        </SplitView>
       </Container>
     </div>
   );

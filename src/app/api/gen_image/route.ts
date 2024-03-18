@@ -51,7 +51,7 @@ async function genImage(req: object) {
 
   if (!response.ok) {
     if (response.status === 429) {
-      // toast.error("Too many requests, please try again later");
+      toast.error("Too many requests, please try again later");
     }
     console.log(234);
     throw new Error("Failed to fetch");

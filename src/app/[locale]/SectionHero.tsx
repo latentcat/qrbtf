@@ -1,5 +1,10 @@
 import { useTranslations } from "next-intl";
-import { Container } from "@/components/Containers";
+import {
+  Container,
+  SplitLeft,
+  SplitRight,
+  SplitView,
+} from "@/components/Containers";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -60,19 +65,24 @@ export function SectionHero() {
             </Link>
           </div>
 
-          <div className="mt-6 w-full sm:max-w-lg">
-            <Label className="flex justify-between text-sm font-medium mb-1.5">
-              {t("url")}
-              <div className="flex items-center gap-3">
-                <div className="text-sm">
-                  10
-                  <span className="opacity-50">/255</span>
-                </div>
-                <ScanButton name={t("scan")} />
+          <SplitView>
+            <SplitLeft>
+              <div className="mt-6 w-full">
+                <Label className="flex justify-between text-sm font-medium mb-1.5">
+                  {t("url")}
+                  <div className="flex items-center gap-3">
+                    {/*<div className="text-sm">*/}
+                    {/*  10*/}
+                    {/*  <span className="opacity-50">/255</span>*/}
+                    {/*</div>*/}
+                    <ScanButton name={t("scan")} />
+                  </div>
+                </Label>
+                <UrlInput />
               </div>
-            </Label>
-            <UrlInput />
-          </div>
+            </SplitLeft>
+            <SplitRight />
+          </SplitView>
         </div>
       </Container>
     </div>

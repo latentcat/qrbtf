@@ -14,6 +14,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { opacityAnimations, transitionMd } from "@/lib/animations";
 import { Loader2 } from "lucide-react";
 import { Progress } from "@/components/Progress";
+import { toast } from "sonner";
 
 interface RenderG1OwnProps {
   task_type: string;
@@ -101,9 +102,9 @@ function QrbtfVisualizerG1(props: { data: any }) {
     // 出现错误，弹出 toast
     if (rep.res_type === "error") {
       setProgress(null);
-      // toast.error("Server error", {
-      //   description: "",
-      // })
+      toast.error("Server error", {
+        description: "",
+      });
     }
 
     // 得到结果，结束，设置图像 url
