@@ -10,17 +10,18 @@ import { Link } from "@/navigation";
 import { Label } from "@/components/ui/label";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
-import React, {useRef} from "react";
-import {useDraggable} from "react-use-draggable-scroll";
+import React, { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 
 export function SectionStylesClient() {
   const t = useTranslations("index.style");
   const currentQrcodeType = useCurrentQrcodeType();
 
-  const ref = useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>
+  const ref =
+    useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
   const { events } = useDraggable(ref, {
     applyRubberBandEffect: true, // activate rubber band effect
-  })
+  });
 
   const render = (item: QrStyleItemProps, index: number) => {
     const itemPath = item.id === "g1" ? "/" : `/style/${item.id}`;
