@@ -17,15 +17,15 @@ interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 function Progress({ value, className }: ProgressProps) {
-  const x = useSpring(value, {
+  const x = useSpring(0, {
     damping: 12,
     mass: 1,
     stiffness: 36,
   });
 
-  // useEffect(() => {
-  //   x.set(value)
-  // }, [value])
+  useEffect(() => {
+    x.set(value);
+  }, [value, x]);
 
   return (
     <div
@@ -36,7 +36,7 @@ function Progress({ value, className }: ProgressProps) {
     >
       <motion.div
         className="h-full w-full flex-1 bg-primary origin-left"
-        style={{ scaleX: value }}
+        style={{ scaleX: x }}
       />
     </div>
   );
