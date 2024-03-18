@@ -18,7 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn, useCurrentQrcodeType } from "@/lib/utils";
-import { LucideDownload } from "lucide-react";
+import { Loader2, LucideDownload } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
 import { StyleTitle } from "@/components/Titles";
@@ -46,7 +46,7 @@ export interface QrcodeGeneratorProps<P extends {}>
 export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const t = useTranslations("index.params");
   const url = useAtomValue(urlAtom);
-  const { onSubmit, resData } = useImageService(
+  const { onSubmit, currentReq, resData } = useImageService(
     props.qrcodeModule.type === "api_fetcher"
       ? props.qrcodeModule.fetcher
       : null,
@@ -121,9 +121,13 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
             <div className="sticky top-9">
               {props.qrcodeModule.type === "api_fetcher" && (
                 <Button
+                  disabled={!!currentReq}
                   className="w-full mb-6"
                   onClick={() => onSubmit(form.getValues())}
                 >
+                  {!!currentReq && (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  )}
                   {t("generate")}
                 </Button>
               )}

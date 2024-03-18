@@ -155,6 +155,7 @@ export function useImageService<P extends object>(
 
   return {
     onSubmit,
+    currentReq,
     resData,
   };
 }

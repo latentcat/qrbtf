@@ -37,16 +37,13 @@ async function* fetcher(
   req: QrbtfRendererG1Props & QrbtfRendererUrlProps,
   signal: AbortSignal,
 ) {
-  // 调用流式请求
+  //重置进度条
+  yield {
+    type: "progress",
+    value: 0.0,
+    status: `Starting`,
+  };
   const call = await genImage(req, signal);
-  if (!call) {
-    //重置进度条
-    yield {
-      type: "generating",
-      value: 0.0,
-      status: `Starting`,
-    };
-  }
   // 类似 Python 中的 async for，rep 返回格式为 zod 导出的 ImageResponse，都在 image_service.ts 中定义，必须严格校验返回格式类型，不通过会报错
   for await (const rep of call()) {
     // 返回是 queue，排队中
