@@ -77,11 +77,6 @@ export async function genImage(req: object, signal: AbortSignal) {
   };
 }
 
-interface ProgressType {
-  value: number;
-  status: string;
-}
-
 export function useImageService<P extends object>(
   fetcher: ApiFetcher<P> | null,
 ) {
@@ -89,7 +84,6 @@ export function useImageService<P extends object>(
   const [resData, setResData] = useState<any | null>(null);
   const url = useAtomValue(urlAtom);
 
-  // 提交表单，传入的就是 zod 的类型
   function onSubmit(values: P) {
     // trackEvent('gen_qrcode', { is_login: !isLogout, ...values });
     //

@@ -68,17 +68,7 @@ async function genImage(req: object) {
       if (done) {
         break;
       }
-      console.log(123);
       yield value;
-      // const textValue = decoder.decode(value, { stream: true });
-      // const dataBlocks = textValue.split(/\r?\n/);
-      // for (const block of dataBlocks) {
-      //   console.log(textValue);
-      //   const object = safeParseJSON(block);
-      //   if (!object) continue;
-      //   console.log(object);
-      //   yield schema.parse(object);
-      // }
     }
   };
 }
