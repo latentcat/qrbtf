@@ -112,8 +112,7 @@ function QrbtfVisualizerG1(props: { data: any }) {
     // 得到结果，结束，设置图像 url
     if (rep.res_type === "result") {
       setImageUrl(rep.data.download_url);
-      console.log(234234);
-      // setCurrentReq(null)
+      setProgress(null);
     }
   }, [props.data]);
 
