@@ -110,24 +110,24 @@
 
       "contrast": {
         "label": "Contrast",
-        "desc": "Contrast"
+        "desc": ""
       },
       "brightness": {
         "label": "Brightness",
-        "desc": "Brightness"
+        "desc": ""
       },
       "background": {
         "label": "Background",
-        "desc": "Background",
+        "desc": "",
         "button_label": "Upload"
       },
       "align_type": {
         "label": "Align Type",
-        "desc": "Align Type"
+        "desc": ""
       },
       "timing_type": {
         "label": "Timing Type",
-        "desc": "Timing Type"
+        "desc": ""
       }
     },
     "sp1": {
