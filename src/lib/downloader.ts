@@ -1,49 +1,48 @@
-const svgHead =
-  '<?xml version="1.0" encoding="utf-8"?>\n ' +
-  '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">\n';
+import { QrbtfModule } from "./qrbtf_lib/qrcodes/common";
 
-const MIME = { jpg: "image/jpeg", png: "image/png" };
-
-function saveSvg(name: string, content: string) {
-  let htmlContent = [svgHead + content];
-  let bl = new Blob(htmlContent, { type: "image/svg+xml" });
-  let a = document.createElement("a");
-  let filename = "qrcode_" + name + ".svg";
-
-  a.href = URL.createObjectURL(bl);
+function createDownloadTask(href: string, filename: string) {
+  const a = document.createElement("a");
+  a.href = href;
+  a.target = "download";
   a.download = filename;
   a.hidden = true;
   a.click();
 }
 
-function saveImg(
+function svgToSvg(name: string, el: SVGSVGElement) {
+  const svgHead =
+    '<?xml version="1.0" encoding="utf-8"?>\n ' +
+    '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">\n';
+  let htmlContent = [svgHead + el.outerHTML];
+  let bl = new Blob(htmlContent, { type: "image/svg+xml" });
+  createDownloadTask(URL.createObjectURL(bl), `Qrcode_${name}.svg`);
+}
+
+const MIME = { jpg: "image/jpeg", png: "image/png" };
+interface SvgToImageOptions {
+  type: keyof typeof MIME;
+  width: number;
+  height: number;
+}
+
+function svgToImage(
   name: string,
-  content: string,
-  type: "jpg" | "png",
-  width = 1500,
-  height = 1500,
+  el: SVGSVGElement,
+  options?: Partial<SvgToImageOptions>,
 ) {
-  if (!MIME[type]) throw "Error image type";
+  const { type = "jpg", width = 1500, height = 1500 } = options || {};
 
-  let filename = "QRcode_" + name + "." + type;
-  const wrap = document.createElement("div");
-  wrap.innerHTML = content;
-
-  const $svg = wrap.firstChild!;
-  const $clone = $svg.cloneNode(true) as HTMLElement;
-
+  const $clone = el.cloneNode(true) as HTMLElement;
   $clone.setAttribute("width", width.toString());
   $clone.setAttribute("height", height.toString());
-
   const svgData = new XMLSerializer().serializeToString($clone);
 
-  let canvas = document.createElement("canvas");
-
+  const canvas = document.createElement("canvas");
   canvas.setAttribute("width", width.toString());
   canvas.setAttribute("height", height.toString());
 
-  let ctx = canvas.getContext("2d");
-  let img = document.createElement("img");
+  const ctx = canvas.getContext("2d");
+  const img = document.createElement("img");
   img.setAttribute("src", "data:image/svg+xml;base64," + btoa(svgData));
 
   img.onload = () => {
@@ -55,43 +54,71 @@ function saveImg(
     if (type === "jpg") ctx.fillRect(0, 0, width, height);
     ctx.drawImage(img, 0, 0, width, height);
 
-    let a = document.createElement("a");
-    let data = canvas.toDataURL(MIME[type], 0.8);
-    a.setAttribute("href", data);
-    a.setAttribute("target", "download");
-    a.setAttribute("download", filename);
-    a.click();
+    const data = canvas.toDataURL(MIME[type], 0.8);
+    createDownloadTask(data, `QRcode_${name}.${type}`);
   };
 }
 
-export async function download(
-  name: string,
-  content: HTMLElement,
-  type: "svg" | "jpg" | "png",
-) {
-  const doDownload = () => {
-    if (type === "svg") {
-      saveSvg(name, content.innerHTML);
-    } else {
-      saveImg(name, content.innerHTML, type);
-    }
-  };
+async function srcToImage(name: string, src: string) {
+  const parsedUrl = new URL(src);
+  const pathname = parsedUrl.pathname;
+  const suffix = pathname.split(".").pop() || "jpg";
 
-  // WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=270102
-  Promise.all([
-    fetch("/api/update_count", {
-      method: "POST",
-      body: JSON.stringify({
-        collection_name: "counter_style",
-        name: name,
-      }),
-    }),
-    fetch("/api/update_count", {
-      method: "POST",
-      body: JSON.stringify({
-        collection_name: "counter_global",
-        name: "download_count",
-      }),
-    }),
-  ]).finally(() => doDownload());
+  const image = await fetch(src);
+  const blob = await image.blob();
+  createDownloadTask(URL.createObjectURL(blob), `QRcode_${name}.${suffix}`);
 }
+
+type Downloader = (name: string, wrapper: HTMLElement) => void;
+
+function withReport(
+  downloaders: Record<string, Downloader>,
+): Record<string, Downloader> {
+  for (const type in downloaders) {
+    const origin = downloaders[type];
+    downloaders[type] = (name, wrapper) => {
+      // WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=270102
+      Promise.all([
+        fetch("/api/update_count", {
+          method: "POST",
+          body: JSON.stringify({
+            collection_name: "counter_style",
+            name: name,
+          }),
+        }),
+        fetch("/api/update_count", {
+          method: "POST",
+          body: JSON.stringify({
+            collection_name: "counter_global",
+            name: "download_count",
+          }),
+        }),
+      ]).finally(() => origin(name, wrapper));
+    };
+  }
+  return downloaders;
+}
+
+const SvgQrcodeDownloaders: Record<string, Downloader> = withReport({
+  svg: (name, wrapper) => svgToSvg(name, wrapper.firstChild as SVGSVGElement),
+  jpg: (name, wrapper) =>
+    svgToImage(name, wrapper.firstChild as SVGSVGElement, { type: "jpg" }),
+  png: (name, wrapper) =>
+    svgToImage(name, wrapper.firstChild as SVGSVGElement, { type: "png" }),
+});
+const ApiFetcherQrcodeDownloaders: Record<string, Downloader> = withReport({
+  jpg: (name, wrapper) =>
+    srcToImage(name, wrapper.getElementsByTagName("img")[0].src),
+  png: (name, wrapper) =>
+    srcToImage(name, wrapper.getElementsByTagName("img")[0].src),
+});
+
+const downloaderMaps: Record<
+  QrbtfModule<void>["type"],
+  Record<string, Downloader>
+> = {
+  svg_renderer: SvgQrcodeDownloaders,
+  api_fetcher: ApiFetcherQrcodeDownloaders,
+};
+
+export { downloaderMaps };

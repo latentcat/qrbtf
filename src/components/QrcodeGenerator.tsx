@@ -24,7 +24,7 @@ import { QrCodeIcon } from "@heroicons/react/24/outline";
 import { StyleTitle } from "@/components/Titles";
 import { useAtomValue } from "jotai";
 import { urlAtom } from "@/lib/states";
-import { download } from "@/lib/downloader";
+import { downloaderMaps } from "@/lib/downloader";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -146,16 +146,14 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                       </Badge>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      {(["svg", "jpg", "png"] as const).map((type) => (
+                      {Object.entries(
+                        downloaderMaps[props.qrcodeModule.type],
+                      ).map(([type, handler]) => (
                         <DropdownMenuItem
                           key={type}
                           onClick={() =>
                             qrcodeWrapperRef.current &&
-                            download(
-                              currentQrcodeType,
-                              qrcodeWrapperRef.current,
-                              type,
-                            )
+                            handler(currentQrcodeType, qrcodeWrapperRef.current)
                           }
                         >
                           <span className="_font-mono">
