@@ -166,8 +166,12 @@ function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
         <motion.div
           className={clsx(
             "fixed z-10 w-full top-0 left-0 bg-background overflow-hidden",
-            menuOpen ? "block" : "hidden",
+            // menuOpen ? "block" : "hidden",
           )}
+          initial={{
+            height: 56,
+            opacity: 0,
+          }}
           animate={{
             height: menuOpen ? "100%" : 56,
             opacity: menuOpen ? 1 : 0,
