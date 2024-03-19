@@ -33,8 +33,8 @@ export default async function SignIn(props: SignInProps) {
 
   return (
     <>
-      <div className="mt-16 w-full h-full flex flex-col">
-        <HeaderPadding />
+      <div className="grow w-full h-full flex flex-col justify-center">
+        {/*<HeaderPadding />*/}
         <Container>
           <div className="grow flex flex-col items-center justify-center gap-4">
             <SignInContent />

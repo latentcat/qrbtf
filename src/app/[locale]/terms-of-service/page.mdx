@@ -1,0 +1,25 @@
+
+import {genMetadata} from "@/lib/articles";
+import {SimpleLayoutProj} from "@/components/SimpleLayout";
+
+export const article = {
+  author: 'Latent Cat',
+  date: '2020-02-16',
+  title: 'Terms of Service',
+  description: 'Terms of Service of QRBTF',
+}
+
+export const metadata = genMetadata(article)
+
+export default (props) => (
+  <SimpleLayoutProj
+    title="Terms of Service"
+    intro=""
+    {...props}
+  />
+)
+
+
+TERMS OF SERVICE
+
+To be written.

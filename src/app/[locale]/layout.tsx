@@ -17,6 +17,7 @@ import pick from "lodash/pick";
 import { SectionStylesClient } from "@/app/[locale]/SectionStylesClient";
 import React from "react";
 import { getMessages } from "next-intl/server";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = layoutMetadata;
 
@@ -35,13 +36,15 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="antialiased" suppressHydrationWarning>
       <LayoutHead />
-      <body className={inter.className}>
+      <body className={cn(inter.className, "")}>
         <SessionProvider session={session}>
           <Providers>
             <NextIntlClientProvider messages={pick(messages, ["user_button"])}>
               <Header />
             </NextIntlClientProvider>
-            {children}
+            <div className="min-h-screen flex flex-col">
+              {children}
+            </div>
             <Footer />
           </Providers>
         </SessionProvider>

@@ -1,15 +1,13 @@
 import type { Config } from "tailwindcss";
+import typographyStyles from './typography'
+import typographyPlugin from '@tailwindcss/typography'
 
 const config = {
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+  content: ['./src/**/*.{js,mjs,jsx,ts,tsx,mdx}'],
   prefix: "",
   theme: {
+    typography: typographyStyles,
     container: {
       center: true,
       padding: "2rem",
@@ -74,7 +72,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), typographyPlugin],
 } satisfies Config;
 
 export default config;
