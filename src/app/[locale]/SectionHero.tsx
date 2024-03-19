@@ -27,7 +27,7 @@ export function SectionHero() {
   const t = useTranslations("index.hero");
 
   return (
-    <div className="mt-28 lg:mt-40">
+    <div className="_mt-28 _lg: mt-40">
       <Container>
         <div>
           <h1 className="text-4xl lg:text-5xl font-bold hidden">
