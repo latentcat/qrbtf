@@ -28,8 +28,8 @@ function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
 
   const points = useMemo(() => {
     const points: React.ReactNode[] = [];
-    for (let x = 0; x < table.length; x++) {
-      for (let y = 0; y < table.length; y++) {
+    for (let y = 0; y < table.length; y++) {
+      for (let x = 0; x < table.length; x++) {
         const posX = 3 * x;
         const posY = 3 * y;
         switch (typeTable[x][y]) {

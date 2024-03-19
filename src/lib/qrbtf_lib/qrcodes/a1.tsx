@@ -39,8 +39,8 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
     const vw = [3, -3];
     const vh = [3, -3];
 
-    for (let x = 0; x < table.length; x++) {
-      for (let y = 0; y < table.length; y++) {
+    for (let y = 0; y < table.length; y++) {
+      for (let x = 0; x < table.length; x++) {
         if (!table[x][y]) continue;
         switch (typeTable[x][y]) {
           case QRPointType.POS_CENTER:
