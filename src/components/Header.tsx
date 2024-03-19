@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { clsx } from "clsx";
-import { usePathname } from "next/navigation";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   ChevronDownIcon,
   Cross1Icon,
@@ -17,6 +16,12 @@ import { transitionXl, transitionMd, transitionLg } from "@/lib/animations";
 import { QrbtfLogo } from "@/components/Logos";
 import { Container } from "@/components/Containers";
 import { UserButton } from "@/components/UserButton";
+
+import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
+import { usePathname } from "@/navigation";
+
+const scrollTopAtom = atom(true);
+const menuOpenAtom = atom(false);
 
 const headerLinks = [
   // {
@@ -46,6 +51,55 @@ interface HeaderLinkProps {
   onClick?: () => void;
 }
 
+function Logo() {
+  const setMenuOpen = useSetAtom(menuOpenAtom);
+  const isTop = useAtomValue(scrollTopAtom);
+  const pathname = usePathname();
+  const hasTransition = pathname === "/" || pathname.startsWith("/style");
+  const isDisplay = !isTop || !hasTransition;
+  return (
+    <div className="overflow-hidden">
+      <motion.div
+        initial={{
+          y: isDisplay ? 0 : "100%",
+        }}
+        animate={{
+          y: isDisplay ? 0 : "100%",
+        }}
+        transition={transitionMd}
+      >
+        <Link
+          href="/"
+          className="px-2 -mx-2 flex h-14 items-center"
+          onClick={() => setMenuOpen(false)}
+        >
+          <QrbtfLogo className="h-7" />
+        </Link>
+      </motion.div>
+    </div>
+  );
+}
+
+export function HeroLogo() {
+  const isTop = useAtomValue(scrollTopAtom);
+  return (
+    <div className="">
+      <motion.div
+        initial={{
+          y: 0,
+        }}
+        animate={{
+          y: isTop ? 0 : "-100%",
+          opacity: isTop ? 1 : 0,
+        }}
+        transition={transitionMd}
+      >
+        <QrbtfLogo className="h-12 lg:h-14" />
+      </motion.div>
+    </div>
+  );
+}
+
 function MobileNavItem(props: HeaderLinkProps) {
   return (
     <li>
@@ -63,7 +117,8 @@ function MobileNavItem(props: HeaderLinkProps) {
 }
 
 function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useAtom(menuOpenAtom);
+
   return (
     <>
       <div
@@ -72,9 +127,7 @@ function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
           props.className,
         )}
       >
-        <Link href="/" className="p-2 -m-2" onClick={() => setMenuOpen(false)}>
-          <QrbtfLogo className="h-7" />
-        </Link>
+        <Logo />
         <div className="flex items-center">
           <Button
             variant="ghost"
@@ -168,9 +221,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
     >
       <Container>
         <div className="h-14 flex items-center justify-between">
-          <Link href="/" className="p-2 -m-2">
-            <QrbtfLogo className="h-7" />
-          </Link>
+          <Logo />
           <div className="flex items-center">
             <nav>
               <ul className="flex text-sm _font-medium text-zinc-800 dark:text-zinc-200 items-center">
@@ -190,6 +241,21 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
 }
 
 export function Header() {
+  const setIsTop = useSetAtom(scrollTopAtom);
+
+  useEffect(() => {
+    function handleScroll() {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      setIsTop(scrollTop <= 100);
+    }
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <MobileNavigation />

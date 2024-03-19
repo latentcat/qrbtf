@@ -21,6 +21,7 @@ import { useState } from "react";
 import { urlAtom } from "@/lib/states";
 import { useAtom } from "jotai";
 import { UrlInput } from "@/components/hero/UrlInput";
+import { HeroLogo } from "@/components/Header";
 
 export function SectionHero() {
   const t = useTranslations("index.hero");
@@ -33,9 +34,7 @@ export function SectionHero() {
             {t("title")}
           </h1>
 
-          <p>
-            <QrbtfLogo className="h-12 lg:h-14" />
-          </p>
+          <HeroLogo />
 
           <p className="text-base lg:text-lg mt-6 text-foreground/70">
             {t("subtitle")}

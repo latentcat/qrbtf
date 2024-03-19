@@ -54,7 +54,7 @@
     "date-fns": "^3.4.0",
     "deepmerge": "^4.3.1",
     "embla-carousel-react": "^8.0.0",
-    "framer-motion": "^11.0.12",
+    "framer-motion": "^11.0.14",
     "html5-qrcode": "^2.3.8",
     "input-otp": "^1.1.0",
     "jotai": "^2.7.0",
