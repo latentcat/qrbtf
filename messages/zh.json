@@ -80,6 +80,14 @@
       }
     }
   },
+  "signin": {
+    "title": "登录",
+    "desc": "点击登录按钮即代表您已同意我们的<TermOfService>条款协议</TermOfService>和<PrivacyPolicy>隐私政策</PrivacyPolicy>。"
+  },
+  "user_button": {
+    "sign_in": "登录",
+    "sign_out": "登出"
+  },
   "qrcodes": {
     "common": {
       "correct_level": {

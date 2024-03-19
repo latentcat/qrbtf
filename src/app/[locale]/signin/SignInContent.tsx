@@ -1,10 +1,14 @@
 import AuthButtons from "@/app/[locale]/signin/AuthButtons";
 import { Link } from "@/navigation";
+import { TranslationValues, useTranslations } from "next-intl";
+import React, { ReactNode } from "react";
 
 export default function SignInContent() {
+  const t = useTranslations("signin");
+
   return (
     <div className="flex flex-col items-center justify-center gap-4 w-96 max-w-full p-6">
-      <h1 className="text-2xl font-bold mb-2">Sign In</h1>
+      <h1 className="text-2xl font-bold mb-2">{t("title")}</h1>
 
       <div className="relative w-full">
         <div className="absolute inset-0 flex items-center">
@@ -20,15 +24,18 @@ export default function SignInContent() {
 
       <AuthButtons />
       <div className="text-sm opacity-50 text-center">
-        By clicking sign in buttons, you agree to our{" "}
-        <Link href="/terms-of-service" className="underline">
-          Terms of Service
-        </Link>{" "}
-        and{" "}
-        <Link href="/privacy-policy" className="underline">
-          Privacy Policy
-        </Link>
-        .
+        {t.rich("desc", {
+          TermOfService: (chunk: ReactNode) => (
+            <Link href="/terms-of-service" className="underline">
+              {chunk}
+            </Link>
+          ),
+          PrivacyPolicy: (chunk: ReactNode) => (
+            <Link href="/privacy-policy" className="underline">
+              {chunk}
+            </Link>
+          ),
+        })}
       </div>
     </div>
   );

@@ -13,11 +13,13 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "@/navigation";
 import { ArrowUpRightIcon, HomeIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
 export function UserButton() {
   const { data: session } = useSession();
+  const t = useTranslations("user_button");
   const hasSession = session !== null && session !== undefined;
   if (!hasSession) {
     return (
@@ -29,7 +31,7 @@ export function UserButton() {
             await signIn();
           }}
         >
-          Sign in
+          {t("sign_in")}
         </Button>
       </div>
     );
@@ -81,7 +83,7 @@ export function UserButton() {
               className="text-red-500"
             >
               <ArrowUpRightIcon className={iconClass} />
-              Log out
+              {t("sign_out")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

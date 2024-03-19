@@ -12,6 +12,11 @@ import { Header } from "@/components/Header";
 import { getServerSession } from "next-auth/next";
 import auth from "@/auth";
 import SessionProvider from "@/components/SessionProvider";
+import { NextIntlClientProvider, useMessages } from "next-intl";
+import pick from "lodash/pick";
+import { SectionStylesClient } from "@/app/[locale]/SectionStylesClient";
+import React from "react";
+import { getMessages } from "next-intl/server";
 
 export const metadata: Metadata = layoutMetadata;
 
@@ -25,6 +30,7 @@ export default async function RootLayout({
   params: { locale: string };
 }>) {
   const session = await getServerSession(auth);
+  const messages = await getMessages();
 
   return (
     <html lang={locale} className="antialiased" suppressHydrationWarning>
@@ -32,7 +38,9 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProvider session={session}>
           <Providers>
-            <Header />
+            <NextIntlClientProvider messages={pick(messages, ["user_button"])}>
+              <Header />
+            </NextIntlClientProvider>
             {children}
             <Footer />
           </Providers>

@@ -7,6 +7,7 @@ import AuthButtons from "./AuthButtons";
 import React from "react";
 import { HeaderPadding } from "@/components/Header";
 import { Container } from "@/components/Containers";
+import { useTranslations } from "next-intl";
 
 export const metadata: Metadata = {
   title: "Sign In",

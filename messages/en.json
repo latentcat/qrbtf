@@ -80,6 +80,14 @@
       }
     }
   },
+  "signin": {
+    "title": "Sign In",
+    "desc": "By clicking sign in buttons, you agree to our <TermOfService>Terms of Service</TermOfService> and <PrivacyPolicy>Privacy Policy</PrivacyPolicy>."
+  },
+  "user_button": {
+    "sign_in": "Sign in",
+    "sign_out": "Sign out"
+  },
   "qrcodes": {
     "common": {
       "correct_level": {
