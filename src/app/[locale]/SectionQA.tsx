@@ -37,7 +37,7 @@ export function SectionQA() {
   return (
     <div className="">
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
-      <div className="mt-3">
+      <div className="mt-6 _border-t">
         <Accordion type="single" collapsible>
           {list.map((item, index) => (
             <AccordionItem key="index" value={`item_${index}`}>
