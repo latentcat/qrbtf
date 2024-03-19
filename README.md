@@ -46,12 +46,12 @@ See [CPunisher / react-qrbtf](https://github.com/cpunisher/react-qrbtf) for more
 
 - [ciaochaos](https://github.com/ciaochaos)
 - [CPunisher](https://github.com/CPunisher)
-- More members at [Latent Cat](https://latentcat.com)
+- More members at [Latent Cat](https://latentcat.com).
 
 ## Contact
 
-- [E-mail](mailto://contact@latentcat.com) for cooperation consultation
-- [Discord server](https://discord.gg/V9CNuqYfte) for community communication and support
+- [E-mail](mailto://contact@latentcat.com) for cooperation consultation.
+- [Discord server](https://discord.gg/V9CNuqYfte) for community communication and support.
 
 ## License
 
