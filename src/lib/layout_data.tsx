@@ -17,10 +17,11 @@ export const layoutMetadata: Metadata = {
     "Mid Real",
     "midreal",
   ],
-  // openGraph: {
-  //   title: 'Troy Ni',
-  //   images: encodeURI(`/og?title=${'Troy Ni'}`)
-  // },
+  openGraph: {
+    // title: 'Troy Ni',
+    images:
+      "https://dt00g2eb5etby3xu.public.blob.vercel-storage.com/assets/qrbtf_kv-gXzB1cMYlyXQQrhza3HoQlH1WydQpe.jpg",
+  },
 };
 
 export const layoutViewport: Viewport = {
