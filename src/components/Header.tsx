@@ -21,6 +21,7 @@ import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { usePathname } from "@/navigation";
 
 const scrollTopAtom = atom(true);
+const scrollTitleAtom = atom(true);
 const menuOpenAtom = atom(false);
 
 const headerLinks = [
@@ -53,7 +54,7 @@ interface HeaderLinkProps {
 
 function Logo() {
   const setMenuOpen = useSetAtom(menuOpenAtom);
-  const isTop = useAtomValue(scrollTopAtom);
+  const isTop = useAtomValue(scrollTitleAtom);
   const pathname = usePathname();
   const hasTransition = pathname === "/" || pathname.startsWith("/style");
   const isDisplay = !isTop || !hasTransition;
@@ -81,7 +82,7 @@ function Logo() {
 }
 
 export function HeroLogo() {
-  const isTop = useAtomValue(scrollTopAtom);
+  const isTop = useAtomValue(scrollTitleAtom);
   return (
     <div className="">
       <motion.div
@@ -97,6 +98,21 @@ export function HeroLogo() {
         <QrbtfLogo className="h-12 lg:h-14" />
       </motion.div>
     </div>
+  );
+}
+
+export function BorderBottom() {
+  const isTop = useAtomValue(scrollTopAtom);
+  return (
+    <motion.div
+      initial={{
+        opacity: isTop ? 0 : 1,
+      }}
+      animate={{
+        opacity: isTop ? 0 : 1,
+      }}
+      className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]"
+    />
   );
 }
 
@@ -118,6 +134,7 @@ function MobileNavItem(props: HeaderLinkProps) {
 
 function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
   const [menuOpen, setMenuOpen] = useAtom(menuOpenAtom);
+  const isTop = useAtomValue(scrollTopAtom);
 
   return (
     <>
@@ -143,7 +160,7 @@ function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
           <div className="w-3"></div>
           <UserButton />
         </div>
-        <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]" />
+        <BorderBottom />
       </div>
       <div className="lg:hidden">
         <motion.div
@@ -233,7 +250,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
             <div className="w-3"></div>
             <UserButton />
           </div>
-          <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]" />
+          <BorderBottom />
         </div>
       </Container>
     </div>
@@ -242,12 +259,14 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
 
 export function Header() {
   const setIsTop = useSetAtom(scrollTopAtom);
+  const setIsTitle = useSetAtom(scrollTitleAtom);
 
   useEffect(() => {
     function handleScroll() {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
-      setIsTop(scrollTop <= 100);
+      setIsTop(scrollTop <= 0);
+      setIsTitle(scrollTop <= 100);
     }
     handleScroll();
     window.addEventListener("scroll", handleScroll);
