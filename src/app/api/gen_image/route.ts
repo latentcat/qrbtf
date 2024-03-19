@@ -2,6 +2,9 @@
 import { toast } from "sonner";
 import { safeParseJSON } from "@/lib/json_handler";
 import { addCount } from "@/lib/server/count";
+import { getServerSession } from "next-auth";
+import auth from "@/auth";
+import {NextResponse} from "next/server";
 
 function iteratorToStream(iterator: AsyncGenerator<any>) {
   if (!iterator) return;
@@ -74,6 +77,12 @@ async function genImage(req: object) {
 }
 
 export async function POST(request: Request) {
+
+  const session = await getServerSession(auth);
+  if (!session || !session.user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const iterator = await genImage(await request.json());
   const stream = iteratorToStream(iterator());
 
