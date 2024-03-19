@@ -29,7 +29,7 @@ export default async function SignIn(props: SignInProps) {
 
   return (
     <>
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col">
+      <div className="mt-16 w-full h-full flex flex-col">
         <AuthButtons />
         <div className="grow flex flex-col items-center justify-center gap-4">
           <SignInContent />

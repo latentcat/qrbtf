@@ -17,6 +17,9 @@ const auth: AuthOptions = {
       databaseName: "lc_auth",
     },
   ) as Adapter,
+  pages: {
+    signIn: "/signin",
+  },
 };
 
 export default auth;
