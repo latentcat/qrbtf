@@ -1,8 +1,11 @@
 <h1 align="center">QRBTF</h1>
 
 <p align="center">
-    URL: <a href="https://qrbtf.com" target="_blank">qrbtf.com</a><br />
+    Website: <a href="https://qrbtf.com" target="_blank">qrbtf.com</a>
+    | <a href="https://discord.gg/V9CNuqYfte" target="_blank">Discord server</a>
+    <br />
     The world's first and best AI & parametric QR code generator.
+    By <a href="https://latentcat.com" target="_blank">Latent Cat</a>
 </p>
 
 <p align="center">
@@ -34,44 +37,20 @@ Articles:
 4. Adjust parameters.
 5. Download for `SVG` `JPG` or `SVG` format.
 
-### React Component (react-qrbtf)
+### React Component
 
 See [CPunisher / react-qrbtf](https://github.com/cpunisher/react-qrbtf) for more information.
-
-```bash
-npm install react-qrbtf --save
-```
-
-#### Include the Component
-
-```js
-import React from "react";
-import { QRNormal } from "react-qrbtf";
-
-class Component extends React.Component {
-  render() {
-    return (
-      <QRNormal
-        value="react-qrbtf"
-        className="my-qrcode"
-        styles={{ svg: { width: "200px" } }}
-        type="round"
-        size={50}
-        opacity={80}
-        posType="planet"
-        otherColor="#33CCCC"
-        posColor="#009999"
-      />
-    );
-  }
-}
-```
 
 ### Authors
 
 - [ciaochaos](https://github.com/ciaochaos)
 - [CPunisher](https://github.com/CPunisher)
 - More members at [Latent Cat](https://latentcat.com)
+
+### Contact
+
+- [E-mail](mailto://contact@latentcat.com) for cooperation consultation
+- [Discord server](https://discord.gg/V9CNuqYfte) for community communication and support
 
 ### License
 
