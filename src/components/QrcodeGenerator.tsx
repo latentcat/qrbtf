@@ -98,7 +98,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
       <Container>
         <SplitView className="mt-9">
           <SplitLeft>
-            <div className="_sticky _top-9">
+            <div className="_sticky _top-24">
               <StyleTitle
                 title={props.title}
                 label={props.label}
@@ -123,7 +123,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
           </SplitLeft>
 
           <SplitRight>
-            <div className="sticky top-9">
+            <div className="sticky top-24">
               {props.qrcodeModule.type === "api_fetcher" && (
                 <Button
                   disabled={!!currentReq}
