@@ -3,7 +3,8 @@
 <p align="center">
     Website: <a href="https://qrbtf.com" target="_blank">qrbtf.com</a>
     | <a href="https://discord.gg/V9CNuqYfte" target="_blank">Discord server</a>
-    <br />
+</p>
+<p align="center">
     The world's first and best AI & parametric QR code generator.
     By <a href="https://latentcat.com" target="_blank">Latent Cat</a>.
 </p>
