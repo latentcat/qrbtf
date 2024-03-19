@@ -41,7 +41,7 @@ export function SectionTeam() {
     <div className="">
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
 
-      <div className="mt-3 leading-7">
+      <div className="mt-6 leading-7">
         {links.map((item, index) => (
           <Fragment key={item.name}>
             <Link

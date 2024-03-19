@@ -33,7 +33,7 @@ export function SectionStatus() {
   return (
     <div className="">
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
-      <div className="mt-3">
+      <div className="mt-6">
         <div className="grid grid-cols-2 gap-3">
           <DynamicStatus />
         </div>

@@ -18,7 +18,7 @@ export function SectionRefs() {
     <div className="">
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
 
-      <div className="mt-3 flex gap-3 flex-wrap">
+      <div className="mt-6 flex gap-3 flex-wrap">
         <Link href="https://aigc.latentcat.com" target="_blank">
           <Button variant="secondary" size="sm">
             <BookIcon className="w-4 h-4 mr-2" />

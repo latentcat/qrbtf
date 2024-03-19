@@ -8,20 +8,39 @@ import {
 } from "@/components/ui/accordion";
 import { SectionTitle } from "@/components/Titles";
 
+const list = [
+  {
+    q: "0.q",
+    a: "0.a",
+  },
+  {
+    q: "1.q",
+    a: "1.a",
+  },
+  {
+    q: "2.q",
+    a: "2.a",
+  },
+  // {
+  //   q: "3.q",
+  //   a: "3.a",
+  // },
+] as const;
+
 export function SectionQA() {
   const t = useTranslations("index.qa");
 
   return (
     <div className="">
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
-      <div className="_mt-3">
+      <div className="mt-3">
         <Accordion type="single" collapsible>
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Is it accessible?</AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </AccordionContent>
-          </AccordionItem>
+          {list.map((item, index) => (
+            <AccordionItem key="index" value={`item_${index}`}>
+              <AccordionTrigger>{t(item.q)}</AccordionTrigger>
+              <AccordionContent>{t(item.a)}</AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
       </div>
     </div>
