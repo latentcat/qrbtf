@@ -16,7 +16,7 @@ import { ArrowUpRightIcon, HomeIcon } from "lucide-react";
 
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
-export function AuthButton() {
+export function UserButton() {
   const { data: session } = useSession();
   const hasSession = session !== null && session !== undefined;
   if (!hasSession) {

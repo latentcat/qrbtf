@@ -4,6 +4,9 @@ import authOptions from "@/auth";
 import SignInContent from "./SignInContent";
 import { redirect } from "next/navigation";
 import AuthButtons from "./AuthButtons";
+import React from "react";
+import { HeaderPadding } from "@/components/Header";
+import { Container } from "@/components/Containers";
 
 export const metadata: Metadata = {
   title: "Sign In",
@@ -30,10 +33,12 @@ export default async function SignIn(props: SignInProps) {
   return (
     <>
       <div className="mt-16 w-full h-full flex flex-col">
-        <AuthButtons />
-        <div className="grow flex flex-col items-center justify-center gap-4">
-          <SignInContent />
-        </div>
+        <HeaderPadding />
+        <Container>
+          <div className="grow flex flex-col items-center justify-center gap-4">
+            <SignInContent />
+          </div>
+        </Container>
       </div>
     </>
   );

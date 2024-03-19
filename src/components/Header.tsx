@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 import { transitionXl, transitionMd, transitionLg } from "@/lib/animations";
 import { QrbtfLogo } from "@/components/Logos";
 import { Container } from "@/components/Containers";
-import { AuthButton } from "@/components/AuthButton";
+import { UserButton } from "@/components/UserButton";
 
 const headerLinks = [
   // {
@@ -88,7 +88,7 @@ function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
             )}
           </Button>
           <div className="w-3"></div>
-          <AuthButton />
+          <UserButton />
         </div>
         <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]" />
       </div>
@@ -180,7 +180,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
               </ul>
             </nav>
             <div className="w-3"></div>
-            <AuthButton />
+            <UserButton />
           </div>
           <div className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 translate-y-[1px]" />
         </div>
