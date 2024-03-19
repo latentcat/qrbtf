@@ -5,7 +5,7 @@
     | <a href="https://discord.gg/V9CNuqYfte" target="_blank">Discord server</a>
     <br />
     The world's first and best AI & parametric QR code generator.
-    By <a href="https://latentcat.com" target="_blank">Latent Cat</a>
+    By <a href="https://latentcat.com" target="_blank">Latent Cat</a>.
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
     <img src="public/assets/resources/qrcodes.jpg">
 </p>
 
-### Features
+## Features
 
 - **AI part**
   - Original models trained on a large number of images.
@@ -29,7 +29,7 @@ Articles:
 - [AI 生成可扫码图像 — 新 ControlNet 模型展示 (Chinese)](https://mp.weixin.qq.com/s/i4WR5ULH1ZZYl8Watf3EPw)
 - [ControlNet for QR Code](https://www.reddit.com/r/StableDiffusion/comments/141hg9x/controlnet_for_qr_code/)
 
-### Usage
+## Usage
 
 1. Open [qrbtf.com](https://qrbtf.com).
 2. Enter a URL or text.
@@ -37,21 +37,21 @@ Articles:
 4. Adjust parameters.
 5. Download for `SVG` `JPG` or `SVG` format.
 
-### React Component
+## React Component
 
 See [CPunisher / react-qrbtf](https://github.com/cpunisher/react-qrbtf) for more information.
 
-### Authors
+## Authors
 
 - [ciaochaos](https://github.com/ciaochaos)
 - [CPunisher](https://github.com/CPunisher)
 - More members at [Latent Cat](https://latentcat.com)
 
-### Contact
+## Contact
 
 - [E-mail](mailto://contact@latentcat.com) for cooperation consultation
 - [Discord server](https://discord.gg/V9CNuqYfte) for community communication and support
 
-### License
+## License
 
 [GNU General Public License v3.0](LICENSE)
