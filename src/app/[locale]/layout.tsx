@@ -8,6 +8,7 @@ import { LayoutHead } from "@/lib/layout_data";
 const inter = Inter({ subsets: ["latin"] });
 
 import { layoutMetadata, layoutViewport } from "@/lib/layout_data";
+import { Header } from "@/components/Header";
 
 export const metadata: Metadata = layoutMetadata;
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       <LayoutHead />
       <body className={inter.className}>
         <Providers>
+          <Header />
           {children}
           <Footer />
         </Providers>
