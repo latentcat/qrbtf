@@ -11,7 +11,7 @@ import {
 } from "@/lib/qrbtf_lib/qrcodes/sp1";
 
 export default function Page() {
-  const t = useTranslations("qrcodes.a1");
+  const t = useTranslations("qrcodes.sp1");
   const { commonParams, commonDefault } = useCommonParams();
   const { positioningParams, positioningDefault } = usePositioningParams();
 
@@ -74,7 +74,7 @@ export default function Page() {
     ...commonDefault,
     content_stroke_width: 0.7,
     content_x_stroke_width: 0.7,
-    positioning_stroke_width: 0.7,
+    positioning_stroke_width: 0.9,
     positioning_point_type: "dsj",
   };
 

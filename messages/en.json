@@ -132,7 +132,25 @@
     },
     "sp1": {
       "title": "SP-1",
-      "subtitle": "C2"
+      "subtitle": "From DSJ",
+      "content_stroke_width": {
+        "label": "Content stroke",
+        "desc": ""
+      },
+      "content_x_stroke_width": {
+        "label": "X mark stroke",
+        "desc": ""
+      },
+      "positioning_stroke_width": {
+        "label": "Positioning stroke",
+        "desc": ""
+      },
+      "positioning_point_type": {
+        "label": "Positioning type",
+        "desc": ""
+      },
+      "dsj": "DSJ",
+      "square": "Square"
     },
     "g1": {
       "title": "G1",

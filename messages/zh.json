@@ -132,7 +132,25 @@
     },
     "sp1": {
       "title": "SP-1",
-      "subtitle": "C2"
+      "subtitle": "来自 DSJ",
+      "content_stroke_width": {
+        "label": "信息点宽度",
+        "desc": ""
+      },
+      "content_x_stroke_width": {
+        "label": "X 宽度",
+        "desc": ""
+      },
+      "positioning_stroke_width": {
+        "label": "定位点描边",
+        "desc": ""
+      },
+      "positioning_point_type": {
+        "label": "定位点类型",
+        "desc": ""
+      },
+      "dsj": "DSJ",
+      "square": "方形"
     },
     "g1": {
       "title": "G1",
