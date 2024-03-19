@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import { Providers } from "@/app/providers";
 import { Footer } from "@/components/Footer";
-import { LayoutHead } from "@/lib/layout_data";
+import {generateMetadata, LayoutHead} from "@/lib/layout_data";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +19,9 @@ import React from "react";
 import { getMessages } from "next-intl/server";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = layoutMetadata;
+// export const metadata: Metadata = layoutMetadata;
+
+export {generateMetadata} from "@/lib/layout_data";
 
 export const viewport: Viewport = layoutViewport;
 

@@ -1,4 +1,21 @@
 {
+  "metadata": {
+    "title": {
+      "template": "%s - QRBTF",
+      "default": "QRBTF - #1 AI QR Code Generator"
+    },
+    "description": "The world's first and best AI QR code generator.",
+    "keywords": [
+      "QR Code",
+      "qrcode",
+      "AI QR Code",
+      "AI qrcode",
+      "Parametric QR Code",
+      "QRBTF",
+      "Mid Real",
+      "midreal"
+    ]
+  },
   "index": {
     "hero": {
       "title": "QRBTF",

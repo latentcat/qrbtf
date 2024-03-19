@@ -1,5 +1,28 @@
 import { type Metadata, Viewport } from "next";
 
+import {getTranslations} from 'next-intl/server';
+import React from "react";
+
+export async function generateMetadata({params: {locale}}: Readonly<{
+  params: { locale: string };
+}>) {
+  const t = await getTranslations({locale, namespace: 'metadata'});
+
+  return {
+    metadataBase: new URL("https://qrbtf.com"),
+    title: {
+      template: t("title.template"),
+      default: t("title.default"),
+    },
+    description: t("description"),
+    keywords: t("keywords"),
+    openGraph: {
+      images:
+        "https://dt00g2eb5etby3xu.public.blob.vercel-storage.com/assets/qrbtf_kv-gXzB1cMYlyXQQrhza3HoQlH1WydQpe.jpg",
+    },
+  }
+}
+
 export const layoutMetadata: Metadata = {
   metadataBase: new URL("https://qrbtf.com"),
   title: {
