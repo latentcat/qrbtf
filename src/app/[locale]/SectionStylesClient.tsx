@@ -34,7 +34,7 @@ export function SectionStylesClient() {
           isActive ? "" : "dark:opacity-70",
         )}
       >
-        <Link href={itemPath}>
+        <Link href={itemPath} scroll={false} prefetch={false}>
           <motion.div
             className={cn(
               "relative w-[calc((100vw-(12px)*5)/2)] sm:w-[195px] rounded-2xl bg-accent/30 overflow-hidden",
