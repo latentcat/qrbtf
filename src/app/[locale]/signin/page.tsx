@@ -1,16 +1,9 @@
-import {
-  GetServerSidePropsContext,
-  InferGetServerSidePropsType,
-  Metadata,
-} from "next";
-import { getProviders, signIn } from "next-auth/react";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/option";
-import AuthButtons from "@/app/(common)/signin/AuthButtons";
+import authOptions from "@/auth";
+import SignInContent from "./SignInContent";
 import { redirect } from "next/navigation";
-import { Container } from "@/components/Container";
-import MenubarPadding from "@/components/MenubarPadding";
-import SignInContent from "@/components/SignInContent";
+import AuthButtons from "./AuthButtons";
 
 export const metadata: Metadata = {
   title: "Sign In",
@@ -37,8 +30,7 @@ export default async function SignIn(props: SignInProps) {
   return (
     <>
       <div className="absolute top-0 left-0 w-full h-full flex flex-col">
-        <MenubarPadding />
-
+        <AuthButtons />
         <div className="grow flex flex-col items-center justify-center gap-4">
           <SignInContent />
         </div>

@@ -78,6 +78,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@auth/mongodb-adapter": "^2.5.0",
     "@types/lodash": "^4.17.0",
     "@types/mixpanel-browser": "^2.49.0",
     "@types/node": "^20",

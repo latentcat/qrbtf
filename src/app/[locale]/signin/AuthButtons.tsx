@@ -43,7 +43,7 @@ export default function AuthButtons() {
           className="w-full flex gap-2"
           onClick={() => {
             // trackEvent("sign_in", { type: "sign_in_button", provider: provider.id });
-            signIn(provider.id).then((r) => {});
+            signIn(provider.id);
           }}
         >
           {provider.icon}
