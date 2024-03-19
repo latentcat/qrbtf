@@ -75,4 +75,4 @@ class Component extends React.Component {
 
 ### License
 
-[GNU GENERAL PUBLIC LICENSE](LICENSE)
+[GNU General Public License v3.0](LICENSE)
