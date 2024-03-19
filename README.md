@@ -14,6 +14,11 @@
     <img src="public/assets/resources/qrcodes.jpg">
 </p>
 
+## News
+
+- **03/19/2024**<br />
+  The website has been completely rebuilt using Next.js, integrating AI and parametric parts, supporting English and Chinese, SSR, and lazy loading components. Contributions to i18n in other languages are welcome!
+
 ## Features
 
 - **AI part**
