@@ -5,16 +5,18 @@
       "default": "QRBTF - #1 AI 二维码生成器"
     },
     "description": "首创 AI 二维码",
-    "keywords": [
-      "QR Code",
-      "qrcode",
-      "AI QR Code",
-      "AI qrcode",
-      "二维码",
-      "QRBTF",
-      "参数化二维码",
-      "Mid Real"
-    ]
+    "keywords": {
+      "0": "QR Code",
+      "1": "qrcode",
+      "2": "AI QR Code",
+      "3": "AI qrcode",
+      "4": "二维码",
+      "5": "QRBTF",
+      "6": "Mid Real",
+      "7": "midreal",
+      "8": "",
+      "9": ""
+    }
   },
   "index": {
     "hero": {
