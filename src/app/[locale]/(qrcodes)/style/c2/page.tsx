@@ -3,15 +3,16 @@ import {
   qrbtfModuleC2,
   QrbtfRendererC2Props,
 } from "@/lib/qrbtf_lib/qrcodes/c2";
-import { ConfigType, useCommonParams } from "@/lib/qrbtf_lib/qrcodes/common";
 import { useTranslations } from "next-intl";
 import DefaultBackground from "/public/assets/images/c2_background.inline.png";
+import { CommonControlProps } from "@/lib/qrbtf_lib/qrcodes/param";
+import { useCommonParams } from "@/lib/qrbtf_lib/qrcodes/param/common";
 
 export default function Page() {
   const t = useTranslations("qrcodes.c2");
   const { commonParams, commonDefault } = useCommonParams();
 
-  const params: ConfigType<QrbtfRendererC2Props>[] = [
+  const params: CommonControlProps<QrbtfRendererC2Props>[] = [
     ...commonParams,
     {
       type: "number",

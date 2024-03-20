@@ -1,21 +1,15 @@
 import QrcodeGeneratorWithProvider from "@/components/QrcodeGeneratorWithProvider";
-import {
-  qrbtfModuleC2,
-  QrbtfRendererC2Props,
-} from "@/lib/qrbtf_lib/qrcodes/c2";
-import { ConfigType, useCommonParams } from "@/lib/qrbtf_lib/qrcodes/common";
 import { useTranslations } from "next-intl";
-import DefaultBackground from "/public/assets/images/c2_background.inline.png";
 import {
   qrbtfModuleG1,
   QrbtfRendererG1Props,
 } from "@/lib/qrbtf_lib/qrcodes/g1";
-import { GitHubButton } from "@/components/GitHubButton";
+import { CommonControlProps } from "@/lib/qrbtf_lib/qrcodes/param";
 
 export default function Page() {
   const t = useTranslations("qrcodes.g1");
 
-  const params: ConfigType<QrbtfRendererG1Props>[] = [
+  const params: CommonControlProps<QrbtfRendererG1Props>[] = [
     {
       type: "text",
       name: "prompt",

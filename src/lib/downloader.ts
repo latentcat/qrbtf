@@ -1,4 +1,4 @@
-import { QrbtfModule } from "./qrbtf_lib/qrcodes/common";
+import { QrbtfModule } from "./qrbtf_lib/qrcodes/param";
 
 function createDownloadTask(href: string, filename: string) {
   const a = document.createElement("a");

@@ -1,21 +1,19 @@
 import QrcodeGeneratorWithProvider from "@/components/QrcodeGeneratorWithProvider";
-import {
-  ConfigType,
-  useCommonParams,
-  usePositioningParams,
-} from "@/lib/qrbtf_lib/qrcodes/common";
 import { useTranslations } from "next-intl";
 import {
   qrbtfModuleSp1,
   QrbtfRendererSp1Props,
 } from "@/lib/qrbtf_lib/qrcodes/sp1";
+import { useCommonParams } from "@/lib/qrbtf_lib/qrcodes/param/common";
+import { usePositioningParams } from "@/lib/qrbtf_lib/qrcodes/param/position";
+import { CommonControlProps } from "@/lib/qrbtf_lib/qrcodes/param";
 
 export default function Page() {
   const t = useTranslations("qrcodes.sp1");
   const { commonParams, commonDefault } = useCommonParams();
   const { positioningParams, positioningDefault } = usePositioningParams();
 
-  const params: ConfigType<QrbtfRendererSp1Props>[] = [
+  const params: CommonControlProps<QrbtfRendererSp1Props>[] = [
     ...commonParams,
     {
       type: "number",

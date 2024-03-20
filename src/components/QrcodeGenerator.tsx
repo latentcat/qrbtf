@@ -7,7 +7,6 @@ import {
   SplitRight,
   SplitView,
 } from "@/components/Containers";
-import { ConfigType, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/common";
 import { Form, FormField } from "@/components/ui/form";
 import { DefaultValues, useForm, useWatch } from "react-hook-form";
 import {
@@ -38,6 +37,7 @@ import {
 } from "./ui/dropdown-menu";
 import { useImageService } from "@/lib/image_service";
 import { trackEvent } from "@/components/TrackComponents";
+import { CommonControlProps, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/param";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -45,7 +45,7 @@ export interface QrcodeGeneratorProps<P extends {}>
   label?: string;
   subtitle: string;
   qrcodeModule: QrbtfModule<P>;
-  params: ConfigType<P>[];
+  params: CommonControlProps<P>[];
   defaultValues: DefaultValues<P>;
 }
 
@@ -69,7 +69,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const qrcodeWrapperRef = useRef<HTMLDivElement | null>(null);
   const currentQrcodeType = useCurrentQrcodeType();
 
-  const renderControls = (item: ConfigType<P>) => {
+  const renderControls = (item: CommonControlProps<P>) => {
     return (
       <FormField
         control={form.control}

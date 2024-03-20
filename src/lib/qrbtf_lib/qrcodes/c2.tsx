@@ -1,13 +1,9 @@
 "use client";
 
-import {
-  QrbtfRendererCommonProps,
-  QrbtfModule,
-  QrbtfRendererUrlProps,
-} from "@/lib/qrbtf_lib/qrcodes/common";
 import React, { useEffect, useMemo, useState } from "react";
 import { QRPointType, encode } from "../encoder";
 import { gamma } from "@/lib/image_utils";
+import { PropsWithUrl, QrbtfModule, QrbtfRendererCommonProps } from "./param";
 
 interface RenderC2OwnProps {
   contrast: number;
@@ -19,7 +15,7 @@ interface RenderC2OwnProps {
 
 export type QrbtfRendererC2Props = RenderC2OwnProps & QrbtfRendererCommonProps;
 
-function QrbtfRendererC2(props: QrbtfRendererC2Props & QrbtfRendererUrlProps) {
+function QrbtfRendererC2(props: PropsWithUrl<QrbtfRendererC2Props>) {
   const { align_type, timing_type, contrast, brightness, background } = props;
   const [table, typeTable] = useMemo(
     () => encode(props.url, { ecc: props.correct_level }),
