@@ -140,6 +140,10 @@
       }
     }
   },
+  "account": {
+    "title": "Account",
+    "desc": ""
+  },
   "signin": {
     "title": "Sign In",
     "desc": "By clicking sign in buttons, you agree to our <TermOfService>Terms of Service</TermOfService> and <PrivacyPolicy>Privacy Policy</PrivacyPolicy>."
