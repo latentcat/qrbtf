@@ -1,7 +1,4 @@
 // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
-import { toast } from "sonner";
-import { safeParseJSON } from "@/lib/json_handler";
-import { addCount } from "@/lib/server/count";
 import { getServerSession } from "next-auth";
 import auth from "@/auth";
 import { NextRequest, NextResponse } from "next/server";
@@ -9,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
 import { getTranslations } from "next-intl/server";
+import { http } from "@/lib/network";
 
 function iteratorToStream(iterator: AsyncGenerator<any>) {
   if (!iterator) return;
@@ -33,21 +31,12 @@ function sleep(time: number) {
 
 const encoder = new TextEncoder();
 
-async function* makeIterator() {
-  yield encoder.encode("<p>One</p>");
-  await sleep(200);
-  yield encoder.encode("<p>Two</p>");
-  await sleep(200);
-  yield encoder.encode("<p>Three</p>");
-}
-
 const ENDPOINT = process.env.INTERNAL_API_ENDPOINT || "";
 const KEY = process.env.INTERNAL_API_KEY || "";
 
 async function genImage(req: object) {
   const requestJson = JSON.stringify(req);
-  // console.log(req);
-  const response = await fetch(`${ENDPOINT}/image/create`, {
+  const response = await http(`${ENDPOINT}/image/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -56,18 +45,7 @@ async function genImage(req: object) {
     body: requestJson,
   });
 
-  if (!response.ok) {
-    if (response.status === 429) {
-      toast.error("Too many requests, please try again later");
-    }
-
-    throw new Error("Failed to fetch");
-  }
-
   const reader = response.body!.getReader();
-  const decoder = new TextDecoder("utf-8");
-
-  const result = addCount("counter_global", "generate_count");
 
   return async function* () {
     while (true) {

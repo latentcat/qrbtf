@@ -1,5 +1,6 @@
 import { connectToDatabase } from "@/lib/server/mongodb";
 import { ObjectId } from "mongodb";
+import { http } from "../network";
 
 interface CounterOrm {
   _id?: ObjectId;
@@ -33,7 +34,7 @@ export async function addCount(collection_name: string, name: string) {
 }
 
 export async function getGitHubStars() {
-  const res = await fetch("https://api.github.com/repos/latentcat/qrbtf", {
+  const res = await http("https://api.github.com/repos/latentcat/qrbtf", {
     next: { revalidate: 60 }, // Revalidate every 60 seconds
   });
   const data = await res.json();
