@@ -57,9 +57,9 @@ function PricingCard(props: PricingCardProps) {
           ))}
         </div>
       </div>
-      <div className="flex gap-3 w-full">
-        {props.actions &&
-          props.actions.map((action, index) => (
+      {props.actions && (
+        <div className="flex gap-3 w-full">
+          {props.actions.map((action, index) => (
             <TrackLink
               key={index}
               trackValue={action.id}
@@ -76,7 +76,8 @@ function PricingCard(props: PricingCardProps) {
               </Button>
             </TrackLink>
           ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
