@@ -314,5 +314,12 @@
     "light": "浅色",
     "dark": "深色",
     "system": "跟随系统"
+  },
+  "api": {
+    "gen_image": {
+      "unauthorized": "请登录。",
+      "rate_limit_basic": "频率过高，请稍后重试。",
+      "rate_limit_daily": "到达每日生成次数上限。请在定价页面上查看更多信息。"
+    }
   }
 }
