@@ -127,7 +127,7 @@
       },
       "p1": {
         "title": "Alpha",
-        "price": "$20",
+        "price": "$10",
         "unit": "per month",
         "benefits": {
           "0": "Fast Generation",
@@ -322,9 +322,9 @@
   },
   "api": {
     "gen_image": {
-      "unauthorized": "Please sign in.",
+      "unauthorized": "Unauthorized.",
       "rate_limit_basic": "Rate limit exceeded, please try again later.",
-      "rate_limit_daily": "Daily rate limit exceeded. Please see more information on the pricing page."
+      "rate_limit_daily": "Daily rate limit exceeded, please join our Discord server to generate more."
     }
   }
 }
