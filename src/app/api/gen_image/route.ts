@@ -99,7 +99,7 @@ const ratelimit = {
 
 export async function POST(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const locale = searchParams.get("locale");
+  const locale = searchParams.get("locale") || "en";
 
   const t = await getTranslations({ locale, namespace: "api.gen_image" });
 
