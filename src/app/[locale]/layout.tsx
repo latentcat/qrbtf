@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import { Providers } from "@/app/providers";
 import { Footer } from "@/components/Footer";
-import {generateMetadata, LayoutHead} from "@/lib/layout_data";
+import { generateMetadata, LayoutHead } from "@/lib/layout_data";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 
 // export const metadata: Metadata = layoutMetadata;
 
-export {generateMetadata} from "@/lib/layout_data";
+export { generateMetadata } from "@/lib/layout_data";
 
 export const viewport: Viewport = layoutViewport;
 
@@ -44,9 +44,7 @@ export default async function RootLayout({
             <NextIntlClientProvider messages={pick(messages, ["user_button"])}>
               <Header />
             </NextIntlClientProvider>
-            <div className="min-h-screen flex flex-col">
-              {children}
-            </div>
+            <div className="min-h-screen flex flex-col">{children}</div>
             <Footer />
           </Providers>
         </SessionProvider>

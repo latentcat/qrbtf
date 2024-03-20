@@ -1,21 +1,15 @@
-
-import {Prose} from "@/components/Prose";
-import {Container} from "@/components/Containers";
-import {HeaderPadding} from "@/components/Header";
-
+import { Prose } from "@/components/Prose";
+import { Container } from "@/components/Containers";
+import { HeaderPadding } from "@/components/Header";
 
 interface SimpleLayoutProps {
-  title: string
-  intro: string
-  children?: React.ReactNode
-  hideGiscus?: boolean
+  title: string;
+  intro: string;
+  children?: React.ReactNode;
+  hideGiscus?: boolean;
 }
 
-export function SimpleLayout({
-  title,
-  intro,
-  children,
-}: SimpleLayoutProps) {
+export function SimpleLayout({ title, intro, children }: SimpleLayoutProps) {
   return (
     <Container className="">
       <HeaderPadding />
@@ -29,16 +23,16 @@ export function SimpleLayout({
       </header>
       {children && <div className="mt-16 sm:mt-20">{children}</div>}
     </Container>
-  )
+  );
 }
 
 export function SimpleLayoutProj(props: SimpleLayoutProps) {
-  const { children, ...rest } = props
+  const { children, ...rest } = props;
   return (
     <SimpleLayout {...rest}>
       <Prose className="mt-8 mb-16 break-words" data-mdx-content>
         {children}
       </Prose>
     </SimpleLayout>
-  )
+  );
 }

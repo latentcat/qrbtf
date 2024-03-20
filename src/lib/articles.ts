@@ -1,16 +1,16 @@
-import glob from 'fast-glob'
+import glob from "fast-glob";
 
 interface Article {
-  title: string
-  description: string
-  author: string
-  date: string
-  hidden?: boolean
-  lang?: "zh" | "en"
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  hidden?: boolean;
+  lang?: "zh" | "en";
 }
 
 export interface ArticleWithSlug extends Article {
-  slug: string
+  slug: string;
 }
 
 // async function importArticle(
@@ -46,7 +46,7 @@ export function genMetadata(article: ArticleWithSlug) {
     description: article.description,
     openGraph: {
       title: article.title,
-      images: encodeURI(`/og?title=${article.title}`)
+      images: encodeURI(`/og?title=${article.title}`),
     },
-  }
+  };
 }
