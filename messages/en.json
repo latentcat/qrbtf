@@ -5,16 +5,18 @@
       "default": "QRBTF - #1 AI QR Code Generator"
     },
     "description": "The world's first and best AI QR code generator.",
-    "keywords": [
-      "QR Code",
-      "qrcode",
-      "AI QR Code",
-      "AI qrcode",
-      "Parametric QR Code",
-      "QRBTF",
-      "Mid Real",
-      "midreal"
-    ]
+    "keywords": {
+      "0": "QR Code",
+      "1": "qrcode",
+      "2": "AI QR Code",
+      "3": "AI qrcode",
+      "4": "Parametric QR Code",
+      "5": "QRBTF",
+      "6": "Mid Real",
+      "7": "midreal",
+      "8": "",
+      "9": ""
+    }
   },
   "index": {
     "hero": {

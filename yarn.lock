@@ -3982,14 +3982,14 @@ next-auth@^4.24.7:
     preact-render-to-string "^5.1.19"
     uuid "^8.3.2"
 
-next-intl@^3.9.4:
-  version "3.9.4"
-  resolved "https://registry.npmmirror.com/next-intl/-/next-intl-3.9.4.tgz#e0200d62d0ae7174c88e33131ff4597670091c67"
-  integrity sha512-ktm7tKgD35GY08HrCbuTFdgaLFNykUB1EOef4JPUo63E7qDShBx8bD+A4HYjs/Y/zoq4K5IPyG03Thj+lKmymg==
+next-intl@^3.9.5:
+  version "3.9.5"
+  resolved "https://registry.npmmirror.com/next-intl/-/next-intl-3.9.5.tgz#4d95833cfad86ee36b5a03c3c10c697b42b35592"
+  integrity sha512-tsp4N433WgTAbbyZdMlcsLGHFM88wv2a7ZpF/od8X9+qAlO1TrajZrNrGBpIg6nA9EGZyMbQPzZD7XZrqYIv7g==
   dependencies:
     "@formatjs/intl-localematcher" "^0.2.32"
     negotiator "^0.6.3"
-    use-intl "^3.9.4"
+    use-intl "^3.9.5"
 
 next-themes@^0.2.1:
   version "0.2.1"
@@ -5209,10 +5209,10 @@ use-callback-ref@^1.3.0:
   dependencies:
     tslib "^2.0.0"
 
-use-intl@^3.9.4:
-  version "3.9.4"
-  resolved "https://registry.npmmirror.com/use-intl/-/use-intl-3.9.4.tgz#340e262f5803398f714084b81a5060031a8f520d"
-  integrity sha512-z53WpHqVMnIV23YO92nUhXePjPk18VIYQayMQbPYe7wPEau7IhXcZqWLC5xrzpj7HORKzwmHDOzDQ6X09BbsTA==
+use-intl@^3.9.5:
+  version "3.9.5"
+  resolved "https://registry.npmmirror.com/use-intl/-/use-intl-3.9.5.tgz#f5e4e9aac8763a73a0470d2f7858a8ecd36992fa"
+  integrity sha512-1g+f/pKEeXqOXrd+QBvwnIN5kzM56PHsorbVWzNvlnGk2fo/eRwuuT/S0jTuzKLRW4uNybpHvRs6U06rP31iKw==
   dependencies:
     "@formatjs/ecma402-abstract" "^1.11.4"
     intl-messageformat "^9.3.18"
