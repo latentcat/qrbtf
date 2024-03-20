@@ -128,7 +128,7 @@
       },
       "p1": {
         "title": "Alpha",
-        "price": "$10",
+        "price": "$20",
         "unit": "每月",
         "benefits": {
           "0": "快速生成",

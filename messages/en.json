@@ -128,7 +128,7 @@
       },
       "p1": {
         "title": "Alpha",
-        "price": "$10",
+        "price": "$20",
         "unit": "per month",
         "benefits": {
           "0": "Fast Generation",
