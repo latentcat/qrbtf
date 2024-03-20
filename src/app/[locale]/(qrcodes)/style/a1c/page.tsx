@@ -13,6 +13,7 @@ export default function Page() {
   return (
     <QrcodeGeneratorWithProvider<QrbtfRendererA1Props>
       title={t("title")}
+      label={"C"}
       subtitle={t("subtitle")}
       qrcodeModule={qrbtfModuleA1}
       params={params}
