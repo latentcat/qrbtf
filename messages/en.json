@@ -99,6 +99,44 @@
       }
     }
   },
+  "pricing": {
+    "parametric": {
+      "title": "Parametric QR Code",
+      "p0": {
+        "title": "Free",
+        "price": "$0",
+        "benefits": {
+          "0": "Free Forever",
+          "1": "Open Source",
+          "2": "Various Styles With No Backend Required",
+          "3": "Support For SVG Format",
+          "4": ""
+        }
+      }
+    },
+    "ai": {
+      "title": "AI QR Code",
+      "p0": {
+        "title": "Trial",
+        "price": "$0",
+        "benefits": {
+          "0": "Fast Generation",
+          "1": "10 AI QR Codes Per Day"
+        }
+      },
+      "p1": {
+        "title": "Alpha",
+        "price": "$10",
+        "unit": "per month",
+        "benefits": {
+          "0": "Fast Generation",
+          "1": "Unlimited Generation With Rate Limit",
+          "2": "Generating using Discord Bot",
+          "3": "Community & Email Support"
+        }
+      }
+    }
+  },
   "signin": {
     "title": "Sign In",
     "desc": "By clicking sign in buttons, you agree to our <TermOfService>Terms of Service</TermOfService> and <PrivacyPolicy>Privacy Policy</PrivacyPolicy>."

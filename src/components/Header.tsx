@@ -30,10 +30,10 @@ const headerLinks = [
   //   name: "Docs",
   //   href: "/docs",
   // },
-  // {
-  //   name: "Components",
-  //   href: "/docs/components",
-  // },
+  {
+    name: "Pricing",
+    href: "/pricing",
+  },
   {
     name: "GitHub",
     href: "https://github.com/latentcat/qrbtf",
