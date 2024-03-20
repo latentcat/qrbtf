@@ -123,7 +123,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
               <div>
                 <Form {...form}>
                   <form className="not-prose _divide-y">
-                    {Object.keys(presets).length > 0 && (
+                    {Object.keys(presets).length > 1 && (
                       <div className="_py-1 flex flex-col items-stretch justify-center min-h-[52px]">
                         <Select value={preset} onValueChange={setPreset}>
                           <SelectTrigger className="w-full">
