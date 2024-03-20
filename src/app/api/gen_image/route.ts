@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
+import { getTranslations } from "next-intl/server";
 
 function iteratorToStream(iterator: AsyncGenerator<any>) {
   if (!iterator) return;
@@ -97,19 +98,21 @@ const ratelimit = {
 };
 
 export async function POST(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+  const locale = searchParams.get("locale");
+
+  const t = await getTranslations({ locale, namespace: "api.gen_image" });
+
   const session = await getServerSession(auth);
   if (!session || !session.user) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+    return NextResponse.json({ error: t("unauthorized") }, { status: 401 });
   }
 
   const user = session.user.id || "";
   const rlBasic = await ratelimit.basic.limit(user);
 
   if (!rlBasic.success) {
-    return NextResponse.json(
-      { error: "Rate limit exceeded, please try again later." },
-      { status: 429 },
-    );
+    return NextResponse.json({ error: t("rate_limit_basic") }, { status: 429 });
   }
 
   const rlDaily = await ratelimit.daily.limit(user);
@@ -117,8 +120,7 @@ export async function POST(request: NextRequest) {
   if (!rlDaily.success) {
     return NextResponse.json(
       {
-        error:
-          "Daily rate limit exceeded, please join our Discord server to generate more.",
+        error: t("rate_limit_daily"),
       },
       { status: 429 },
     );
