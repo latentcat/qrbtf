@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { QRPointType, encode } from "../encoder";
 import { gamma } from "@/lib/image_utils";
 import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
+import { C2Presets } from "./c2_config";
 
 interface RenderC2OwnProps {
   contrast: number;
@@ -235,5 +236,6 @@ function QrbtfRendererC2(props: RendererProps<QrbtfRendererC2Props>) {
 
 export const qrbtfModuleC2: QrbtfModule<QrbtfRendererC2Props> = {
   type: "svg_renderer",
+  presets: C2Presets,
   renderer: QrbtfRendererC2,
 };

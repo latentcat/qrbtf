@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { trackEvent } from "@/components/TrackComponents";
 import { flattenObject } from "@/lib/utils";
 import { QrbtfModule } from "./param";
+import { G1Presets } from "./g1_config";
 
 interface RenderG1OwnProps {
   task_type: string;
@@ -167,4 +168,5 @@ export const qrbtfModuleG1: QrbtfModule<QrbtfRendererG1Props> = {
   type: "api_fetcher",
   fetcher: fetcher,
   visualizer: QrbtfVisualizerG1,
+  presets: G1Presets,
 };

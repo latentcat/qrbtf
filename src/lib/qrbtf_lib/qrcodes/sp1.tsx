@@ -3,6 +3,7 @@
 import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
 import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
+import { Sp1Presets } from "./sp1_config";
 
 interface RenderSp1OwnProps {
   content_stroke_width: number;
@@ -360,5 +361,6 @@ function QrbtfRendererSp1(props: RendererProps<QrbtfRendererSp1Props>) {
 
 export const qrbtfModuleSp1: QrbtfModule<QrbtfRendererSp1Props> = {
   type: "svg_renderer",
+  presets: Sp1Presets,
   renderer: QrbtfRendererSp1,
 };
