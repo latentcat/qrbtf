@@ -2,6 +2,7 @@ import AuthButtons from "@/app/[locale]/signin/AuthButtons";
 import { Link } from "@/navigation";
 import { TranslationValues, useTranslations } from "next-intl";
 import React, { ReactNode } from "react";
+import { TrackLink } from "@/components/TrackComponents";
 
 export default function SignInContent() {
   const t = useTranslations("signin");
@@ -26,14 +27,22 @@ export default function SignInContent() {
       <div className="text-sm opacity-50 text-center">
         {t.rich("desc", {
           TermOfService: (chunk: ReactNode) => (
-            <Link href="/terms-of-service" className="underline">
+            <TrackLink
+              trackValue={["terms_of_service", "sign_in"]}
+              href="/terms-of-service"
+              className="underline"
+            >
               {chunk}
-            </Link>
+            </TrackLink>
           ),
           PrivacyPolicy: (chunk: ReactNode) => (
-            <Link href="/privacy-policy" className="underline">
+            <TrackLink
+              trackValue={["privacy_policy", "sign_in"]}
+              href="/privacy-policy"
+              className="underline"
+            >
               {chunk}
-            </Link>
+            </TrackLink>
           ),
         })}
       </div>

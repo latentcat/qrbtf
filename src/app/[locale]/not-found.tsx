@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/navigation";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
+import { TrackLink } from "@/components/TrackComponents";
 
 export default function NotFound() {
   const t = useTranslations("not_found");
@@ -18,11 +19,11 @@ export default function NotFound() {
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             {t("tagline")}
           </p>
-          <Link href="/">
+          <TrackLink href="/" trackValue="not_found_go_home">
             <Button variant="secondary" className="mt-6">
               {t("home")}
             </Button>
-          </Link>
+          </TrackLink>
         </div>
       </Container>
     </div>

@@ -19,6 +19,7 @@ import { UserButton } from "@/components/UserButton";
 
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { usePathname } from "@/navigation";
+import { trackEvent, TrackLink } from "@/components/TrackComponents";
 
 const scrollTopAtom = atom(true);
 const scrollTitleAtom = atom(true);
@@ -69,13 +70,14 @@ function Logo() {
         }}
         transition={transitionMd}
       >
-        <Link
+        <TrackLink
+          trackValue={["logo", "header"]}
           href="/"
           className="px-2 -mx-2 flex h-14 items-center"
           onClick={() => setMenuOpen(false)}
         >
           <QrbtfLogo className="h-7" />
-        </Link>
+        </TrackLink>
       </motion.div>
     </div>
   );
@@ -119,7 +121,8 @@ export function BorderBottom() {
 function MobileNavItem(props: HeaderLinkProps) {
   return (
     <li>
-      <Link
+      <TrackLink
+        trackValue={["mobile_nav", props.name]}
         href={props.href}
         target={props.target}
         onClick={props.onClick}
@@ -127,7 +130,7 @@ function MobileNavItem(props: HeaderLinkProps) {
       >
         {props.name}
         {props.target && <ArrowTopRightIcon className="w-5 h-5 ml-2" />}
-      </Link>
+      </TrackLink>
     </li>
   );
 }
@@ -149,7 +152,10 @@ function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => {
+              trackEvent("toggle_menu", { to: !menuOpen });
+              setMenuOpen(!menuOpen);
+            }}
           >
             {!menuOpen ? (
               <Bars3Icon className="h-6 w-6 stroke-foreground" />
@@ -193,7 +199,7 @@ function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
                   <ul className="_-my-2 text-base text-zinc-800 dark:text-zinc-200">
                     {headerLinks.map((item, index) => (
                       <MobileNavItem
-                        key={index}
+                        key={"mobile_nav_" + index}
                         {...item}
                         onClick={() => setMenuOpen(false)}
                       ></MobileNavItem>
@@ -215,7 +221,8 @@ function NavItem(props: HeaderLinkProps) {
 
   return (
     <li>
-      <Link
+      <TrackLink
+        trackValue={["desktop_nav", props.name]}
         href={props.href}
         target={props.target}
         className={clsx(
@@ -227,7 +234,7 @@ function NavItem(props: HeaderLinkProps) {
       >
         {props.name}
         {props.target && <ArrowTopRightIcon className="w-4 h-4 ml-1" />}
-      </Link>
+      </TrackLink>
     </li>
   );
 }

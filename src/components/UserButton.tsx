@@ -14,6 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "@/navigation";
 import { ArrowUpRightIcon, HomeIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { trackEvent } from "@/components/TrackComponents";
 
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
@@ -28,6 +29,7 @@ export function UserButton() {
           size="sm"
           onClick={async () => {
             // track("sign_in");
+            trackEvent("sign_in");
             await signIn();
           }}
         >
@@ -77,8 +79,8 @@ export function UserButton() {
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={async () => {
+                trackEvent("sign_out");
                 await signOut();
-                // track("sign_out");
               }}
               className="text-red-500"
             >

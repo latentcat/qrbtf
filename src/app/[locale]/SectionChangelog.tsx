@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { TrackLink } from "@/components/TrackComponents";
 
 interface ChangeStepProps {
   isEnd?: boolean;
@@ -31,13 +32,14 @@ function ChangeStep(props: ChangeStepProps) {
           {props.content}
           {"  "}
           {props.url && (
-            <Link
+            <TrackLink
+              trackValue={["change_step", props.url]}
               href={props.url}
               target="_blank"
               className="text-foreground _underline font-medium"
             >
               {props.link} -&gt;
-            </Link>
+            </TrackLink>
           )}
         </p>
       </div>

@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Fragment } from "react";
 import Link from "next/link";
+import { TrackLink } from "@/components/TrackComponents";
 
 const links = [
   {
@@ -44,13 +45,14 @@ export function SectionTeam() {
       <div className="mt-6 leading-7">
         {links.map((item, index) => (
           <Fragment key={item.name}>
-            <Link
+            <TrackLink
+              trackValue={["team_member", item.name]}
               href={item.url}
               target="_blank"
               className="text-foreground underline font-medium"
             >
               {item.name}
-            </Link>
+            </TrackLink>
             {index < links.length - 1 && <>, </>}
           </Fragment>
         ))}

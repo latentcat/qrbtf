@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BookIcon, HuggingFaceIcon } from "@/components/LogosBrand";
+import { TrackLink } from "@/components/TrackComponents";
 
 export function SectionRefs() {
   const t = useTranslations("index.refs");
@@ -19,24 +20,36 @@ export function SectionRefs() {
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
 
       <div className="mt-6 flex gap-3 flex-wrap">
-        <Link href="https://aigc.latentcat.com" target="_blank">
+        <TrackLink
+          trackValue={["aigc", "refs"]}
+          href="https://aigc.latentcat.com"
+          target="_blank"
+        >
           <Button variant="secondary" size="sm">
             <BookIcon className="w-4 h-4 mr-2" />
             {t("aigc")}
           </Button>
-        </Link>
-        <Link href="https://huggingface.co/latentcat" target="_blank">
+        </TrackLink>
+        <TrackLink
+          trackValue={["hf", "refs"]}
+          href="https://huggingface.co/latentcat"
+          target="_blank"
+        >
           <Button variant="secondary" size="sm">
             <HuggingFaceIcon className="w-5 h-5 mr-2" />
             {t("hf")}
           </Button>
-        </Link>
-        <Link href="https://antfu.me/posts/ai-qrcode-101" target="_blank">
+        </TrackLink>
+        <TrackLink
+          trackValue={["antfu", "refs"]}
+          href="https://antfu.me/posts/ai-qrcode-101"
+          target="_blank"
+        >
           <Button variant="secondary" size="sm">
             <BookIcon className="w-4 h-4 mr-2" />
             {t("antfu")}
           </Button>
-        </Link>
+        </TrackLink>
       </div>
     </div>
   );

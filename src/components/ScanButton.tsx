@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import { useAtom } from "jotai/index";
 import { urlAtom } from "@/lib/states";
 import { toast } from "sonner";
+import { trackEvent } from "@/components/TrackComponents";
 
 export function ScanButton(props: { name: string }) {
   const scanRef = useRef<HTMLInputElement>(null);
@@ -73,6 +74,7 @@ export function ScanButton(props: { name: string }) {
         onClick={(evt) => {
           evt.preventDefault();
           scanRef.current?.click();
+          trackEvent("upload_qrcode_button");
         }}
         className="rounded-md hover:bg-accent cursor-pointer"
         variant="outline"

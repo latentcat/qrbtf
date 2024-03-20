@@ -22,7 +22,7 @@ import { HTMLAttributes, useRef } from "react";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { cn, useCurrentQrcodeType } from "@/lib/utils";
+import { cn, flattenObject, useCurrentQrcodeType } from "@/lib/utils";
 import { Loader2, LucideDownload } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
@@ -37,6 +37,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useImageService } from "@/lib/image_service";
+import { trackEvent } from "@/components/TrackComponents";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -160,10 +161,14 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                       ).map(([type, handler]) => (
                         <DropdownMenuItem
                           key={type}
-                          onClick={() =>
+                          onClick={() => {
                             qrcodeWrapperRef.current &&
-                            handler(currentQrcodeType, qrcodeWrapperRef.current)
-                          }
+                              handler(
+                                currentQrcodeType,
+                                qrcodeWrapperRef.current,
+                              );
+                            trackEvent("download_qrcode", { type: type });
+                          }}
                         >
                           <span className="_font-mono">
                             {type.toLocaleUpperCase()}

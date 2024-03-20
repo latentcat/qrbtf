@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { MidRealLogoFull } from "@/components/Logos";
 import Link from "next/link";
+import { TrackLink } from "@/components/TrackComponents";
 
 export function SectionSponsor() {
   const t = useTranslations("index.sponsor");
@@ -19,9 +20,13 @@ export function SectionSponsor() {
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
 
       <div className="mt-9 flex gap-3">
-        <Link href="https://midreal.ai" target="_blank">
+        <TrackLink
+          trackValue={["midreal", "sponsor"]}
+          href="https://midreal.ai"
+          target="_blank"
+        >
           <MidRealLogoFull className="h-12" />
-        </Link>
+        </TrackLink>
         <span className="hidden">MidReal.ai</span>
       </div>
     </div>

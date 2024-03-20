@@ -15,6 +15,8 @@ import { opacityAnimations, transitionMd } from "@/lib/animations";
 import { Loader2 } from "lucide-react";
 import { Progress } from "@/components/Progress";
 import { toast } from "sonner";
+import { trackEvent } from "@/components/TrackComponents";
+import { flattenObject } from "@/lib/utils";
 
 interface RenderG1OwnProps {
   task_type: string;
@@ -111,6 +113,7 @@ function QrbtfVisualizerG1(props: { data: any }) {
     if (rep.res_type === "result") {
       setImageUrl(rep.data.download_url);
       setProgress(null);
+      trackEvent("submit_fetcher", flattenObject(rep));
     }
   }, [props.data]);
 

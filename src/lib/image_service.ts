@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ApiFetcher } from "@/lib/qrbtf_lib/qrcodes/common";
 import { useAtomValue } from "jotai/index";
 import { urlAtom } from "@/lib/states";
+import { trackEvent } from "@/components/TrackComponents";
 
 const schema = z.union([
   z.object({
@@ -130,8 +131,11 @@ export function useImageService<P extends object>(
         //   return;
         // }
 
+        const data = { url, ...currentReq };
+        trackEvent("submit_fetcher", data);
+
         // 类似 Python 中的 async for，rep 返回格式为 zod 导出的 ImageResponse，都在 image_service.ts 中定义，必须严格校验返回格式类型，不通过会报错
-        for await (const res of fetcher({ url, ...currentReq }, signal)) {
+        for await (const res of fetcher(data, signal)) {
           setResData(res);
         }
       } catch (error: any) {

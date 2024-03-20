@@ -22,6 +22,7 @@ import { urlAtom } from "@/lib/states";
 import { useAtom } from "jotai";
 import { UrlInput } from "@/components/hero/UrlInput";
 import { HeroLogo } from "@/components/Header";
+import { TrackLink } from "@/components/TrackComponents";
 
 export function SectionHero() {
   const t = useTranslations("index.hero");
@@ -39,18 +40,23 @@ export function SectionHero() {
           <p className="text-base lg:text-lg mt-6 text-foreground/70">
             {t("subtitle")}
             {t("by")}
-            <Link
+            <TrackLink
+              trackValue={["latent_cat", "hero"]}
               href="https://latentcat.com"
               target="_blank"
               className="text-foreground underline font-semibold"
             >
               Latent Cat
-            </Link>
+            </TrackLink>
             {t("period")}
           </p>
 
           <div className="mt-6 flex gap-3">
-            <Link href="https://discord.gg/V9CNuqYfte" target="_blank">
+            <TrackLink
+              trackValue={["join_discord", "hero"]}
+              href="https://discord.gg/V9CNuqYfte"
+              target="_blank"
+            >
               <Button size="sm" variant="secondary">
                 <FontAwesomeIcon
                   icon={faDiscord}
@@ -58,10 +64,14 @@ export function SectionHero() {
                 />
                 {t("join_discord")}
               </Button>
-            </Link>
-            <Link href="https://github.com/latentcat/qrbtf" target="_blank">
+            </TrackLink>
+            <TrackLink
+              trackValue={["github", "hero"]}
+              href="https://github.com/latentcat/qrbtf"
+              target="_blank"
+            >
               <GitHubButton />
-            </Link>
+            </TrackLink>
           </div>
 
           <SplitView className="gap-y-0">

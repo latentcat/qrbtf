@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 // import DiscordSvg from "./discord.svg"
 import Image from "next/image";
+import { trackEvent } from "@/components/TrackComponents";
 // import {trackEvent} from "@/lib/trackEvent";
 
 export function DiscordSvg() {
@@ -42,7 +43,10 @@ export default function AuthButtons() {
           type="button"
           className="w-full flex gap-2"
           onClick={() => {
-            // trackEvent("sign_in", { type: "sign_in_button", provider: provider.id });
+            trackEvent("sign_in", {
+              type: "sign_in_button",
+              provider: provider.id,
+            });
             signIn(provider.id);
           }}
         >

@@ -52,6 +52,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { BACKGROUND_IMG } from "@uiw/react-color-alpha";
 import { LucideUpload } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import { trackEvent } from "@/components/TrackComponents";
 
 type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
   field: ControllerRenderProps<P, Path<P>>;
@@ -355,6 +356,7 @@ export function ParamImageControl<P extends FieldValues>(
             <Button
               onClick={(evt) => {
                 evt.preventDefault();
+                trackEvent("upload_image_button");
                 inputRef.current?.click();
               }}
               className="w-full font-normal"

@@ -10,6 +10,7 @@ import { ModeToggle } from "@/components/ModeToggle";
 import pick from "lodash/pick";
 import { SectionStylesClient } from "@/app/[locale]/SectionStylesClient";
 import React from "react";
+import { TrackLink } from "@/components/TrackComponents";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -27,13 +28,14 @@ export function Footer() {
         </div>
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()}{" "}
-          <Link
+          <TrackLink
+            trackValue={["latent_cat", "footer"]}
             href="https://latentcat.com"
             target="_blank"
             className="border-b"
           >
             Latent Cat
-          </Link>
+          </TrackLink>
           . {t("reserve_rights")}
         </p>
         <p className="safe-pb" />

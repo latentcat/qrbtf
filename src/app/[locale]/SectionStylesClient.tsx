@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
 import React, { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
+import { TrackLink } from "@/components/TrackComponents";
 
 export function SectionStylesClient() {
   const t = useTranslations("index.style");
@@ -28,13 +29,18 @@ export function SectionStylesClient() {
     const isActive = currentQrcodeType === item.id;
     return (
       <div
-        key={index}
+        key={"qrcode_style_" + index}
         className={cn(
           "snap-start pl-6 -ml-3 sm:pl-0 sm:ml-0 transition-opacity",
           isActive ? "" : "dark:opacity-70",
         )}
       >
-        <Link href={itemPath} scroll={false} prefetch={false}>
+        <TrackLink
+          trackValue={["qrcode_style", item.id]}
+          href={itemPath}
+          scroll={false}
+          prefetch={false}
+        >
           <motion.div
             className={cn(
               "relative w-[calc((100vw-(12px)*5)/2)] sm:w-[195px] rounded-2xl bg-accent/30 overflow-hidden",
@@ -71,7 +77,7 @@ export function SectionStylesClient() {
               )}
             ></div>
           </motion.div>
-        </Link>
+        </TrackLink>
       </div>
     );
   };

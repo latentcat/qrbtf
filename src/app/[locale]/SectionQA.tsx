@@ -40,7 +40,7 @@ export function SectionQA() {
       <div className="mt-6 _border-t">
         <Accordion type="single" collapsible>
           {list.map((item, index) => (
-            <AccordionItem key="index" value={`item_${index}`}>
+            <AccordionItem key={"qr_" + index} value={`item_${index}`}>
               <AccordionTrigger>{t(item.q)}</AccordionTrigger>
               <AccordionContent>{t(item.a)}</AccordionContent>
             </AccordionItem>
