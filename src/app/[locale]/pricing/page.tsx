@@ -5,6 +5,8 @@ import { ArrowRight, Check, ChevronRight, MoveRight } from "lucide-react";
 import { TrackLink } from "@/components/TrackComponents";
 import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
+import auth from "@/auth";
+import { getServerSession } from "next-auth/next";
 
 function SectionTitle() {
   const t = useTranslations("pricing");
@@ -28,6 +30,7 @@ interface PricingCardProps {
     id: string;
     label: string;
     url: string;
+    target?: string;
     variant: "default" | "outline";
   };
 }
@@ -53,7 +56,11 @@ function PricingCard(props: PricingCardProps) {
         </div>
       </div>
       {props.action && (
-        <TrackLink trackValue={props.action.id} href={props.action.url}>
+        <TrackLink
+          trackValue={props.action.id}
+          href={props.action.url}
+          target={props.action.target}
+        >
           <Button
             variant={props.action.variant}
             className="w-full flex justify-between items-center"
@@ -102,7 +109,7 @@ function SectionParametric() {
   );
 }
 
-function SectionAI() {
+function SectionAI(props: { isSignIn: boolean }) {
   const t = useTranslations("pricing.ai");
   return (
     <div>
@@ -113,12 +120,16 @@ function SectionAI() {
             title={t("p0.title")}
             price={t("p0.price")}
             benefits={[t("p0.benefits.0"), t("p0.benefits.1")]}
-            action={{
-              id: "sign_in",
-              label: t("p0.action"),
-              url: "",
-              variant: "outline",
-            }}
+            action={
+              props.isSignIn
+                ? undefined
+                : {
+                    id: "sign_in",
+                    label: t("p0.action"),
+                    url: "/signin",
+                    variant: "outline",
+                  }
+            }
           />
           <PricingCard
             title={t("p1.title")}
@@ -133,7 +144,8 @@ function SectionAI() {
             action={{
               id: "donate",
               label: t("p1.action"),
-              url: "",
+              url: "https://ko-fi.com/latentcat",
+              target: "_blank",
               variant: "default",
             }}
           />
@@ -143,14 +155,15 @@ function SectionAI() {
   );
 }
 
-export default function Page() {
+export default async function Page() {
+  const session = await getServerSession(auth);
   return (
     <div>
       <HeaderPadding />
       <SectionTitle />
       <div className="flex flex-col gap-12">
+        <SectionAI isSignIn={!(!session || !session.user)} />
         <SectionParametric />
-        <SectionAI />
       </div>
     </div>
   );
