@@ -266,5 +266,12 @@
     "light": "浅色",
     "dark": "深色",
     "system": "跟随系统"
+  },
+  "api": {
+    "gen_image": {
+      "unauthorized": "Unauthorized.",
+      "rate_limit_basic": "Rate limit exceeded, please try again later.",
+      "rate_limit_daily": "Daily rate limit exceeded, please join our Discord server to generate more."
+    }
   }
 }
