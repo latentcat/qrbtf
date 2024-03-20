@@ -123,22 +123,27 @@
         "benefits": {
           "0": "快速生成",
           "1": "每天 10 次生成"
-        },
-        "action": "登录"
+        }
       },
       "p1": {
         "title": "Alpha",
-        "price": "$10",
+        "price": "$20",
         "unit": "每月",
         "benefits": {
           "0": "快速生成",
           "1": "在频率限制下不限生成次数",
           "2": "使用 Discord Bot 生成",
           "3": "社区、邮箱支持"
-        },
-        "action": "赞助"
-      }
+        }
+      },
+      "sign_in": "登录",
+      "account": "查看账户",
+      "donate": "赞助"
     }
+  },
+  "account": {
+    "title": "Account",
+    "desc": ""
   },
   "signin": {
     "title": "登录",
