@@ -123,8 +123,7 @@
         "benefits": {
           "0": "Fast Generation",
           "1": "10 AI QR Codes Per Day"
-        },
-        "action": "Sign In"
+        }
       },
       "p1": {
         "title": "Alpha",
@@ -135,9 +134,11 @@
           "1": "Unlimited Generation With Rate Limit",
           "2": "Generating using Discord Bot",
           "3": "Community & Email Support"
-        },
-        "action": "Donate"
-      }
+        }
+      },
+      "sign_in": "Sign In",
+      "account": "View Account",
+      "donate": "Donate"
     }
   },
   "account": {

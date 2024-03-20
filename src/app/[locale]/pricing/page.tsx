@@ -21,18 +21,20 @@ function SectionTitle() {
   );
 }
 
+interface ActionProps {
+  id: string;
+  label: string;
+  url: string;
+  target?: string;
+  variant: "default" | "outline";
+}
+
 interface PricingCardProps {
   title: string;
   price: string;
   unit?: string;
   benefits?: string[];
-  action?: {
-    id: string;
-    label: string;
-    url: string;
-    target?: string;
-    variant: "default" | "outline";
-  };
+  actions?: ActionProps[];
 }
 
 function PricingCard(props: PricingCardProps) {
@@ -55,21 +57,26 @@ function PricingCard(props: PricingCardProps) {
           ))}
         </div>
       </div>
-      {props.action && (
-        <TrackLink
-          trackValue={props.action.id}
-          href={props.action.url}
-          target={props.action.target}
-        >
-          <Button
-            variant={props.action.variant}
-            className="w-full flex justify-between items-center"
-          >
-            {props.action.label}
-            <MoveRight className="h-5" />
-          </Button>
-        </TrackLink>
-      )}
+      <div className="flex gap-3 w-full">
+        {props.actions &&
+          props.actions.map((action, index) => (
+            <TrackLink
+              key={index}
+              trackValue={action.id}
+              href={action.url}
+              target={action.target}
+              className="w-full shrink"
+            >
+              <Button
+                variant={action.variant}
+                className="w-full flex justify-between items-center"
+              >
+                {action.label}
+                <MoveRight className="h-5" />
+              </Button>
+            </TrackLink>
+          ))}
+      </div>
     </div>
   );
 }
@@ -111,6 +118,19 @@ function SectionParametric() {
 
 function SectionAI(props: { isSignIn: boolean }) {
   const t = useTranslations("pricing.ai");
+  const signInOrAccount: ActionProps = props.isSignIn
+    ? {
+        id: "account",
+        label: t("account"),
+        url: "/account",
+        variant: "outline",
+      }
+    : {
+        id: "sign_in",
+        label: t("sign_in"),
+        url: "/signin",
+        variant: "outline",
+      };
   return (
     <div>
       <Container>
@@ -120,16 +140,7 @@ function SectionAI(props: { isSignIn: boolean }) {
             title={t("p0.title")}
             price={t("p0.price")}
             benefits={[t("p0.benefits.0"), t("p0.benefits.1")]}
-            action={
-              props.isSignIn
-                ? undefined
-                : {
-                    id: "sign_in",
-                    label: t("p0.action"),
-                    url: "/signin",
-                    variant: "outline",
-                  }
-            }
+            actions={[signInOrAccount]}
           />
           <PricingCard
             title={t("p1.title")}
@@ -141,13 +152,16 @@ function SectionAI(props: { isSignIn: boolean }) {
               t("p1.benefits.2"),
               t("p1.benefits.3"),
             ]}
-            action={{
-              id: "donate",
-              label: t("p1.action"),
-              url: "https://ko-fi.com/latentcat",
-              target: "_blank",
-              variant: "default",
-            }}
+            actions={[
+              signInOrAccount,
+              {
+                id: "donate",
+                label: t("donate"),
+                url: "https://ko-fi.com/latentcat",
+                target: "_blank",
+                variant: "default",
+              },
+            ]}
           />
         </div>
       </Container>
