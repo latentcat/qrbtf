@@ -4,7 +4,10 @@ import { safeParseJSON } from "@/lib/json_handler";
 import { addCount } from "@/lib/server/count";
 import { getServerSession } from "next-auth";
 import auth from "@/auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
+import { Ratelimit } from "@upstash/ratelimit";
+import { kv } from "@vercel/kv";
 
 function iteratorToStream(iterator: AsyncGenerator<any>) {
   if (!iterator) return;
@@ -42,7 +45,7 @@ const KEY = process.env.INTERNAL_API_KEY || "";
 
 async function genImage(req: object) {
   const requestJson = JSON.stringify(req);
-  console.log(req);
+  // console.log(req);
   const response = await fetch(`${ENDPOINT}/image/create`, {
     method: "POST",
     headers: {
@@ -56,7 +59,7 @@ async function genImage(req: object) {
     if (response.status === 429) {
       toast.error("Too many requests, please try again later");
     }
-    console.log(234);
+
     throw new Error("Failed to fetch");
   }
 
@@ -76,10 +79,49 @@ async function genImage(req: object) {
   };
 }
 
-export async function POST(request: Request) {
+const ratelimit = {
+  basic: new Ratelimit({
+    redis: kv,
+    analytics: true,
+    prefix: "ratelimit:basic",
+    limiter: Ratelimit.slidingWindow(5, "60s"),
+    timeout: 1000, // 1 second
+  }),
+  daily: new Ratelimit({
+    redis: kv,
+    analytics: true,
+    prefix: "ratelimit:daily",
+    limiter: Ratelimit.tokenBucket(20, "1 d", 20),
+    timeout: 1000, // 1 second
+  }),
+};
+
+export async function POST(request: NextRequest) {
   const session = await getServerSession(auth);
   if (!session || !session.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
+
+  const user = session.user.id || "";
+  const rlBasic = await ratelimit.basic.limit(user);
+
+  if (!rlBasic.success) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded, please try again later." },
+      { status: 429 },
+    );
+  }
+
+  const rlDaily = await ratelimit.daily.limit(user);
+
+  if (!rlDaily.success) {
+    return NextResponse.json(
+      {
+        error:
+          "Daily rate limit exceeded, please join our Discord server to generate more.",
+      },
+      { status: 429 },
+    );
   }
 
   const iterator = await genImage(await request.json());
