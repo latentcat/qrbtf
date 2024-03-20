@@ -1,13 +1,15 @@
 "use client";
 
-import Script from "next/script";
-
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import mixpanel from "mixpanel-browser";
 
 import { usePathname } from "next/navigation";
-import { addCount } from "@/lib/server/count";
+import { http } from "@/lib/network";
+
+const body = {
+  collection_name: "counter_global",
+  name: "page_view",
+};
 
 export default function MixpanelAnalytics() {
   useEffect(() => {
@@ -25,17 +27,12 @@ export default function MixpanelAnalytics() {
 
   const pathname = usePathname();
 
-  const body = {
-    collection_name: "counter_global",
-    name: "page_view",
-  };
-
   useEffect(() => {
     mixpanel.track_pageview();
-    fetch("/api/update_count", {
+    http("/api/update_count", {
       method: "POST",
       body: JSON.stringify(body),
-    }).then((r) => console.log(r));
+    });
   }, [pathname]);
 
   return <></>;

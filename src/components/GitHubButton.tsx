@@ -6,12 +6,13 @@ import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import { transitionLg, transitionMd, transitionXl } from "@/lib/animations";
+import { http } from "@/lib/network";
 
 export function GitHubButton() {
   const [starCount, setStarCount] = useState(0);
 
   useEffect(() => {
-    fetch("/api/stars").then(async (res) => {
+    http("/api/stars").then(async (res) => {
       const data = await res.json();
       if (data.hasOwnProperty("star_count")) {
         setStarCount(data["star_count"]);
