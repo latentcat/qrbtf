@@ -2,7 +2,7 @@
   "metadata": {
     "title": {
       "template": "%s - QRBTF",
-      "default": "QRBTF - #1 AI QR Code Generator"
+      "default": "QRBTF - AI QR Code Generator"
     },
     "description": "The world's first and best AI QR code generator.",
     "keywords": {
@@ -99,9 +99,58 @@
       }
     }
   },
+  "pricing": {
+    "title": "Pricing",
+    "desc": "",
+    "parametric": {
+      "title": "Parametric QR Code",
+      "p0": {
+        "title": "Free",
+        "price": "$0",
+        "benefits": {
+          "0": "Free Forever",
+          "1": "Open Source",
+          "2": "Various Styles With No Backend Required",
+          "3": "Support For SVG Format"
+        }
+      }
+    },
+    "ai": {
+      "title": "AI QR Code",
+      "p0": {
+        "title": "Trial",
+        "price": "$0",
+        "benefits": {
+          "0": "Fast Generation",
+          "1": "10 AI QR Codes Per Day"
+        }
+      },
+      "p1": {
+        "title": "Alpha",
+        "price": "$20",
+        "unit": "per month",
+        "benefits": {
+          "0": "Fast Generation",
+          "1": "Unlimited Generation With Rate Limit",
+          "2": "Generating using Discord Bot",
+          "3": "Community & Email Support"
+        }
+      },
+      "sign_in": "Sign In",
+      "account": "View Account",
+      "donate": "Donate"
+    }
+  },
+  "account": {
+    "title": "Account",
+    "desc": ""
+  },
   "signin": {
     "title": "Sign In",
     "desc": "By clicking sign in buttons, you agree to our <TermOfService>Terms of Service</TermOfService> and <PrivacyPolicy>Privacy Policy</PrivacyPolicy>."
+  },
+  "header": {
+    "pricing": "Pricing"
   },
   "user_button": {
     "sign_in": "Sign in",
@@ -127,6 +176,10 @@
       "circle": "Circle",
       "planet": "Planet",
       "rounded": "Rounded Square"
+    },
+    "preset": {
+      "label": "Preset",
+      "desc": ""
     },
     "a1": {
       "title": "A1",
@@ -266,5 +319,12 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System"
+  },
+  "api": {
+    "gen_image": {
+      "unauthorized": "Please sign in.",
+      "rate_limit_basic": "Rate limit exceeded, please try again later.",
+      "rate_limit_daily": "Daily rate limit exceeded. Please see more information on the pricing page."
+    }
   }
 }
