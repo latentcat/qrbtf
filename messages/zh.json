@@ -128,6 +128,10 @@
       "planet": "行星",
       "rounded": "圆角矩形"
     },
+    "preset": {
+      "label": "预设",
+      "desc": ""
+    },
     "a1": {
       "title": "A1",
       "subtitle": "基本样式",

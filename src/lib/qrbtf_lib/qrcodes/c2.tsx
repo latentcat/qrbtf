@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { QRPointType, encode } from "../encoder";
 import { gamma } from "@/lib/image_utils";
-import { PropsWithUrl, QrbtfModule, QrbtfRendererCommonProps } from "./param";
+import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
 
 interface RenderC2OwnProps {
   contrast: number;
@@ -15,7 +15,7 @@ interface RenderC2OwnProps {
 
 export type QrbtfRendererC2Props = RenderC2OwnProps & QrbtfRendererCommonProps;
 
-function QrbtfRendererC2(props: PropsWithUrl<QrbtfRendererC2Props>) {
+function QrbtfRendererC2(props: RendererProps<QrbtfRendererC2Props>) {
   const { align_type, timing_type, contrast, brightness, background } = props;
   const [table, typeTable] = useMemo(
     () => encode(props.url, { ecc: props.correct_level }),

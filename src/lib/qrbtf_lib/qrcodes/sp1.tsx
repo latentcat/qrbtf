@@ -2,7 +2,7 @@
 
 import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
-import { PropsWithUrl, QrbtfModule, QrbtfRendererCommonProps } from "./param";
+import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
 
 interface RenderSp1OwnProps {
   content_stroke_width: number;
@@ -14,7 +14,7 @@ interface RenderSp1OwnProps {
 export type QrbtfRendererSp1Props = RenderSp1OwnProps &
   QrbtfRendererCommonProps;
 
-function QrbtfRendererSp1(props: PropsWithUrl<QrbtfRendererSp1Props>) {
+function QrbtfRendererSp1(props: RendererProps<QrbtfRendererSp1Props>) {
   const [table, typeTable] = useMemo(
     () => encode(props.url, { ecc: props.correct_level }),
     [props.url, props.correct_level],

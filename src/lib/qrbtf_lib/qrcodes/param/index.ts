@@ -91,9 +91,10 @@ export type ParamType = (
 
 export type ParamTypeLiteralAll = ParamType["type"];
 
-export interface QrbtfRendererCommonProps
-  extends React.ComponentPropsWithoutRef<"svg"> {
+export interface QrbtfRendererCommonProps {
   correct_level: "low" | "medium" | "quartile" | "high";
 }
 
-export type PropsWithUrl<P = unknown> = P & { url: string };
+export type RendererProps<P = unknown> = P & {
+  url: string;
+} & React.ComponentPropsWithoutRef<"svg">;

@@ -4,9 +4,11 @@ import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
 import { sq25 } from "@/lib/qrbtf_lib/constants";
 import { QrbtfRendererPositioningProps } from "./param/position";
-import { PropsWithUrl, QrbtfModule, QrbtfRendererCommonProps } from "./param";
+import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
+import { QrbtfRendererPresetProps } from "./param/preset";
+import { A1PresetKeys } from "./a1_config";
 
-interface RenderA1OwnProps {
+export interface RenderA1OwnProps {
   content_point_type: "square" | "circle";
   content_point_scale: number;
   content_point_opacity: number;
@@ -15,9 +17,10 @@ interface RenderA1OwnProps {
 
 export type QrbtfRendererA1Props = RenderA1OwnProps &
   QrbtfRendererPositioningProps &
-  QrbtfRendererCommonProps;
+  QrbtfRendererCommonProps &
+  QrbtfRendererPresetProps<A1PresetKeys>;
 
-function QrbtfRendererA1(props: PropsWithUrl<QrbtfRendererA1Props>) {
+function QrbtfRendererA1(props: RendererProps<QrbtfRendererA1Props>) {
   const [table, typeTable] = useMemo(
     () => encode(props.url, { ecc: props.correct_level }),
     [props.url, props.correct_level],
