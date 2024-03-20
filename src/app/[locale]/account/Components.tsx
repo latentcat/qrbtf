@@ -8,6 +8,7 @@ export function SignOutButton() {
   return (
     <Button
       variant="outline"
+      size="sm"
       onClick={async () => {
         trackEvent("sign_out");
         await signOut();

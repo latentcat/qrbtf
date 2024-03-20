@@ -14,6 +14,7 @@ import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
+import React from "react";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -28,14 +29,21 @@ function PageTitle() {
   );
 }
 
-interface SectionTitleProps {
+interface SectionProps {
   title: string;
+  children?: React.ReactNode;
 }
 
-function SectionTitle(props: SectionTitleProps) {
+function Section(props: SectionProps) {
   return (
-    <div className="mb-3">
-      <h2 className="text-base font-bold _text-foreground/50">{props.title}</h2>
+    <div>
+      <div className="mb-3">
+        <h2 className="text-base font-bold _text-foreground/50">
+          {props.title}
+        </h2>
+      </div>
+
+      <Card className="w-full flex flex-col divide-y">{props.children}</Card>
     </div>
   );
 }
@@ -46,78 +54,60 @@ function SectionUser(props: { user: User }) {
     <div>
       <Container>
         <div className="w-full flex flex-col gap-6">
-          <div>
-            <SectionTitle title={"Profile"} />
-
-            <Card className="w-full flex flex-col divide-y">
-              <div className="w-full flex items-center p-3">
-                <div className="grow flex items-center gap-3">
-                  <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
-                    <AvatarImage src={props.user.image || ""} />
-                    <AvatarFallback>{props.user.name}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex flex-col gap-0">
-                    <div className="font-semibold">{props.user.name}</div>
-                    <div className="text-xs opacity-50">{props.user.email}</div>
-                  </div>
-                </div>
-
-                <div>
-                  <SignOutButton />
+          <Section title={"Profile"}>
+            <div className="w-full flex items-center p-3">
+              <div className="grow flex items-center gap-3">
+                <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
+                  <AvatarImage src={props.user.image || ""} />
+                  <AvatarFallback>{props.user.name}</AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col gap-0">
+                  <div className="font-semibold">{props.user.name}</div>
+                  <div className="text-xs opacity-50">{props.user.email}</div>
                 </div>
               </div>
-            </Card>
-          </div>
 
-          <div>
-            <SectionTitle title={"Plan"} />
+              <div>
+                <SignOutButton />
+              </div>
+            </div>
+          </Section>
 
-            <Card className="w-full flex flex-col divide-y">
-              <div className="flex flex-col gap-2 p-3">
-                <div className="w-full flex items-center text-sm">
-                  <div className="grow flex items-center gap-3">
-                    Current Plan
-                  </div>
+          <Section title={"Plan"}>
+            <div className="flex flex-col gap-2 p-3">
+              <div className="w-full flex items-center text-sm">
+                <div className="grow flex items-center gap-3">Current Plan</div>
 
-                  <div className="text-foreground/70">2024/05/01</div>
-                </div>
-
-                <div className="text-2xl font-bold">Alpha</div>
+                <div className="text-foreground/70">2024/05/01</div>
               </div>
 
-              <div className="flex flex-col gap-2 p-3">
-                <div className="w-full flex items-center text-sm">
-                  <div className="grow flex items-center gap-3">Usage</div>
+              <div className="text-2xl font-bold">Alpha</div>
+            </div>
 
-                  <div className="text-foreground/70">10 / 10 times left</div>
-                </div>
+            <div className="flex flex-col gap-2 p-3">
+              <div className="w-full flex items-center text-sm">
+                <div className="grow flex items-center gap-3">Usage</div>
 
-                <Progress value={70} className="h-1.5" />
-              </div>
-            </Card>
-          </div>
-
-          <div>
-            <SectionTitle title={"Statistics"} />
-
-            <Card className="w-full flex flex-col divide-y">
-              <div className="w-full flex items-center text-sm p-3">
-                <div className="grow flex items-center gap-3">
-                  Generation count
-                </div>
-
-                <div className="text-foreground/70">301</div>
+                <div className="text-foreground/70">10 / 10 times left</div>
               </div>
 
-              <div className="w-full flex items-center text-sm p-3">
-                <div className="grow flex items-center gap-3">
-                  Download count
-                </div>
+              <Progress value={70} className="h-1.5" />
+            </div>
+          </Section>
 
-                <div className="text-foreground/70">280</div>
-              </div>
-            </Card>
-          </div>
+          <Section title={"Statistics"}>
+            <div className="w-full flex items-center justify-between text-sm p-3">
+              <div>Generation count</div>
+
+              <div className="text-foreground/70">301</div>
+            </div>
+
+            <div className="w-full flex items-center justify-between text-sm p-3">
+              <div>Download count</div>
+
+              <div className="text-foreground/70">280</div>
+            </div>
+          </Section>
         </div>
       </Container>
     </div>
