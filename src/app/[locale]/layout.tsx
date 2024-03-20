@@ -41,7 +41,9 @@ export default async function RootLayout({
       <body className={cn(inter.className, "")}>
         <SessionProvider session={session}>
           <Providers>
-            <NextIntlClientProvider messages={pick(messages, ["user_button"])}>
+            <NextIntlClientProvider
+              messages={pick(messages, ["header", "user_button"])}
+            >
               <Header />
             </NextIntlClientProvider>
             <div className="min-h-screen flex flex-col">{children}</div>

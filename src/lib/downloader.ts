@@ -1,4 +1,5 @@
-import { QrbtfModule } from "./qrbtf_lib/qrcodes/common";
+import { http } from "./network";
+import { QrbtfModule } from "./qrbtf_lib/qrcodes/param";
 
 function createDownloadTask(href: string, filename: string) {
   const a = document.createElement("a");
@@ -64,7 +65,7 @@ async function srcToImage(name: string, src: string) {
   const pathname = parsedUrl.pathname;
   const suffix = pathname.split(".").pop() || "jpg";
 
-  const image = await fetch(src);
+  const image = await http(src);
   const blob = await image.blob();
   createDownloadTask(URL.createObjectURL(blob), `QRcode_${name}.${suffix}`);
 }
@@ -79,14 +80,14 @@ function withReport(
     downloaders[type] = (name, wrapper) => {
       // WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=270102
       Promise.all([
-        fetch("/api/update_count", {
+        http("/api/update_count", {
           method: "POST",
           body: JSON.stringify({
             collection_name: "counter_style",
             name: name,
           }),
         }),
-        fetch("/api/update_count", {
+        http("/api/update_count", {
           method: "POST",
           body: JSON.stringify({
             collection_name: "counter_global",

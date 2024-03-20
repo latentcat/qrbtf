@@ -30,7 +30,7 @@ import {
   ParamNumberControlProps,
   ParamSelectControlProps,
   ParamTextControlProps,
-} from "@/lib/qrbtf_lib/qrcodes/common";
+} from "@/lib/qrbtf_lib/qrcodes/param";
 import {
   Select,
   SelectContent,

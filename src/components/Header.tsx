@@ -20,37 +20,24 @@ import { UserButton } from "@/components/UserButton";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { usePathname } from "@/navigation";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
+import { useTranslations } from "next-intl";
 
 const scrollTopAtom = atom(true);
 const scrollTitleAtom = atom(true);
 const menuOpenAtom = atom(false);
-
-const headerLinks = [
-  // {
-  //   name: "Docs",
-  //   href: "/docs",
-  // },
-  // {
-  //   name: "Components",
-  //   href: "/docs/components",
-  // },
-  {
-    name: "GitHub",
-    href: "https://github.com/latentcat/qrbtf",
-    target: "_blank",
-  },
-  {
-    name: "Latent Cat",
-    href: "https://latentcat.com",
-    target: "_blank",
-  },
-];
 
 interface HeaderLinkProps {
   name: string;
   href: string;
   target?: string;
   onClick?: () => void;
+}
+
+interface HeaderProps {
+  links: {
+    name: string;
+    href: string;
+  }[];
 }
 
 function Logo() {
@@ -135,7 +122,9 @@ function MobileNavItem(props: HeaderLinkProps) {
   );
 }
 
-function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
+function MobileNavigation(
+  props: HeaderProps & React.ComponentPropsWithoutRef<"div">,
+) {
   const [menuOpen, setMenuOpen] = useAtom(menuOpenAtom);
   const isTop = useAtomValue(scrollTopAtom);
 
@@ -197,7 +186,7 @@ function MobileNavigation(props: React.ComponentPropsWithoutRef<"div">) {
               <div className="absolute w-full h-full top-0 left-0 overflow-y-auto px-6 lg:px-12 py-6">
                 <nav className="">
                   <ul className="_-my-2 text-base text-zinc-800 dark:text-zinc-200">
-                    {headerLinks.map((item, index) => (
+                    {props.links.map((item, index) => (
                       <MobileNavItem
                         key={"mobile_nav_" + index}
                         {...item}
@@ -228,7 +217,7 @@ function NavItem(props: HeaderLinkProps) {
         className={clsx(
           "relative flex items-center px-3 py-2 transition",
           isActive
-            ? "text-black dark:text-white"
+            ? "text-foreground font-semibold"
             : "text-zinc-600 dark:text-zinc-400",
         )}
       >
@@ -239,7 +228,9 @@ function NavItem(props: HeaderLinkProps) {
   );
 }
 
-function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
+function DesktopNavigation(
+  props: HeaderProps & React.ComponentPropsWithoutRef<"nav">,
+) {
   return (
     <div
       className={clsx(
@@ -253,7 +244,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
           <div className="flex items-center">
             <nav>
               <ul className="flex text-sm _font-medium text-zinc-800 dark:text-zinc-200 items-center">
-                {headerLinks.map((item, index) => (
+                {props.links.map((item, index) => (
                   <NavItem key={index} {...item}></NavItem>
                 ))}
               </ul>
@@ -269,6 +260,28 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
 }
 
 export function Header() {
+  const t = useTranslations("header");
+  const headerLinks = [
+    // {
+    //   name: "Docs",
+    //   href: "/docs",
+    // },
+    {
+      name: t("pricing"),
+      href: "/pricing",
+    },
+    {
+      name: "GitHub",
+      href: "https://github.com/latentcat/qrbtf",
+      target: "_blank",
+    },
+    {
+      name: "Latent Cat",
+      href: "https://latentcat.com",
+      target: "_blank",
+    },
+  ];
+
   const setIsTop = useSetAtom(scrollTopAtom);
   const setIsTitle = useSetAtom(scrollTitleAtom);
 
@@ -288,8 +301,8 @@ export function Header() {
 
   return (
     <>
-      <MobileNavigation />
-      <DesktopNavigation />
+      <MobileNavigation links={headerLinks} />
+      <DesktopNavigation links={headerLinks} />
     </>
   );
 }

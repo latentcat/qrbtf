@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  QrbtfRendererCommonProps,
-  QrbtfModule,
-  QrbtfRendererUrlProps,
-} from "@/lib/qrbtf_lib/qrcodes/common";
-import React, { useEffect, useMemo, useState } from "react";
-import { QRPointType, encode } from "../encoder";
-import { gamma } from "@/lib/image_utils";
+import React, { useEffect, useState } from "react";
 import { genImage, ImageResponse } from "@/lib/image_service";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion } from "framer-motion";
@@ -17,6 +10,8 @@ import { Progress } from "@/components/Progress";
 import { toast } from "sonner";
 import { trackEvent } from "@/components/TrackComponents";
 import { flattenObject } from "@/lib/utils";
+import { QrbtfModule } from "./param";
+import { G1Presets } from "./g1_config";
 
 interface RenderG1OwnProps {
   task_type: string;
@@ -36,10 +31,7 @@ interface RenderG1OwnProps {
 
 export type QrbtfRendererG1Props = RenderG1OwnProps;
 
-async function* fetcher(
-  req: QrbtfRendererG1Props & QrbtfRendererUrlProps,
-  signal: AbortSignal,
-) {
+async function* fetcher(req: QrbtfRendererG1Props, signal: AbortSignal) {
   //重置进度条
   yield {
     type: "progress",
@@ -176,4 +168,5 @@ export const qrbtfModuleG1: QrbtfModule<QrbtfRendererG1Props> = {
   type: "api_fetcher",
   fetcher: fetcher,
   visualizer: QrbtfVisualizerG1,
+  presets: G1Presets,
 };

@@ -17,6 +17,12 @@ const auth: AuthOptions = {
       databaseName: "lc_auth",
     },
   ) as Adapter,
+  callbacks: {
+    session: async ({ session, user }) => {
+      session.user.id = user.id;
+      return session;
+    },
+  },
   pages: {
     signIn: "/signin",
   },

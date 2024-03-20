@@ -2,10 +2,11 @@ import { z } from "zod";
 import { safeParseJSON } from "@/lib/json_handler";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
-import { ApiFetcher } from "@/lib/qrbtf_lib/qrcodes/common";
 import { useAtomValue } from "jotai/index";
 import { urlAtom } from "@/lib/states";
 import { trackEvent } from "@/components/TrackComponents";
+import { ApiFetcher } from "./qrbtf_lib/qrcodes/param";
+import { http } from "./network";
 
 const schema = z.union([
   z.object({
@@ -39,8 +40,7 @@ export type ImageResponse = z.infer<typeof schema>;
 
 export async function genImage(req: object, signal: AbortSignal) {
   const requestJson = JSON.stringify(req);
-  console.log(req);
-  const response = await fetch(`/api/gen_image`, {
+  const response = await http(`/api/gen_image`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,13 +48,6 @@ export async function genImage(req: object, signal: AbortSignal) {
     body: requestJson,
     signal,
   });
-
-  if (!response.ok) {
-    if (response.status === 429) {
-      toast.error("Too many requests, please try again later");
-    }
-    throw new Error("Failed to fetch");
-  }
 
   const reader = response.body!.getReader();
   const decoder = new TextDecoder("utf-8");
@@ -155,7 +148,7 @@ export function useImageService<P extends object>(
     return () => {
       abortController.abort();
     };
-  }, [currentReq]);
+  }, [currentReq, fetcher, url]);
 
   return {
     onSubmit,

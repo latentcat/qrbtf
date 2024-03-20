@@ -12,9 +12,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "@/navigation";
-import { ArrowUpRightIcon, HomeIcon } from "lucide-react";
+import { ArrowUpRightIcon, HomeIcon, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { trackEvent } from "@/components/TrackComponents";
+import { trackEvent, TrackLink } from "@/components/TrackComponents";
 
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
@@ -67,15 +67,18 @@ export function UserButton() {
                 </div>
               </div>
             </DropdownMenuItem>
-            {/*<DropdownMenuSeparator />*/}
-            {/*<DropdownMenuGroup>*/}
-            {/*  <Link href={"/user/" + session?.user?.id}>*/}
-            {/*    <DropdownMenuItem>*/}
-            {/*      <HomeIcon className={iconClass} />*/}
-            {/*      My homepage*/}
-            {/*    </DropdownMenuItem>*/}
-            {/*  </Link>*/}
-            {/*</DropdownMenuGroup>*/}
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <TrackLink
+                trackValue={["user_button", "account"]}
+                href="/account"
+              >
+                <DropdownMenuItem>
+                  <UserRound className={iconClass} />
+                  Account
+                </DropdownMenuItem>
+              </TrackLink>
+            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={async () => {

@@ -1,16 +1,13 @@
 "use client";
 
-import {
-  QrbtfRendererCommonProps,
-  QrbtfModule,
-  QrbtfRendererUrlProps,
-  QrbtfRendererPositioningProps,
-} from "@/lib/qrbtf_lib/qrcodes/common";
 import React, { useMemo } from "react";
 import { QRPointType, encode } from "../encoder";
 import { sq25 } from "@/lib/qrbtf_lib/constants";
+import { QrbtfRendererPositioningProps } from "./param/position";
+import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
+import { A1PresetKeys, A1Presets } from "./a1_config";
 
-interface RenderA1OwnProps {
+export interface RenderA1OwnProps {
   content_point_type: "square" | "circle";
   content_point_scale: number;
   content_point_opacity: number;
@@ -21,7 +18,7 @@ export type QrbtfRendererA1Props = RenderA1OwnProps &
   QrbtfRendererPositioningProps &
   QrbtfRendererCommonProps;
 
-function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
+function QrbtfRendererA1(props: RendererProps<QrbtfRendererA1Props>) {
   const [table, typeTable] = useMemo(
     () => encode(props.url, { ecc: props.correct_level }),
     [props.url, props.correct_level],
@@ -228,5 +225,6 @@ function QrbtfRendererA1(props: QrbtfRendererA1Props & QrbtfRendererUrlProps) {
 
 export const qrbtfModuleA1: QrbtfModule<QrbtfRendererA1Props> = {
   type: "svg_renderer",
+  presets: A1Presets,
   renderer: QrbtfRendererA1,
 };

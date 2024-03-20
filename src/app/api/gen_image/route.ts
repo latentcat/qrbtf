@@ -1,10 +1,12 @@
 // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
-import { toast } from "sonner";
-import { safeParseJSON } from "@/lib/json_handler";
-import { addCount } from "@/lib/server/count";
 import { getServerSession } from "next-auth";
 import auth from "@/auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
+import { Ratelimit } from "@upstash/ratelimit";
+import { kv } from "@vercel/kv";
+import { getTranslations } from "next-intl/server";
+import { http } from "@/lib/network";
 
 function iteratorToStream(iterator: AsyncGenerator<any>) {
   if (!iterator) return;
@@ -29,21 +31,12 @@ function sleep(time: number) {
 
 const encoder = new TextEncoder();
 
-async function* makeIterator() {
-  yield encoder.encode("<p>One</p>");
-  await sleep(200);
-  yield encoder.encode("<p>Two</p>");
-  await sleep(200);
-  yield encoder.encode("<p>Three</p>");
-}
-
 const ENDPOINT = process.env.INTERNAL_API_ENDPOINT || "";
 const KEY = process.env.INTERNAL_API_KEY || "";
 
 async function genImage(req: object) {
   const requestJson = JSON.stringify(req);
-  console.log(req);
-  const response = await fetch(`${ENDPOINT}/image/create`, {
+  const response = await http(`${ENDPOINT}/image/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -52,18 +45,7 @@ async function genImage(req: object) {
     body: requestJson,
   });
 
-  if (!response.ok) {
-    if (response.status === 429) {
-      toast.error("Too many requests, please try again later");
-    }
-    console.log(234);
-    throw new Error("Failed to fetch");
-  }
-
   const reader = response.body!.getReader();
-  const decoder = new TextDecoder("utf-8");
-
-  const result = addCount("counter_global", "generate_count");
 
   return async function* () {
     while (true) {
@@ -76,10 +58,50 @@ async function genImage(req: object) {
   };
 }
 
-export async function POST(request: Request) {
+const ratelimit = {
+  basic: new Ratelimit({
+    redis: kv,
+    analytics: true,
+    prefix: "ratelimit:basic",
+    limiter: Ratelimit.slidingWindow(5, "60s"),
+    timeout: 1000, // 1 second
+  }),
+  daily: new Ratelimit({
+    redis: kv,
+    analytics: true,
+    prefix: "ratelimit:daily",
+    limiter: Ratelimit.tokenBucket(20, "1 d", 20),
+    timeout: 1000, // 1 second
+  }),
+};
+
+export async function POST(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+  const locale = searchParams.get("locale") || "en";
+
+  const t = await getTranslations({ locale, namespace: "api.gen_image" });
+
   const session = await getServerSession(auth);
   if (!session || !session.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: t("unauthorized") }, { status: 401 });
+  }
+
+  const user = session.user.id || "";
+  const rlBasic = await ratelimit.basic.limit(user);
+
+  if (!rlBasic.success) {
+    return NextResponse.json({ error: t("rate_limit_basic") }, { status: 429 });
+  }
+
+  const rlDaily = await ratelimit.daily.limit(user);
+
+  if (!rlDaily.success) {
+    return NextResponse.json(
+      {
+        error: t("rate_limit_daily"),
+      },
+      { status: 429 },
+    );
   }
 
   const iterator = await genImage(await request.json());
