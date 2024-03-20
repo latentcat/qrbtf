@@ -4,13 +4,15 @@ import { useTranslations } from "next-intl";
 import { ArrowRight, Check, ChevronRight, MoveRight } from "lucide-react";
 import { TrackLink } from "@/components/TrackComponents";
 import { Button } from "@/components/ui/button";
+import { getTranslations } from "next-intl/server";
 
 function SectionTitle() {
+  const t = useTranslations("pricing");
   return (
     <div>
       <Container>
         <div className="py-16 flex flex-col items-center">
-          <h1 className="text-4xl font-bold text-center">Pricing</h1>
+          <h1 className="text-4xl font-bold text-center">{t("title")}</h1>
         </div>
       </Container>
     </div>
@@ -113,7 +115,7 @@ function SectionAI() {
             benefits={[t("p0.benefits.0"), t("p0.benefits.1")]}
             action={{
               id: "sign_in",
-              label: "Sign In",
+              label: t("p0.action"),
               url: "",
               variant: "outline",
             }}
@@ -130,7 +132,7 @@ function SectionAI() {
             ]}
             action={{
               id: "donate",
-              label: "Donate",
+              label: t("p1.action"),
               url: "",
               variant: "default",
             }}
@@ -152,4 +154,17 @@ export default function Page() {
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({
+  params: { locale },
+}: Readonly<{
+  params: { locale: string };
+}>) {
+  const t = await getTranslations({ locale, namespace: "pricing" });
+
+  return {
+    title: t("title"),
+    description: t("desc"),
+  };
 }

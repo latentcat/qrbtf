@@ -99,9 +99,53 @@
       }
     }
   },
+  "pricing": {
+    "title": "定价",
+    "desc": "",
+    "parametric": {
+      "title": "参数化二维码",
+      "p0": {
+        "title": "免费",
+        "price": "$0",
+        "benefits": {
+          "0": "永久免费",
+          "1": "开源",
+          "2": "丰富的样式且无需后端",
+          "3": "支持 SVG 格式"
+        }
+      }
+    },
+    "ai": {
+      "title": "AI 二维码",
+      "p0": {
+        "title": "试用",
+        "price": "$0",
+        "benefits": {
+          "0": "快速生成",
+          "1": "每天 10 次生成"
+        },
+        "action": "登录"
+      },
+      "p1": {
+        "title": "Alpha",
+        "price": "$10",
+        "unit": "每月",
+        "benefits": {
+          "0": "快速生成",
+          "1": "在频率限制下不限生成次数",
+          "2": "使用 Discord Bot 生成",
+          "3": "社区、邮箱支持"
+        },
+        "action": "赞助"
+      }
+    }
+  },
   "signin": {
     "title": "登录",
     "desc": "点击登录按钮即代表您已同意我们的<TermOfService>条款协议</TermOfService>和<PrivacyPolicy>隐私政策</PrivacyPolicy>。"
+  },
+  "header": {
+    "pricing": "定价"
   },
   "user_button": {
     "sign_in": "登录",
