@@ -5,8 +5,7 @@ import { QRPointType, encode } from "../encoder";
 import { sq25 } from "@/lib/qrbtf_lib/constants";
 import { QrbtfRendererPositioningProps } from "./param/position";
 import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
-import { QrbtfRendererPresetProps } from "./param/preset";
-import { A1PresetKeys } from "./a1_config";
+import { A1PresetKeys, A1Presets } from "./a1_config";
 
 export interface RenderA1OwnProps {
   content_point_type: "square" | "circle";
@@ -17,8 +16,7 @@ export interface RenderA1OwnProps {
 
 export type QrbtfRendererA1Props = RenderA1OwnProps &
   QrbtfRendererPositioningProps &
-  QrbtfRendererCommonProps &
-  QrbtfRendererPresetProps<A1PresetKeys>;
+  QrbtfRendererCommonProps;
 
 function QrbtfRendererA1(props: RendererProps<QrbtfRendererA1Props>) {
   const [table, typeTable] = useMemo(
@@ -227,5 +225,6 @@ function QrbtfRendererA1(props: RendererProps<QrbtfRendererA1Props>) {
 
 export const qrbtfModuleA1: QrbtfModule<QrbtfRendererA1Props> = {
   type: "svg_renderer",
+  presets: A1Presets,
   renderer: QrbtfRendererA1,
 };

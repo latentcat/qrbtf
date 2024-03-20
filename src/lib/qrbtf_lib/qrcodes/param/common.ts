@@ -33,11 +33,7 @@ export function useCommonParams() {
       },
     },
   ];
-  const commonDefault: Pick<QrbtfRendererCommonProps, "correct_level"> = {
-    correct_level: "medium",
-  };
   return {
     commonParams,
-    commonDefault,
   };
 }

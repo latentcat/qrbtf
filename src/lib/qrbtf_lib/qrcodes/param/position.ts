@@ -45,12 +45,7 @@ export function usePositioningParams() {
       config: {},
     },
   ];
-  const positioningDefault: QrbtfRendererPositioningProps = {
-    positioning_point_type: "square",
-    positioning_point_color: "#000000",
-  };
   return {
     positioningParams,
-    positioningDefault,
   };
 }

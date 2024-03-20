@@ -8,7 +8,7 @@ import { useA1Params } from "@/lib/qrbtf_lib/qrcodes/a1_config";
 
 export default function Page() {
   const t = useTranslations("qrcodes.a1");
-  const { params, defaultValues } = useA1Params("a1");
+  const { params } = useA1Params();
 
   return (
     <QrcodeGeneratorWithProvider<QrbtfRendererA1Props>
@@ -16,7 +16,7 @@ export default function Page() {
       subtitle={t("subtitle")}
       qrcodeModule={qrbtfModuleA1}
       params={params}
-      defaultValues={defaultValues}
+      defaultPreset="a1"
     />
   );
 }

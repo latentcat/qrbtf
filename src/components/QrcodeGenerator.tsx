@@ -8,7 +8,7 @@ import {
   SplitView,
 } from "@/components/Containers";
 import { Form, FormField } from "@/components/ui/form";
-import { DefaultValues, useForm, useWatch } from "react-hook-form";
+import { Path, PathValue, useForm, useWatch } from "react-hook-form";
 import {
   ParamBooleanControl,
   ParamColorControl,
@@ -17,14 +17,13 @@ import {
   ParamSelectControl,
   ParamTextControl,
 } from "@/components/QrcodeControlParams";
-import { HTMLAttributes, useRef } from "react";
+import { HTMLAttributes, useRef, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { cn, flattenObject, useCurrentQrcodeType } from "@/lib/utils";
+import { cn, useCurrentQrcodeType } from "@/lib/utils";
 import { Loader2, LucideDownload } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { QrCodeIcon } from "@heroicons/react/24/outline";
 import { StyleTitle } from "@/components/Titles";
 import { useAtomValue } from "jotai";
 import { urlAtom } from "@/lib/states";
@@ -38,6 +37,13 @@ import {
 import { useImageService } from "@/lib/image_service";
 import { trackEvent } from "@/components/TrackComponents";
 import { CommonControlProps, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/param";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -46,7 +52,7 @@ export interface QrcodeGeneratorProps<P extends {}>
   subtitle: string;
   qrcodeModule: QrbtfModule<P>;
   params: CommonControlProps<P>[];
-  defaultValues: DefaultValues<P>;
+  defaultPreset: string;
 }
 
 export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
@@ -58,12 +64,20 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
       : null,
   );
 
-  const { children, className, params, defaultValues, ...restProps } = props;
+  const { params, defaultPreset } = props;
+  const presets = props.qrcodeModule.presets;
 
   const form = useForm<P>({
-    defaultValues: defaultValues,
+    defaultValues: presets[defaultPreset],
   });
   const componentProps = useWatch({ control: form.control }) as P;
+  const [preset, setPreset_] = useState(defaultPreset);
+  const setPreset = (presetKey: string) => {
+    setPreset_(presetKey);
+    for (const [key, value] of Object.entries(presets[presetKey])) {
+      form.setValue(key as Path<P>, value as PathValue<P, Path<P>>);
+    }
+  };
 
   // Download
   const qrcodeWrapperRef = useRef<HTMLDivElement | null>(null);
@@ -109,6 +123,22 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
               <div>
                 <Form {...form}>
                   <form className="not-prose _divide-y">
+                    {Object.keys(presets).length > 0 && (
+                      <div className="_py-1 flex flex-col items-stretch justify-center min-h-[52px]">
+                        <Select value={preset} onValueChange={setPreset}>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select a fruit" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {Object.keys(presets).map((presetKey) => (
+                              <SelectItem key={presetKey} value={presetKey}>
+                                {presetKey.toUpperCase()}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    )}
                     {params.map((param) => (
                       <div
                         key={param.name}

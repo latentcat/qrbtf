@@ -1,44 +1,47 @@
 import { useTranslations } from "next-intl";
-import { QrbtfRendererA1Props, RenderA1OwnProps } from "./a1";
+import { QrbtfRendererA1Props } from "./a1";
 import { CommonControlProps } from "./param";
 import { useCommonParams } from "./param/common";
 import { usePositioningParams } from "./param/position";
-import usePresetParams from "./param/preset";
 
 export type A1PresetKeys = "a1" | "a1c" | "a1p";
 
-const A1Presets: Record<A1PresetKeys, RenderA1OwnProps> = {
+export const A1Presets: Record<A1PresetKeys, QrbtfRendererA1Props> = {
   a1: {
+    correct_level: "medium",
+    positioning_point_type: "square",
+    positioning_point_color: "#000000",
     content_point_type: "square",
     content_point_scale: 1,
     content_point_opacity: 1,
     content_point_color: "#000000",
   },
   a1c: {
+    correct_level: "medium",
     content_point_type: "circle",
+    positioning_point_type: "circle",
+    positioning_point_color: "#000000",
     content_point_scale: 0.5,
     content_point_opacity: 0.3,
     content_point_color: "#000000",
   },
   a1p: {
+    correct_level: "medium",
     content_point_type: "circle",
+    positioning_point_type: "circle",
+    positioning_point_color: "#000000",
     content_point_scale: 0.8,
     content_point_opacity: 1,
     content_point_color: "#000000",
   },
 };
 
-export function useA1Params(defaultPresetKey: A1PresetKeys) {
+export function useA1Params() {
   const t = useTranslations("qrcodes.a1");
-  const { commonParams, commonDefault } = useCommonParams();
-  const { positioningParams, positioningDefault } = usePositioningParams();
-  const { presetParams, presetDefault } = usePresetParams({
-    presets: A1Presets,
-    default: defaultPresetKey,
-  });
+  const { commonParams } = useCommonParams();
+  const { positioningParams } = usePositioningParams();
 
   const params: CommonControlProps<QrbtfRendererA1Props>[] = [
-    ...presetParams,
     ...commonParams,
     ...positioningParams,
     {
@@ -92,11 +95,5 @@ export function useA1Params(defaultPresetKey: A1PresetKeys) {
 
   return {
     params,
-    defaultValues: {
-      ...presetDefault,
-      ...commonDefault,
-      ...positioningDefault,
-      ...A1Presets[defaultPresetKey],
-    },
   };
 }
