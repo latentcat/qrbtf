@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { http } from "@/lib/network";
 
 function iteratorToStream(iterator: AsyncGenerator<any>) {
@@ -76,9 +76,7 @@ const ratelimit = {
 };
 
 export async function POST(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const locale = searchParams.get("locale") || "en";
-
+  const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
   const t = await getTranslations({ locale, namespace: "api.gen_image" });
 
   const session = await getServerSession(auth);

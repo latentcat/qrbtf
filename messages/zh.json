@@ -322,9 +322,9 @@
   },
   "api": {
     "gen_image": {
-      "unauthorized": "Unauthorized.",
+      "unauthorized": "请登录后使用",
       "rate_limit_basic": "频率过高，请稍后重试。",
-      "rate_limit_daily": "Daily rate limit exceeded, please join our Discord server to generate more."
+      "rate_limit_daily": "已达到今日使用上限，请加入 Discord 频道来获得更多生成次数。"
     }
   }
 }
