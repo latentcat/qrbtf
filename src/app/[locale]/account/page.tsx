@@ -111,7 +111,7 @@ function SectionUser(props: SectionUserProps) {
                 <div className="text-foreground/70">
                   {props.user.tier === UserTier.Trial
                     ? `${props.dailyUsage} / ${props.maxDailyUsage} ${t("refreshed")}`
-                    : t("times_left")}
+                    : t("unlimited")}
                 </div>
               </div>
 
@@ -119,7 +119,7 @@ function SectionUser(props: SectionUserProps) {
                 value={
                   props.user.tier === UserTier.Trial
                     ? (100 * props.dailyUsage) / props.maxDailyUsage
-                    : 100
+                    : 0
                 }
                 className="h-1.5"
               />
