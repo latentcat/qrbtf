@@ -8,7 +8,7 @@ export type C2PresetKeys = "c2";
 
 export const C2Presets: Record<C2PresetKeys, QrbtfRendererC2Props> = {
   c2: {
-    correct_level: "medium",
+    correct_level: "high",
     brightness: 0,
     contrast: 0,
     background: DefaultBackground as unknown as string,
