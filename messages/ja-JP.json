@@ -143,7 +143,16 @@
   },
   "account": {
     "title": "Account",
-    "desc": ""
+    "desc": "",
+    "profile": "Profile",
+    "plan": "Plan",
+    "current_plan": "Current Plan",
+    "usage": "Usage",
+    "refreshed": "(refreshed daily)",
+    "unlimited": "Unlimited",
+    "statistics": "Statistics",
+    "generation_count": "Generation Count",
+    "download_count": "Download Count"
   },
   "signin": {
     "title": "Sign In",
@@ -154,6 +163,7 @@
   },
   "user_button": {
     "sign_in": "Sign in",
+    "account": "Account",
     "sign_out": "Sign out"
   },
   "qrcodes": {
