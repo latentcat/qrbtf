@@ -1,4 +1,5 @@
 import NextAuth, { DefaultSession, DefaultUser } from "next-auth";
+import type { UserTier } from "@/auth";
 
 declare module "next-auth" {
   /**
@@ -7,14 +8,15 @@ declare module "next-auth" {
   interface Session {
     user: {
       /** The user's postal address. */
-      role?: string;
       id?: string;
+      tier?: UserTier;
     } & DefaultSession["user"];
-    jwt?: string;
   }
 
-  interface User {
-    role?: string;
+  interface User extends DefaultUser {
     id?: string;
+    tier?: UserTier;
+    subscribe_time?: str;
+    subscribe_expire?: str;
   }
 }
