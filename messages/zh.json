@@ -213,6 +213,33 @@
       "square": "方形",
       "circle": "圆形"
     },
+    "a2": {
+      "title": "A2",
+      "subtitle": "连线变种",
+      "content_line_type": {
+        "label": "连线类型",
+        "desc": ""
+      },
+      "content_point_scale": {
+        "label": "信息点缩放",
+        "desc": ""
+      },
+      "content_point_opacity": {
+        "label": "信息点不透明度",
+        "desc": ""
+      },
+      "content_point_color": {
+        "label": "信息点颜色",
+        "desc": ""
+      },
+      "horizontal": "横向",
+      "vertical": "纵向",
+      "interlock": "纵横",
+      "radial": "径向",
+      "tl-br": "左上—右下",
+      "tr-bl": "左下—右上",
+      "cross": "交错"
+    },
     "c2": {
       "title": "C2",
       "subtitle": "1/3 像素点阵",
@@ -332,7 +359,7 @@
   },
   "api": {
     "gen_image": {
-      "unauthorized": "请登录后使用",
+      "unauthorized": "请登录后使用。",
       "rate_limit_basic": "频率过高，请稍后重试。",
       "rate_limit_daily": "已达到今日使用上限，请查看定价页面获得更多生成次数。"
     }
