@@ -105,7 +105,7 @@ function QrbtfVisualizerG1(props: { data: any }) {
     if (rep.res_type === "result") {
       setImageUrl(rep.data.download_url);
       setProgress(null);
-      trackEvent("submit_fetcher", flattenObject(rep));
+      trackEvent("submit_fetcher_result", flattenObject(rep.data));
     }
   }, [props.data]);
 
