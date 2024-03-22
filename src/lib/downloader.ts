@@ -94,6 +94,9 @@ function withReport(
             name: "download_count",
           }),
         }),
+        http("/api/user/stat/inc_download_count", {
+          method: "POST",
+        }),
       ]).finally(() => origin(name, wrapper));
     };
   }

@@ -8,10 +8,10 @@ import { redirect } from "@/navigation";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "next-auth";
-import { getSession, useSession } from "next-auth/react";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
 import React from "react";
+import { getUserQrcodeStat } from "@/app/api/user/stat/service";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -45,8 +45,13 @@ function Section(props: SectionProps) {
   );
 }
 
-function SectionUser(props: { user: User }) {
-  const t = useTranslations("account");
+interface SectionUserProps {
+  user: User;
+  generation_count: number;
+  download_count: number;
+}
+
+function SectionUser(props: SectionUserProps) {
   const formatter = useFormatter();
   return (
     <div>
@@ -105,14 +110,12 @@ function SectionUser(props: { user: User }) {
           <Section title={"Statistics"}>
             <div className="w-full flex items-center justify-between text-sm p-3">
               <div>Generation count</div>
-
-              <div className="text-foreground/70">301</div>
+              <div className="text-foreground/70">{props.generation_count}</div>
             </div>
 
             <div className="w-full flex items-center justify-between text-sm p-3">
               <div>Download count</div>
-
-              <div className="text-foreground/70">280</div>
+              <div className="text-foreground/70">{props.download_count}</div>
             </div>
           </Section>
         </div>
@@ -123,10 +126,12 @@ function SectionUser(props: { user: User }) {
 
 export default async function Page() {
   const session = await getServerSession(auth);
-  if (!session || !session.user) {
+  if (!session || !session.user || !session.user.id) {
     redirect("/signin");
     return;
   }
+
+  const userQrcodeStat = await getUserQrcodeStat(session.user.id);
 
   return (
     <div>
@@ -134,7 +139,11 @@ export default async function Page() {
       <PageTitle />
       <div className="flex flex-col items-center">
         <div className="w-full max-w-2xl">
-          <SectionUser user={session.user} />
+          <SectionUser
+            user={session.user}
+            download_count={userQrcodeStat?.download_count ?? 0}
+            generation_count={userQrcodeStat?.generation_count ?? 0}
+          />
         </div>
       </div>
     </div>
