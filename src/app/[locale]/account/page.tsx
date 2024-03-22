@@ -84,7 +84,7 @@ function SectionUser(props: SectionUserProps) {
                 <div className="text-foreground/70">
                   {props.user.tier === UserTier.Trial ||
                   !props.user.subscribe_expire
-                    ? "∞"
+                    ? ""
                     : formatter.dateTime(props.user.subscribe_expire, {
                         dateStyle: "short",
                       })}
