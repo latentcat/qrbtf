@@ -4,6 +4,11 @@ import DiscordProvider from "next-auth/providers/discord";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { connectToDatabase } from "./lib/server/mongodb";
 
+export enum UserTier {
+  Trial = 1,
+  Alpha,
+}
+
 const auth: AuthOptions = {
   providers: [
     DiscordProvider({
@@ -20,6 +25,7 @@ const auth: AuthOptions = {
   callbacks: {
     session: async ({ session, user }) => {
       session.user.id = user.id;
+      session.user.tier = user.tier;
       return session;
     },
   },
