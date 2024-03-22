@@ -28,9 +28,9 @@ export const A1Presets: Record<A1PresetKeys, QrbtfRendererA1Props> = {
   a1p: {
     correct_level: "medium",
     content_point_type: "circle",
-    positioning_point_type: "circle",
+    positioning_point_type: "planet",
     positioning_point_color: "#000000",
-    content_point_scale: 0.8,
+    content_point_scale: 0.0,
     content_point_opacity: 1,
     content_point_color: "#000000",
   },

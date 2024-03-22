@@ -6,6 +6,7 @@ import { sq25 } from "@/lib/qrbtf_lib/constants";
 import { QrbtfRendererPositioningProps } from "./param/position";
 import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
 import { A1PresetKeys, A1Presets } from "./a1_config";
+import {rand} from "@/lib/utils";
 
 export interface RenderA1OwnProps {
   content_point_type: "square" | "circle";
@@ -168,23 +169,27 @@ function QrbtfRendererA1(props: RendererProps<QrbtfRendererA1Props>) {
           case QRPointType.ALIGN_OTHER:
           case QRPointType.TIMING:
           default:
+            const isConstant = contentPointSize > 0
             if (props.content_point_type === "square") {
+              const size = isConstant ? contentPointSize : rand(0.3, 1)
+              const offset = isConstant ? contentPointOffset : (1 - size) / 2
               points.push(
                 <rect
                   opacity={props.content_point_opacity}
-                  width={contentPointSize}
-                  height={contentPointSize}
+                  width={size}
+                  height={size}
                   key={id++}
                   fill={props.content_point_color}
-                  x={x + contentPointOffset}
-                  y={y + contentPointOffset}
+                  x={x + offset}
+                  y={y + offset}
                 />,
               );
             } else {
+              const halfSize = isConstant ? contentPointSizeHalf : rand(0.3, 1) / 2
               points.push(
                 <circle
                   opacity={props.content_point_opacity}
-                  r={contentPointSizeHalf}
+                  r={halfSize}
                   key={id++}
                   fill={props.content_point_color}
                   cx={x + 0.5}
