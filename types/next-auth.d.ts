@@ -10,13 +10,15 @@ declare module "next-auth" {
       /** The user's postal address. */
       id?: string;
       tier?: UserTier;
+      subscribe_time?: Date;
+      subscribe_expire?: Date;
     } & DefaultSession["user"];
   }
 
   interface User extends DefaultUser {
     id?: string;
     tier?: UserTier;
-    subscribe_time?: str;
-    subscribe_expire?: str;
+    subscribe_time?: Date;
+    subscribe_expire?: Date;
   }
 }

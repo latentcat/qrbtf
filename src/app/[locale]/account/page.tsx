@@ -1,17 +1,14 @@
 import { Container } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
-import { useTranslations } from "next-intl";
-import { ArrowRight, Check, ChevronRight, MoveRight } from "lucide-react";
-import { trackEvent, TrackLink } from "@/components/TrackComponents";
-import { Button } from "@/components/ui/button";
+import { useFormatter, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import auth from "@/auth";
+import auth, { UserTier } from "@/auth";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "@/navigation";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "next-auth";
-import { signOut } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
 import React from "react";
@@ -50,6 +47,7 @@ function Section(props: SectionProps) {
 
 function SectionUser(props: { user: User }) {
   const t = useTranslations("account");
+  const formatter = useFormatter();
   return (
     <div>
       <Container>
@@ -78,10 +76,19 @@ function SectionUser(props: { user: User }) {
               <div className="w-full flex items-center text-sm">
                 <div className="grow flex items-center gap-3">Current Plan</div>
 
-                <div className="text-foreground/70">2024/05/01</div>
+                <div className="text-foreground/70">
+                  {props.user.tier === UserTier.Trial ||
+                  !props.user.subscribe_expire
+                    ? "∞"
+                    : formatter.dateTime(props.user.subscribe_expire, {
+                        dateStyle: "short",
+                      })}
+                </div>
               </div>
 
-              <div className="text-2xl font-bold">Alpha</div>
+              <div className="text-2xl font-bold">
+                {UserTier[props.user.tier || 0]}
+              </div>
             </div>
 
             <div className="flex flex-col gap-2 p-3">
