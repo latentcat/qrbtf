@@ -5,7 +5,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { connectToDatabase } from "./lib/server/mongodb";
 
 export enum UserTier {
-  Trial = 1,
+  Trial = 0,
   Alpha,
 }
 
@@ -25,7 +25,7 @@ const auth: AuthOptions = {
   callbacks: {
     session: async ({ session, user }) => {
       session.user.id = user.id;
-      session.user.tier = user.tier;
+      session.user.tier = user.tier || UserTier.Trial;
       session.user.subscribe_time = user.subscribe_time;
       session.user.subscribe_expire = user.subscribe_expire;
       return session;

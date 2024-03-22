@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { http } from "@/lib/network";
 
 function iteratorToStream(iterator: AsyncGenerator<any>) {
@@ -22,14 +22,6 @@ function iteratorToStream(iterator: AsyncGenerator<any>) {
     },
   });
 }
-
-function sleep(time: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, time);
-  });
-}
-
-const encoder = new TextEncoder();
 
 const ENDPOINT = process.env.INTERNAL_API_ENDPOINT || "";
 const KEY = process.env.INTERNAL_API_KEY || "";
@@ -66,13 +58,6 @@ const ratelimit = {
     limiter: Ratelimit.slidingWindow(5, "60s"),
     timeout: 1000, // 1 second
   }),
-  daily: new Ratelimit({
-    redis: kv,
-    analytics: true,
-    prefix: "ratelimit:daily",
-    limiter: Ratelimit.tokenBucket(20, "1 d", 20),
-    timeout: 1000, // 1 second
-  }),
 };
 
 export async function POST(request: NextRequest) {
@@ -89,17 +74,6 @@ export async function POST(request: NextRequest) {
 
   if (!rlBasic.success) {
     return NextResponse.json({ error: t("rate_limit_basic") }, { status: 429 });
-  }
-
-  const rlDaily = await ratelimit.daily.limit(user);
-
-  if (!rlDaily.success) {
-    return NextResponse.json(
-      {
-        error: t("rate_limit_daily"),
-      },
-      { status: 429 },
-    );
   }
 
   const iterator = await genImage(await request.json());
