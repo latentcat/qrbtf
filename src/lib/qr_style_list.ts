@@ -39,15 +39,15 @@ export const qrStyleList: QrStyleItemProps[] = [
     image: "a1p.svg",
   },
   {
-    id: "a5",
-    image: "a5.svg",
-  },
-  {
-    id: "a4",
-    image: "a4.svg",
-  },
-  {
     id: "a3",
     image: "a3.svg",
+  },
+  {
+    id: "a2c",
+    image: "a2c.svg",
+  },
+  {
+    id: "a3r",
+    image: "a3r.svg",
   },
 ];

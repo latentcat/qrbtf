@@ -18,11 +18,11 @@ export default function Page() {
   return (
     <QrcodeGeneratorWithProvider<QrbtfRendererA2Props>
       title={t("title")}
-      label={""}
+      label={"C"}
       subtitle={t("subtitle")}
       qrcodeModule={qrbtfModuleA2}
       params={params}
-      defaultPreset="a2"
+      defaultPreset="a2c"
     />
   );
 }

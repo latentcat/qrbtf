@@ -31,3 +31,10 @@ export function flattenObject(
   }
   return result;
 }
+
+let seed = 0;
+
+export function rand(min: number, max: number) {
+  seed = (seed * 9301 + 49297) % 233280;
+  return min + (seed / 233280.0) * (max - min);
+}
