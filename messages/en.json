@@ -234,13 +234,13 @@
         "label": "Content color",
         "desc": ""
       },
-      "horizontal": "horizontal",
-      "vertical": "vertical",
-      "interlock": "interlock",
-      "radial": "radial",
-      "tl-br": "tl-br",
-      "tr-bl": "tr-bl",
-      "cross": "cross"
+      "horizontal": "Horizontal",
+      "vertical": "Vertical",
+      "interlock": "Interlock",
+      "radial": "Radial",
+      "tl-br": "TL-BR",
+      "tr-bl": "TR-BL",
+      "cross": "Cross"
     },
     "c2": {
       "title": "C2",
