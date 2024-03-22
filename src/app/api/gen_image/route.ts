@@ -7,7 +7,11 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
 import { getTranslations } from "next-intl/server";
 import { http } from "@/lib/network";
-import { getUserQrcodeStat, updateLastGenerate } from "../user/stat/service";
+import {
+  getUserQrcodeStat,
+  incGenerationCount,
+  updateLastGenerate,
+} from "../user/stat/service";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   if (!iterator) return;
@@ -17,6 +21,7 @@ function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
 
       if (done) {
         updateLastGenerate(userId);
+        incGenerationCount(userId);
         controller.close();
       } else {
         controller.enqueue(value);
