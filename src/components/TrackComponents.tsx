@@ -52,11 +52,6 @@ export const TrackLink: React.FC<TrackLinkProps> = ({
   );
 };
 
-type AllowedPropertyValues = string | number | boolean | null;
-
-export function trackEvent(
-  name: string,
-  properties?: Record<string, AllowedPropertyValues>,
-) {
+export function trackEvent(name: string, properties?: Record<string, any>) {
   mixpanel.track(name, properties);
 }

@@ -51,7 +51,7 @@ export default function MixpanelAnalytics() {
     } else {
       mixpanel.reset();
     }
-  }, [isLogout]);
+  }, [isLogout, session]);
 
   return <></>;
 }

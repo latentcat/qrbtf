@@ -1,3 +1,4 @@
+import { trackEvent } from "@/components/TrackComponents";
 import { http } from "./network";
 import { QrbtfModule } from "./qrbtf_lib/qrcodes/param";
 
@@ -70,14 +71,26 @@ async function srcToImage(name: string, src: string) {
   createDownloadTask(URL.createObjectURL(blob), `QRcode_${name}.${suffix}`);
 }
 
-type Downloader = (name: string, wrapper: HTMLElement) => void;
+type Downloader = (options: {
+  name: string;
+  wrapper: HTMLElement;
+  params: any;
+  userId?: string;
+}) => void;
 
 function withReport(
   downloaders: Record<string, Downloader>,
 ): Record<string, Downloader> {
   for (const type in downloaders) {
     const origin = downloaders[type];
-    downloaders[type] = (name, wrapper) => {
+    downloaders[type] = (options) => {
+      const { name, wrapper, params, userId } = options;
+      const dataToReport = {
+        user_id: userId,
+        type: name,
+        params: params,
+      };
+      trackEvent("download_qrcode", dataToReport);
       // WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=270102
       Promise.all([
         http("/api/update_count", {
@@ -97,21 +110,26 @@ function withReport(
         http("/api/user/stat/inc_download_count", {
           method: "POST",
         }),
-      ]).finally(() => origin(name, wrapper));
+        http("/api/user/stat/log_qrcode", {
+          method: "POST",
+          body: JSON.stringify(dataToReport),
+        }),
+      ]).finally(() => origin(options));
     };
   }
   return downloaders;
 }
 
 const SvgQrcodeDownloaders: Record<string, Downloader> = withReport({
-  svg: (name, wrapper) => svgToSvg(name, wrapper.firstChild as SVGSVGElement),
-  jpg: (name, wrapper) =>
+  svg: ({ name, wrapper }) =>
+    svgToSvg(name, wrapper.firstChild as SVGSVGElement),
+  jpg: ({ name, wrapper }) =>
     svgToImage(name, wrapper.firstChild as SVGSVGElement, { type: "jpg" }),
-  png: (name, wrapper) =>
+  png: ({ name, wrapper }) =>
     svgToImage(name, wrapper.firstChild as SVGSVGElement, { type: "png" }),
 });
 const ApiFetcherQrcodeDownloaders: Record<string, Downloader> = withReport({
-  jpg: (name, wrapper) =>
+  jpg: ({ name, wrapper }) =>
     srcToImage(name, wrapper.getElementsByTagName("img")[0].src),
 });
 

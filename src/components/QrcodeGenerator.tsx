@@ -44,6 +44,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { useSession } from "next-auth/react";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -80,6 +81,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   };
 
   // Download
+  const { data: session } = useSession();
   const qrcodeWrapperRef = useRef<HTMLDivElement | null>(null);
   const currentQrcodeType = useCurrentQrcodeType();
 
@@ -193,11 +195,12 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                           key={type}
                           onClick={() => {
                             qrcodeWrapperRef.current &&
-                              handler(
-                                currentQrcodeType,
-                                qrcodeWrapperRef.current,
-                              );
-                            trackEvent("download_qrcode", { type: type });
+                              handler({
+                                name: currentQrcodeType,
+                                wrapper: qrcodeWrapperRef.current,
+                                params: componentProps,
+                                userId: session?.user.id,
+                              });
                           }}
                         >
                           <span className="_font-mono">
