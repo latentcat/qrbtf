@@ -42,9 +42,6 @@ export function SectionQA() {
         <Accordion
           type="single"
           collapsible
-          onValueChange={(value) => {
-            trackEvent("click_faq", { value: value })
-          }}
         >
           {list.map((item, index) => (
             <AccordionItem key={"qr_" + index} value={`item_${index}`}>
