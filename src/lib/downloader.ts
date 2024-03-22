@@ -1,6 +1,7 @@
 import { trackEvent } from "@/components/TrackComponents";
 import { http } from "./network";
 import { QrbtfModule } from "./qrbtf_lib/qrcodes/param";
+import {flattenObject} from "@/lib/utils";
 
 function createDownloadTask(href: string, filename: string) {
   const a = document.createElement("a");
@@ -88,7 +89,7 @@ function withReport(
       const dataToReport = {
         user_id: userId,
         type: name,
-        params: params,
+        ...params
       };
       trackEvent("download_qrcode", dataToReport);
       // WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=270102
