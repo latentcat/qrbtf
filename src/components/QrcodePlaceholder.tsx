@@ -1,9 +1,8 @@
-import {Card} from "@/components/ui/card";
-import {Container} from "@/components/Containers";
-import {useTranslations} from "next-intl";
-import React, {ReactNode} from "react";
-import {TrackLink} from "@/components/TrackComponents";
-
+import { Card } from "@/components/ui/card";
+import { Container } from "@/components/Containers";
+import { useTranslations } from "next-intl";
+import React, { ReactNode } from "react";
+import { TrackLink } from "@/components/TrackComponents";
 
 export function QrcodePlaceholder() {
   const t = useTranslations("qrcode_placeholder");
@@ -30,5 +29,5 @@ export function QrcodePlaceholder() {
         </Card>
       </Container>
     </div>
-  )
+  );
 }

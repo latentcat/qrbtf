@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { QrbtfRendererC2Props } from "./c2";
-import DefaultBackground from "/public/assets/images/c2_background.inline.png";
+import DefaultBackground from "/public/assets/images/c2_background.inline.jpg";
 import { CommonControlProps } from "./param";
 import { useCommonParams } from "./param/common";
 
