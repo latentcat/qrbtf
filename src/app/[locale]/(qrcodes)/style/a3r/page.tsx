@@ -1,3 +1,7 @@
+import {QrcodePlaceholder} from "@/components/QrcodePlaceholder";
+
 export default function Page() {
-  return <div></div>;
+  return (
+    <QrcodePlaceholder />
+  )
 }

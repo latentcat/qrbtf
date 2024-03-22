@@ -366,5 +366,8 @@
       "rate_limit_basic": "Rate limit exceeded, please try again later.",
       "rate_limit_daily": "Daily rate limit exceeded. Please see more information on the pricing page."
     }
+  },
+  "qrcode_placeholder": {
+    "todo": "The website migration has not been completed, please visit <QrbtfClassic>classic.qrbtf.com</QrbtfClassic> to generate the QR code of this style."
   }
 }
