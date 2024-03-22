@@ -104,11 +104,13 @@ function SectionUser(props: SectionUserProps) {
 
             <div className="flex flex-col gap-2 p-3">
               <div className="w-full flex items-center text-sm">
-                <div className="grow flex items-center gap-3">Usage</div>
+                <div className="grow flex items-center gap-3">
+                  {t("usage")}
+                </div>
 
                 <div className="text-foreground/70">
                   {props.user.tier === UserTier.Trial
-                    ? `${props.dailyUsage} / ${props.maxDailyUsage} ${t("times_left")}`
+                    ? `${props.dailyUsage} / ${props.maxDailyUsage} ${t("refreshed")}`
                     : t("times_left")}
                 </div>
               </div>

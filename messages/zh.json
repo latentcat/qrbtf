@@ -147,7 +147,8 @@
     "profile": "个人信息",
     "plan": "计划",
     "current_plan": "当前计划",
-    "times_left": "剩余次数",
+    "usage": "用量",
+    "refreshed": "(每日刷新)",
     "unlimited": "无限制",
     "statistics": "统计",
     "generation_count": "AI 二维码生成次数",
@@ -162,6 +163,7 @@
   },
   "user_button": {
     "sign_in": "登录",
+    "account": "账户",
     "sign_out": "登出"
   },
   "qrcodes": {
@@ -332,7 +334,7 @@
     "gen_image": {
       "unauthorized": "请登录后使用",
       "rate_limit_basic": "频率过高，请稍后重试。",
-      "rate_limit_daily": "已达到今日使用上限，请加入 Discord 频道来获得更多生成次数。"
+      "rate_limit_daily": "已达到今日使用上限，请查看定价页面获得更多生成次数。"
     }
   }
 }

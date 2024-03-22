@@ -75,7 +75,7 @@ export function UserButton() {
               >
                 <DropdownMenuItem>
                   <UserRound className={iconClass} />
-                  Account
+                  {t("account")}
                 </DropdownMenuItem>
               </TrackLink>
             </DropdownMenuGroup>

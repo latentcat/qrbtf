@@ -147,7 +147,8 @@
     "profile": "Profile",
     "plan": "Plan",
     "current_plan": "Current Plan",
-    "times_left": "times left",
+    "usage": "Usage",
+    "refreshed": "(refreshed daily)",
     "unlimited": "Unlimited",
     "statistics": "Statistics",
     "generation_count": "Generation Count",
@@ -162,6 +163,7 @@
   },
   "user_button": {
     "sign_in": "Sign in",
+    "account": "Account",
     "sign_out": "Sign out"
   },
   "qrcodes": {
