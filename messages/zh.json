@@ -142,8 +142,16 @@
     }
   },
   "account": {
-    "title": "Account",
-    "desc": ""
+    "title": "账户",
+    "desc": "",
+    "profile": "个人信息",
+    "plan": "计划",
+    "current_plan": "当前计划",
+    "times_left": "剩余次数",
+    "unlimited": "无限制",
+    "statistics": "统计",
+    "generation_count": "AI 二维码生成次数",
+    "download_count": "下载次数"
   },
   "signin": {
     "title": "登录",
