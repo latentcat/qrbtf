@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SectionTitle } from "@/components/Titles";
+import {trackEvent} from "@/components/TrackComponents";
 
 const list = [
   {
@@ -38,7 +39,13 @@ export function SectionQA() {
     <div className="">
       <SectionTitle title={t("title")} subtitle={t("subtitle")} />
       <div className="mt-6 _border-t">
-        <Accordion type="single" collapsible>
+        <Accordion
+          type="single"
+          collapsible
+          onValueChange={(value) => {
+            trackEvent("click_faq", { value: value })
+          }}
+        >
           {list.map((item, index) => (
             <AccordionItem key={"qr_" + index} value={`item_${index}`}>
               <AccordionTrigger>{t(item.q)}</AccordionTrigger>
