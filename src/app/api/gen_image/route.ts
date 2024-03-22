@@ -1,20 +1,22 @@
 // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
 import { getServerSession } from "next-auth";
-import auth from "@/auth";
+import auth, { UserTier } from "@/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
 import { getTranslations } from "next-intl/server";
 import { http } from "@/lib/network";
+import { getUserQrcodeStat, updateLastGenerate } from "../user/stat/service";
 
-function iteratorToStream(iterator: AsyncGenerator<any>) {
+function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   if (!iterator) return;
   return new ReadableStream({
     async pull(controller) {
       const { value, done } = await iterator.next();
 
       if (done) {
+        updateLastGenerate(userId);
         controller.close();
       } else {
         controller.enqueue(value);
@@ -76,8 +78,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: t("rate_limit_basic") }, { status: 429 });
   }
 
+  const { usage_count: usageCount = 0 } = (await getUserQrcodeStat(user)) || {};
+  if (session.user.tier != UserTier.Alpha && usageCount >= 10) {
+    return NextResponse.json({ error: t("rate_limit_daily") }, { status: 429 });
+  }
+
   const iterator = await genImage(await request.json());
-  const stream = iteratorToStream(iterator());
+  const stream = iteratorToStream(iterator(), user);
 
   return new Response(stream);
 }

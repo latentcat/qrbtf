@@ -47,8 +47,10 @@ function Section(props: SectionProps) {
 
 interface SectionUserProps {
   user: User;
-  generation_count: number;
-  download_count: number;
+  generationCount: number;
+  downloadCount: number;
+  dailyUsage: number;
+  maxDailyUsage: number;
 }
 
 function SectionUser(props: SectionUserProps) {
@@ -100,22 +102,33 @@ function SectionUser(props: SectionUserProps) {
               <div className="w-full flex items-center text-sm">
                 <div className="grow flex items-center gap-3">Usage</div>
 
-                <div className="text-foreground/70">10 / 10 times left</div>
+                <div className="text-foreground/70">
+                  {props.user.tier === UserTier.Trial
+                    ? `${props.dailyUsage} / ${props.maxDailyUsage} times left`
+                    : "Unlimited"}
+                </div>
               </div>
 
-              <Progress value={70} className="h-1.5" />
+              <Progress
+                value={
+                  props.user.tier === UserTier.Trial
+                    ? (100 * props.dailyUsage) / props.maxDailyUsage
+                    : 100
+                }
+                className="h-1.5"
+              />
             </div>
           </Section>
 
           <Section title={"Statistics"}>
             <div className="w-full flex items-center justify-between text-sm p-3">
               <div>Generation count</div>
-              <div className="text-foreground/70">{props.generation_count}</div>
+              <div className="text-foreground/70">{props.generationCount}</div>
             </div>
 
             <div className="w-full flex items-center justify-between text-sm p-3">
               <div>Download count</div>
-              <div className="text-foreground/70">{props.download_count}</div>
+              <div className="text-foreground/70">{props.downloadCount}</div>
             </div>
           </Section>
         </div>
@@ -141,8 +154,10 @@ export default async function Page() {
         <div className="w-full max-w-2xl">
           <SectionUser
             user={session.user}
-            download_count={userQrcodeStat?.download_count ?? 0}
-            generation_count={userQrcodeStat?.generation_count ?? 0}
+            downloadCount={userQrcodeStat?.download_count ?? 0}
+            generationCount={userQrcodeStat?.generation_count ?? 0}
+            dailyUsage={userQrcodeStat?.usage_count ?? 0}
+            maxDailyUsage={10}
           />
         </div>
       </div>
