@@ -143,7 +143,15 @@
   },
   "account": {
     "title": "Account",
-    "desc": ""
+    "desc": "",
+    "profile": "Profile",
+    "plan": "Plan",
+    "current_plan": "Current Plan",
+    "times_left": "times left",
+    "unlimited": "Unlimited",
+    "statistics": "Statistics",
+    "generation_count": "Generation Count",
+    "download_count": "Download Count"
   },
   "signin": {
     "title": "Sign In",

@@ -54,12 +54,15 @@ interface SectionUserProps {
 }
 
 function SectionUser(props: SectionUserProps) {
+  const t = useTranslations("account");
   const formatter = useFormatter();
+  const tUserButton = useTranslations("user_button");
+
   return (
     <div>
       <Container>
         <div className="w-full flex flex-col gap-6">
-          <Section title={"Profile"}>
+          <Section title={t("profile")}>
             <div className="w-full flex items-center p-3">
               <div className="grow flex items-center gap-3">
                 <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
@@ -73,16 +76,17 @@ function SectionUser(props: SectionUserProps) {
               </div>
 
               <div>
-                <SignOutButton />
+                <SignOutButton text={tUserButton("sign_out")} />
               </div>
             </div>
           </Section>
 
-          <Section title={"Plan"}>
+          <Section title={t("plan")}>
             <div className="flex flex-col gap-2 p-3">
               <div className="w-full flex items-center text-sm">
-                <div className="grow flex items-center gap-3">Current Plan</div>
-
+                <div className="grow flex items-center gap-3">
+                  {t("current_plan")}
+                </div>
                 <div className="text-foreground/70">
                   {props.user.tier === UserTier.Trial ||
                   !props.user.subscribe_expire
@@ -104,8 +108,8 @@ function SectionUser(props: SectionUserProps) {
 
                 <div className="text-foreground/70">
                   {props.user.tier === UserTier.Trial
-                    ? `${props.dailyUsage} / ${props.maxDailyUsage} times left`
-                    : "Unlimited"}
+                    ? `${props.dailyUsage} / ${props.maxDailyUsage} ${t("times_left")}`
+                    : t("times_left")}
                 </div>
               </div>
 
@@ -120,14 +124,14 @@ function SectionUser(props: SectionUserProps) {
             </div>
           </Section>
 
-          <Section title={"Statistics"}>
+          <Section title={t("statistics")}>
             <div className="w-full flex items-center justify-between text-sm p-3">
-              <div>Generation count</div>
+              <div>{t("generation_count")}</div>
               <div className="text-foreground/70">{props.generationCount}</div>
             </div>
 
             <div className="w-full flex items-center justify-between text-sm p-3">
-              <div>Download count</div>
+              <div>{t("download_count")}</div>
               <div className="text-foreground/70">{props.downloadCount}</div>
             </div>
           </Section>

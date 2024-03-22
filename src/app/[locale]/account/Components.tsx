@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/components/TrackComponents";
 import { signOut } from "next-auth/react";
 
-export function SignOutButton() {
+export function SignOutButton({ text }: { text: string }) {
   return (
     <Button
       variant="outline"
@@ -14,7 +14,7 @@ export function SignOutButton() {
         await signOut();
       }}
     >
-      Sign out
+      {text}
     </Button>
   );
 }
