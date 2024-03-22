@@ -271,13 +271,13 @@ export function Header() {
       href: "/pricing",
     },
     {
-      name: "GitHub",
-      href: "https://github.com/latentcat/qrbtf",
+      name: "Discord",
+      href: "https://discord.gg/V9CNuqYfte",
       target: "_blank",
     },
     {
-      name: "Latent Cat",
-      href: "https://latentcat.com",
+      name: "GitHub",
+      href: "https://github.com/latentcat/qrbtf",
       target: "_blank",
     },
   ];
