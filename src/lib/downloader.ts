@@ -17,7 +17,7 @@ function svgToSvg(name: string, el: SVGSVGElement) {
     '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">\n';
   let htmlContent = [svgHead + el.outerHTML];
   let bl = new Blob(htmlContent, { type: "image/svg+xml" });
-  createDownloadTask(URL.createObjectURL(bl), `Qrcode_${name}.svg`);
+  createDownloadTask(URL.createObjectURL(bl), `qrcode_${name}.svg`);
 }
 
 const MIME = { jpg: "image/jpeg", png: "image/png" };
