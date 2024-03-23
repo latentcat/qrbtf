@@ -3,6 +3,8 @@ import type { Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { connectToDatabase } from "./lib/server/mongodb";
+import { ObjectId } from "mongodb";
+import { checkAndUpdateUserTier } from "./app/api/user/service";
 
 export enum UserTier {
   Trial = 0,
@@ -24,6 +26,8 @@ const auth: AuthOptions = {
   ) as Adapter,
   callbacks: {
     session: async ({ session, user }) => {
+      user.tier = await checkAndUpdateUserTier(user);
+
       session.user.id = user.id;
       session.user.tier = user.tier || UserTier.Trial;
       session.user.subscribe_time = user.subscribe_time;

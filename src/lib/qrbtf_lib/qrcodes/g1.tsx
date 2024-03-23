@@ -15,7 +15,6 @@ import { G1Presets } from "./g1_config";
 
 interface RenderG1OwnProps {
   task_type: string;
-  url: string;
   prompt: string;
   negative_prompt: string;
   seed: number;

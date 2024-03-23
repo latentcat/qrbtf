@@ -7,7 +7,7 @@ export type Sp1PresetKeys = "sp1";
 
 export const Sp1Presets: Record<Sp1PresetKeys, QrbtfRendererSp1Props> = {
   sp1: {
-    correct_level: "high",
+    correct_level: "medium",
     content_stroke_width: 0.7,
     content_x_stroke_width: 0.7,
     positioning_stroke_width: 0.9,
