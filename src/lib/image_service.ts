@@ -76,7 +76,7 @@ export function useImageService<P extends object>(
 ) {
   const [currentReq, setCurrentReq] = useState<P | null>(null);
   const [resData, setResData] = useState<any | null>(null);
-  const url = useAtomValue(urlAtom);
+  const url = useAtomValue(urlAtom) || "https://qrbtf.com";
 
   function onSubmit(values: P) {
     // trackEvent('gen_qrcode', { is_login: !isLogout, ...values });

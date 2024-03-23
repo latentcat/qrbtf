@@ -7,7 +7,6 @@ export type G1PresetKeys = "g1";
 export const G1Presets: Record<G1PresetKeys, QrbtfRendererG1Props> = {
   g1: {
     task_type: "qrcode",
-    url: "https://qrbtf.com",
     prompt: "",
     negative_prompt: "",
     seed: -1,
