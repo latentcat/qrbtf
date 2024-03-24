@@ -658,6 +658,7 @@ function QrbtfRendererA2(props: RendererProps<QrbtfRendererA2Props>) {
     props.content_point_scale,
     props.positioning_point_type,
     props.positioning_point_color,
+    props.content_line_type,
     props.content_point_opacity,
     props.content_point_color,
     table,
