@@ -1,15 +1,16 @@
 "use client";
 
+import { gamma } from "@/lib/image_utils";
 import React, { useEffect, useMemo, useState } from "react";
 import { QRPointType, encode } from "../encoder";
-import { gamma } from "@/lib/image_utils";
-import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
 import { C2Presets } from "./c2_config";
+import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
 
 interface RenderC2OwnProps {
   contrast: number;
   brightness: number;
   background: string;
+  color: string;
   align_type: "none" | "black-white";
   timing_type: "none" | "black-white";
 }
@@ -122,7 +123,7 @@ function QrbtfRendererC2(props: RendererProps<QrbtfRendererC2Props>) {
               points.push(
                 <use
                   key={points.length}
-                  fill="black"
+                  fill={props.color}
                   xlinkHref="#B"
                   x={posX - 0.03}
                   y={posY - 0.03}
@@ -135,7 +136,7 @@ function QrbtfRendererC2(props: RendererProps<QrbtfRendererC2Props>) {
               points.push(
                 <use
                   key={points.length}
-                  fill="black"
+                  fill={props.color}
                   xlinkHref="#B"
                   x={posX - 0.03}
                   y={posY - 0.03}
@@ -167,7 +168,7 @@ function QrbtfRendererC2(props: RendererProps<QrbtfRendererC2Props>) {
       }
     }
     return points;
-  }, [align_type, table, timing_type, typeTable]);
+  }, [align_type, props.color, table, timing_type, typeTable]);
 
   const [grayPoints, setGrayPoints] = useState<React.ReactNode[]>([]);
   useEffect(() => {
@@ -222,9 +223,9 @@ function QrbtfRendererC2(props: RendererProps<QrbtfRendererC2Props>) {
       {...props}
     >
       <defs>
-        <rect id="B-black" fill="black" width={3.08} height={3.08} />
+        <rect id="B-black" fill={props.color} width={3.08} height={3.08} />
         <rect id="B-white" fill="white" width={3.08} height={3.08} />
-        <rect id="S-black" fill="black" width={1.02} height={1.02} />
+        <rect id="S-black" fill={props.color} width={1.02} height={1.02} />
         <rect id="S-white" fill="white" width={1.02} height={1.02} />
         <rect id="B" width={3.08} height={3.08} />
         <rect id="S" width={1.02} height={1.02} />
