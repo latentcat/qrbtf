@@ -1,14 +1,15 @@
 import { useTranslations } from "next-intl";
 import { QrbtfRendererC2Props } from "./c2";
-import DefaultBackground from "/public/assets/images/c2_background.inline.jpg";
 import { CommonControlProps } from "./param";
 import { useCommonParams } from "./param/common";
+import DefaultBackground from "/public/assets/images/c2_background.inline.jpg";
 
 export type C2PresetKeys = "c2";
 
 export const C2Presets: Record<C2PresetKeys, QrbtfRendererC2Props> = {
   c2: {
     correct_level: "high",
+    color: "#000000",
     brightness: 0,
     contrast: 0,
     background: DefaultBackground as unknown as string,
@@ -23,6 +24,13 @@ export function useC2Params() {
 
   const params: CommonControlProps<QrbtfRendererC2Props>[] = [
     ...commonParams,
+    {
+      type: "color",
+      name: "color",
+      label: t("color.label"),
+      desc: t("color.desc"),
+      config: {},
+    },
     {
       type: "number",
       name: "contrast",
