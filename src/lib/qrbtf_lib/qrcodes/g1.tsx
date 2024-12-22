@@ -1,17 +1,19 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { genImage, ImageResponse } from "@/lib/image_service";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion } from "framer-motion";
-import { opacityAnimations, transitionMd } from "@/lib/animations";
 import { Loader2 } from "lucide-react";
-import { Progress } from "@/components/Progress";
 import { toast } from "sonner";
+
+import { type QrbtfModule } from "./param";
+import { G1Presets } from "./g1_config";
+
+import { opacityAnimations, transitionMd } from "@/lib/animations";
+import { Progress } from "@/components/Progress";
 import { trackEvent } from "@/components/TrackComponents";
 import { flattenObject } from "@/lib/utils";
-import { QrbtfModule } from "./param";
-import { G1Presets } from "./g1_config";
+import { genImage, type ImageResponse } from "@/lib/image_service";
 
 interface RenderG1OwnProps {
   task_type: string;

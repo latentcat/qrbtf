@@ -1,6 +1,26 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { type Path, type PathValue, useForm, useWatch } from "react-hook-form";
+import { type HTMLAttributes, useRef, useState } from "react";
+import { Loader2, LucideDownload } from "lucide-react";
+import { useAtomValue } from "jotai";
+import { useSession } from "next-auth/react";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+
 import {
   Container,
   SplitLeft,
@@ -8,7 +28,6 @@ import {
   SplitView,
 } from "@/components/Containers";
 import { Form, FormField } from "@/components/ui/form";
-import { Path, PathValue, useForm, useWatch } from "react-hook-form";
 import {
   ParamBooleanControl,
   ParamColorControl,
@@ -17,34 +36,20 @@ import {
   ParamSelectControl,
   ParamTextControl,
 } from "@/components/QrcodeControlParams";
-import { HTMLAttributes, useRef, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn, useCurrentQrcodeType } from "@/lib/utils";
-import { Loader2, LucideDownload } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { StyleTitle } from "@/components/Titles";
-import { useAtomValue } from "jotai";
 import { urlAtom } from "@/lib/states";
 import { downloaderMaps } from "@/lib/downloader";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
 import { useImageService } from "@/lib/image_service";
 import { trackEvent } from "@/components/TrackComponents";
-import { CommonControlProps, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/param";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
-import { useSession } from "next-auth/react";
+  type CommonControlProps,
+  type QrbtfModule,
+} from "@/lib/qrbtf_lib/qrcodes/param";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {

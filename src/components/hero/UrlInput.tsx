@@ -1,8 +1,9 @@
 "use client";
 
+import { useAtom } from "jotai";
+
 import { Input } from "@/components/ui/input";
 import { urlAtom } from "@/lib/states";
-import { useAtom } from "jotai";
 
 export function UrlInput() {
   const [url, setUrl] = useAtom(urlAtom);

@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
+
 import { Container } from "@/components/Containers";
 import {
   Accordion,
@@ -8,8 +10,6 @@ import {
 } from "@/components/ui/accordion";
 import { SectionTitle } from "@/components/Titles";
 import { StatusCard } from "@/components/StatusCard";
-
-import dynamic from "next/dynamic";
 
 const DynamicStatus = dynamic(() => import("@/components/QrbtfStatus"), {
   loading: () => <Skeletons />,

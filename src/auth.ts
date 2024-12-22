@@ -1,9 +1,10 @@
-import { AuthOptions } from "next-auth";
+import { type AuthOptions } from "next-auth";
 import type { Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import { connectToDatabase } from "./lib/server/mongodb";
 import { ObjectId } from "mongodb";
+
+import { connectToDatabase } from "./lib/server/mongodb";
 import { checkAndUpdateUserTier } from "./app/api/user/service";
 
 export enum UserTier {

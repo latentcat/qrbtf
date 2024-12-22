@@ -1,16 +1,17 @@
-import { Container } from "@/components/Containers";
-import { HeaderPadding } from "@/components/Header";
 import { useFormatter, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import auth, { UserTier } from "@/auth";
 import { getServerSession } from "next-auth/next";
+import { type User } from "next-auth";
+import React from "react";
+
+import { Container } from "@/components/Containers";
+import { HeaderPadding } from "@/components/Header";
+import auth, { UserTier } from "@/auth";
 import { redirect } from "@/navigation";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { User } from "next-auth";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
-import React from "react";
 import { getUserQrcodeStat } from "@/app/api/user/stat/service";
 
 function PageTitle() {

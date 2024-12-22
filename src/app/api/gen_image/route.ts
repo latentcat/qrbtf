@@ -1,17 +1,18 @@
 // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
 import { getServerSession } from "next-auth";
-import auth, { UserTier } from "@/auth";
-import { NextRequest, NextResponse } from "next/server";
-
+import { type NextRequest, NextResponse } from "next/server";
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
 import { getTranslations } from "next-intl/server";
-import { http } from "@/lib/network";
+
 import {
   getUserQrcodeStat,
   incGenerationCount,
   updateLastGenerate,
 } from "../user/stat/service";
+
+import { http } from "@/lib/network";
+import auth, { UserTier } from "@/auth";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   if (!iterator) return;

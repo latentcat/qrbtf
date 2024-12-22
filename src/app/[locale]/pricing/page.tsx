@@ -1,12 +1,13 @@
-import { Container } from "@/components/Containers";
-import { HeaderPadding } from "@/components/Header";
 import { useTranslations } from "next-intl";
 import { ArrowRight, Check, ChevronRight, MoveRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { getServerSession } from "next-auth/next";
+
+import { Container } from "@/components/Containers";
+import { HeaderPadding } from "@/components/Header";
 import { TrackLink } from "@/components/TrackComponents";
 import { Button } from "@/components/ui/button";
-import { getTranslations } from "next-intl/server";
 import auth from "@/auth";
-import { getServerSession } from "next-auth/next";
 
 function SectionTitle() {
   const t = useTranslations("pricing");

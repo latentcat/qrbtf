@@ -1,5 +1,6 @@
+import { type ObjectId } from "mongodb";
+
 import { connectToDatabase } from "@/lib/server/mongodb";
-import { ObjectId } from "mongodb";
 
 interface CounterOrm {
   _id?: ObjectId;

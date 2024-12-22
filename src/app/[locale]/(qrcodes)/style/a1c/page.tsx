@@ -1,10 +1,11 @@
+import { useTranslations } from "next-intl";
+
 import QrcodeGeneratorWithProvider from "@/components/QrcodeGeneratorWithProvider";
 import {
-  QrbtfRendererA1Props,
   qrbtfModuleA1,
+  type QrbtfRendererA1Props,
 } from "@/lib/qrbtf_lib/qrcodes/a1";
 import { useA1Params } from "@/lib/qrbtf_lib/qrcodes/a1_config";
-import { useTranslations } from "next-intl";
 
 export default function Page() {
   const t = useTranslations("qrcodes.a1");

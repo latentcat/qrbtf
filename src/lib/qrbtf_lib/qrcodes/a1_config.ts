@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
-import { QrbtfRendererA1Props } from "./a1";
-import { CommonControlProps } from "./param";
+
+import { type QrbtfRendererA1Props } from "./a1";
+import { type CommonControlProps } from "./param";
 import { useCommonParams } from "./param/common";
 import { usePositioningParams } from "./param/position";
 

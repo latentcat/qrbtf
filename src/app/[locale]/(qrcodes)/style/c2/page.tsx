@@ -1,9 +1,10 @@
+import { useTranslations } from "next-intl";
+
 import QrcodeGeneratorWithProvider from "@/components/QrcodeGeneratorWithProvider";
 import {
   qrbtfModuleC2,
-  QrbtfRendererC2Props,
+  type QrbtfRendererC2Props,
 } from "@/lib/qrbtf_lib/qrcodes/c2";
-import { useTranslations } from "next-intl";
 import { useC2Params } from "@/lib/qrbtf_lib/qrcodes/c2_config";
 
 export default function Page() {

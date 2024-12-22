@@ -1,10 +1,16 @@
 "use client";
 
-import { gamma } from "@/lib/image_utils";
 import React, { useEffect, useMemo, useState } from "react";
-import { QRPointType, encode } from "../encoder";
+
+import { encode, QRPointType } from "../encoder";
 import { C2Presets } from "./c2_config";
-import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
+import {
+  type QrbtfModule,
+  type QrbtfRendererCommonProps,
+  type RendererProps,
+} from "./param";
+
+import { gamma } from "@/lib/image_utils";
 
 interface RenderC2OwnProps {
   contrast: number;

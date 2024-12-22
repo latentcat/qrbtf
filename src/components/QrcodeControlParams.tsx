@@ -1,5 +1,29 @@
 "use client";
 
+import React, {
+  type ChangeEventHandler,
+  type CSSProperties,
+  useMemo,
+  useRef,
+} from "react";
+import {
+  type ControllerRenderProps,
+  type FieldValues,
+  type Path,
+} from "react-hook-form";
+import {
+  Colorful,
+  hexToHsva,
+  type HsvaColor,
+  hsvaToHex,
+  Hue,
+  Saturation,
+} from "@uiw/react-color";
+import { BACKGROUND_IMG } from "@uiw/react-color-alpha";
+import { LucideUpload } from "lucide-react";
+
+import { Button } from "./ui/button";
+
 import {
   FormControl,
   FormDescription,
@@ -7,13 +31,6 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Slider } from "@/components/ui/slider";
-import React, {
-  ChangeEventHandler,
-  CSSProperties,
-  useMemo,
-  useRef,
-} from "react";
-import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import {
@@ -21,15 +38,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
 import {
-  CommonControlProps,
-  ParamBooleanControlProps,
-  ParamColorControlProps,
-  ParamImageControlProps,
-  ParamNumberControlProps,
-  ParamSelectControlProps,
-  ParamTextControlProps,
+  type CommonControlProps,
+  type ParamBooleanControlProps,
+  type ParamColorControlProps,
+  type ParamImageControlProps,
+  type ParamNumberControlProps,
+  type ParamSelectControlProps,
+  type ParamTextControlProps,
 } from "@/lib/qrbtf_lib/qrcodes/param";
 import {
   Select,
@@ -38,19 +54,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "./ui/button";
 import { toBase64 } from "@/lib/image_utils";
-import {
-  Colorful,
-  hexToHsva,
-  HsvaColor,
-  hsvaToHex,
-  Hue,
-  Saturation,
-} from "@uiw/react-color";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { BACKGROUND_IMG } from "@uiw/react-color-alpha";
-import { LucideUpload } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { trackEvent } from "@/components/TrackComponents";
 

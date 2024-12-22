@@ -1,8 +1,10 @@
-import auth from "@/auth";
 import { getServerSession } from "next-auth";
 import { getTranslations } from "next-intl/server";
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
+
 import { incGenerationCount } from "../service";
+
+import auth from "@/auth";
 
 export async function POST(request: NextRequest) {
   const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";

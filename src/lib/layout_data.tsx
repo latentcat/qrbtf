@@ -1,5 +1,4 @@
-import { type Metadata, Viewport } from "next";
-
+import { type Metadata, type Viewport } from "next";
 import { getTranslations } from "next-intl/server";
 import React from "react";
 

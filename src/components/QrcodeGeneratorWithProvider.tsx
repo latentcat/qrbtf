@@ -1,10 +1,11 @@
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import pick from "lodash/pick";
+import React from "react";
+
 import {
   QrcodeGenerator,
-  QrcodeGeneratorProps,
+  type QrcodeGeneratorProps,
 } from "@/components/QrcodeGenerator";
-import React from "react";
 
 export default function QrcodeGeneratorWithProvider<P extends {}>(
   props: QrcodeGeneratorProps<P>,

@@ -2,9 +2,10 @@
 
 import clsx from "clsx";
 import { useParams } from "next/navigation";
-import { ChangeEvent, ReactNode, useTransition } from "react";
-import { useRouter, usePathname } from "@/navigation";
+import { type ChangeEvent, type ReactNode, useTransition } from "react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+
+import { usePathname, useRouter } from "@/navigation";
 
 type Props = {
   children: ReactNode;

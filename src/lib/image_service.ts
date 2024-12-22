@@ -1,12 +1,14 @@
 import { z } from "zod";
-import { safeParseJSON } from "@/lib/json_handler";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import { useAtomValue } from "jotai/index";
+
+import { type ApiFetcher } from "./qrbtf_lib/qrcodes/param";
+import { http } from "./network";
+
 import { urlAtom } from "@/lib/states";
 import { trackEvent } from "@/components/TrackComponents";
-import { ApiFetcher } from "./qrbtf_lib/qrcodes/param";
-import { http } from "./network";
+import { safeParseJSON } from "@/lib/json_handler";
 
 const schema = z.union([
   z.object({

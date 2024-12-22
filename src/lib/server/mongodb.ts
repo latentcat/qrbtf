@@ -1,4 +1,4 @@
-import { Db, MongoClient } from "mongodb";
+import { type Db, MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_CONNECTION_STRING || "";
 

@@ -1,9 +1,11 @@
 import { useTranslations } from "next-intl";
+
 import { QrbtfRendererA1Props } from "./a1";
-import { CommonControlProps } from "./param";
+import { type CommonControlProps } from "./param";
 import { useCommonParams } from "./param/common";
 import { usePositioningParams } from "./param/position";
-import { QrbtfRendererA2Props } from "@/lib/qrbtf_lib/qrcodes/a2";
+
+import { type QrbtfRendererA2Props } from "@/lib/qrbtf_lib/qrcodes/a2";
 
 export type A2PresetKeys = "a2" | "a2c";
 

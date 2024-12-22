@@ -1,7 +1,8 @@
 import React from "react";
+import { useTranslations } from "next-intl";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { StatusCard } from "@/components/StatusCard";
-import { useTranslations } from "next-intl";
 import { getCount, getGitHubStars } from "@/lib/server/count";
 
 interface QrbtfStatusProps {

@@ -1,4 +1,8 @@
-import { ControllerRenderProps, DefaultValues, Path } from "react-hook-form";
+import {
+  type ControllerRenderProps,
+  type DefaultValues,
+  type Path,
+} from "react-hook-form";
 
 export type QrbtfModule<P, PresetKeys extends string = string> = (
   | QrbtfModuleSvgRenderer<P>

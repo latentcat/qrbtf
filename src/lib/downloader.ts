@@ -1,6 +1,7 @@
-import { trackEvent } from "@/components/TrackComponents";
 import { http } from "./network";
-import { QrbtfModule } from "./qrbtf_lib/qrcodes/param";
+import { type QrbtfModule } from "./qrbtf_lib/qrcodes/param";
+
+import { trackEvent } from "@/components/TrackComponents";
 import { flattenObject } from "@/lib/utils";
 
 function createDownloadTask(href: string, filename: string) {

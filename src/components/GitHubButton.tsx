@@ -1,10 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { GitHubIcon } from "@/components/LogosBrand";
 import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { AnimatePresence, motion } from "framer-motion";
+
+import { GitHubIcon } from "@/components/LogosBrand";
+import { Button } from "@/components/ui/button";
 import { transitionLg, transitionMd, transitionXl } from "@/lib/animations";
 import { http } from "@/lib/network";
 

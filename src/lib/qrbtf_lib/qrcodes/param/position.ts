@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
-import { CommonControlProps } from ".";
+
+import { type CommonControlProps } from ".";
 
 export interface QrbtfRendererPositioningProps {
   positioning_point_type: "square" | "circle" | "planet" | "rounded";

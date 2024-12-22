@@ -1,4 +1,7 @@
 import { useTranslations } from "next-intl";
+import { Fragment } from "react";
+import Link from "next/link";
+
 import { Container } from "@/components/Containers";
 import { SectionTitle } from "@/components/Titles";
 import {
@@ -8,8 +11,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Fragment } from "react";
-import Link from "next/link";
 import { TrackLink } from "@/components/TrackComponents";
 
 const links = [

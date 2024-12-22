@@ -1,7 +1,8 @@
+import { ObjectId } from "mongodb";
+import { type User } from "next-auth";
+
 import { UserTier } from "@/auth";
 import { connectToDatabase } from "@/lib/server/mongodb";
-import { ObjectId } from "mongodb";
-import { User } from "next-auth";
 
 export async function checkAndUpdateUserTier(user: User) {
   const now = new Date();
