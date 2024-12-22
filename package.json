@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings=0",
-    "format": "prettier . --write",
+    "format": "eslint --fix src && prettier . --write",
     "prepare": "husky install"
   },
   "requires": true,
@@ -95,10 +95,13 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/webpack-env": "^1.18.4",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "^14.1.4",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-only-warn": "^1.1.0",
     "husky": "^9.0.11",
     "lint-staged": ">=10",
@@ -109,5 +112,6 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md}": "yarn format"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }

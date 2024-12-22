@@ -1,4 +1,40 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["only-warn"]
+  "extends": ["next/core-web-vitals", "prettier", "plugin:import/recommended"],
+  "plugins": ["only-warn", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/ignore": [".(scss|less|css|jpg)$"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    }
+  },
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "fixStyle": "inline-type-imports"
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          ["parent", "sibling"],
+          "internal",
+          "index"
+        ],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin"]
+      }
+    ]
+  }
 }

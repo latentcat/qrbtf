@@ -1,0 +1,8 @@
+{
+  "cSpell.words": ["lucide", "qrbtf", "qrcodes"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "never",
+    "source.removeUnusedImports": "always"
+  }
+}
