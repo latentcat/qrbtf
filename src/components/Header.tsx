@@ -4,23 +4,23 @@ import Link from "next/link";
 import { clsx } from "clsx";
 import React, { Fragment, useEffect, useState } from "react";
 import {
+  ArrowTopRightIcon,
   ChevronDownIcon,
   Cross1Icon,
-  ArrowTopRightIcon,
   HamburgerMenuIcon,
 } from "@radix-ui/react-icons";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { transitionXl, transitionMd, transitionLg } from "@/lib/animations";
+import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useTranslations } from "next-intl";
+
+import { Button } from "@/components/ui/button";
+import { transitionLg, transitionMd, transitionXl } from "@/lib/animations";
 import { QrbtfLogo } from "@/components/Logos";
 import { Container } from "@/components/Containers";
 import { UserButton } from "@/components/UserButton";
-
-import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { usePathname } from "@/navigation";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
-import { useTranslations } from "next-intl";
 
 const scrollTopAtom = atom(true);
 const scrollTitleAtom = atom(true);

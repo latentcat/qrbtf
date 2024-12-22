@@ -1,4 +1,11 @@
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { LucideScan } from "lucide-react";
+import { useState } from "react";
+import { useAtom } from "jotai";
+
 import {
   Container,
   SplitLeft,
@@ -6,20 +13,14 @@ import {
   SplitView,
 } from "@/components/Containers";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { cn } from "@/lib/utils";
 import { GitHubButton } from "@/components/GitHubButton";
 import { Badge } from "@/components/ui/badge";
-import { LucideScan } from "lucide-react";
 import { ScanButton } from "@/components/ScanButton";
 import { Label } from "@/components/ui/label";
 import { QrbtfLogo } from "@/components/Logos";
-import { useState } from "react";
 import { urlAtom } from "@/lib/states";
-import { useAtom } from "jotai";
 import { UrlInput } from "@/components/hero/UrlInput";
 import { HeroLogo } from "@/components/Header";
 import { TrackLink } from "@/components/TrackComponents";

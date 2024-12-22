@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+
 import { Container } from "@/components/Containers";
 import { SectionTitle } from "@/components/Titles";
 import {
@@ -9,7 +11,6 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { MidRealLogoFull } from "@/components/Logos";
-import Link from "next/link";
 import { TrackLink } from "@/components/TrackComponents";
 
 export function SectionSponsor() {

@@ -1,7 +1,9 @@
 import { useTranslations } from "next-intl";
-import { QrbtfRendererC2Props } from "./c2";
-import { CommonControlProps } from "./param";
+
+import { type QrbtfRendererC2Props } from "./c2";
+import { type CommonControlProps } from "./param";
 import { useCommonParams } from "./param/common";
+
 import DefaultBackground from "/public/assets/images/c2_background.inline.jpg";
 
 export type C2PresetKeys = "c2";

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { ElementType, HTMLAttributes, ReactNode, Ref } from "react";
-
+import React, { ElementType, HTMLAttributes, type ReactNode, Ref } from "react";
 import mixpanel from "mixpanel-browser";
+import { type LinkProps } from "next/link";
+
 import { Link, usePathname } from "@/navigation";
-import { LinkProps } from "next/link";
 
 interface TrackLinkProps extends LinkProps {
   children?: ReactNode;

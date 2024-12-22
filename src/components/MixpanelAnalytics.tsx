@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import mixpanel from "mixpanel-browser";
-
 import { usePathname } from "next/navigation";
-import { http } from "@/lib/network";
 import { useSession } from "next-auth/react";
+
+import { http } from "@/lib/network";
 
 const body = {
   collection_name: "counter_global",

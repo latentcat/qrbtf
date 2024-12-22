@@ -1,9 +1,10 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 // import DiscordSvg from "./discord.svg"
-import Image from "next/image";
 import { trackEvent } from "@/components/TrackComponents";
 // import {trackEvent} from "@/lib/trackEvent";
 

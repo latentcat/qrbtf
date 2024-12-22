@@ -4,6 +4,7 @@ import { getRequestConfig } from "next-intl/server";
 // Can be imported from a shared config
 
 import deepmerge from "deepmerge";
+
 import { locales } from "@/navigation";
 
 export default getRequestConfig(async ({ locale }) => {

@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 // to change the locale and uses `useTransition` to display
 // a loading state during the transition.
 import LocaleSwitcherSelect from "./LocaleSwitcherSelect";
+
 import { locales } from "@/navigation";
 
 export default function LocaleSwitcher() {

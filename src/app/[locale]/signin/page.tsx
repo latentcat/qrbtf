@@ -1,13 +1,15 @@
-import { Metadata } from "next";
+import { type Metadata } from "next";
 import { getServerSession } from "next-auth/next";
-import authOptions from "@/auth";
-import SignInContent from "./SignInContent";
 import { redirect } from "next/navigation";
-import AuthButtons from "./AuthButtons";
 import React from "react";
+import { useTranslations } from "next-intl";
+
+import SignInContent from "./SignInContent";
+import AuthButtons from "./AuthButtons";
+
+import authOptions from "@/auth";
 import { HeaderPadding } from "@/components/Header";
 import { Container } from "@/components/Containers";
-import { useTranslations } from "next-intl";
 
 export const metadata: Metadata = {
   title: "Sign In",

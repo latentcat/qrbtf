@@ -1,8 +1,9 @@
-import QrcodeGeneratorWithProvider from "@/components/QrcodeGeneratorWithProvider";
 import { useTranslations } from "next-intl";
+
+import QrcodeGeneratorWithProvider from "@/components/QrcodeGeneratorWithProvider";
 import {
   qrbtfModuleSp1,
-  QrbtfRendererSp1Props,
+  type QrbtfRendererSp1Props,
 } from "@/lib/qrbtf_lib/qrcodes/sp1";
 import { useSp1Params } from "@/lib/qrbtf_lib/qrcodes/sp1_config";
 

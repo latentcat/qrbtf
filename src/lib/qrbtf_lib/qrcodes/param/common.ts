@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
-import { CommonControlProps, QrbtfRendererCommonProps } from ".";
+
+import { type CommonControlProps, type QrbtfRendererCommonProps } from ".";
 
 type CommonParamsType = CommonControlProps<QrbtfRendererCommonProps>;
 

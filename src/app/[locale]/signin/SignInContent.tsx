@@ -1,7 +1,8 @@
+import { TranslationValues, useTranslations } from "next-intl";
+import React, { type ReactNode } from "react";
+
 import AuthButtons from "@/app/[locale]/signin/AuthButtons";
 import { Link } from "@/navigation";
-import { TranslationValues, useTranslations } from "next-intl";
-import React, { ReactNode } from "react";
 import { TrackLink } from "@/components/TrackComponents";
 
 export default function SignInContent() {

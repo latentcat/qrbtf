@@ -1,8 +1,9 @@
 "use client";
 
+import { signOut } from "next-auth/react";
+
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/components/TrackComponents";
-import { signOut } from "next-auth/react";
 
 export function SignOutButton({ text }: { text: string }) {
   return (

@@ -1,6 +1,7 @@
+import { useTranslations } from "next-intl";
+
 import { Button } from "@/components/ui/button";
 import { Link } from "@/navigation";
-import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
 import { TrackLink } from "@/components/TrackComponents";
 

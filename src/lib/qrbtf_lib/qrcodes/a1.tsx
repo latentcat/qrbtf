@@ -1,11 +1,17 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { QRPointType, encode } from "../encoder";
-import { sq25 } from "@/lib/qrbtf_lib/constants";
-import { QrbtfRendererPositioningProps } from "./param/position";
-import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
+
+import { encode, QRPointType } from "../encoder";
+import { type QrbtfRendererPositioningProps } from "./param/position";
+import {
+  type QrbtfModule,
+  type QrbtfRendererCommonProps,
+  type RendererProps,
+} from "./param";
 import { A1PresetKeys, A1Presets } from "./a1_config";
+
+import { sq25 } from "@/lib/qrbtf_lib/constants";
 import { rand } from "@/lib/utils";
 
 export interface RenderA1OwnProps {

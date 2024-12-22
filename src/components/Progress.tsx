@@ -2,8 +2,6 @@
 
 import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
-
-import { cn } from "@/lib/utils";
 import {
   AnimatePresence,
   motion,
@@ -11,6 +9,8 @@ import {
   useSpring,
 } from "framer-motion";
 import { useEffect } from "react";
+
+import { cn } from "@/lib/utils";
 
 interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   value: number;

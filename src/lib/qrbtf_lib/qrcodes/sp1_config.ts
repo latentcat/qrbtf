@@ -1,7 +1,8 @@
 import { useTranslations } from "next-intl";
-import { CommonControlProps } from "./param";
+
+import { type CommonControlProps } from "./param";
 import { useCommonParams } from "./param/common";
-import { QrbtfRendererSp1Props } from "./sp1";
+import { type QrbtfRendererSp1Props } from "./sp1";
 
 export type Sp1PresetKeys = "sp1";
 

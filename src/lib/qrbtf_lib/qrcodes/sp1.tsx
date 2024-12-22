@@ -1,8 +1,13 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { QRPointType, encode } from "../encoder";
-import { QrbtfModule, QrbtfRendererCommonProps, RendererProps } from "./param";
+
+import { encode, QRPointType } from "../encoder";
+import {
+  type QrbtfModule,
+  type QrbtfRendererCommonProps,
+  type RendererProps,
+} from "./param";
 import { Sp1Presets } from "./sp1_config";
 
 interface RenderSp1OwnProps {

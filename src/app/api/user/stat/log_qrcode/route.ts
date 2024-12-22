@@ -1,7 +1,9 @@
-import auth from "@/auth";
 import { getServerSession } from "next-auth";
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
+
 import { logQrcode } from "../service";
+
+import auth from "@/auth";
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(auth);

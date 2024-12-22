@@ -1,11 +1,12 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { LucideScan } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useAtom } from "jotai/index";
-import { urlAtom } from "@/lib/states";
 import { toast } from "sonner";
+
+import { urlAtom } from "@/lib/states";
+import { Badge } from "@/components/ui/badge";
 import { trackEvent } from "@/components/TrackComponents";
 
 export function ScanButton(props: { name: string }) {

@@ -1,17 +1,18 @@
 "use client";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
-import { QrStyleItemProps, qrStyleList } from "@/lib/qr_style_list";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import React, { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
+
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { type QrStyleItemProps, qrStyleList } from "@/lib/qr_style_list";
 import { transitionDampingMd } from "@/lib/animations";
 import { cn, useCurrentQrcodeType } from "@/lib/utils";
 import { Link } from "@/navigation";
 import { Label } from "@/components/ui/label";
-import { useTranslations } from "next-intl";
 import { Container } from "@/components/Containers";
-import React, { useRef } from "react";
-import { useDraggable } from "react-use-draggable-scroll";
 import { TrackLink } from "@/components/TrackComponents";
 
 export function SectionStylesClient() {

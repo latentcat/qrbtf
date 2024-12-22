@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
-import { CommonControlProps } from "./param";
-import { QrbtfRendererG1Props } from "./g1";
+
+import { type CommonControlProps } from "./param";
+import { type QrbtfRendererG1Props } from "./g1";
 
 export type G1PresetKeys = "g1";
 

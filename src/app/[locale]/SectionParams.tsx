@@ -1,10 +1,11 @@
+import { useTranslations } from "next-intl";
+import { QrCodeIcon } from "@heroicons/react/24/outline";
+import { LucideDownload } from "lucide-react";
+
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Container } from "@/components/Containers";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
-import { QrCodeIcon } from "@heroicons/react/24/outline";
-import { LucideDownload } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
