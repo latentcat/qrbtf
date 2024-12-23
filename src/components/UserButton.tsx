@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
-import { ArrowUpRightIcon, HomeIcon, UserRound } from "lucide-react";
+import { ArrowUpRightIcon, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Link } from "@/navigation";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
 
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";

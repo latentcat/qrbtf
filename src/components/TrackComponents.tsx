@@ -4,7 +4,7 @@ import React, { type ReactNode } from "react";
 import mixpanel from "mixpanel-browser";
 import { type LinkProps } from "next/link";
 
-import { Link, usePathname } from "@/navigation";
+import { Link, usePathname } from "@/i18n/routing";
 
 interface TrackLinkProps extends LinkProps {
   children?: ReactNode;

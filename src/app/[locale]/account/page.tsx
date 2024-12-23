@@ -1,5 +1,5 @@
 import { useFormatter, useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { getServerSession } from "next-auth/next";
 import { type User } from "next-auth";
 import React from "react";
@@ -7,12 +7,12 @@ import React from "react";
 import { Container } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
 import auth, { UserTier } from "@/auth";
-import { redirect } from "@/navigation";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
 import { getUserQrcodeStat } from "@/app/api/user/stat/service";
+import { redirect } from "@/i18n/routing";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -144,8 +144,12 @@ function SectionUser(props: SectionUserProps) {
 
 export default async function Page() {
   const session = await getServerSession(auth);
+  const locale = await getLocale();
   if (!session || !session.user || !session.user.id) {
-    redirect("/signin");
+    redirect({
+      href: "/signin",
+      locale: locale,
+    });
     return;
   }
 

@@ -1,26 +1,20 @@
 "use client";
 
-import Link from "next/link";
 import { clsx } from "clsx";
-import React, { Fragment, useEffect, useState } from "react";
-import {
-  ArrowTopRightIcon,
-  ChevronDownIcon,
-  Cross1Icon,
-  HamburgerMenuIcon,
-} from "@radix-ui/react-icons";
+import React, { useEffect } from "react";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { atom, useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
-import { transitionLg, transitionMd, transitionXl } from "@/lib/animations";
+import { transitionLg, transitionMd } from "@/lib/animations";
 import { QrbtfLogo } from "@/components/Logos";
 import { Container } from "@/components/Containers";
 import { UserButton } from "@/components/UserButton";
-import { usePathname } from "@/navigation";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
+import { usePathname } from "@/i18n/routing";
 
 const scrollTopAtom = atom(true);
 const scrollTitleAtom = atom(true);
