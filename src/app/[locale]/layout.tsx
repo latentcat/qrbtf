@@ -4,7 +4,10 @@ import { NextIntlClientProvider } from "next-intl";
 import { getServerSession } from "next-auth/next";
 import pick from "lodash/pick";
 import React from "react";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+
+import { routing } from "../../i18n/routing";
 
 import { Providers } from "@/app/providers";
 import { Footer } from "@/components/Footer";
@@ -29,6 +32,13 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
   const session = await getServerSession(auth);
   const messages = await getMessages();
 
@@ -38,16 +48,22 @@ export default async function RootLayout({
       <body className={cn(inter.className, "")}>
         <SessionProvider session={session}>
           <Providers>
-            <NextIntlClientProvider
-              messages={pick(messages, ["header", "user_button"])}
-            >
-              <Header />
+            <NextIntlClientProvider>
+              <NextIntlClientProvider
+                messages={pick(messages, ["header", "user_button"])}
+              >
+                <Header />
+              </NextIntlClientProvider>
+              <div className="min-h-screen flex flex-col">{children}</div>
+              <Footer />
             </NextIntlClientProvider>
-            <div className="min-h-screen flex flex-col">{children}</div>
-            <Footer />
           </Providers>
         </SessionProvider>
       </body>
     </html>
   );
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
 }

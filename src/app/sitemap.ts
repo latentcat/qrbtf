@@ -1,6 +1,6 @@
 import { type MetadataRoute } from "next";
 
-import { locales } from "@/navigation";
+import { locales } from "../i18n/routing";
 
 const baseUrl = "https://qrbtf.com";
 

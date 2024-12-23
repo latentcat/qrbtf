@@ -1,17 +1,18 @@
 "use client";
 
 import clsx from "clsx";
-import { useParams } from "next/navigation";
 import { type ChangeEvent, type ReactNode, useTransition } from "react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
-import { usePathname, useRouter } from "@/navigation";
+import { type locales, usePathname, useRouter } from "@/i18n/routing";
 
 type Props = {
   children: ReactNode;
   defaultValue: string;
   label: string;
 };
+
+type LocaleVal = (typeof locales)[number];
 
 export default function LocaleSwitcherSelect({
   children,
@@ -23,7 +24,7 @@ export default function LocaleSwitcherSelect({
   const pathname = usePathname();
 
   function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
-    const nextLocale = event.target.value;
+    const nextLocale = event.target.value as LocaleVal;
     console.log(nextLocale);
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });

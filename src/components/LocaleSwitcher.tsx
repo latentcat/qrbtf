@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 // a loading state during the transition.
 import LocaleSwitcherSelect from "./LocaleSwitcherSelect";
 
-import { locales } from "@/navigation";
+import { locales } from "@/i18n/routing";
 
 export default function LocaleSwitcher() {
   const t = useTranslations("LocaleSwitcher");

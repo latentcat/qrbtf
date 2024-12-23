@@ -1,14 +1,10 @@
 import { type Metadata } from "next";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-import React from "react";
-import { useTranslations } from "next-intl";
 
 import SignInContent from "./SignInContent";
-import AuthButtons from "./AuthButtons";
 
 import authOptions from "@/auth";
-import { HeaderPadding } from "@/components/Header";
 import { Container } from "@/components/Containers";
 
 export const metadata: Metadata = {
