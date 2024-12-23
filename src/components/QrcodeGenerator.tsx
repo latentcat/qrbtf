@@ -45,7 +45,6 @@ import { StyleTitle } from "@/components/Titles";
 import { urlAtom } from "@/lib/states";
 import { downloaderMaps } from "@/lib/downloader";
 import { useImageService } from "@/lib/image_service";
-import { trackEvent } from "@/components/TrackComponents";
 import {
   type CommonControlProps,
   type QrbtfModule,

@@ -1,6 +1,5 @@
 import { SectionHero } from "@/app/[locale]/SectionHero";
 import { SectionStyles } from "@/app/[locale]/SectionStyles";
-import { SectionParams } from "@/app/[locale]/SectionParams";
 import { SectionRefs } from "@/app/[locale]/SectionRefs";
 import { SectionQA } from "@/app/[locale]/SectionQA";
 import { SectionTeam } from "@/app/[locale]/SectionTeam";

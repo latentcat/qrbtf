@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ElementType, HTMLAttributes, type ReactNode, Ref } from "react";
+import React, { type ReactNode } from "react";
 import mixpanel from "mixpanel-browser";
 import { type LinkProps } from "next/link";
 

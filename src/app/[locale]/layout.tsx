@@ -1,8 +1,6 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { Inter } from "next/font/google";
-
-import "../globals.css";
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import { getServerSession } from "next-auth/next";
 import pick from "lodash/pick";
 import React from "react";
@@ -10,22 +8,15 @@ import { getMessages } from "next-intl/server";
 
 import { Providers } from "@/app/providers";
 import { Footer } from "@/components/Footer";
-import {
-  generateMetadata,
-  LayoutHead,
-  layoutMetadata,
-  layoutViewport,
-} from "@/lib/layout_data";
-
-const inter = Inter({ subsets: ["latin"] });
-
+import { LayoutHead, layoutViewport } from "@/lib/layout_data";
 import { Header } from "@/components/Header";
 import auth from "@/auth";
 import SessionProvider from "@/components/SessionProvider";
-import { SectionStylesClient } from "@/app/[locale]/SectionStylesClient";
 import { cn } from "@/lib/utils";
-
 // export const metadata: Metadata = layoutMetadata;
+
+import "../globals.css";
+const inter = Inter({ subsets: ["latin"] });
 
 export { generateMetadata } from "@/lib/layout_data";
 

@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 
-import { Container } from "@/components/Containers";
 import {
   Accordion,
   AccordionContent,
@@ -8,7 +7,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SectionTitle } from "@/components/Titles";
-import { trackEvent } from "@/components/TrackComponents";
 
 const list = [
   {
