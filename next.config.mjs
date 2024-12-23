@@ -1,8 +1,8 @@
 import createNextIntlPlugin from "next-intl/plugin";
-
-const withNextIntl = createNextIntlPlugin();
 import withMDX from "@next/mdx";
 import NextBundleAnalyzer from "@next/bundle-analyzer";
+
+const withNextIntl = createNextIntlPlugin();
 const withBundleAnalyzer = NextBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
@@ -10,6 +10,12 @@ const withBundleAnalyzer = NextBundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  experimental: {
+    staleTimes: {
+      dynamic: 300,
+      static: 1800,
+    },
+  },
   async rewrites() {
     return [
       {
