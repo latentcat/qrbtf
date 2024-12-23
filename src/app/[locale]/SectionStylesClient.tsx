@@ -3,14 +3,14 @@
 import { QrCodeIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
+import { Loader2 } from "lucide-react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { type QrStyleItemProps, qrStyleList } from "@/lib/qr_style_list";
 import { transitionDampingMd } from "@/lib/animations";
 import { cn, useCurrentQrcodeType } from "@/lib/utils";
-import { Link } from "@/navigation";
 import { Label } from "@/components/ui/label";
 import { Container } from "@/components/Containers";
 import { TrackLink } from "@/components/TrackComponents";
@@ -18,6 +18,7 @@ import { TrackLink } from "@/components/TrackComponents";
 export function SectionStylesClient() {
   const t = useTranslations("index.style");
   const currentQrcodeType = useCurrentQrcodeType();
+  const [clickItem, setClickItem] = useState("");
 
   const ref =
     useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
@@ -28,6 +29,7 @@ export function SectionStylesClient() {
   const render = (item: QrStyleItemProps, index: number) => {
     const itemPath = item.id === "g1" ? "/" : `/style/${item.id}`;
     const isActive = currentQrcodeType === item.id;
+    const isPending = clickItem === item.id && !isActive;
     return (
       <div
         key={"qrcode_style_" + index}
@@ -35,6 +37,7 @@ export function SectionStylesClient() {
           "snap-start pl-6 -ml-3 sm:pl-0 sm:ml-0 transition-opacity",
           isActive ? "" : "dark:opacity-70",
         )}
+        onClick={() => setClickItem(item.id)}
       >
         <TrackLink
           trackValue={["qrcode_style", item.id]}
@@ -69,6 +72,15 @@ export function SectionStylesClient() {
                 isActive ? "ring-[5px] ring-background ring-inset" : "",
               )}
             ></div>
+            <div
+              className={cn(
+                "absolute top-0 left-0 w-full h-full flex items-center justify-center transition-opacity  pointer-events-none bg-white/50",
+                isPending ? "opacity-70" : "opacity-0",
+              )}
+            >
+              <Loader2 className="mr-2 h-8 w-8 animate-spin" />
+            </div>
+
             <div
               className={cn(
                 "absolute top-0 left-0 w-full h-full rounded-2xl ring ring-inset",
