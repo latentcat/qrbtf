@@ -350,7 +350,7 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "locale": "{locale, select, zh {中文} en {English} other {日本語}}"
+    "locale": "{locale, select, zh {中文} en {English} jp {日本語} other {Unknown}}"
   },
   "ModeToggle": {
     "light": "Light",

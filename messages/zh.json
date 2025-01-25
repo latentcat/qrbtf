@@ -216,7 +216,6 @@
     "a2": {
       "title": "A2",
       "subtitle": "连线变种",
-
       "content_line_type": {
         "label": "连线类型",
         "desc": ""
@@ -351,7 +350,7 @@
   },
   "LocaleSwitcher": {
     "label": "Label",
-    "locale": "{locale, select, zh {中文} en {English} other {Unknown}}"
+    "locale": "{locale, select, zh {中文} en {English} jp {日本語} other {Unknown}}"
   },
   "ModeToggle": {
     "light": "浅色",
