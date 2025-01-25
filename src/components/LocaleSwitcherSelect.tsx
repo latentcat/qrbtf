@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { useParams } from "next/navigation";
 import { ChangeEvent, ReactNode, useTransition } from "react";
-import { useRouter, usePathname } from "@/navigation";
+import { useRouter, usePathname, locales } from "@/navigation";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
 type Props = {
@@ -22,7 +22,7 @@ export default function LocaleSwitcherSelect({
   const pathname = usePathname();
 
   function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
-    const nextLocale = event.target.value;
+    const nextLocale = event.target.value as (typeof locales)[number];
     console.log(nextLocale);
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
