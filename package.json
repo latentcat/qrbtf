@@ -54,6 +54,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@tailwindcss/typography": "^0.5.10",
     "@types/mdx": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@uiw/react-color": "^2.1.1",
     "@upstash/ratelimit": "^1.0.1",
     "@vercel/kv": "^1.0.1",
