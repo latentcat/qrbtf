@@ -6,7 +6,7 @@ interface Article {
   author: string;
   date: string;
   hidden?: boolean;
-  lang?: "zh" | "en";
+  lang?: "zh" | "en" | "jp";
 }
 
 export interface ArticleWithSlug extends Article {

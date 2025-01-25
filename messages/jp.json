@@ -1,0 +1,370 @@
+{
+  "metadata": {
+    "title": {
+      "template": "%s - QRBTF",
+      "default": "QRBTF - AI QR コードジェネレーター"
+    },
+    "description": "世界初の AI QR コードジェネレーター。",
+    "keywords": {
+      "0": "QR Code",
+      "1": "qrcode",
+      "2": "AI QR Code",
+      "3": "AI qrcode",
+      "4": "パラメトリックQRコード",
+      "5": "QRBTF",
+      "6": "Mid Real",
+      "7": "midreal",
+      "8": "",
+      "9": ""
+    }
+  },
+  "index": {
+    "hero": {
+      "title": "QRBTF",
+      "subtitle": "AI & パラメトリック QR コードジェネレーター。",
+      "join_discord": "Discord に参加",
+      "by": "制作：",
+      "period": "。",
+      "url": "URL",
+      "scan": "スキャン"
+    },
+    "style": {
+      "title": "スタイル",
+      "subtitle": "左右にスワイプして表示"
+    },
+    "params": {
+      "param_name": "パラメーター名",
+      "generate": "生成",
+      "qrcode_output": "QR コード出力",
+      "download": "ダウンロード"
+    },
+    "status": {
+      "title": "統計",
+      "subtitle": "",
+      "github_stars": "GitHub スター数",
+      "generate_count": "AI QR コード生成数",
+      "download_count": "総ダウンロード数",
+      "page_view": "ページビュー数"
+    },
+    "qa": {
+      "title": "よくある質問",
+      "subtitle": "",
+      "0": {
+        "q": "QRBTF とは？",
+        "a": "QRBTF は「QR Code Beautifier」の略で、CUC の大学講座プロジェクトから生まれました。その時から、生成アートの手法を用いて、QRコードを線、バブル、ピクセルアート、その他様々な魅力的なパターンの中に隠す取り組みを始めました。このプロジェクトは GitHub でオープンソース化され、classic.qrbtf.com でアクセス可能です。\n\n2023 年 6 月、QR コードと生成 AI の融合を先駆け、ControlNet と Stable Diffusion を活用して世界初のAI生成QRコードを作成しました。その後、Redditなどのプラットフォームで共有し、広く注目を集めました。\n\n現在、パラメトリック部分とAI部分を組み合わせ、ウェブサイト全体を再構築し、新しいスムーズな体験を提供しています。"
+      },
+      "1": {
+        "q": "どのようなQRコードを生成できますか？",
+        "a": "URL の内容が合法で規約に準拠し、プロンプトワードが政治的、ポルノ的、その他の違法・不適切なコンテンツを含まない限り、URL リンク、プロンプトワード、各種パラメーターに基づいて様々な形式の QR コードを生成できます。利用規約に記載されているように、プラットフォームはユーザーが生成した違法コンテンツについて一切責任を負いません。"
+      },
+      "2": {
+        "q": "生成された QR コードは必ずスキャンできますか？",
+        "a": "必ずしもそうではなく、保証はできません。一部のパラメーターはスキャンの成功率に大きな影響を与えます。対象のスキャナーで確認してください。一般的に、WeChat や iOS の「スキャナー」アプリの認識率は比較的高いです。"
+      },
+      "3": {
+        "q": "QR コードの認識率を向上させるにはどうすればよいですか？",
+        "a": "QR コードのコントロール強度とエラー訂正レベルは、スキャン認識率を向上させる2つの重要なパラメーターです。コントロール強度が高いほど、生成される画像のコントラストが高くなり、プロンプトワードからの逸脱も大きくなります。コントロール強度が低いほど、生成される画像は認識が难しくなりますが、より自然な視覚効果が得られ、異なるプロンプトワードとシードに応じて適切に調整する必要があります。QR コードのエラー訂正レベルは QR コード内の情報点の密度を決定し、URL の長さに応じて適切に調整する必要があります。また、異なるシードを試すことも効果的です。"
+      },
+      "4": {
+        "q": "",
+        "a": ""
+      }
+    },
+    "refs": {
+      "title": "参考",
+      "subtitle": "",
+      "aigc": "AIGC ドキュメント（中国語）",
+      "hf": "Hugging Face 組織",
+      "antfu": "QR Code 101"
+    },
+    "team": {
+      "title": "チーム",
+      "subtitle": ""
+    },
+    "sponsor": {
+      "title": "スポンサー",
+      "subtitle": ""
+    },
+    "changelog": {
+      "title": "更新履歴",
+      "subtitle": "",
+      "post": "投稿（中国語）",
+      "message": {
+        "0": "QRBTF v1 リリース。",
+        "1": "QRBTF v1 オープンソース化。",
+        "2": "react-qrbtf コンポーネントライブラリリリース。",
+        "3": "世界初のAI生成 QR コードを導入。",
+        "4": "QRBTF.AI リリース。Nuxt.js で構築。",
+        "5": "QRBTF v3 リリース。Next.js で完全に再構築。"
+      }
+    }
+  },
+  "pricing": {
+    "title": "料金",
+    "desc": "",
+    "parametric": {
+      "title": "パラメトリック QR コード",
+      "p0": {
+        "title": "無料",
+        "price": "$0",
+        "benefits": {
+          "0": "永久無料",
+          "1": "オープンソース",
+          "2": "バックエンド不要の多様なスタイル",
+          "3": "SVG フォーマットサポート"
+        }
+      }
+    },
+    "ai": {
+      "title": "AI QR コード",
+      "p0": {
+        "title": "トライアル",
+        "price": "$0",
+        "benefits": {
+          "0": "高速生成",
+          "1": "1 日 10 回の AI QR コード生成"
+        }
+      },
+      "p1": {
+        "title": "Alpha",
+        "price": "$20",
+        "unit": "月額",
+        "benefits": {
+          "0": "高速生成",
+          "1": "レート制限付き無制限生成",
+          "2": "Discord Bot での生成",
+          "3": "コミュニティ・メールサポート"
+        }
+      },
+      "sign_in": "ログイン",
+      "account": "アカウント",
+      "donate": "寄付"
+    }
+  },
+  "account": {
+    "title": "アカウント",
+    "desc": "",
+    "profile": "プロフィール",
+    "plan": "プラン",
+    "current_plan": "現在のプラン",
+    "usage": "使用量",
+    "refreshed": "（毎日更新）",
+    "unlimited": "無制限",
+    "statistics": "統計",
+    "generation_count": "生成回数",
+    "download_count": "ダウンロード数"
+  },
+  "signin": {
+    "title": "ログイン",
+    "desc": "ログインボタンをクリックすることで、<TermOfService>利用規約</TermOfService>と<PrivacyPolicy>プライバシーポリシー</PrivacyPolicy>に同意したものとみなされます。"
+  },
+  "header": {
+    "pricing": "料金"
+  },
+  "user_button": {
+    "sign_in": "ログイン",
+    "account": "アカウント",
+    "sign_out": "ログアウト"
+  },
+  "qrcodes": {
+    "common": {
+      "correct_level": {
+        "label": "訂正レベル",
+        "desc": ""
+      }
+    },
+    "positioning": {
+      "positioning_point_type": {
+        "label": "位置決めタイプ",
+        "desc": ""
+      },
+      "positioning_point_color": {
+        "label": "位置決め色",
+        "desc": ""
+      },
+      "square": "四角",
+      "circle": "円形",
+      "planet": "惑星",
+      "rounded": "角丸四角"
+    },
+    "preset": {
+      "label": "プリセット",
+      "desc": ""
+    },
+    "a1": {
+      "title": "A1",
+      "subtitle": "基本",
+      "content_point_type": {
+        "label": "コンテンツタイプ",
+        "desc": ""
+      },
+      "content_point_scale": {
+        "label": "コンテンツスケール",
+        "desc": ""
+      },
+      "content_point_opacity": {
+        "label": "コンテンツ不透明度",
+        "desc": ""
+      },
+      "content_point_color": {
+        "label": "コンテンツ色",
+        "desc": ""
+      },
+      "square": "四角",
+      "circle": "円形"
+    },
+    "a2": {
+      "title": "A2",
+      "subtitle": "ライン変化",
+      "content_line_type": {
+        "label": "ラインタイプ",
+        "desc": ""
+      },
+      "content_point_scale": {
+        "label": "コンテンツスケール",
+        "desc": ""
+      },
+      "content_point_opacity": {
+        "label": "コンテンツ不透明度",
+        "desc": ""
+      },
+      "content_point_color": {
+        "label": "コンテンツ色",
+        "desc": ""
+      },
+      "horizontal": "水平",
+      "vertical": "垂直",
+      "interlock": "格子",
+      "radial": "放射状",
+      "tl-br": "左上—右下",
+      "tr-bl": "右上—左下",
+      "cross": "交差"
+    },
+    "c2": {
+      "title": "C2",
+      "subtitle": "1/3 ピクセルドットマトリックス",
+      "contrast": {
+        "label": "コントラスト",
+        "desc": ""
+      },
+      "brightness": {
+        "label": "明るさ",
+        "desc": ""
+      },
+      "background": {
+        "label": "背景",
+        "desc": "",
+        "button_label": "アップロード"
+      },
+      "align_type": {
+        "label": "アラインタイプ",
+        "desc": ""
+      },
+      "timing_type": {
+        "label": "タイミングタイプ",
+        "desc": ""
+      }
+    },
+    "sp1": {
+      "title": "SP-1",
+      "subtitle": "DSJ より",
+      "content_stroke_width": {
+        "label": "コンテンツ線幅",
+        "desc": ""
+      },
+      "content_x_stroke_width": {
+        "label": "Xマーク線幅",
+        "desc": ""
+      },
+      "positioning_stroke_width": {
+        "label": "位置決め線幅",
+        "desc": ""
+      },
+      "positioning_point_type": {
+        "label": "位置決めタイプ",
+        "desc": ""
+      },
+      "dsj": "DSJ",
+      "square": "四角"
+    },
+    "g1": {
+      "title": "G1",
+      "subtitle": "生成 AI QR コード",
+      "prompt": {
+        "label": "プロンプト",
+        "desc": "QR コード画像を生成する英語キーワード（\",\"で区切る）。",
+        "placeholder": "ポジティブプロンプトを入力..."
+      },
+      "negative_prompt": {
+        "label": "ネガティブプロンプト",
+        "desc": "避けたい要素。",
+        "placeholder": "ネガティブプロンプトを入力..."
+      },
+      "seed": {
+        "label": "シード",
+        "desc": ""
+      },
+      "control_strength": {
+        "label": "コントロール強度",
+        "desc": ""
+      },
+      "prompt_tuning": {
+        "label": "プロンプト調整",
+        "desc": ""
+      },
+      "restoration_rate": {
+        "label": "復元率",
+        "desc": ""
+      },
+      "size": {
+        "label": "サイズ",
+        "desc": ""
+      },
+      "padding_ratio": {
+        "label": "パディング比率",
+        "desc": ""
+      },
+      "correct_level": {
+        "label": "訂正レベル",
+        "desc": ""
+      },
+      "anchor_style": {
+        "label": "アンカースタイル",
+        "desc": "",
+        "square": "四角",
+        "circle": "円形",
+        "minimal": "最小"
+      }
+    }
+  },
+  "footer": {
+    "reserve_rights": "All rights reserved."
+  },
+  "loading": {
+    "loading_msg": "読み込み中"
+  },
+  "not_found": {
+    "title": "ページが見つかりません",
+    "tagline": "申し訳ありません。お探しのページが見つかりませんでした。",
+    "home": "ホームに戻る"
+  },
+  "LocaleSwitcher": {
+    "label": "言語を変更",
+    "locale": "{locale, select, zh {中文} en {English} jp {日本語} other {Unknown}}"
+  },
+  "ModeToggle": {
+    "light": "ライト",
+    "dark": "ダーク",
+    "system": "システム"
+  },
+  "api": {
+    "gen_image": {
+      "unauthorized": "ログインしてください。",
+      "rate_limit_basic": "レート制限を超えました。しばらくしてからお試しください。",
+      "rate_limit_daily": "1日の制限に達しました。料金ページで詳細をご確認ください。"
+    }
+  },
+  "qrcode_placeholder": {
+    "todo": "ウェブサイトの移行が完了していません。このスタイルの QR コードを生成するには <QrbtfClassic>classic.qrbtf.com</QrbtfClassic> をご利用ください。"
+  }
+}
