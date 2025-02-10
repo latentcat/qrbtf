@@ -33,7 +33,7 @@ export default function RootLayout({
             <SectionQA />
             <SectionRefs />
             <SectionTeam />
-            <SectionSponsor />
+            {/* <SectionSponsor /> */}
           </SplitLeft>
           <SplitRight>
             <SectionChangelog />
