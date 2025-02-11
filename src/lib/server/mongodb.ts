@@ -5,7 +5,7 @@ const uri = process.env.MONGODB_CONNECTION_STRING || "";
 let cachedClient: MongoClient;
 let cachedDbs: { [key: string]: Db } = {};
 
-export async function connectToDatabase(dbName: string = "qrcode") {
+export async function connectToDatabase(dbName: string = "qrcode_test") {
   if (cachedClient && cachedDbs[dbName]) {
     return {
       client: cachedClient,
