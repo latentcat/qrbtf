@@ -111,10 +111,10 @@ function withReport(
         http("/api/user/stat/inc_download_count", {
           method: "POST",
         }),
-        http("/api/user/stat/log_qrcode", {
-          method: "POST",
-          body: JSON.stringify(dataToReport),
-        }),
+        // http("/api/user/stat/log_qrcode", {
+        //   method: "POST",
+        //   body: JSON.stringify(dataToReport),
+        // }),
       ]).finally(() => origin(options));
     };
   }
