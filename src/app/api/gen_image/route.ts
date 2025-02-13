@@ -12,6 +12,7 @@ import {
   incGenerationCount,
   updateLastGenerate,
 } from "../user/stat/service";
+import { addCount } from "@/lib/server/count";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   if (!iterator) return;
@@ -43,6 +44,7 @@ async function genImage(req: object) {
     },
     body: requestJson,
   });
+  addCount("counter_global", "generate_count");
 
   const reader = response.body!.getReader();
 
