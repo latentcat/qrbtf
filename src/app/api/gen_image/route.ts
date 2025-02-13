@@ -1,6 +1,4 @@
 // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
-import { getServerSession } from "next-auth";
-import auth, { UserTier } from "@/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -12,6 +10,8 @@ import {
   incGenerationCount,
   updateLastGenerate,
 } from "../user/stat/service";
+import { getServerSession } from "@/lib/latentcat-auth/server";
+import { UserTier } from "@/lib/latentcat-auth/common";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   if (!iterator) return;
@@ -71,12 +71,12 @@ export async function POST(request: NextRequest) {
   const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
   const t = await getTranslations({ locale, namespace: "api.gen_image" });
 
-  const session = await getServerSession(auth);
-  if (!session || !session.user) {
+  const session = await getServerSession();
+  if (!session) {
     return NextResponse.json({ error: t("unauthorized") }, { status: 401 });
   }
 
-  const user = session.user.id || "";
+  const user = session.id || "";
   const rlBasic = await ratelimit.basic.limit(user);
 
   if (!rlBasic.success) {
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
   }
 
   const { usage_count: usageCount = 0 } = (await getUserQrcodeStat(user)) || {};
-  if (session.user.tier != UserTier.Alpha && usageCount >= 10) {
+  if (session.tier != UserTier.Alpha && usageCount >= 10) {
     return NextResponse.json({ error: t("rate_limit_daily") }, { status: 429 });
   }
 

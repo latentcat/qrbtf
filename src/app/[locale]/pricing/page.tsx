@@ -1,12 +1,11 @@
 import { Container } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, ChevronRight, MoveRight } from "lucide-react";
+import { Check, MoveRight } from "lucide-react";
 import { TrackLink } from "@/components/TrackComponents";
 import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
-import auth from "@/auth";
-import { getServerSession } from "next-auth/next";
+import { getServerSession } from "@/lib/latentcat-auth/server";
 
 function SectionTitle() {
   const t = useTranslations("pricing");
@@ -171,13 +170,13 @@ function SectionAI(props: { isSignIn: boolean }) {
 }
 
 export default async function Page() {
-  const session = await getServerSession(auth);
+  const session = await getServerSession();
   return (
     <div>
       <HeaderPadding />
       <SectionTitle />
       <div className="flex flex-col gap-12">
-        <SectionAI isSignIn={!(!session || !session.user)} />
+        <SectionAI isSignIn={!!session} />
         <SectionParametric />
       </div>
     </div>

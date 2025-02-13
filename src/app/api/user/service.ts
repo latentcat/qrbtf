@@ -1,21 +1,40 @@
-import { UserTier } from "@/auth";
+import { QrbtfUserData, UserTier } from "@/lib/latentcat-auth/common";
 import { connectToDatabase } from "@/lib/server/mongodb";
 import { ObjectId } from "mongodb";
-import { User } from "next-auth";
 
-export async function checkAndUpdateUserTier(user: User) {
+export async function checkAndUpdateUser(
+  userId: string,
+): Promise<QrbtfUserData> {
   const now = new Date();
+  const userCollection = (
+    await connectToDatabase()
+  ).db.collection<QrbtfUserData>("users");
+
+  const objectId = new ObjectId(userId);
+
+  let user = await userCollection.findOneAndUpdate(
+    {
+      _id: objectId,
+    },
+    {
+      $set: { _id: objectId },
+    },
+    {
+      upsert: true,
+      returnDocument: "after",
+    },
+  );
+
+  user = user!;
+
   if (
     user.tier == UserTier.Alpha &&
     user.subscribe_expire &&
     now > user.subscribe_expire
   ) {
-    const user_collections = (
-      await connectToDatabase("lc_auth")
-    ).db.collection<User>("users");
-    const updatedUser = await user_collections.findOneAndUpdate(
+    user = await userCollection.findOneAndUpdate(
       {
-        _id: new ObjectId(user.id),
+        _id: objectId,
       },
       {
         $set: {
@@ -26,7 +45,6 @@ export async function checkAndUpdateUserTier(user: User) {
         returnDocument: "after",
       },
     );
-    return updatedUser?.tier;
   }
-  return user.tier;
+  return user!;
 }

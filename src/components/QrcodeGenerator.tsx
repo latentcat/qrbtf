@@ -35,7 +35,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useImageService } from "@/lib/image_service";
-import { trackEvent } from "@/components/TrackComponents";
 import { CommonControlProps, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/param";
 import {
   Select,
@@ -44,7 +43,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { useSession } from "next-auth/react";
+import { useSession } from "@/lib/latentcat-auth/client";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -199,7 +198,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                                 name: currentQrcodeType,
                                 wrapper: qrcodeWrapperRef.current,
                                 params: componentProps,
-                                userId: session?.user.id,
+                                userId: session?.id,
                               });
                           }}
                         >

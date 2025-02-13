@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/components/TrackComponents";
-import { signOut } from "next-auth/react";
+import { signOut } from "@/lib/latentcat-auth/server";
 
 export function SignOutButton({ text }: { text: string }) {
   return (
@@ -11,7 +11,7 @@ export function SignOutButton({ text }: { text: string }) {
       size="sm"
       onClick={async () => {
         trackEvent("sign_out");
-        await signOut();
+        signOut();
       }}
     >
       {text}

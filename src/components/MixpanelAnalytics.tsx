@@ -5,7 +5,7 @@ import mixpanel from "mixpanel-browser";
 
 import { usePathname } from "next/navigation";
 import { http } from "@/lib/network";
-import { useSession } from "next-auth/react";
+import { useSession } from "@/lib/latentcat-auth/client";
 
 const body = {
   collection_name: "counter_global",
@@ -38,15 +38,15 @@ export default function MixpanelAnalytics() {
 
   const { data: session } = useSession();
 
-  let isLogout = !session || !session.user;
+  let isLogout = !session;
 
   useEffect(() => {
     if (!isLogout) {
-      mixpanel.identify(session!.user.id);
+      mixpanel.identify(session!.id);
       mixpanel.people.set({
-        $name: session?.user.name,
-        $email: session?.user.email,
-        $avatar: session?.user.image,
+        $name: session?.name,
+        // $email: session?.user.email,
+        $avatar: session?.picture,
       });
     } else {
       mixpanel.reset();

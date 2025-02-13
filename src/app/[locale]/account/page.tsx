@@ -2,16 +2,15 @@ import { Container } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
 import { useFormatter, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import auth, { UserTier } from "@/auth";
-import { getServerSession } from "next-auth/next";
 import { redirect } from "@/navigation";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { User } from "next-auth";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
 import React from "react";
 import { getUserQrcodeStat } from "@/app/api/user/stat/service";
+import { getServerSession } from "@/lib/latentcat-auth/server";
+import { QrbtfUser, UserTier } from "@/lib/latentcat-auth/common";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -46,7 +45,7 @@ function Section(props: SectionProps) {
 }
 
 interface SectionUserProps {
-  user: User;
+  user: QrbtfUser;
   generationCount: number;
   downloadCount: number;
   dailyUsage: number;
@@ -66,12 +65,12 @@ function SectionUser(props: SectionUserProps) {
             <div className="w-full flex items-center p-3">
               <div className="grow flex items-center gap-3">
                 <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
-                  <AvatarImage src={props.user.image || ""} />
+                  <AvatarImage src={props.user.picture} />
                   <AvatarFallback>{props.user.name}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col gap-0">
                   <div className="font-semibold">{props.user.name}</div>
-                  <div className="text-xs opacity-50">{props.user.email}</div>
+                  {/* <div className="text-xs opacity-50">{props.user.email}</div> */}
                 </div>
               </div>
 
@@ -142,13 +141,13 @@ function SectionUser(props: SectionUserProps) {
 }
 
 export default async function Page() {
-  const session = await getServerSession(auth);
-  if (!session || !session.user || !session.user.id) {
+  const session = await getServerSession();
+  if (!session) {
     redirect("/signin");
     return;
   }
 
-  const userQrcodeStat = await getUserQrcodeStat(session.user.id);
+  const userQrcodeStat = await getUserQrcodeStat(session.id);
 
   return (
     <div>
@@ -157,7 +156,7 @@ export default async function Page() {
       <div className="flex flex-col items-center">
         <div className="w-full max-w-2xl">
           <SectionUser
-            user={session.user}
+            user={session}
             downloadCount={userQrcodeStat?.download_count ?? 0}
             generationCount={userQrcodeStat?.generation_count ?? 0}
             dailyUsage={userQrcodeStat?.usage_count ?? 0}
