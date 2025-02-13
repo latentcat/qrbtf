@@ -10,28 +10,35 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArrowUpRightIcon, HomeIcon, UserRound } from "lucide-react";
+import { ArrowUpRightIcon, HomeIcon, Loader2, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
 import { useSession } from "@/lib/latentcat-auth/client";
 import { signIn, signOut } from "@/lib/latentcat-auth/server";
+import { useState } from "react";
 
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
 export function UserButton() {
-  const { data: session } = useSession();
   const t = useTranslations("user_button");
+
+  const { data: session } = useSession();
+  const [isLogining, setLogining] = useState(false);
   const hasSession = session !== null && session !== undefined;
+
   if (!hasSession) {
     return (
       <div className="pointer-events-auto">
         <Button
+          disabled={isLogining}
           size="sm"
           onClick={async () => {
             trackEvent("sign_in");
+            setLogining(true);
             await signIn();
           }}
         >
+          {isLogining && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           {t("sign_in")}
         </Button>
       </div>
