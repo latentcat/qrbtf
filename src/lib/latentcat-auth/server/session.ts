@@ -20,8 +20,12 @@ export const getServerSession = cache(
     if (session) {
       const qrbtfUserData = await checkAndUpdateUser(session.id);
       return {
-        ...session,
-        ...qrbtfUserData,
+        id: session.id,
+        name: session.name,
+        picture: session.picture,
+        tier: qrbtfUserData.tier,
+        subscribe_time: qrbtfUserData.subscribe_time,
+        subscribe_expire: qrbtfUserData.subscribe_expire,
       };
     }
   },

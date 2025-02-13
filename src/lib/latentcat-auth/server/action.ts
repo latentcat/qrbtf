@@ -14,7 +14,9 @@ export async function signIn() {
   const ssoUrl = new URL("https://account.latentcat.com/login");
   ssoUrl.searchParams.append(
     "callbackUrl",
-    "http://localhost:3000/api/auth/callback"
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000/api/auth/callback"
+      : process.env.AUTH_URL || "",
   );
   ssoUrl.searchParams.append("clientId", process.env.CLIENT_ID || "");
   redirect(ssoUrl.toString());
