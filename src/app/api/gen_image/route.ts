@@ -12,6 +12,7 @@ import {
 } from "../user/stat/service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 import { UserTier } from "@/lib/latentcat-auth/common";
+import { INTERNAL_API_ENDPOINT, INTERNAL_API_KEY } from "@/lib/env/server";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   if (!iterator) return;
@@ -30,16 +31,13 @@ function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   });
 }
 
-const ENDPOINT = process.env.INTERNAL_API_ENDPOINT || "";
-const KEY = process.env.INTERNAL_API_KEY || "";
-
 async function genImage(req: object) {
   const requestJson = JSON.stringify(req);
-  const response = await http(`${ENDPOINT}/image/create`, {
+  const response = await http(`${INTERNAL_API_ENDPOINT}/image/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${KEY}`,
+      Authorization: `Bearer ${INTERNAL_API_KEY}`,
     },
     body: requestJson,
   });

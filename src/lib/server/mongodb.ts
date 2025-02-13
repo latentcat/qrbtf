@@ -1,6 +1,5 @@
 import { Db, MongoClient } from "mongodb";
-
-const uri = process.env.MONGODB_CONNECTION_STRING || "";
+import { MONGODB_CONNECTION_STRING } from "../env/server";
 
 let cachedClient: MongoClient;
 let cachedDbs: { [key: string]: Db } = {};
@@ -14,7 +13,7 @@ export async function connectToDatabase(dbName: string = "qrcode_test") {
   }
 
   if (!cachedClient) {
-    cachedClient = new MongoClient(uri);
+    cachedClient = new MongoClient(MONGODB_CONNECTION_STRING);
     await cachedClient.connect();
   }
 

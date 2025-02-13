@@ -6,12 +6,7 @@ import { cache } from "react";
 import { COOKIE_KEY, UserPayload } from ".";
 import { QrbtfUser } from "../common";
 import { checkAndUpdateUser } from "@/app/api/user/service";
-
-if (!process.env.SESSION_SECRET) {
-  throw "No SESSION_SECRET";
-}
-
-const SECRET_KEY = process.env.SESSION_SECRET;
+import { SESSION_SECRET } from "@/lib/env/server";
 
 export const getServerSession = cache(
   async (): Promise<QrbtfUser | undefined> => {
@@ -33,7 +28,7 @@ export const getServerSession = cache(
 
 export async function decrypt(token = "") {
   try {
-    const decodedSecret = jose.base64url.decode(SECRET_KEY);
+    const decodedSecret = jose.base64url.decode(SESSION_SECRET);
     const { payload } = await jose.jwtDecrypt<UserPayload>(
       token,
       decodedSecret,

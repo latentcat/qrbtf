@@ -2,10 +2,12 @@ import "server-only";
 import { NextRequest, NextResponse } from "next/server";
 import { COOKIE_KEY } from "./server";
 import { decrypt } from "./server/session";
+import { SESSION_SECRET } from "../env/server";
+import { NEXT_PUBLIC_CLIENT_ID } from "../env/client";
 
 async function createCookie(
   resp: NextResponse<unknown>,
-  verifiedToken: string
+  verifiedToken: string,
 ) {
   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
   resp.cookies.set(COOKIE_KEY, verifiedToken, {
@@ -28,10 +30,10 @@ async function authCallback(req: NextRequest) {
       method: "POST",
       body: JSON.stringify({
         accessToken,
-        clientId: process.env.CLIENT_ID || "",
-        clientSecret: process.env.SESSION_SECRET || "",
+        clientId: NEXT_PUBLIC_CLIENT_ID,
+        clientSecret: SESSION_SECRET,
       }),
-    }
+    },
   );
 
   if (!tokenResp.ok) {
@@ -53,7 +55,7 @@ async function authCallback(req: NextRequest) {
 export function LatentCatAuth() {
   return async function (
     req: NextRequest,
-    { params }: { params: Promise<{ action: string }> }
+    { params }: { params: Promise<{ action: string }> },
   ) {
     const auth = (await params).action;
     switch (auth) {
