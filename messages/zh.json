@@ -145,6 +145,7 @@
     "title": "账户",
     "desc": "",
     "profile": "个人信息",
+    "manage": "管理账户",
     "plan": "计划",
     "current_plan": "当前计划",
     "usage": "用量",

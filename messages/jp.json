@@ -145,6 +145,7 @@
     "title": "アカウント",
     "desc": "",
     "profile": "プロフィール",
+    "manage": "マネージド・アカウント",
     "plan": "プラン",
     "current_plan": "現在のプラン",
     "usage": "使用量",

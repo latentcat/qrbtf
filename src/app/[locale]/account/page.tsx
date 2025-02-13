@@ -11,6 +11,7 @@ import React from "react";
 import { getUserQrcodeStat } from "@/app/api/user/stat/service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 import { QrbtfUser, UserTier } from "@/lib/latentcat-auth/common";
+import { Button } from "@/components/ui/button";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -74,7 +75,12 @@ function SectionUser(props: SectionUserProps) {
                 </div>
               </div>
 
-              <div>
+              <div className="space-x-4">
+                <a href="https://account.latentcat.com">
+                  <Button variant="outline" size="sm">
+                    {t("manage")}
+                  </Button>
+                </a>
                 <SignOutButton text={tUserButton("sign_out")} />
               </div>
             </div>
