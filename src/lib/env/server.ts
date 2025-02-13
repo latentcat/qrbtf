@@ -1,6 +1,14 @@
 import "server-only";
 
-import { env } from ".";
+const env = new Proxy(process.env, {
+  get(target, prop) {
+    const val = target[prop as string];
+    if (val === undefined) {
+      throw `No ${prop.toString()}`;
+    }
+    return val;
+  },
+}) as Record<string, string>;
 
 export const {
   SESSION_SECRET,

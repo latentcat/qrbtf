@@ -143,7 +143,7 @@ function SectionUser(props: SectionUserProps) {
 export default async function Page() {
   const session = await getServerSession();
   if (!session) {
-    redirect("/signin");
+    redirect("/");
     return;
   }
 

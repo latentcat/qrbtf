@@ -118,19 +118,20 @@ function SectionParametric() {
 
 function SectionAI(props: { isSignIn: boolean }) {
   const t = useTranslations("pricing.ai");
-  const signInOrAccount: ActionProps = props.isSignIn
-    ? {
-        id: "account",
-        label: t("account"),
-        url: "/account",
-        variant: "outline",
-      }
-    : {
-        id: "sign_in",
-        label: t("sign_in"),
-        url: "/signin",
-        variant: "outline",
-      };
+  const accountAction: ActionProps = {
+    id: "account",
+    label: t("account"),
+    url: "/account",
+    variant: "outline",
+  };
+  const donateAction: ActionProps = {
+    id: "donate",
+    label: t("donate"),
+    url: "https://ko-fi.com/latentcat",
+    target: "_blank",
+    variant: "default",
+  };
+
   return (
     <div>
       <Container>
@@ -140,7 +141,7 @@ function SectionAI(props: { isSignIn: boolean }) {
             title={t("p0.title")}
             price={t("p0.price")}
             benefits={[t("p0.benefits.0"), t("p0.benefits.1")]}
-            actions={[signInOrAccount]}
+            actions={props.isSignIn ? [accountAction] : []}
           />
           <PricingCard
             title={t("p1.title")}
@@ -152,16 +153,9 @@ function SectionAI(props: { isSignIn: boolean }) {
               t("p1.benefits.2"),
               t("p1.benefits.3"),
             ]}
-            actions={[
-              signInOrAccount,
-              {
-                id: "donate",
-                label: t("donate"),
-                url: "https://ko-fi.com/latentcat",
-                target: "_blank",
-                variant: "default",
-              },
-            ]}
+            actions={
+              props.isSignIn ? [accountAction, donateAction] : [donateAction]
+            }
           />
         </div>
       </Container>
