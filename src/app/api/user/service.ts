@@ -4,28 +4,27 @@ import { ObjectId } from "mongodb";
 
 export async function checkAndUpdateUser(
   userId: string,
-): Promise<QrbtfUserData> {
+): Promise<Partial<QrbtfUserData>> {
   const now = new Date();
-  const userCollection = (
-    await connectToDatabase()
-  ).db.collection<QrbtfUserData>("users");
+  const userCollection = (await connectToDatabase()).db.collection<
+    Partial<QrbtfUserData>
+  >("users");
 
   const objectId = new ObjectId(userId);
 
-  let user = await userCollection.findOneAndUpdate(
-    {
-      _id: objectId,
-    },
-    {
-      $set: { _id: objectId },
-    },
-    {
-      upsert: true,
-      returnDocument: "after",
-    },
-  );
+  let user = await userCollection.findOne({
+    _id: objectId,
+  });
 
-  user = user!;
+  if (!user) {
+    await userCollection.insertOne({
+      _id: objectId,
+      tier: UserTier.Trial,
+    });
+    user = (await userCollection.findOne({
+      _id: objectId,
+    }))!;
+  }
 
   if (
     user.tier == UserTier.Alpha &&

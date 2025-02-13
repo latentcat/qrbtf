@@ -9,7 +9,7 @@ export enum UserTier {
   Alpha,
 }
 export interface QrbtfUserData {
-  tier?: UserTier;
+  tier: UserTier;
   subscribe_time?: Date;
   subscribe_expire?: Date;
 }

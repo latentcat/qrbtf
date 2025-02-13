@@ -4,7 +4,7 @@ import * as jose from "jose";
 import { cookies } from "next/headers";
 import { cache } from "react";
 import { COOKIE_KEY, UserPayload } from ".";
-import { QrbtfUser } from "../common";
+import { QrbtfUser, UserTier } from "../common";
 import { checkAndUpdateUser } from "@/app/api/user/service";
 import { SESSION_SECRET } from "@/lib/env/server";
 
@@ -18,7 +18,7 @@ export const getServerSession = cache(
         id: session.id,
         name: session.name,
         picture: session.picture,
-        tier: qrbtfUserData.tier,
+        tier: qrbtfUserData.tier ?? UserTier.Trial,
         subscribe_time: qrbtfUserData.subscribe_time,
         subscribe_expire: qrbtfUserData.subscribe_expire,
       };
