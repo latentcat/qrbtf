@@ -82,6 +82,8 @@ export function LayoutHead() {
       />
       <meta content="yes" name="apple-mobile-web-app-capable" />
       <meta name="theme-color" content="#000000" />
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5528400803664104"
+        crossOrigin="anonymous"></script>
     </head>
   );
 }
