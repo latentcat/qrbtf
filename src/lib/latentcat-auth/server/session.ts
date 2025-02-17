@@ -19,6 +19,7 @@ export const getServerSession = cache(
         name: session.name,
         picture: session.picture,
         tier: qrbtfUserData.tier ?? UserTier.Trial,
+        email: qrbtfUserData.email,
         payment: qrbtfUserData.payment ?? PaymentMethod.None,
         subscribe_time: qrbtfUserData.subscribe_time,
         subscribe_expire: qrbtfUserData.subscribe_expire,

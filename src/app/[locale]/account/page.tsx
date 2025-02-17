@@ -64,6 +64,9 @@ function SectionUser(props: SectionUserProps) {
   const tUserButton = useTranslations("user_button");
 
   const paymentText = (() => {
+    if (props.user.tier !== UserTier.Pro) {
+      return "";
+    }
     switch (props.user.payment) {
       case PaymentMethod.None:
         return "";
@@ -133,6 +136,10 @@ function SectionUser(props: SectionUserProps) {
                   </div>
                   <div className="text-foreground/70">{paymentText}</div>
                   {(() => {
+                    if (props.user.tier !== UserTier.Pro) {
+                      return null;
+                    }
+
                     switch (props.user.payment) {
                       case PaymentMethod.Kofi:
                         return (
@@ -150,7 +157,7 @@ function SectionUser(props: SectionUserProps) {
                         return (
                           <Link
                             target="_blank"
-                            href={NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL}
+                            href={`${NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL}?prefilled_email=${encodeURI(props.user.email ?? "")}`}
                           >
                             <Button
                               className="ml-4"

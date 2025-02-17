@@ -131,9 +131,10 @@ function SectionParametric() {
 
 function SectionAI(props: {
   userId?: string;
-  email?: string;
   userTier?: UserTier;
   userPayment?: PaymentMethod;
+  credentialEmail?: string;
+  paymentEmail?: string;
 }) {
   const t = useTranslations("pricing.ai");
 
@@ -144,13 +145,22 @@ function SectionAI(props: {
     variant: "outline",
   };
 
-  const subscribe: ActionProps = {
-    id: "subscribe",
-    label: t("subscribe"),
-    url: `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/stripe/create-checkout-session?id=${props.userId}`,
-    target: "_blank",
-    variant: "default",
-  };
+  const subscribe: ActionProps = (() => {
+    const url = new URL(
+      `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/stripe/create-checkout-session`,
+    );
+
+    if (props.userId) url.searchParams.set("id", props.userId);
+    if (props.credentialEmail)
+      url.searchParams.set("email", props.credentialEmail);
+    return {
+      id: "subscribe",
+      label: t("subscribe"),
+      url: url.toString(),
+      target: "_blank",
+      variant: "default",
+    };
+  })();
 
   const kofi: ActionProps = {
     id: "kofi",
@@ -163,12 +173,15 @@ function SectionAI(props: {
   const stripe: ActionProps = {
     id: "stripe",
     label: t("manage_subscription"),
-    url: NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL,
+    url: `${NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL}?prefilled_email=${encodeURI(props.paymentEmail ?? "")}`,
     target: "_blank",
     variant: "default",
   };
 
   const [p0Actions, p1Actions] = (() => {
+    if (props.userTier !== UserTier.Pro) {
+      return [[accountAction], [subscribe]];
+    }
     switch (props.userPayment) {
       case undefined:
         return [[], []];
@@ -225,6 +238,7 @@ export default async function Page() {
           userId={session?.id}
           userTier={session?.tier}
           userPayment={session?.payment}
+          paymentEmail={session?.email}
         />
         <SectionParametric />
       </div>

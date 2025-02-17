@@ -20,6 +20,7 @@ export enum PaymentMethod {
 export interface QrbtfUserData {
   tier: UserTier;
   payment: PaymentMethod;
+  email?: string;
   subscribe_time?: Date;
   subscribe_expire?: Date;
 }
