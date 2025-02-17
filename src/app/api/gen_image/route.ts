@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
   }
 
   const { usage_count: usageCount = 0 } = (await getUserQrcodeStat(user)) || {};
-  if (session.tier != UserTier.Alpha && usageCount >= 10) {
+  if (session.tier != UserTier.Pro && usageCount >= 10) {
     return NextResponse.json({ error: t("rate_limit_daily") }, { status: 429 });
   }
 

@@ -27,7 +27,7 @@ export async function checkAndUpdateUser(
   }
 
   if (
-    user.tier == UserTier.Alpha &&
+    user.tier == UserTier.Pro &&
     user.subscribe_expire &&
     now > user.subscribe_expire
   ) {

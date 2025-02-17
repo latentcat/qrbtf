@@ -6,7 +6,7 @@ export interface UserPayload {
 
 export enum UserTier {
   Trial = 0,
-  Alpha,
+  Pro,
 }
 export interface QrbtfUserData {
   tier: UserTier;
