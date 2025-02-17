@@ -1,4 +1,8 @@
-import { QrbtfUserData, UserTier } from "@/lib/latentcat-auth/common";
+import {
+  PaymentMethod,
+  QrbtfUserData,
+  UserTier,
+} from "@/lib/latentcat-auth/common";
 import { connectToDatabase } from "@/lib/server/mongodb";
 import { ObjectId } from "mongodb";
 
@@ -20,6 +24,7 @@ export async function checkAndUpdateUser(
     await userCollection.insertOne({
       _id: objectId,
       tier: UserTier.Trial,
+      payment: PaymentMethod.None,
     });
     user = (await userCollection.findOne({
       _id: objectId,

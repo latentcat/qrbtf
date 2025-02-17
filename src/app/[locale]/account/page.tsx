@@ -2,7 +2,7 @@ import { Container } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
 import { useFormatter, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import { redirect } from "@/navigation";
+import { Link, redirect } from "@/navigation";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SignOutButton } from "@/app/[locale]/account/Components";
@@ -10,8 +10,13 @@ import { Progress } from "@/components/ui/progress";
 import React from "react";
 import { getUserQrcodeStat } from "@/app/api/user/stat/service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
-import { QrbtfUser, UserTier } from "@/lib/latentcat-auth/common";
+import {
+  PaymentMethod,
+  QrbtfUser,
+  UserTier,
+} from "@/lib/latentcat-auth/common";
 import { Button } from "@/components/ui/button";
+import { NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL } from "@/lib/env/client";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -58,6 +63,21 @@ function SectionUser(props: SectionUserProps) {
   const formatter = useFormatter();
   const tUserButton = useTranslations("user_button");
 
+  const paymentText = (() => {
+    switch (props.user.payment) {
+      case PaymentMethod.None:
+        return "";
+      case PaymentMethod.Kofi:
+        return "Ko-fi";
+      case PaymentMethod.Stripe:
+        return "Stripe";
+      case PaymentMethod.IAP:
+        return "IAP";
+      case PaymentMethod.Member:
+        return "Member";
+    }
+  })();
+
   return (
     <div>
       <Container>
@@ -101,23 +121,62 @@ function SectionUser(props: SectionUserProps) {
                       })}
                 </div>
               </div>
-
               <div className="text-2xl font-bold">
                 {UserTier[props.user.tier || 0]}
               </div>
             </div>
-
+            {props.user.tier !== UserTier.Trial && (
+              <div className="flex flex-col gap-2 p-3">
+                <div className="w-full flex items-center text-sm">
+                  <div className="grow flex items-center gap-3">
+                    {t("payment_method")}
+                  </div>
+                  <div className="text-foreground/70">{paymentText}</div>
+                  {(() => {
+                    switch (props.user.payment) {
+                      case PaymentMethod.Kofi:
+                        return (
+                          <Link href="https://ko-fi.com/latentcat">
+                            <Button
+                              className="ml-4"
+                              variant="secondary"
+                              size="sm"
+                            >
+                              {t("payment_action_kofi")}
+                            </Button>
+                          </Link>
+                        );
+                      case PaymentMethod.Stripe:
+                        return (
+                          <Link
+                            target="_blank"
+                            href={NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL}
+                          >
+                            <Button
+                              className="ml-4"
+                              variant="secondary"
+                              size="sm"
+                            >
+                              {t("payment_action_stripe")}
+                            </Button>
+                          </Link>
+                        );
+                      default:
+                        return null;
+                    }
+                  })()}
+                </div>
+              </div>
+            )}
             <div className="flex flex-col gap-2 p-3">
               <div className="w-full flex items-center text-sm">
                 <div className="grow flex items-center gap-3">{t("usage")}</div>
-
                 <div className="text-foreground/70">
                   {props.user.tier === UserTier.Trial
                     ? `${props.dailyUsage} / ${props.maxDailyUsage} ${t("refreshed")}`
                     : t("unlimited")}
                 </div>
               </div>
-
               <Progress
                 value={
                   props.user.tier === UserTier.Trial
