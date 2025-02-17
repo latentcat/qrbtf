@@ -6,8 +6,11 @@ import { TrackLink } from "@/components/TrackComponents";
 import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 import { getServerSession } from "@/lib/latentcat-auth/server";
-import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
-import { UserTier } from "@/lib/latentcat-auth/common";
+import {
+  NEXT_PUBLIC_QRBTF_API_ENDPOINT,
+  NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL,
+} from "@/lib/env/client";
+import { PaymentMethod, UserTier } from "@/lib/latentcat-auth/common";
 
 function SectionTitle() {
   const t = useTranslations("pricing");
@@ -130,8 +133,10 @@ function SectionAI(props: {
   userId?: string;
   email?: string;
   userTier?: UserTier;
+  userPayment?: PaymentMethod;
 }) {
   const t = useTranslations("pricing.ai");
+
   const accountAction: ActionProps = {
     id: "account",
     label: t("account"),
@@ -147,6 +152,37 @@ function SectionAI(props: {
     variant: "default",
   };
 
+  const kofi: ActionProps = {
+    id: "kofi",
+    label: t("manage_subscription"),
+    url: "https://ko-fi.com/latentcat",
+    target: "_blank",
+    variant: "default",
+  };
+
+  const stripe: ActionProps = {
+    id: "stripe",
+    label: t("manage_subscription"),
+    url: NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL,
+    target: "_blank",
+    variant: "default",
+  };
+
+  const [p0Actions, p1Actions] = (() => {
+    switch (props.userPayment) {
+      case undefined:
+        return [[], []];
+      case PaymentMethod.None:
+        return [[accountAction], [subscribe]];
+      case PaymentMethod.Kofi:
+        return [[], [kofi]];
+      case PaymentMethod.Stripe:
+        return [[], [stripe]];
+      default:
+        return [[], []];
+    }
+  })();
+
   return (
     <div>
       <Container>
@@ -156,7 +192,7 @@ function SectionAI(props: {
             title={t("p0.title")}
             price={t("p0.price")}
             benefits={[t("p0.benefits.0"), t("p0.benefits.1")]}
-            actions={props.userId ? [accountAction] : []}
+            actions={p0Actions}
             isCurrent={props.userTier === UserTier.Trial}
           />
           <PricingCard
@@ -169,7 +205,7 @@ function SectionAI(props: {
               t("p1.benefits.2"),
               t("p1.benefits.3"),
             ]}
-            actions={props.userId ? [accountAction, subscribe] : []}
+            actions={p1Actions}
             isCurrent={props.userTier === UserTier.Pro}
           />
         </div>
@@ -185,7 +221,11 @@ export default async function Page() {
       <HeaderPadding />
       <SectionTitle />
       <div className="flex flex-col gap-12">
-        <SectionAI userId={session?.id} userTier={session?.tier} />
+        <SectionAI
+          userId={session?.id}
+          userTier={session?.tier}
+          userPayment={session?.payment}
+        />
         <SectionParametric />
       </div>
     </div>

@@ -140,7 +140,8 @@
       "account": "アカウント",
       "donate": "寄付",
       "subscribe": "登録する",
-      "current_plan": "現在のプラン"
+      "current_plan": "現在のプラン",
+      "manage_subscription": "サブスクリプションの管理"
     }
   },
   "account": {
@@ -151,8 +152,7 @@
     "plan": "プラン",
     "current_plan": "現在のプラン",
     "payment_method": "支払方法",
-    "payment_action_kofi": "スキップ Ko-fi",
-    "payment_action_stripe": "サブスクリプションの管理",
+    "manage_subscription": "サブスクリプションの管理",
     "support": "支援を求める",
     "usage": "使用量",
     "refreshed": "（毎日更新）",

@@ -140,7 +140,8 @@
       "account": "Account",
       "donate": "Donate",
       "subscribe": "Subscribe",
-      "current_plan": "Current Plan"
+      "current_plan": "Current Plan",
+      "manage_subscription": "Manage Subscription"
     }
   },
   "account": {
@@ -151,8 +152,7 @@
     "plan": "Plan",
     "current_plan": "Current Plan",
     "payment_method": "Payment Method",
-    "payment_action_kofi": "To Ko-fi",
-    "payment_action_stripe": "Manage Subscription",
+    "manage_subscription": "Manage Subscription",
     "support": "Need Support",
     "usage": "Usage",
     "refreshed": "(refreshed daily)",

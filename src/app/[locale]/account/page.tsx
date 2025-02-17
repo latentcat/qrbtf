@@ -142,7 +142,7 @@ function SectionUser(props: SectionUserProps) {
                               variant="secondary"
                               size="sm"
                             >
-                              {t("payment_action_kofi")}
+                              {t("manage_subscription")}
                             </Button>
                           </Link>
                         );
@@ -157,7 +157,7 @@ function SectionUser(props: SectionUserProps) {
                               variant="secondary"
                               size="sm"
                             >
-                              {t("payment_action_stripe")}
+                              {t("manage_subscription")}
                             </Button>
                           </Link>
                         );
