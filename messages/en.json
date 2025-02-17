@@ -138,7 +138,8 @@
       },
       "sign_in": "Sign In",
       "account": "Account",
-      "donate": "Donate"
+      "donate": "Donate",
+      "subscribe": "Subscribe"
     }
   },
   "account": {

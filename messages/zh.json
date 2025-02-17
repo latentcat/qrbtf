@@ -138,7 +138,8 @@
       },
       "sign_in": "登录",
       "account": "查看账户",
-      "donate": "赞助"
+      "donate": "赞助",
+      "subscribe": "订阅"
     }
   },
   "account": {

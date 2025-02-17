@@ -1,10 +1,15 @@
 import { Db, MongoClient } from "mongodb";
-import { MONGODB_CONNECTION_STRING } from "../env/server";
+import {
+  MONGODB_CONNECTION_STRING,
+  MONGODB_QRCODE_DB_NAME,
+} from "../env/server";
 
 let cachedClient: MongoClient;
 let cachedDbs: { [key: string]: Db } = {};
 
-export async function connectToDatabase(dbName: string = "qrcode_test") {
+export async function connectToDatabase(
+  dbName: string = MONGODB_QRCODE_DB_NAME,
+) {
   if (cachedClient && cachedDbs[dbName]) {
     return {
       client: cachedClient,

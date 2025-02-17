@@ -6,6 +6,10 @@ import { TrackLink } from "@/components/TrackComponents";
 import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 import { getServerSession } from "@/lib/latentcat-auth/server";
+import {
+  NEXT_PUBLIC_AUTH_CALLBACK_URL,
+  NEXT_PUBLIC_QRBTF_API_ENDPOINT,
+} from "@/lib/env/client";
 
 function SectionTitle() {
   const t = useTranslations("pricing");
@@ -116,7 +120,7 @@ function SectionParametric() {
   );
 }
 
-function SectionAI(props: { isSignIn: boolean }) {
+function SectionAI(props: { userId?: string; email?: string }) {
   const t = useTranslations("pricing.ai");
   const accountAction: ActionProps = {
     id: "account",
@@ -124,10 +128,11 @@ function SectionAI(props: { isSignIn: boolean }) {
     url: "/account",
     variant: "outline",
   };
-  const donateAction: ActionProps = {
-    id: "donate",
-    label: t("donate"),
-    url: "https://ko-fi.com/latentcat",
+
+  const subscribe: ActionProps = {
+    id: "subscribe",
+    label: t("subscribe"),
+    url: `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/stripe/create-checkout-session?id=${props.userId}`,
     target: "_blank",
     variant: "default",
   };
@@ -141,7 +146,7 @@ function SectionAI(props: { isSignIn: boolean }) {
             title={t("p0.title")}
             price={t("p0.price")}
             benefits={[t("p0.benefits.0"), t("p0.benefits.1")]}
-            actions={props.isSignIn ? [accountAction] : []}
+            actions={props.userId ? [accountAction] : []}
           />
           <PricingCard
             title={t("p1.title")}
@@ -153,9 +158,7 @@ function SectionAI(props: { isSignIn: boolean }) {
               t("p1.benefits.2"),
               t("p1.benefits.3"),
             ]}
-            actions={
-              props.isSignIn ? [accountAction, donateAction] : [donateAction]
-            }
+            actions={props.userId ? [accountAction, subscribe] : []}
           />
         </div>
       </Container>
@@ -170,7 +173,7 @@ export default async function Page() {
       <HeaderPadding />
       <SectionTitle />
       <div className="flex flex-col gap-12">
-        <SectionAI isSignIn={!!session} />
+        <SectionAI userId={session?.id} />
         <SectionParametric />
       </div>
     </div>
