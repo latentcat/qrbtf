@@ -153,6 +153,7 @@
     "payment_method": "Payment Method",
     "payment_action_kofi": "To Ko-fi",
     "payment_action_stripe": "Manage Subscription",
+    "support": "Need Support",
     "usage": "Usage",
     "refreshed": "(refreshed daily)",
     "unlimited": "Unlimited",

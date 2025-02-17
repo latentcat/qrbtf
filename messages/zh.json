@@ -153,6 +153,7 @@
     "payment_method": "支付方式",
     "payment_action_kofi": "跳转 Ko-fi",
     "payment_action_stripe": "管理订阅",
+    "support": "联系支持",
     "usage": "用量",
     "refreshed": "(每日刷新)",
     "unlimited": "无限制",

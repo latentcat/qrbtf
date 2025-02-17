@@ -186,6 +186,14 @@ function SectionUser(props: SectionUserProps) {
                 className="h-1.5"
               />
             </div>
+            <div className="flex flex-col gap-2 p-3">
+              <div className="w-full flex items-center text-sm">
+                <div className="grow flex items-center gap-3">
+                  {t("support")}
+                </div>
+                <div className="text-foreground/70">contact@latentcat.com</div>
+              </div>
+            </div>
           </Section>
 
           <Section title={t("statistics")}>
