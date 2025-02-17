@@ -139,7 +139,8 @@
       "sign_in": "登录",
       "account": "查看账户",
       "donate": "赞助",
-      "subscribe": "订阅"
+      "subscribe": "订阅",
+      "current_plan": "当前计划"
     }
   },
   "account": {

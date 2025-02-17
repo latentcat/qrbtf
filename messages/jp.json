@@ -139,7 +139,8 @@
       "sign_in": "ログイン",
       "account": "アカウント",
       "donate": "寄付",
-      "subscribe": "登録する"
+      "subscribe": "登録する",
+      "current_plan": "現在のプラン"
     }
   },
   "account": {

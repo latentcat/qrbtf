@@ -6,10 +6,8 @@ import { TrackLink } from "@/components/TrackComponents";
 import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 import { getServerSession } from "@/lib/latentcat-auth/server";
-import {
-  NEXT_PUBLIC_AUTH_CALLBACK_URL,
-  NEXT_PUBLIC_QRBTF_API_ENDPOINT,
-} from "@/lib/env/client";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
+import { UserTier } from "@/lib/latentcat-auth/common";
 
 function SectionTitle() {
   const t = useTranslations("pricing");
@@ -38,13 +36,20 @@ interface PricingCardProps {
   unit?: string;
   benefits?: string[];
   actions?: ActionProps[];
+  isCurrent: boolean;
 }
 
-function PricingCard(props: PricingCardProps) {
+async function PricingCard(props: PricingCardProps) {
+  const t = await getTranslations("pricing.ai");
   return (
     <div className="px-8 py-8 rounded-2xl border flex flex-col justify-between gap-6">
       <div>
-        <h2 className="text-lg font-bold mb-1">{props.title}</h2>
+        <div className="flex">
+          <h2 className="text-lg font-bold mb-1">
+            {props.title}
+            {props.isCurrent ? `(${t("current_plan")})` : ""}
+          </h2>
+        </div>
         <p>
           <span className="text-3xl font-bold mr-2">{props.price}</span>
           <span className="text-xl text-foreground/50">{props.unit}</span>
@@ -113,6 +118,7 @@ function SectionParametric() {
               t("p0.benefits.2"),
               t("p0.benefits.3"),
             ]}
+            isCurrent={false}
           />
         </div>
       </Container>
@@ -120,7 +126,11 @@ function SectionParametric() {
   );
 }
 
-function SectionAI(props: { userId?: string; email?: string }) {
+function SectionAI(props: {
+  userId?: string;
+  email?: string;
+  userTier?: UserTier;
+}) {
   const t = useTranslations("pricing.ai");
   const accountAction: ActionProps = {
     id: "account",
@@ -147,6 +157,7 @@ function SectionAI(props: { userId?: string; email?: string }) {
             price={t("p0.price")}
             benefits={[t("p0.benefits.0"), t("p0.benefits.1")]}
             actions={props.userId ? [accountAction] : []}
+            isCurrent={props.userTier === UserTier.Trial}
           />
           <PricingCard
             title={t("p1.title")}
@@ -159,6 +170,7 @@ function SectionAI(props: { userId?: string; email?: string }) {
               t("p1.benefits.3"),
             ]}
             actions={props.userId ? [accountAction, subscribe] : []}
+            isCurrent={props.userTier === UserTier.Pro}
           />
         </div>
       </Container>
@@ -173,7 +185,7 @@ export default async function Page() {
       <HeaderPadding />
       <SectionTitle />
       <div className="flex flex-col gap-12">
-        <SectionAI userId={session?.id} />
+        <SectionAI userId={session?.id} userTier={session?.tier} />
         <SectionParametric />
       </div>
     </div>

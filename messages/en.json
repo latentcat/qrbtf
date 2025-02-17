@@ -139,7 +139,8 @@
       "sign_in": "Sign In",
       "account": "Account",
       "donate": "Donate",
-      "subscribe": "Subscribe"
+      "subscribe": "Subscribe",
+      "current_plan": "Current Plan"
     }
   },
   "account": {
