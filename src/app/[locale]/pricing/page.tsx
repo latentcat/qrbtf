@@ -11,6 +11,7 @@ import {
   NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL,
 } from "@/lib/env/client";
 import { PaymentMethod, UserTier } from "@/lib/latentcat-auth/common";
+import SignInButton from "@/components/SignInButton";
 
 function SectionTitle() {
   const t = useTranslations("pricing");
@@ -25,13 +26,15 @@ function SectionTitle() {
   );
 }
 
-interface ActionProps {
-  id: string;
-  label: string;
-  url: string;
-  target?: string;
-  variant: "default" | "outline";
-}
+type ActionProps =
+  | {
+      id: string;
+      label: string;
+      url: string;
+      target?: string;
+      variant: "default" | "outline";
+    }
+  | "signIn";
 
 interface PricingCardProps {
   title: string;
@@ -44,6 +47,7 @@ interface PricingCardProps {
 
 async function PricingCard(props: PricingCardProps) {
   const t = await getTranslations("pricing.ai");
+  const signInText = (await getTranslations("user_button"))("sign_in");
   return (
     <div className="px-8 py-8 rounded-2xl border flex flex-col justify-between gap-6">
       <div>
@@ -70,23 +74,36 @@ async function PricingCard(props: PricingCardProps) {
       </div>
       {props.actions && (
         <div className="flex gap-3 w-full">
-          {props.actions.map((action, index) => (
-            <TrackLink
-              key={index}
-              trackValue={action.id}
-              href={action.url}
-              target={action.target}
-              className="w-full shrink"
-            >
-              <Button
-                variant={action.variant}
-                className="w-full flex justify-between items-center"
+          {props.actions.map((action, index) =>
+            typeof action === "object" ? (
+              <TrackLink
+                key={index}
+                trackValue={action.id}
+                href={action.url}
+                target={action.target}
+                className="w-full shrink"
               >
-                {action.label}
-                <MoveRight className="h-5" />
-              </Button>
-            </TrackLink>
-          ))}
+                <Button
+                  variant={action.variant}
+                  className="w-full flex justify-between items-center"
+                >
+                  {action.label}
+                  <MoveRight className="h-5" />
+                </Button>
+              </TrackLink>
+            ) : (
+              <div key={index} className="w-full shrink">
+                <SignInButton
+                  variant="outline"
+                  className="w-full flex items-center"
+                  key={index}
+                >
+                  {signInText}
+                  <MoveRight className="h-5 ml-auto" />
+                </SignInButton>
+              </div>
+            ),
+          )}
         </div>
       )}
     </div>
@@ -179,12 +196,13 @@ function SectionAI(props: {
   };
 
   const [p0Actions, p1Actions] = (() => {
+    if (!props.userId) {
+      return [["signIn" as const], ["signIn" as const]];
+    }
     if (props.userTier !== UserTier.Pro) {
       return [[accountAction], [subscribe]];
     }
     switch (props.userPayment) {
-      case undefined:
-        return [[], []];
       case PaymentMethod.None:
         return [[accountAction], [subscribe]];
       case PaymentMethod.Kofi:
