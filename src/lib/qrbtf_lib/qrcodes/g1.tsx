@@ -59,7 +59,7 @@ function QrbtfVisualizerG1(props: { data: any }) {
 
     if (rep === null) return;
 
-    console.log("rep", rep);
+    // console.log("rep", rep);
     if (rep.res_type === "queue") {
       setProgress({
         value: 0.2,

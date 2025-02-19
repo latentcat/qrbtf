@@ -11,7 +11,7 @@ import { http } from "./network";
 const schema = z.union([
   z.object({
     res_type: z.literal("queue"),
-    task_id: z.number().int(),
+    task_id: z.union([z.string(), z.number()]),
     queue_id: z.number().int(),
     diff: z.number().int(),
   }),
@@ -23,7 +23,7 @@ const schema = z.union([
   z.object({
     res_type: z.literal("result"),
     data: z.object({
-      task_id: z.number(),
+      task_id: z.union([z.string(), z.number()]),
       create_ts: z.string(),
       params: z.any(),
       download_url: z.string(),
@@ -61,10 +61,10 @@ export async function genImage(req: object, signal: AbortSignal) {
       const textValue = decoder.decode(value, { stream: true });
       const dataBlocks = textValue.split(/\r?\n/);
       for (const block of dataBlocks) {
-        console.log(textValue);
+        // console.log(textValue);
         const object = safeParseJSON(block);
         if (!object) continue;
-        console.log(object);
+        // console.log(object);
         yield schema.parse(object);
       }
     }
@@ -85,7 +85,7 @@ export function useImageService<P extends object>(
     //   toast.warning("You need to be logged in to generate QR codes");
     //   return;
     // }
-    console.log(values);
+    // console.log(values);
 
     // 开始时归零进度条
     setResData(null);
@@ -113,7 +113,7 @@ export function useImageService<P extends object>(
 
     // 定义请求方法
     const fetchData = async (signal: AbortSignal) => {
-      console.log(currentReq);
+      // console.log(currentReq);
 
       try {
         // 调用流式请求
