@@ -2,16 +2,21 @@ import { Container } from "@/components/Containers";
 import { HeaderPadding } from "@/components/Header";
 import { useFormatter, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import auth, { UserTier } from "@/auth";
-import { getServerSession } from "next-auth/next";
-import { redirect } from "@/navigation";
+import { Link, redirect } from "@/navigation";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { User } from "next-auth";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
 import React from "react";
 import { getUserQrcodeStat } from "@/app/api/user/stat/service";
+import { getServerSession } from "@/lib/latentcat-auth/server";
+import {
+  PaymentMethod,
+  QrbtfUser,
+  UserTier,
+} from "@/lib/latentcat-auth/common";
+import { Button } from "@/components/ui/button";
+import { NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL } from "@/lib/env/client";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -46,7 +51,7 @@ function Section(props: SectionProps) {
 }
 
 interface SectionUserProps {
-  user: User;
+  user: QrbtfUser;
   generationCount: number;
   downloadCount: number;
   dailyUsage: number;
@@ -58,6 +63,24 @@ function SectionUser(props: SectionUserProps) {
   const formatter = useFormatter();
   const tUserButton = useTranslations("user_button");
 
+  const paymentText = (() => {
+    if (props.user.tier !== UserTier.Pro) {
+      return "";
+    }
+    switch (props.user.payment) {
+      case PaymentMethod.None:
+        return "";
+      case PaymentMethod.Kofi:
+        return "Ko-fi";
+      case PaymentMethod.Stripe:
+        return "Stripe";
+      case PaymentMethod.IAP:
+        return "IAP";
+      case PaymentMethod.Member:
+        return "Member";
+    }
+  })();
+
   return (
     <div>
       <Container>
@@ -66,16 +89,21 @@ function SectionUser(props: SectionUserProps) {
             <div className="w-full flex items-center p-3">
               <div className="grow flex items-center gap-3">
                 <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
-                  <AvatarImage src={props.user.image || ""} />
+                  <AvatarImage src={props.user.picture} />
                   <AvatarFallback>{props.user.name}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col gap-0">
                   <div className="font-semibold">{props.user.name}</div>
-                  <div className="text-xs opacity-50">{props.user.email}</div>
+                  {/* <div className="text-xs opacity-50">{props.user.email}</div> */}
                 </div>
               </div>
 
-              <div>
+              <div className="space-x-4">
+                <a href="https://account.latentcat.com">
+                  <Button variant="outline" size="sm">
+                    {t("manage")}
+                  </Button>
+                </a>
                 <SignOutButton text={tUserButton("sign_out")} />
               </div>
             </div>
@@ -96,23 +124,66 @@ function SectionUser(props: SectionUserProps) {
                       })}
                 </div>
               </div>
-
               <div className="text-2xl font-bold">
                 {UserTier[props.user.tier || 0]}
               </div>
             </div>
+            {props.user.tier !== UserTier.Trial && (
+              <div className="flex flex-col gap-2 p-3">
+                <div className="w-full flex items-center text-sm">
+                  <div className="grow flex items-center gap-3">
+                    {t("payment_method")}
+                  </div>
+                  <div className="text-foreground/70">{paymentText}</div>
+                  {(() => {
+                    if (props.user.tier !== UserTier.Pro) {
+                      return null;
+                    }
 
+                    switch (props.user.payment) {
+                      case PaymentMethod.Kofi:
+                        return (
+                          <Link href="https://ko-fi.com/latentcat">
+                            <Button
+                              className="ml-4"
+                              variant="secondary"
+                              size="sm"
+                            >
+                              {t("manage_subscription")}
+                            </Button>
+                          </Link>
+                        );
+                      case PaymentMethod.Stripe:
+                        return (
+                          <Link
+                            target="_blank"
+                            href={`${NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL}?prefilled_email=${encodeURI(props.user.email ?? "")}`}
+                          >
+                            <Button
+                              className="ml-4"
+                              variant="secondary"
+                              size="sm"
+                            >
+                              {t("manage_subscription")}
+                            </Button>
+                          </Link>
+                        );
+                      default:
+                        return null;
+                    }
+                  })()}
+                </div>
+              </div>
+            )}
             <div className="flex flex-col gap-2 p-3">
               <div className="w-full flex items-center text-sm">
                 <div className="grow flex items-center gap-3">{t("usage")}</div>
-
                 <div className="text-foreground/70">
                   {props.user.tier === UserTier.Trial
                     ? `${props.dailyUsage} / ${props.maxDailyUsage} ${t("refreshed")}`
                     : t("unlimited")}
                 </div>
               </div>
-
               <Progress
                 value={
                   props.user.tier === UserTier.Trial
@@ -121,6 +192,14 @@ function SectionUser(props: SectionUserProps) {
                 }
                 className="h-1.5"
               />
+            </div>
+            <div className="flex flex-col gap-2 p-3">
+              <div className="w-full flex items-center text-sm">
+                <div className="grow flex items-center gap-3">
+                  {t("support")}
+                </div>
+                <div className="text-foreground/70">contact@latentcat.com</div>
+              </div>
             </div>
           </Section>
 
@@ -142,13 +221,13 @@ function SectionUser(props: SectionUserProps) {
 }
 
 export default async function Page() {
-  const session = await getServerSession(auth);
-  if (!session || !session.user || !session.user.id) {
-    redirect("/signin");
+  const session = await getServerSession();
+  if (!session) {
+    redirect("/");
     return;
   }
 
-  const userQrcodeStat = await getUserQrcodeStat(session.user.id);
+  const userQrcodeStat = await getUserQrcodeStat(session.id);
 
   return (
     <div>
@@ -157,7 +236,7 @@ export default async function Page() {
       <div className="flex flex-col items-center">
         <div className="w-full max-w-2xl">
           <SectionUser
-            user={session.user}
+            user={session}
             downloadCount={userQrcodeStat?.download_count ?? 0}
             generationCount={userQrcodeStat?.generation_count ?? 0}
             dailyUsage={userQrcodeStat?.usage_count ?? 0}

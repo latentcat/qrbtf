@@ -126,7 +126,7 @@
         }
       },
       "p1": {
-        "title": "Alpha",
+        "title": "Pro",
         "price": "$20",
         "unit": "per month",
         "benefits": {
@@ -138,15 +138,22 @@
       },
       "sign_in": "Sign In",
       "account": "Account",
-      "donate": "Donate"
+      "donate": "Donate",
+      "subscribe": "Subscribe",
+      "current_plan": "Current Plan",
+      "manage_subscription": "Manage Subscription"
     }
   },
   "account": {
     "title": "Account",
     "desc": "",
     "profile": "Profile",
+    "manage": "Manage Profile",
     "plan": "Plan",
     "current_plan": "Current Plan",
+    "payment_method": "Payment Method",
+    "manage_subscription": "Manage Subscription",
+    "support": "Need Support",
     "usage": "Usage",
     "refreshed": "(refreshed daily)",
     "unlimited": "Unlimited",

@@ -1,6 +1,4 @@
 // https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream
-import { getServerSession } from "next-auth";
-import auth, { UserTier } from "@/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 import { Ratelimit } from "@upstash/ratelimit";
@@ -13,6 +11,9 @@ import {
   updateLastGenerate,
 } from "../user/stat/service";
 import { addCount } from "@/lib/server/count";
+import { getServerSession } from "@/lib/latentcat-auth/server";
+import { UserTier } from "@/lib/latentcat-auth/common";
+import { INTERNAL_API_ENDPOINT, INTERNAL_API_KEY } from "@/lib/env/server";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   if (!iterator) return;
@@ -31,16 +32,13 @@ function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   });
 }
 
-const ENDPOINT = process.env.INTERNAL_API_ENDPOINT || "";
-const KEY = process.env.INTERNAL_API_KEY || "";
-
 async function genImage(req: object) {
   const requestJson = JSON.stringify(req);
-  const response = await http(`${ENDPOINT}/image/create`, {
+  const response = await http(`${INTERNAL_API_ENDPOINT}/image/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${KEY}`,
+      Authorization: `Bearer ${INTERNAL_API_KEY}`,
     },
     body: requestJson,
   });
@@ -73,12 +71,12 @@ export async function POST(request: NextRequest) {
   const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
   const t = await getTranslations({ locale, namespace: "api.gen_image" });
 
-  const session = await getServerSession(auth);
-  if (!session || !session.user) {
+  const session = await getServerSession();
+  if (!session) {
     return NextResponse.json({ error: t("unauthorized") }, { status: 401 });
   }
 
-  const user = session.user.id || "";
+  const user = session.id || "";
   const rlBasic = await ratelimit.basic.limit(user);
 
   if (!rlBasic.success) {
@@ -86,7 +84,7 @@ export async function POST(request: NextRequest) {
   }
 
   const { usage_count: usageCount = 0 } = (await getUserQrcodeStat(user)) || {};
-  if (session.user.tier != UserTier.Alpha && usageCount >= 10) {
+  if (session.tier != UserTier.Pro && usageCount >= 10) {
     return NextResponse.json({ error: t("rate_limit_daily") }, { status: 429 });
   }
 

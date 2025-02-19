@@ -126,7 +126,7 @@
         }
       },
       "p1": {
-        "title": "Alpha",
+        "title": "Pro",
         "price": "$20",
         "unit": "月額",
         "benefits": {
@@ -138,15 +138,22 @@
       },
       "sign_in": "ログイン",
       "account": "アカウント",
-      "donate": "寄付"
+      "donate": "寄付",
+      "subscribe": "登録する",
+      "current_plan": "現在のプラン",
+      "manage_subscription": "サブスクリプションの管理"
     }
   },
   "account": {
     "title": "アカウント",
     "desc": "",
     "profile": "プロフィール",
+    "manage": "プロフィール管理",
     "plan": "プラン",
     "current_plan": "現在のプラン",
+    "payment_method": "支払方法",
+    "manage_subscription": "サブスクリプションの管理",
+    "support": "支援を求める",
     "usage": "使用量",
     "refreshed": "（毎日更新）",
     "unlimited": "無制限",

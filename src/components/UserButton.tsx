@@ -1,7 +1,5 @@
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,30 +9,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Link } from "@/navigation";
-import { ArrowUpRightIcon, HomeIcon, UserRound } from "lucide-react";
+import { ArrowUpRightIcon, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
+import { useSession } from "@/lib/latentcat-auth/client";
+import { signOut } from "@/lib/latentcat-auth/server";
+import SignInButton from "./SignInButton";
 
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
 export function UserButton() {
-  const { data: session } = useSession();
   const t = useTranslations("user_button");
+
+  const { data: session } = useSession();
   const hasSession = session !== null && session !== undefined;
+
   if (!hasSession) {
     return (
       <div className="pointer-events-auto">
-        <Button
-          size="sm"
-          onClick={async () => {
-            // track("sign_in");
-            trackEvent("sign_in");
-            await signIn();
-          }}
-        >
-          {t("sign_in")}
-        </Button>
+        <SignInButton>{t("sign_in")}</SignInButton>
       </div>
     );
   }
@@ -47,8 +40,8 @@ export function UserButton() {
           <DropdownMenuTrigger asChild className="group">
             <div className="py-1">
               <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
-                <AvatarImage src={session?.user?.image || ""} />
-                <AvatarFallback>{session?.user?.name}</AvatarFallback>
+                <AvatarImage src={session?.picture || ""} />
+                <AvatarFallback>{session?.name}</AvatarFallback>
               </Avatar>
             </div>
           </DropdownMenuTrigger>
@@ -56,14 +49,14 @@ export function UserButton() {
             <DropdownMenuItem>
               <div className="flex gap-3 items-center">
                 <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
-                  <AvatarImage src={session?.user?.image || ""} />
-                  <AvatarFallback>{session?.user?.name}</AvatarFallback>
+                  <AvatarImage src={session?.picture || ""} />
+                  <AvatarFallback>{session?.name}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col gap-0">
-                  <div className="font-semibold">{session?.user?.name}</div>
-                  <div className="text-xs opacity-50">
+                  <div className="font-semibold">{session?.name}</div>
+                  {/* <div className="text-xs opacity-50">
                     {session?.user?.email}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </DropdownMenuItem>
@@ -81,9 +74,9 @@ export function UserButton() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={async () => {
+              onClick={() => {
                 trackEvent("sign_out");
-                await signOut();
+                signOut();
               }}
               className="text-red-500"
             >
