@@ -28,6 +28,7 @@ import {
   ParamColorControlProps,
   ParamImageControlProps,
   ParamNumberControlProps,
+  ParamPromptControlProps,
   ParamSelectControlProps,
   ParamTextControlProps,
 } from "@/lib/qrbtf_lib/qrcodes/param";
@@ -50,11 +51,12 @@ import {
 } from "@uiw/react-color";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { BACKGROUND_IMG } from "@uiw/react-color-alpha";
-import { LucideUpload } from "lucide-react";
+import { Dices, LucideUpload } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { trackEvent } from "@/components/TrackComponents";
+import { Badge } from "./ui/badge";
 
-type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
+export type ControlCommonProps<P extends FieldValues> = CommonControlProps<P> & {
   field: ControllerRenderProps<P, Path<P>>;
 };
 
@@ -77,7 +79,7 @@ interface ParamLabelProps {
 
 function ParamLabel(props: ParamLabelProps) {
   return (
-    <div className="flex flex-col items-start gap-1 grow">
+    <div className="flex flex-col items-start justify-center gap-1 grow">
       <FormLabel>{props.label}</FormLabel>
       {props.desc && (
         <FormDescription className="text-xs">{props.desc}</FormDescription>
@@ -156,6 +158,39 @@ export function ParamTextControl<P extends FieldValues>(
       <div>
         <ParamLabel label={props.label} />
         {/*{props.config?.actionSlot && props.config?.actionSlot(props.field)}*/}
+      </div>
+      <div className="h-3" />
+      <FormControl className="w-full">
+        <Textarea
+          placeholder={props.config?.placeholder}
+          value={props.field.value}
+          className="resize-none w-full shrink-0"
+          onChange={(value) => props.field.onChange(value.target.value)}
+        />
+      </FormControl>
+      <div className="h-1.5" />
+      <FormDescription>{props.desc}</FormDescription>
+    </div>
+  );
+}
+
+
+export function ParamPromptControl<P extends FieldValues>(
+  props: ControlCommonProps<P> & ParamPromptControlProps,
+) {
+  return (
+    <div className="flex flex-col py-4">
+      <div className="flex item-center justify-between">
+        <ParamLabel label={props.label} />
+        <div className="flex">
+          <Badge
+            className="rounded-md hover:bg-accent cursor-pointer hidden"
+            variant="outline"
+          >
+            <Dices className="w-4 h-4 mr-1" />
+            Randomize
+          </Badge>
+        </div>
       </div>
       <div className="h-3" />
       <FormControl className="w-full">

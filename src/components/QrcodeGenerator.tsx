@@ -14,6 +14,7 @@ import {
   ParamColorControl,
   ParamImageControl,
   ParamNumberControl,
+  ParamPromptControl,
   ParamSelectControl,
   ParamTextControl,
 } from "@/components/QrcodeControlParams";
@@ -95,6 +96,8 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
               return <ParamNumberControl<P> field={field} {...item} />;
             case "text":
               return <ParamTextControl<P> field={field} {...item} />;
+            case "prompt":
+              return <ParamPromptControl<P> field={field} {...item} />;
             case "color":
               return <ParamColorControl<P> field={field} {...item} />;
             case "boolean":

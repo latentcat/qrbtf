@@ -26,7 +26,7 @@ export function useG1Params() {
 
   const params: CommonControlProps<QrbtfRendererG1Props>[] = [
     {
-      type: "text",
+      type: "prompt",
       name: "prompt",
       label: t("prompt.label"),
       desc: t("prompt.desc"),

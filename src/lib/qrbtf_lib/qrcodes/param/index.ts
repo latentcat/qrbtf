@@ -47,6 +47,16 @@ export interface ParamTextControlProps {
   };
 }
 
+
+export interface ParamPromptControlProps {
+  type: "prompt";
+  config?: {
+    placeholder?: string;
+    maxLength?: number;
+    actionSlot?: (props: ActionSlotProps) => React.ReactNode;
+  };
+}
+
 export interface ParamColorControlProps {
   type: "color";
   config?: {};
@@ -82,6 +92,7 @@ export interface ParamImageControlProps {
 export type ParamType = (
   | ParamNumberControlProps
   | ParamTextControlProps
+  | ParamPromptControlProps
   | ParamColorControlProps
   | ParamBooleanControlProps
   | ParamSelectControlProps
