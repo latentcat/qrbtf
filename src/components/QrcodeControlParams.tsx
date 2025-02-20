@@ -10,8 +10,10 @@ import { Slider } from "@/components/ui/slider";
 import React, {
   ChangeEventHandler,
   CSSProperties,
+  useEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
 import { Switch } from "@/components/ui/switch";
@@ -178,21 +180,36 @@ export function ParamTextControl<P extends FieldValues>(
 export function ParamPromptControl<P extends FieldValues>(
   props: ControlCommonProps<P> & ParamPromptControlProps,
 ) {
+  const [prompts, setPrompts] = useState<string[]>([])
+  useEffect(() => {
+    import('@/lib/qrbtf_lib/prompts').then((lib) => {
+      setPrompts(lib.prompts)
+    })
+  }, [])
+
+  const handleRandomize = () => {
+    if (prompts.length > 0) {
+      const randomIndex = Math.floor(Math.random() * prompts.length);
+      props.field.onChange(prompts[randomIndex]);
+    }
+  };
+
   return (
     <div className="flex flex-col py-4">
       <div className="flex item-center justify-between">
         <ParamLabel label={props.label} />
         <div className="flex">
           <Badge
-            className="rounded-md hover:bg-accent cursor-pointer hidden"
+            className="rounded-md hover:bg-accent cursor-pointer"
             variant="outline"
+            onClick={handleRandomize}
           >
             <Dices className="w-4 h-4 mr-1" />
             Randomize
           </Badge>
         </div>
       </div>
-      <div className="h-3" />
+      <div className="h-2" />
       <FormControl className="w-full">
         <Textarea
           placeholder={props.config?.placeholder}
