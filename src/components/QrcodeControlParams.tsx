@@ -101,6 +101,14 @@ function ParamValue(props: ParamValueProps) {
 export function ParamNumberControl<P extends FieldValues>(
   props: ControlCommonProps<P> & ParamNumberControlProps,
 ) {
+  const [inputValue, setInputValue] = React.useState<string>(props.field.value);
+  const step = props.config?.step || 1
+  const handleInputValueUpdate = () => {
+    let newValue = parseFloat(inputValue);
+    if (step === 1) newValue = Math.round(newValue);
+    setInputValue(newValue.toString());
+    props.field.onChange(newValue);
+  };
   return (
     <ParamItem>
       <ParamLabel label={props.label} desc={props.desc} />
@@ -112,18 +120,27 @@ export function ParamNumberControl<P extends FieldValues>(
             }
             min={props.config?.min || 0}
             max={props.config?.max || 100}
-            step={props.config?.step || 1}
+            step={step}
             className="w-full shrink"
-            onValueChange={(value) => props.field.onChange(value[0])}
+            onValueChange={(value) => {
+              setInputValue(value[0].toString());
+              props.field.onChange(value[0])
+            }}
           />
         </FormControl>
         <FormControl>
           <Input
-            value={props.field.value}
+            value={inputValue}
             className="w-16 shrink-0"
-            onChange={(value) =>
-              props.field.onChange(parseInt(value.target.value))
-            }
+            onChange={(value) => {
+              setInputValue(value.target.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.currentTarget.blur();
+              }
+            }}
+            onBlur={() => handleInputValueUpdate()}
           />
         </FormControl>
       </ParamValue>
