@@ -16,7 +16,7 @@ export async function signIn() {
     redirect("/");
   }
 
-  const ssoUrl = new URL(NEXT_PUBLIC_ACCOUNT_URL);
+  const ssoUrl = new URL(`${NEXT_PUBLIC_ACCOUNT_URL}/login`);
   ssoUrl.searchParams.append("callbackUrl", NEXT_PUBLIC_AUTH_CALLBACK_URL);
   ssoUrl.searchParams.append("clientId", NEXT_PUBLIC_CLIENT_ID);
   redirect(ssoUrl.toString());
