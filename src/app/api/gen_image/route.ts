@@ -88,7 +88,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: t("rate_limit_daily") }, { status: 429 });
   }
 
-  const iterator = await genImage(await request.json());
+  const iterator = await genImage({
+    ...(await request.json()),
+    user_id: session.id,
+  });
   const stream = iteratorToStream(iterator(), user);
 
   return new Response(stream);
