@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { COOKIE_KEY } from "./server";
 import { decrypt } from "./server/session";
 import { SESSION_SECRET } from "../env/server";
-import { NEXT_PUBLIC_CLIENT_ID } from "../env/client";
+import { NEXT_PUBLIC_ACCOUNT_URL, NEXT_PUBLIC_CLIENT_ID } from "../env/client";
 
 async function createCookie(
   resp: NextResponse<unknown>,
@@ -24,17 +24,14 @@ async function authCallback(req: NextRequest) {
     return new Response(null, { status: 400 });
   }
 
-  const tokenResp = await fetch(
-    "https://account.latentcat.com/api/auth/token",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        accessToken,
-        clientId: NEXT_PUBLIC_CLIENT_ID,
-        clientSecret: SESSION_SECRET,
-      }),
-    },
-  );
+  const tokenResp = await fetch(`${NEXT_PUBLIC_ACCOUNT_URL}/api/auth/token`, {
+    method: "POST",
+    body: JSON.stringify({
+      accessToken,
+      clientId: NEXT_PUBLIC_CLIENT_ID,
+      clientSecret: SESSION_SECRET,
+    }),
+  });
 
   if (!tokenResp.ok) {
     return new Response(null, { status: 400 });

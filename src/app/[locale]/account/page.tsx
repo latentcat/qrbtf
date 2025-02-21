@@ -16,7 +16,10 @@ import {
   UserTier,
 } from "@/lib/latentcat-auth/common";
 import { Button } from "@/components/ui/button";
-import { NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL } from "@/lib/env/client";
+import {
+  NEXT_PUBLIC_ACCOUNT_URL,
+  NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL,
+} from "@/lib/env/client";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -99,7 +102,7 @@ function SectionUser(props: SectionUserProps) {
               </div>
 
               <div className="space-x-4">
-                <a href="https://account.latentcat.com">
+                <a href={NEXT_PUBLIC_ACCOUNT_URL}>
                   <Button variant="outline" size="sm">
                     {t("manage")}
                   </Button>

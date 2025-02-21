@@ -5,6 +5,7 @@ import { getServerSession } from "./session";
 import { redirect } from "next/navigation";
 import { COOKIE_KEY } from ".";
 import {
+  NEXT_PUBLIC_ACCOUNT_URL,
   NEXT_PUBLIC_AUTH_CALLBACK_URL,
   NEXT_PUBLIC_CLIENT_ID,
 } from "@/lib/env/client";
@@ -15,7 +16,7 @@ export async function signIn() {
     redirect("/");
   }
 
-  const ssoUrl = new URL("https://account.latentcat.com/login");
+  const ssoUrl = new URL(NEXT_PUBLIC_ACCOUNT_URL);
   ssoUrl.searchParams.append("callbackUrl", NEXT_PUBLIC_AUTH_CALLBACK_URL);
   ssoUrl.searchParams.append("clientId", NEXT_PUBLIC_CLIENT_ID);
   redirect(ssoUrl.toString());
