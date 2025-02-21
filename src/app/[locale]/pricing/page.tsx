@@ -6,10 +6,7 @@ import { TrackLink } from "@/components/TrackComponents";
 import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 import { getServerSession } from "@/lib/latentcat-auth/server";
-import {
-  NEXT_PUBLIC_QRBTF_API_ENDPOINT,
-  NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL,
-} from "@/lib/env/client";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
 import { PaymentMethod, UserTier } from "@/lib/latentcat-auth/common";
 import SignInButton from "@/components/SignInButton";
 
@@ -190,7 +187,7 @@ function SectionAI(props: {
   const stripe: ActionProps = {
     id: "stripe",
     label: t("manage_subscription"),
-    url: `${NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL}?prefilled_email=${encodeURI(props.paymentEmail ?? "")}`,
+    url: `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/stripe/create-customer-portal-session?id=${props.userId}`,
     target: "_blank",
     variant: "default",
   };

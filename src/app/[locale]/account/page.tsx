@@ -18,7 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import {
   NEXT_PUBLIC_ACCOUNT_URL,
-  NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL,
+  NEXT_PUBLIC_QRBTF_API_ENDPOINT,
 } from "@/lib/env/client";
 
 function PageTitle() {
@@ -160,7 +160,7 @@ function SectionUser(props: SectionUserProps) {
                         return (
                           <Link
                             target="_blank"
-                            href={`${NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL}?prefilled_email=${encodeURI(props.user.email ?? "")}`}
+                            href={`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/stripe/create-customer-portal-session?id=${props.user.id}`}
                           >
                             <Button
                               className="ml-4"
