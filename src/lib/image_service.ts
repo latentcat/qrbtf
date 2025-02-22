@@ -24,7 +24,7 @@ const schema = z.union([
     res_type: z.literal("result"),
     data: z.object({
       task_id: z.union([z.string(), z.number()]),
-      create_ts: z.string(),
+      create_ts: z.union([z.string(), z.number().finite()]),
       params: z.any(),
       download_url: z.string(),
       nsfw_check: z.boolean().optional(),
