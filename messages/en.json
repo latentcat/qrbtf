@@ -367,6 +367,7 @@
   "api": {
     "gen_image": {
       "unauthorized": "Please sign in.",
+      "url_filter": "This url is banned.",
       "rate_limit_basic": "Rate limit exceeded, please try again later.",
       "rate_limit_daily": "Daily rate limit exceeded. Please see more information on the pricing page."
     }

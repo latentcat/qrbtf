@@ -1,4 +1,4 @@
-import { getGitHubStars } from "@/lib/server/count";
+import { getGitHubStars } from "@/lib/server/count_service";
 
 export async function GET() {
   const star_count = await getGitHubStars();

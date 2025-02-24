@@ -367,6 +367,7 @@
   "api": {
     "gen_image": {
       "unauthorized": "ログインしてください。",
+      "url_filter": "このURLは禁止されています。",
       "rate_limit_basic": "レート制限を超えました。しばらくしてからお試しください。",
       "rate_limit_daily": "1日の制限に達しました。料金ページで詳細をご確認ください。"
     }

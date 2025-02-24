@@ -10,10 +10,13 @@ import {
   incGenerationCount,
   updateLastGenerate,
 } from "../user/stat/service";
-import { addCount } from "@/lib/server/count";
+import { addCount } from "@/lib/server/count_service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 import { UserTier } from "@/lib/latentcat-auth/common";
 import { INTERNAL_API_ENDPOINT, INTERNAL_API_KEY } from "@/lib/env/server";
+import { memoryCache } from "@/lib/server/memory_cache";
+import { connectToDatabase } from "@/lib/server/mongodb";
+import { validateBlacklist } from "@/lib/server/url_filters_service";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
   if (!iterator) return;
@@ -68,31 +71,41 @@ const ratelimit = {
 };
 
 export async function POST(request: NextRequest) {
+  const data = await request.json();
+  const url = data.url;
+
+  // I18n
   const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
   const t = await getTranslations({ locale, namespace: "api.gen_image" });
 
+  // Url blacklist
+  if (!(await validateBlacklist(url))) {
+    return NextResponse.json({ error: t("url_filter") }, { status: 400 });
+  }
+
+  // Authorization
   const session = await getServerSession();
   if (!session) {
     return NextResponse.json({ error: t("unauthorized") }, { status: 401 });
   }
 
+  // Basic rate limit
   const user = session.id || "";
   const rlBasic = await ratelimit.basic.limit(user);
-
   if (!rlBasic.success) {
     return NextResponse.json({ error: t("rate_limit_basic") }, { status: 429 });
   }
 
+  // Usage count limit
   const { usage_count: usageCount = 0 } = (await getUserQrcodeStat(user)) || {};
   if (session.tier != UserTier.Pro && usageCount >= 10) {
     return NextResponse.json({ error: t("rate_limit_daily") }, { status: 429 });
   }
 
   const iterator = await genImage({
-    ...(await request.json()),
+    ...data,
     user_id: session.id,
   });
   const stream = iteratorToStream(iterator(), user);
-
   return new Response(stream);
 }

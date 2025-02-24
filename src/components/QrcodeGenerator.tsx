@@ -35,7 +35,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { useImageService } from "@/lib/image_service";
+import { useImageService } from "@/lib/server/image_service";
 import { CommonControlProps, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/param";
 import {
   Select,

@@ -2,7 +2,7 @@ import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { StatusCard } from "@/components/StatusCard";
 import { useTranslations } from "next-intl";
-import { getCount, getGitHubStars } from "@/lib/server/count";
+import { getCount, getGitHubStars } from "@/lib/server/count_service";
 
 interface QrbtfStatusProps {
   children?: React.ReactNode;

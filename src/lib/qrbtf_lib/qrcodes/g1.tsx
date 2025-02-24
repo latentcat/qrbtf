@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { genImage, ImageResponse } from "@/lib/image_service";
+import { genImage, ImageResponse } from "@/lib/server/image_service";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion } from "framer-motion";
 import { opacityAnimations, transitionMd } from "@/lib/animations";
