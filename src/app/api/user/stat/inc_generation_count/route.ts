@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { NextRequest, NextResponse } from "next/server";
-import { incGenerationCount } from "../service";
+import { incGenerationCount } from "@/lib/server/stat_service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 
 export async function POST(request: NextRequest) {

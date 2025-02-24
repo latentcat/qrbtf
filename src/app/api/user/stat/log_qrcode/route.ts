@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { logQrcode } from "../service";
+import { logQrcode } from "@/lib/server/stat_service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 
 export async function POST(request: NextRequest) {

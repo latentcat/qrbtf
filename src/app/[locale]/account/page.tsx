@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
 import React from "react";
-import { getUserQrcodeStat } from "@/app/api/user/stat/service";
+import { getUserQrcodeStat } from "@/lib/server/stat_service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 import {
   PaymentMethod,

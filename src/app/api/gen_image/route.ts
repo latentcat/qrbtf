@@ -9,13 +9,11 @@ import {
   getUserQrcodeStat,
   incGenerationCount,
   updateLastGenerate,
-} from "../user/stat/service";
+} from "@/lib/server/stat_service";
 import { addCount } from "@/lib/server/count_service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 import { UserTier } from "@/lib/latentcat-auth/common";
 import { INTERNAL_API_ENDPOINT, INTERNAL_API_KEY } from "@/lib/env/server";
-import { memoryCache } from "@/lib/server/memory_cache";
-import { connectToDatabase } from "@/lib/server/mongodb";
 import { validateBlacklist } from "@/lib/server/url_filters_service";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {

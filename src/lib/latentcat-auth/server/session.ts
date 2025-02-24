@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { cache } from "react";
 import { COOKIE_KEY, UserPayload } from ".";
 import { PaymentMethod, QrbtfUser, UserTier } from "../common";
-import { checkAndUpdateUser } from "@/app/api/user/service";
+import { checkAndUpdateUser } from "@/lib/server/user_service";
 import { SESSION_SECRET } from "@/lib/env/server";
 
 export const getServerSession = cache(
