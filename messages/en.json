@@ -122,7 +122,7 @@
         "price": "$0",
         "benefits": {
           "0": "Fast Generation",
-          "1": "10 AI QR Codes Per Day"
+          "1": "10 AI QR Codes"
         }
       },
       "p1": {
@@ -155,7 +155,6 @@
     "manage_subscription": "Manage Subscription",
     "support": "Need Support",
     "usage": "Usage",
-    "refreshed": "(refreshed daily)",
     "unlimited": "Unlimited",
     "statistics": "Statistics",
     "generation_count": "Generation Count",
@@ -369,7 +368,7 @@
       "unauthorized": "Please sign in.",
       "url_filter": "This url is banned.",
       "rate_limit_basic": "Rate limit exceeded, please try again later.",
-      "rate_limit_daily": "Daily rate limit exceeded. Please see more information on the pricing page."
+      "rate_limit_free": "Free tier's rate limit exceeded. Please see more information on the pricing page."
     }
   },
   "qrcode_placeholder": {

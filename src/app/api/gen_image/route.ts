@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
   // Usage count limit
   const { usage_count: usageCount = 0 } = (await getUserQrcodeStat(user)) || {};
   if (session.tier != UserTier.Pro && usageCount >= 10) {
-    return NextResponse.json({ error: t("rate_limit_daily") }, { status: 429 });
+    return NextResponse.json({ error: t("rate_limit_free") }, { status: 429 });
   }
 
   const iterator = await genImage({

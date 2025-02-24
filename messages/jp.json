@@ -122,7 +122,7 @@
         "price": "$0",
         "benefits": {
           "0": "高速生成",
-          "1": "1 日 10 回の AI QR コード生成"
+          "1": "10 回の AI QR コード生成"
         }
       },
       "p1": {
@@ -155,7 +155,6 @@
     "manage_subscription": "サブスクリプションの管理",
     "support": "支援を求める",
     "usage": "使用量",
-    "refreshed": "（毎日更新）",
     "unlimited": "無制限",
     "statistics": "統計",
     "generation_count": "生成回数",
@@ -369,7 +368,7 @@
       "unauthorized": "ログインしてください。",
       "url_filter": "このURLは禁止されています。",
       "rate_limit_basic": "レート制限を超えました。しばらくしてからお試しください。",
-      "rate_limit_daily": "1日の制限に達しました。料金ページで詳細をご確認ください。"
+      "rate_limit_free": "無料クレジットの利用が上限に達しました。料金ページで詳細をご確認ください。"
     }
   },
   "qrcode_placeholder": {

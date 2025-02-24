@@ -122,7 +122,7 @@
         "price": "$0",
         "benefits": {
           "0": "快速生成",
-          "1": "每天 10 次生成"
+          "1": "免费 10 次生成"
         }
       },
       "p1": {
@@ -155,7 +155,6 @@
     "manage_subscription": "管理订阅",
     "support": "联系支持",
     "usage": "用量",
-    "refreshed": "(每日刷新)",
     "unlimited": "无限制",
     "statistics": "统计",
     "generation_count": "AI 二维码生成次数",
@@ -369,7 +368,7 @@
       "unauthorized": "请登录后使用。",
       "url_filter": "该 URL 已经被禁止。",
       "rate_limit_basic": "频率过高，请稍后重试。",
-      "rate_limit_daily": "已达到今日使用上限，请查看定价页面获得更多生成次数。"
+      "rate_limit_free": "已达到免费额度使用上限，请查看定价页面获得更多生成次数。"
     }
   },
   "qrcode_placeholder": {

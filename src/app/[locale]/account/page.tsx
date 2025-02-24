@@ -57,8 +57,8 @@ interface SectionUserProps {
   user: QrbtfUser;
   generationCount: number;
   downloadCount: number;
-  dailyUsage: number;
-  maxDailyUsage: number;
+  freeUsage: number;
+  maxFreeUsage: number;
 }
 
 function SectionUser(props: SectionUserProps) {
@@ -183,14 +183,14 @@ function SectionUser(props: SectionUserProps) {
                 <div className="grow flex items-center gap-3">{t("usage")}</div>
                 <div className="text-foreground/70">
                   {props.user.tier === UserTier.Trial
-                    ? `${props.dailyUsage} / ${props.maxDailyUsage} ${t("refreshed")}`
+                    ? `${props.freeUsage} / ${props.maxFreeUsage}`
                     : t("unlimited")}
                 </div>
               </div>
               <Progress
                 value={
                   props.user.tier === UserTier.Trial
-                    ? (100 * props.dailyUsage) / props.maxDailyUsage
+                    ? (100 * props.freeUsage) / props.maxFreeUsage
                     : 0
                 }
                 className="h-1.5"
@@ -242,8 +242,8 @@ export default async function Page() {
             user={session}
             downloadCount={userQrcodeStat?.download_count ?? 0}
             generationCount={userQrcodeStat?.generation_count ?? 0}
-            dailyUsage={userQrcodeStat?.usage_count ?? 0}
-            maxDailyUsage={10}
+            freeUsage={userQrcodeStat?.usage_count ?? 0}
+            maxFreeUsage={10}
           />
         </div>
       </div>
