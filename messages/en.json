@@ -35,6 +35,7 @@
     "params": {
       "param_name": "Parameter name",
       "generate": "Generate",
+      "generate_length_limit_msg": "The length of URL should be less than 150",
       "qrcode_output": "QR code output",
       "download": "Download"
     },

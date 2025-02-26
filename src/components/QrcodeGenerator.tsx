@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "sonner";
 import { useTranslations } from "next-intl";
 import {
   Container,
@@ -45,6 +46,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { useSession } from "@/lib/latentcat-auth/client";
+import { useToast } from "./ui/use-toast";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -163,7 +165,13 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                 <Button
                   disabled={!!currentReq}
                   className="w-full mb-6"
-                  onClick={() => onSubmit(form.getValues())}
+                  onClick={() => {
+                    if (url.length > 150) {
+                      toast.error(t("generate_length_limit_msg"));
+                      return;
+                    }
+                    onSubmit(form.getValues());
+                  }}
                 >
                   {!!currentReq && (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />

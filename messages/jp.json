@@ -35,6 +35,7 @@
     "params": {
       "param_name": "パラメーター名",
       "generate": "生成",
+      "generate_length_limit_msg": "URLの長さは150以内",
       "qrcode_output": "QR コード出力",
       "download": "ダウンロード"
     },
