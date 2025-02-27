@@ -1,7 +1,7 @@
 import { trackEvent } from "@/components/TrackComponents";
 import { http } from "./network";
 import { QrbtfModule } from "./qrbtf_lib/qrcodes/param";
-import { flattenObject } from "@/lib/utils";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "./env/client";
 
 function createDownloadTask(href: string, filename: string) {
   const a = document.createElement("a");
@@ -108,7 +108,7 @@ function withReport(
             name: "download_count",
           }),
         }),
-        http("/api/user/stat/inc_download_count", {
+        http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/user_stat/inc_download_count`, {
           method: "POST",
         }),
       ]).finally(() => origin(options));
