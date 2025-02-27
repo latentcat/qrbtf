@@ -75,11 +75,3 @@ export async function incDownloadCount(user_id: string) {
   );
   return result?.download_count;
 }
-
-export async function logQrcode(data: QrcodeLog) {
-  const { db } = await connectToDatabase();
-  const collection = db.collection<QrcodeLog>(QRCODE_LOG_COLLECTION);
-
-  const result = await collection.insertOne(data);
-  return result;
-}
