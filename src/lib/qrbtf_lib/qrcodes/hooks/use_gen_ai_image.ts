@@ -44,11 +44,6 @@ export default function useGenAiImage() {
 
   async function onSubmit(values: any) {
     setGenerating(true);
-    setResData({
-      status: "pending",
-      task_id: "",
-      create_ts: Date.now(),
-    });
     try {
       const response = await http(
         `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/qrcode/gen_image`,
@@ -60,8 +55,13 @@ export default function useGenAiImage() {
           }),
         },
       );
-
       const taskId = (await response.json())["task_id"];
+      setResData({
+        status: "pending",
+        task_id: "",
+        create_ts: Date.now(),
+      });
+
       const timer = setInterval(async () => {
         const query = await http(
           `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/qrcode/query_image/${taskId}`,
