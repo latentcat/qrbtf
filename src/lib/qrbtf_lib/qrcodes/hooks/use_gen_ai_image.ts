@@ -1,5 +1,4 @@
 import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
-import { safeParseJSON } from "@/lib/json_handler";
 import { http } from "@/lib/network";
 import { urlAtom } from "@/lib/states";
 import { useAtomValue } from "jotai";
@@ -36,39 +35,6 @@ const schema = z.union([
 ]);
 
 export type ImageResponse = z.infer<typeof schema>;
-
-export async function genImage(req: object, signal: AbortSignal) {
-  const requestJson = JSON.stringify(req);
-  const response = await http(`/api/gen_image`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: requestJson,
-    signal,
-  });
-
-  const reader = response.body!.getReader();
-  const decoder = new TextDecoder("utf-8");
-
-  return async function* () {
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) {
-        break;
-      }
-      const textValue = decoder.decode(value, { stream: true });
-      const dataBlocks = textValue.split(/\r?\n/);
-      for (const block of dataBlocks) {
-        // console.log(textValue);
-        const object = safeParseJSON(block);
-        if (!object) continue;
-        // console.log(object);
-        yield schema.parse(object);
-      }
-    }
-  };
-}
 
 export default function useGenAiImage() {
   const [generating, setGenerating] = useState(false);

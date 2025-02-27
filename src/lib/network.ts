@@ -24,12 +24,5 @@ export async function getGitHubStars() {
   });
   const data = await res.json();
 
-  let star_count = undefined;
-  try {
-    star_count = data["stargazers_count"] as number;
-  } catch {
-    console.log("[GitHub API Error]");
-  }
-
-  return star_count;
+  return data["stargazers_count"] as number;
 }

@@ -240,7 +240,6 @@ export default async function Page() {
     },
   );
   const userQrcodeStatData = await resp.json();
-  console.log(userQrcodeStatData);
 
   return (
     <div>

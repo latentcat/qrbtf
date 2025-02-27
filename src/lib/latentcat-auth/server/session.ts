@@ -13,6 +13,10 @@ export const getServerSession = cache(
         Cookie: `lc_token=${cookie.get("lc_token")?.value}`,
       },
     });
+    if (!resp.ok) {
+      return undefined;
+    }
+
     const session = (await resp.json())["session"];
     return session;
   },

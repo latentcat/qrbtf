@@ -18,7 +18,7 @@ export default function SignInButton(props: PropsWithChildren<ButtonProps>) {
         trackEvent("sign_in");
         setLogining(true);
         router.push(
-          `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/auth/sign-in?callback=${window.location.href}`,
+          `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/auth/sign-in?callback=${encodeURIComponent(window.location.href)}`,
         );
       }}
       {...buttonProps}
