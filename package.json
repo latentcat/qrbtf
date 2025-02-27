@@ -67,7 +67,6 @@
     "framer-motion": "^11.0.14",
     "html5-qrcode": "^2.3.8",
     "input-otp": "^1.1.0",
-    "jose": "^5.9.6",
     "jotai": "^2.7.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.356.0",
@@ -111,5 +110,6 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md}": "yarn format"
-  }
+  },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }

@@ -13,8 +13,9 @@ import { ArrowUpRightIcon, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
 import { useSession } from "@/lib/latentcat-auth/client";
-import { signOut } from "@/lib/latentcat-auth/server";
 import SignInButton from "./SignInButton";
+import { http } from "@/lib/network";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
 
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
@@ -74,9 +75,9 @@ export function UserButton() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => {
+              onClick={async () => {
                 trackEvent("sign_out");
-                signOut();
+                await http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/auth/sign-out`);
               }}
               className="text-red-500"
             >

@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/components/TrackComponents";
-import { signOut } from "@/lib/latentcat-auth/server";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
+import { http } from "@/lib/network";
 
 export function SignOutButton({ text }: { text: string }) {
   return (
@@ -11,7 +12,7 @@ export function SignOutButton({ text }: { text: string }) {
       size="sm"
       onClick={async () => {
         trackEvent("sign_out");
-        signOut();
+        await http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/auth/sign-out`);
       }}
     >
       {text}
