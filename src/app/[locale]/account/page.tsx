@@ -235,7 +235,7 @@ export default async function Page() {
     `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/user_stat/get_user_stat`,
     {
       headers: {
-        Cookie: `lc_token=${cookie.get("lc_token")?.value}`,
+        Cookie: `lc_token=${cookie.get("lc_token")?.value || ""}`,
       },
     },
   );
