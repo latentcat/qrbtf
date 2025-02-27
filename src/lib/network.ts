@@ -2,6 +2,7 @@ import { toast } from "sonner";
 
 export const http: typeof fetch = async (input, init) => {
   const res = await fetch(input, {
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       ...init?.headers,

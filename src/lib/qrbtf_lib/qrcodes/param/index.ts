@@ -10,14 +10,8 @@ export interface QrbtfModuleSvgRenderer<P> {
   renderer: (props: P & { url: string }) => React.ReactNode;
 }
 
-export type ApiFetcher<P> = (
-  props: P & { url: string },
-  signal: AbortSignal,
-) => AsyncGenerator<any, any, any>;
-
 export interface QrbtfModuleApiFetcher<P> {
   type: "api_fetcher";
-  fetcher: ApiFetcher<P>;
   visualizer: (props: { data: any }) => React.ReactNode;
 }
 
@@ -46,7 +40,6 @@ export interface ParamTextControlProps {
     actionSlot?: (props: ActionSlotProps) => React.ReactNode;
   };
 }
-
 
 export interface ParamPromptControlProps {
   type: "prompt";
