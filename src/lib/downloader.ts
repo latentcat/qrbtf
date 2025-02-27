@@ -85,7 +85,7 @@ function withReport(
   for (const type in downloaders) {
     const origin = downloaders[type];
     downloaders[type] = (options) => {
-      const { name, wrapper, params, userId } = options;
+      const { name, params, userId } = options;
       const dataToReport = {
         user_id: userId,
         type: name,
@@ -94,14 +94,14 @@ function withReport(
       trackEvent("download_qrcode", dataToReport);
       // WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=270102
       Promise.all([
-        http("/api/update_count", {
+        http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/count/update_count`, {
           method: "POST",
           body: JSON.stringify({
             collection_name: "counter_style",
             name: name,
           }),
         }),
-        http("/api/update_count", {
+        http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/count/update_count`, {
           method: "POST",
           body: JSON.stringify({
             collection_name: "counter_global",
