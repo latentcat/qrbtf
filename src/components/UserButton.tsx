@@ -16,11 +16,12 @@ import { useSession } from "@/lib/latentcat-auth/client";
 import SignInButton from "./SignInButton";
 import { http } from "@/lib/network";
 import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
-
+import { useRouter } from "next/navigation";
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
 export function UserButton() {
   const t = useTranslations("user_button");
+  const router = useRouter();
 
   const { data: session } = useSession();
   const hasSession = session !== null && session !== undefined;
@@ -77,7 +78,10 @@ export function UserButton() {
             <DropdownMenuItem
               onClick={async () => {
                 trackEvent("sign_out");
-                await http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/auth/sign-out`);
+                await http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/auth/sign-out`, {
+                  method: "POST",
+                });
+                router.refresh();
               }}
               className="text-red-500"
             >
