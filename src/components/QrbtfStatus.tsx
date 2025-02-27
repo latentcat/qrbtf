@@ -1,14 +1,12 @@
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 import { StatusCard } from "@/components/StatusCard";
 import { useTranslations } from "next-intl";
-import { getCount, getGitHubStars } from "@/lib/server/count_service";
+import { getCount } from "@/lib/server/count_service";
+import { getGitHubStars } from "@/lib/network";
 
 interface QrbtfStatusProps {
   children?: React.ReactNode;
 }
-
-const sleep = (s: number) => new Promise((r) => setTimeout(r, s * 1000));
 
 export default async function QrbtfStatus(props: QrbtfStatusProps) {
   const t = useTranslations("index.status");
@@ -34,7 +32,7 @@ export default async function QrbtfStatus(props: QrbtfStatusProps) {
       number ? number.toLocaleString() : "N/A",
     );
   } catch (error) {
-    results = names.map((name) => "N/A");
+    results = names.map(() => "N/A");
   }
   return (
     <>

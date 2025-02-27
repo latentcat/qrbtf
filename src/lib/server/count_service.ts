@@ -31,19 +31,3 @@ export async function addCount(collection_name: string, name: string) {
 
   return result?.count;
 }
-
-export async function getGitHubStars() {
-  const res = await fetch("https://api.github.com/repos/latentcat/qrbtf", {
-    next: { revalidate: 60 }, // Revalidate every 60 seconds
-  });
-  const data = await res.json();
-
-  let star_count = undefined;
-  try {
-    star_count = data["stargazers_count"];
-  } catch {
-    console.log("[GitHub API Error]");
-  }
-
-  return star_count;
-}
