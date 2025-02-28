@@ -11,7 +11,12 @@ export const http: typeof fetch = async (input, init) => {
   });
   if (!res.ok) {
     const body = await res.json();
-    const msg = body["error"] || "Network Error";
+    let msg = body["error"];
+    if (res.status == 401 && !msg) {
+      msg = "Unauthorized";
+    }
+
+    msg = msg ?? "Network Error";
     toast.error(msg);
     throw Error(msg);
   }
