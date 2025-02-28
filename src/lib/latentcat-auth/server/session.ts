@@ -17,7 +17,7 @@ export const getServerSession = cache(
       return undefined;
     }
 
-    const session = (await resp.json())["session"];
+    const session = await resp.json();
     return session;
   },
 );
