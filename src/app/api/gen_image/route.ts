@@ -13,7 +13,11 @@ import {
 import { addCount } from "@/lib/server/count_service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 import { UserTier } from "@/lib/latentcat-auth/common";
-import { INTERNAL_API_ENDPOINT, INTERNAL_API_KEY } from "@/lib/env/server";
+import {
+  INTERNAL_API_ENDPOINT,
+  INTERNAL_API_KEY,
+  LATENT_CAT_AI_API_ENDPOINT,
+} from "@/lib/env/server";
 import { validateBlacklist } from "@/lib/server/url_filters_service";
 
 function iteratorToStream(iterator: AsyncGenerator<any>, userId: string) {
@@ -58,6 +62,33 @@ async function genImage(req: object) {
   };
 }
 
+async function optimizePrompt(userId: string, prompt: string) {
+  const response = await http(`${LATENT_CAT_AI_API_ENDPOINT}/v1/chat`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model_provider: "openai",
+      model_name: "gpt-4o-mini",
+      stream: false,
+      template_string: "qrbtf/image-prompt-gen",
+      template_version: 6,
+      template_language: "en",
+      template_variables: {
+        user_input: prompt,
+      },
+      track: {
+        name: "qrbtf",
+        data: {
+          user: userId,
+        },
+      },
+    }),
+  });
+  const data = await response.json();
+  return data["content"];
+}
 const ratelimit = {
   basic: new Ratelimit({
     redis: kv,
@@ -100,9 +131,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: t("rate_limit_free") }, { status: 429 });
   }
 
+  // Optimiza prompt
+  const optimizedPrompt = await optimizePrompt(user, data["prompt"]);
+
   const iterator = await genImage({
     ...data,
     user_id: session.id,
+    gen_prompt: optimizedPrompt,
   });
   const stream = iteratorToStream(iterator(), user);
   return new Response(stream);
