@@ -35,7 +35,8 @@
     "params": {
       "param_name": "パラメーター名",
       "generate": "生成",
-      "generate_length_limit_msg": "URLの長さは150以内",
+      "url_too_long": "URL の長さは 150 文字以内にしてください。",
+      "prompt_too_long": "プロンプトの長さは 1024 文字以内にしてください。",
       "qrcode_output": "QR コード出力",
       "download": "ダウンロード"
     },
@@ -369,7 +370,9 @@
       "unauthorized": "ログインしてください。",
       "url_filter": "このURLは禁止されています。",
       "rate_limit_basic": "レート制限を超えました。しばらくしてからお試しください。",
-      "rate_limit_free": "無料クレジットの利用が上限に達しました。料金ページで詳細をご確認ください。"
+      "rate_limit_free": "無料クレジットの利用が上限に達しました。料金ページで詳細をご確認ください。",
+      "url_too_long": "URL の長さは 150 文字以内にしてください。",
+      "prompt_too_long": "プロンプトの長さは 1024 文字以内にしてください。"
     }
   },
   "qrcode_placeholder": {

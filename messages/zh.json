@@ -35,7 +35,8 @@
     "params": {
       "param_name": "参数名",
       "generate": "生成",
-      "generate_length_limit_msg": "URL 的长度必须小于 150 个字符",
+      "url_too_long": "URL 长度必须小于 150 个字符。",
+      "prompt_too_long": "提示词长度必须小于 1024 个字符。",
       "qrcode_output": "二维码输出",
       "download": "下载"
     },
@@ -369,7 +370,9 @@
       "unauthorized": "请登录后使用。",
       "url_filter": "该 URL 已经被禁止。",
       "rate_limit_basic": "频率过高，请稍后重试。",
-      "rate_limit_free": "已达到免费额度使用上限，请查看定价页面获得更多生成次数。"
+      "rate_limit_free": "已达到免费额度使用上限，请查看定价页面获得更多生成次数。",
+      "url_too_long": "URL 长度必须小于 150 个字符。",
+      "prompt_too_long": "提示词长度必须小于 1024 个字符。"
     }
   },
   "qrcode_placeholder": {

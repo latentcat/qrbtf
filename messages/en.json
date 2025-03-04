@@ -35,7 +35,8 @@
     "params": {
       "param_name": "Parameter name",
       "generate": "Generate",
-      "generate_length_limit_msg": "The length of URL should be less than 150",
+      "url_too_long": "The length of URL should be less than 150",
+      "prompt_too_long": "The length of prompt should be less than 1024",
       "qrcode_output": "QR code output",
       "download": "Download"
     },
@@ -369,7 +370,9 @@
       "unauthorized": "Please sign in.",
       "url_filter": "This url is banned.",
       "rate_limit_basic": "Rate limit exceeded, please try again later.",
-      "rate_limit_free": "Free tier's rate limit exceeded. Please see more information on the pricing page."
+      "rate_limit_free": "Free tier's rate limit exceeded. Please see more information on the pricing page.",
+      "url_too_long": "The length of URL should be less than 150.",
+      "prompt_too_long": "The length of prompt should be less than 1024."
     }
   },
   "qrcode_placeholder": {

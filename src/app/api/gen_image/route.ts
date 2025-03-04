@@ -107,6 +107,15 @@ export async function POST(request: NextRequest) {
   const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
   const t = await getTranslations({ locale, namespace: "api.gen_image" });
 
+  // Limit the length of the url and prompt
+  if (data.url.length > 150) {
+    return NextResponse.json({ error: t("url_too_long") }, { status: 400 });
+  }
+
+  if (data.prompt.length > 1024) {
+    return NextResponse.json({ error: t("prompt_too_long") }, { status: 400 });
+  }
+
   // Url blacklist
   if (!(await validateBlacklist(url))) {
     return NextResponse.json({ error: t("url_filter") }, { status: 400 });

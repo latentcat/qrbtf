@@ -167,7 +167,14 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                   className="w-full mb-6"
                   onClick={() => {
                     if (url.length > 150) {
-                      toast.error(t("generate_length_limit_msg"));
+                      toast.error(t("url_too_long"));
+                      return;
+                    }
+                    const prompt = form.getValues(
+                      "prompt" as Path<unknown>,
+                    ) as string;
+                    if (prompt.length > 1024) {
+                      toast.error(t("prompt_too_long"));
                       return;
                     }
                     onSubmit(form.getValues());
