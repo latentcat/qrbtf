@@ -75,7 +75,7 @@ async function optimizePrompt(userId: string, prompt: string) {
       model_name: "gpt-4o-mini",
       stream: false,
       template_string: "qrbtf/image-prompt-gen",
-      template_version: 6,
+      template_version: 7,
       template_language: "en",
       template_variables: {
         user_input: prompt,
