@@ -300,7 +300,7 @@
       "subtitle": "Generative AI QR code",
       "prompt": {
         "label": "Prompt",
-        "desc": "English keywords to generate QR code image, separate by \",\".",
+        "desc": "Keywords to generate QR code image, in any language.",
         "placeholder": "Input your positive prompt here..."
       },
       "negative_prompt": {

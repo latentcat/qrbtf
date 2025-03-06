@@ -300,7 +300,7 @@
       "subtitle": "生成式 AI 二维码",
       "prompt": {
         "label": "提示词",
-        "desc": "二维码的英文提示词，用英文逗号（,）分割。",
+        "desc": "描述图像画面的提示词，任意语言。",
         "placeholder": "输入正面提示词..."
       },
       "negative_prompt": {
