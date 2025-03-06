@@ -12,6 +12,7 @@ import { trackEvent } from "@/components/TrackComponents";
 import { flattenObject } from "@/lib/utils";
 import { QrbtfModule } from "./param";
 import { G1Presets } from "./g1_config";
+import PixelCard from "@/components/vfx/pixel-grid";
 
 interface RenderG1OwnProps {
   task_type: string;
@@ -119,18 +120,25 @@ function QrbtfVisualizerG1(props: { data: any }) {
       <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
         <AnimatePresence>
           {progress && (
-            <motion.div
-              key="progress-and-status"
-              className="w-full h-full flex flex-col items-center justify-center gap-2 bg-background"
-              variants={opacityAnimations}
-              transition={transitionMd}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-            >
-              <Progress value={progress.value} className="w-[60%] h-2" />
-              <div className="opacity-30 text-sm">{progress.status}</div>
-            </motion.div>
+            <>
+              <div className="absolute w-full h-full top-0 left-0">
+                <PixelCard isActive={!!progress} className="w-full h-full">
+                  {""}
+                </PixelCard>
+              </div>
+              <motion.div
+                key="progress-and-status"
+                className="w-full h-full flex flex-col items-center justify-center gap-2 bg-background"
+                variants={opacityAnimations}
+                transition={transitionMd}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+              >
+                <Progress value={progress.value} className="w-[30%] h-2" />
+                <div className="opacity-30 text-sm hidden">{progress.status}</div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </div>
@@ -151,7 +159,7 @@ function QrbtfVisualizerG1(props: { data: any }) {
                 alt=""
                 className="w-full h-full block select-auto"
               />
-              <div className="absolute -z-10 top-0 left-0 w-full h-full flex items-center justify-center text-sm opacity-30">
+              <div className="absolute -z-10 top-0 left-0 w-full h-full flex items-center justify-center text-sm opacity-30 hidden">
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 <div>Downloading...</div>
               </div>
