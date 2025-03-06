@@ -67,7 +67,7 @@ async function optimizePrompt(userId: string, prompt: string) {
   const response = await http(`${LATENT_CAT_AI_API_ENDPOINT}/v1/chat`, {
     method: "POST",
     headers: {
-      "a-xpi-key": LATENT_CAT_AI_API_KEY,
+      "x-api-key": LATENT_CAT_AI_API_KEY,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
