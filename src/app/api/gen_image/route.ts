@@ -17,6 +17,7 @@ import {
   INTERNAL_API_ENDPOINT,
   INTERNAL_API_KEY,
   LATENT_CAT_AI_API_ENDPOINT,
+  LATENT_CAT_AI_API_KEY,
 } from "@/lib/env/server";
 import { validateBlacklist } from "@/lib/server/url_filters_service";
 
@@ -66,6 +67,7 @@ async function optimizePrompt(userId: string, prompt: string) {
   const response = await http(`${LATENT_CAT_AI_API_ENDPOINT}/v1/chat`, {
     method: "POST",
     headers: {
+      "a-xpi-key": LATENT_CAT_AI_API_KEY,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -141,12 +143,14 @@ export async function POST(request: NextRequest) {
   }
 
   // Optimiza prompt
-  const optimizedPrompt = await optimizePrompt(user, data["prompt"]);
+  const prompt = data["prompt"].trim();
+  const optimizedPrompt = prompt ? await optimizePrompt(user, prompt) : prompt;
 
   const iterator = await genImage({
     ...data,
+    prompt: optimizedPrompt,
     user_id: session.id,
-    gen_prompt: optimizedPrompt,
+    raw_prompt: prompt,
   });
   const stream = iteratorToStream(iterator(), user);
   return new Response(stream);
