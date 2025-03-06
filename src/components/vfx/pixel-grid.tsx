@@ -309,7 +309,7 @@ export default function PixelCard({
     <div
       ref={containerRef}
       className={cn(
-        `h-[400px] w-[300px] relative overflow-hidden grid place-items-center aspect-[4/5] border border-[#27272a] rounded-[25px] isolate transition-colors duration-200 ease-[cubic-bezier(0.5,1,0.89,1)] select-none`,
+        `_h-[400px] _w-[300px] relative overflow-hidden grid place-items-center _aspect-[4/5] _border border-[#27272a] _rounded-[25px] isolate transition-colors duration-200 ease-[cubic-bezier(0.5,1,0.89,1)] select-none`,
         className
       )}
 
