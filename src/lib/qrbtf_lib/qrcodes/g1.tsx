@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { genImage, ImageResponse } from "@/lib/server/image_service";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion } from "framer-motion";
 import { opacityAnimations, transitionMd } from "@/lib/animations";
@@ -13,6 +12,7 @@ import { flattenObject } from "@/lib/utils";
 import { QrbtfModule } from "./param";
 import { G1Presets } from "./g1_config";
 import PixelCard from "@/components/vfx/pixel-grid";
+import { ImageResponse } from "./hooks/use_gen_ai_image";
 
 interface RenderG1OwnProps {
   task_type: string;
@@ -31,21 +31,6 @@ interface RenderG1OwnProps {
 
 export type QrbtfRendererG1Props = RenderG1OwnProps;
 
-async function* fetcher(req: QrbtfRendererG1Props, signal: AbortSignal) {
-  //重置进度条
-  yield {
-    type: "progress",
-    value: 0.0,
-    status: `Starting`,
-  };
-  const call = await genImage(req, signal);
-  // 类似 Python 中的 async for，rep 返回格式为 zod 导出的 ImageResponse，都在 image_service.ts 中定义，必须严格校验返回格式类型，不通过会报错
-  for await (const rep of call()) {
-    // 返回是 queue，排队中
-    yield rep;
-  }
-}
-
 interface ProgressType {
   value: number;
   status: string;
@@ -56,56 +41,49 @@ function QrbtfVisualizerG1(props: { data: any }) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    const rep: ImageResponse | null = props.data;
+    const resp: ImageResponse | null = props.data;
 
-    if (rep === null) return;
+    if (resp === null) return;
 
-    // console.log("rep", rep);
-    if (rep.res_type === "queue") {
-      setProgress({
-        value: 0.2,
-        status: `Queued [${rep.diff + 1}]`,
-      });
-    }
-
-    // 返回是 progress，开始生成的进度，目前 value 值是在前端定义的
-    if (rep.res_type === "progress") {
-      if (rep.status === "consumed") {
-        setProgress({
-          value: 0.4,
-          status: "Consumed",
-        });
-      } else if (rep.status === "generate_start") {
+    switch (resp.status) {
+      case "pending":
+        if (!resp.task_id) {
+          setProgress({
+            value: 0,
+            status: "Requesting",
+          });
+        } else {
+          setProgress({
+            value: 0.4,
+            status: "Consumed",
+          });
+        }
+        break;
+      case "processing":
         setProgress({
           value: 0.6,
           status: "Generate start",
         });
-      } else if (rep.status === "inferencing") {
-        setProgress({
-          value: 0.6 + 0.4 * (rep.value || 0.0),
-          status: "Inferencing",
-        });
-      } else if (rep.status === "generate_complete") {
+        break;
+      case "completed":
         setProgress({
           value: 1,
           status: "Generate complete",
         });
-      }
-    }
-
-    // 出现错误，弹出 toast
-    if (rep.res_type === "error") {
-      setProgress(null);
-      toast.error("Server error", {
-        description: "",
-      });
+        break;
+      case "failed":
+        setProgress(null);
+        toast.error("Server error", {
+          description: "",
+        });
+        break;
     }
 
     // 得到结果，结束，设置图像 url
-    if (rep.res_type === "result") {
-      setImageUrl(rep.data.download_url);
+    if (resp.status === "completed") {
+      setImageUrl(resp.download_url);
       setProgress(null);
-      trackEvent("submit_fetcher_result", flattenObject(rep.data));
+      trackEvent("submit_fetcher_result", flattenObject(resp));
     }
   }, [props.data]);
 
@@ -136,7 +114,9 @@ function QrbtfVisualizerG1(props: { data: any }) {
                 exit="hidden"
               >
                 <Progress value={progress.value} className="w-[30%] h-2" />
-                <div className="opacity-30 text-sm hidden">{progress.status}</div>
+                <div className="opacity-30 text-sm hidden">
+                  {progress.status}
+                </div>
               </motion.div>
             </>
           )}
@@ -173,7 +153,6 @@ function QrbtfVisualizerG1(props: { data: any }) {
 
 export const qrbtfModuleG1: QrbtfModule<QrbtfRendererG1Props> = {
   type: "api_fetcher",
-  fetcher: fetcher,
   visualizer: QrbtfVisualizerG1,
   presets: G1Presets,
 };

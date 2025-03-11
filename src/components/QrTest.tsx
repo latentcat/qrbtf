@@ -1,7 +1,6 @@
 "use client";
 
 import { encode } from "@/lib/qrbtf_lib/encoder";
-import { useEffect } from "react";
 
 export function QrTest() {
   return (

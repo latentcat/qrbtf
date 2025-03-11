@@ -36,7 +36,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { useImageService } from "@/lib/server/image_service";
+import useGenAiImage from "@/lib/qrbtf_lib/qrcodes/hooks/use_gen_ai_image";
 import { CommonControlProps, QrbtfModule } from "@/lib/qrbtf_lib/qrcodes/param";
 import {
   Select,
@@ -46,7 +46,6 @@ import {
   SelectValue,
 } from "./ui/select";
 import { useSession } from "@/lib/latentcat-auth/client";
-import { useToast } from "./ui/use-toast";
 
 export interface QrcodeGeneratorProps<P extends {}>
   extends HTMLAttributes<HTMLDivElement> {
@@ -61,11 +60,7 @@ export interface QrcodeGeneratorProps<P extends {}>
 export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
   const t = useTranslations("index.params");
   const url = useAtomValue(urlAtom);
-  const { onSubmit, currentReq, resData } = useImageService(
-    props.qrcodeModule.type === "api_fetcher"
-      ? props.qrcodeModule.fetcher
-      : null,
-  );
+  const { onSubmit, generating, resData } = useGenAiImage();
 
   const { params, defaultPreset } = props;
   const presets = props.qrcodeModule.presets;
@@ -163,7 +158,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
             <div className="sticky top-24">
               {props.qrcodeModule.type === "api_fetcher" && (
                 <Button
-                  disabled={!!currentReq}
+                  disabled={generating}
                   className="w-full mb-6"
                   onClick={() => {
                     if (url.length > 150) {
@@ -180,7 +175,7 @@ export function QrcodeGenerator<P extends {}>(props: QrcodeGeneratorProps<P>) {
                     onSubmit(form.getValues());
                   }}
                 >
-                  {!!currentReq && (
+                  {generating && (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   )}
                   {t("generate")}

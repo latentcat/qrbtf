@@ -6,6 +6,7 @@ import mixpanel from "mixpanel-browser";
 import { usePathname } from "next/navigation";
 import { http } from "@/lib/network";
 import { useSession } from "@/lib/latentcat-auth/client";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
 
 const body = {
   collection_name: "counter_global",
@@ -30,7 +31,7 @@ export default function MixpanelAnalytics() {
 
   useEffect(() => {
     mixpanel.track_pageview();
-    http("/api/update_count", {
+    http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/count/update_count`, {
       method: "POST",
       body: JSON.stringify(body),
     });

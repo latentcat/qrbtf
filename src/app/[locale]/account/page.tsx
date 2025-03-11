@@ -8,7 +8,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SignOutButton } from "@/app/[locale]/account/Components";
 import { Progress } from "@/components/ui/progress";
 import React from "react";
-import { getUserQrcodeStat } from "@/lib/server/stat_service";
 import { getServerSession } from "@/lib/latentcat-auth/server";
 import {
   PaymentMethod,
@@ -20,6 +19,7 @@ import {
   NEXT_PUBLIC_ACCOUNT_URL,
   NEXT_PUBLIC_QRBTF_API_ENDPOINT,
 } from "@/lib/env/client";
+import { cookies } from "next/headers";
 
 function PageTitle() {
   const t = useTranslations("account");
@@ -230,7 +230,16 @@ export default async function Page() {
     return;
   }
 
-  const userQrcodeStat = await getUserQrcodeStat(session.id);
+  const cookie = cookies();
+  const resp = await fetch(
+    `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/user_stat/get_user_stat`,
+    {
+      headers: {
+        Cookie: `lc_token=${cookie.get("lc_token")?.value || ""}`,
+      },
+    },
+  );
+  const userQrcodeStatData = await resp.json();
 
   return (
     <div>
@@ -240,9 +249,9 @@ export default async function Page() {
         <div className="w-full max-w-2xl">
           <SectionUser
             user={session}
-            downloadCount={userQrcodeStat?.download_count ?? 0}
-            generationCount={userQrcodeStat?.generation_count ?? 0}
-            freeUsage={userQrcodeStat?.usage_count ?? 0}
+            downloadCount={userQrcodeStatData?.download_count ?? 0}
+            generationCount={userQrcodeStatData?.generation_count ?? 0}
+            freeUsage={userQrcodeStatData?.usage_count ?? 0}
             maxFreeUsage={10}
           />
         </div>

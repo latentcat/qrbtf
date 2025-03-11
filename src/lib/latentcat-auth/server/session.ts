@@ -1,42 +1,23 @@
 "use server";
 
-import * as jose from "jose";
-import { cookies } from "next/headers";
 import { cache } from "react";
-import { COOKIE_KEY, UserPayload } from ".";
-import { PaymentMethod, QrbtfUser, UserTier } from "../common";
-import { checkAndUpdateUser } from "@/lib/server/user_service";
-import { SESSION_SECRET } from "@/lib/env/server";
+import { QrbtfUser } from "../common";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
+import { cookies } from "next/headers";
 
 export const getServerSession = cache(
   async (): Promise<QrbtfUser | undefined> => {
-    const cookie = (await cookies()).get(COOKIE_KEY)?.value;
-    const session = await decrypt(cookie);
-    if (session) {
-      const qrbtfUserData = await checkAndUpdateUser(session.id);
-      return {
-        id: session.id,
-        name: session.name,
-        picture: session.picture,
-        tier: qrbtfUserData.tier ?? UserTier.Trial,
-        email: qrbtfUserData.email,
-        payment: qrbtfUserData.payment ?? PaymentMethod.None,
-        subscribe_time: qrbtfUserData.subscribe_time,
-        subscribe_expire: qrbtfUserData.subscribe_expire,
-      };
+    const cookie = cookies();
+    const resp = await fetch(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/auth/session`, {
+      headers: {
+        Cookie: `lc_token=${cookie.get("lc_token")?.value || ""}`,
+      },
+    });
+    if (!resp.ok) {
+      return undefined;
     }
+
+    const session = await resp.json();
+    return session;
   },
 );
-
-export async function decrypt(token = "") {
-  try {
-    const decodedSecret = jose.base64url.decode(SESSION_SECRET);
-    const { payload } = await jose.jwtDecrypt<UserPayload>(
-      token,
-      decodedSecret,
-    );
-    return payload;
-  } catch {
-    // console.log("Failed to verify session", error);
-  }
-}

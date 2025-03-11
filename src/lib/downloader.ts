@@ -1,7 +1,7 @@
 import { trackEvent } from "@/components/TrackComponents";
 import { http } from "./network";
 import { QrbtfModule } from "./qrbtf_lib/qrcodes/param";
-import { flattenObject } from "@/lib/utils";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "./env/client";
 
 function createDownloadTask(href: string, filename: string) {
   const a = document.createElement("a");
@@ -85,7 +85,7 @@ function withReport(
   for (const type in downloaders) {
     const origin = downloaders[type];
     downloaders[type] = (options) => {
-      const { name, wrapper, params, userId } = options;
+      const { name, params, userId } = options;
       const dataToReport = {
         user_id: userId,
         type: name,
@@ -94,27 +94,23 @@ function withReport(
       trackEvent("download_qrcode", dataToReport);
       // WebKit bug: https://bugs.webkit.org/show_bug.cgi?id=270102
       Promise.all([
-        http("/api/update_count", {
+        http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/count/update_count`, {
           method: "POST",
           body: JSON.stringify({
             collection_name: "counter_style",
             name: name,
           }),
         }),
-        http("/api/update_count", {
+        http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/count/update_count`, {
           method: "POST",
           body: JSON.stringify({
             collection_name: "counter_global",
             name: "download_count",
           }),
         }),
-        http("/api/user/stat/inc_download_count", {
+        http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/user_stat/inc_download_count`, {
           method: "POST",
         }),
-        // http("/api/user/stat/log_qrcode", {
-        //   method: "POST",
-        //   body: JSON.stringify(dataToReport),
-        // }),
       ]).finally(() => origin(options));
     };
   }

@@ -1,16 +1,10 @@
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 import { StatusCard } from "@/components/StatusCard";
 import { useTranslations } from "next-intl";
-import { getCount, getGitHubStars } from "@/lib/server/count_service";
+import { getGitHubStars } from "@/lib/network";
+import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
 
-interface QrbtfStatusProps {
-  children?: React.ReactNode;
-}
-
-const sleep = (s: number) => new Promise((r) => setTimeout(r, s * 1000));
-
-export default async function QrbtfStatus(props: QrbtfStatusProps) {
+export default async function QrbtfStatus() {
   const t = useTranslations("index.status");
 
   let results = [];
@@ -23,18 +17,32 @@ export default async function QrbtfStatus(props: QrbtfStatusProps) {
   ] as const;
 
   try {
-    let promises = names.map((name, index) => {
+    let promises = names.map(async (name, index) => {
       if (index === 0) {
         return getGitHubStars();
       } else {
-        return getCount("counter_global", name);
+        const res = await fetch(
+          `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/count/get_count`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              collection_name: "counter_global",
+              name,
+            }),
+          },
+        );
+        const data = await res.json();
+        return data["count"];
       }
     });
-    results = (await Promise.all(promises)).map((number) =>
-      number ? number.toLocaleString() : "N/A",
-    );
+    results = (await Promise.all(promises)).map((number) => {
+      return number ? number.toLocaleString() : "N/A";
+    });
   } catch (error) {
-    results = names.map((name) => "N/A");
+    results = names.map(() => "N/A");
   }
   return (
     <>

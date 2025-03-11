@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8007",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings=0",
@@ -14,11 +14,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-regular-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@heroicons/react": "^2.1.1",
-    "@hookform/resolvers": "^3.3.4",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/bundle-analyzer": "^14.1.4",
@@ -56,8 +53,6 @@
     "@types/mdx": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@uiw/react-color": "^2.1.1",
-    "@upstash/ratelimit": "^1.0.1",
-    "@vercel/kv": "^1.0.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^1.0.0",
@@ -67,12 +62,10 @@
     "framer-motion": "^11.0.14",
     "html5-qrcode": "^2.3.8",
     "input-otp": "^1.1.0",
-    "jose": "^5.9.6",
     "jotai": "^2.7.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.356.0",
     "mixpanel-browser": "^2.49.0",
-    "mongodb": "^6.5.0",
     "next": "^14.1.4",
     "next-intl": "^3.9.5",
     "next-themes": "^0.2.1",
@@ -83,20 +76,18 @@
     "react-resizable-panels": "^2.0.12",
     "react-use-draggable-scroll": "^0.4.7",
     "sonner": "^1.4.3",
-    "stripe": "^17.6.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@auth/mongodb-adapter": "^2.5.0",
     "@types/lodash": "^4.17.0",
     "@types/mixpanel-browser": "^2.49.0",
     "@types/node": "^20.11.30",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/webpack-env": "^1.18.4",
+    "@types/webpack-env": "^1.18.8",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "^14.1.4",
@@ -111,5 +102,6 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md}": "yarn format"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
