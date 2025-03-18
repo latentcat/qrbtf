@@ -1,7 +1,7 @@
 "use server";
 
 import { cache } from "react";
-import { QrbtfUser } from "../common";
+import { QrbtfUser } from "./common";
 import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
 import { cookies } from "next/headers";
 
