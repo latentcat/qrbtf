@@ -14,8 +14,7 @@ import { useTranslations } from "next-intl";
 import { trackEvent, TrackLink } from "@/components/TrackComponents";
 import { useSession } from "@/lib/latentcat-auth/client";
 import SignInButton from "./SignInButton";
-import { http } from "@/lib/network";
-import { NEXT_PUBLIC_QRBTF_API_ENDPOINT } from "@/lib/env/client";
+import { NEXT_PUBLIC_ACCOUNT_URL } from "@/lib/env/client";
 import { useRouter } from "next/navigation";
 const iconClass = "w-4 h-4 mr-2.5 opacity-100";
 
@@ -78,10 +77,11 @@ export function UserButton() {
             <DropdownMenuItem
               onClick={async () => {
                 trackEvent("sign_out");
-                await http(`${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/auth/sign-out`, {
-                  method: "POST",
-                });
-                router.refresh();
+                router.push(
+                  `${NEXT_PUBLIC_ACCOUNT_URL}/logout?callback=${encodeURIComponent(
+                    window.location.href,
+                  )}`,
+                );
               }}
               className="text-red-500"
             >
