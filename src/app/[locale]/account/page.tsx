@@ -92,7 +92,7 @@ function SectionUser(props: SectionUserProps) {
             <div className="w-full flex items-center p-3">
               <div className="grow flex items-center gap-3">
                 <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
-                  <AvatarImage src={props.user.picture} />
+                  <AvatarImage src={props.user.image} />
                   <AvatarFallback>{props.user.name}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col gap-0">

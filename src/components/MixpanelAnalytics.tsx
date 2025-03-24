@@ -47,7 +47,7 @@ export default function MixpanelAnalytics() {
       mixpanel.people.set({
         $name: session?.name,
         // $email: session?.user.email,
-        $avatar: session?.picture,
+        $avatar: session?.image,
       });
     } else {
       mixpanel.reset();

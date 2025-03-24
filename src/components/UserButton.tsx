@@ -41,7 +41,7 @@ export function UserButton() {
           <DropdownMenuTrigger asChild className="group">
             <div className="py-1">
               <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
-                <AvatarImage src={session?.picture || ""} />
+                <AvatarImage src={session?.image || ""} />
                 <AvatarFallback>{session?.name}</AvatarFallback>
               </Avatar>
             </div>
@@ -50,7 +50,7 @@ export function UserButton() {
             <DropdownMenuItem>
               <div className="flex gap-3 items-center">
                 <Avatar className="w-9 h-9 group-hover:opacity-80 transition-opacity">
-                  <AvatarImage src={session?.picture || ""} />
+                  <AvatarImage src={session?.image || ""} />
                   <AvatarFallback>{session?.name}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col gap-0">

@@ -1,7 +1,7 @@
 export interface UserPayload {
   id: string;
   name: string;
-  picture: string;
+  image: string;
 }
 
 export enum UserTier {
