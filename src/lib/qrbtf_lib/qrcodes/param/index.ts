@@ -1,4 +1,11 @@
+import type { ComponentType } from "react";
 import { ControllerRenderProps, DefaultValues, Path } from "react-hook-form";
+import type { ImageResponse } from "../hooks/use_gen_ai_image";
+
+export interface QrbtfVisualizerProps {
+  data: ImageResponse | null;
+  startedAt: number | null;
+}
 
 export type QrbtfModule<P, PresetKeys extends string = string> = (
   | QrbtfModuleSvgRenderer<P>
@@ -12,7 +19,7 @@ export interface QrbtfModuleSvgRenderer<P> {
 
 export interface QrbtfModuleApiFetcher<P> {
   type: "api_fetcher";
-  visualizer: (props: { data: any }) => React.ReactNode;
+  visualizer: ComponentType<QrbtfVisualizerProps>;
 }
 
 export type CommonControlProps<P> = {

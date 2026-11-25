@@ -12,7 +12,9 @@ export default function QrcodeGeneratorWithProvider<P extends {}>(
   const messages = useMessages();
 
   return (
-    <NextIntlClientProvider messages={pick(messages, ["index.params"])}>
+    <NextIntlClientProvider
+      messages={pick(messages, ["index.params", "qrcodes.g1.wait"])}
+    >
       <QrcodeGenerator {...props} />
     </NextIntlClientProvider>
   );

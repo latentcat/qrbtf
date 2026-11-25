@@ -304,6 +304,15 @@
       "square": "Square"
     },
     "g1": {
+      "wait": {
+        "submitting": "Submitting your request…",
+        "pending": "Task submitted. Waiting to generate…",
+        "processing": "Processing your QR code…",
+        "elapsed_seconds": "Waited {seconds}s",
+        "elapsed_minutes": "Waited {minutes}m {seconds}s",
+        "long_wait": "This is taking longer than usual and may take a few minutes. No need to submit again.",
+        "failed": "Could not generate the QR code."
+      },
       "title": "G1",
       "subtitle": "Generative AI QR code",
       "desc": "Version realv2 | Specializes in realistic landscapes and objects",

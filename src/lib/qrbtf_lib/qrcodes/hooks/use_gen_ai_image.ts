@@ -37,13 +37,14 @@ const schema = z.union([
 export type ImageResponse = z.infer<typeof schema>;
 
 export default function useGenAiImage() {
-  const [generating, setGenerating] = useState(false);
+  const [startedAt, setStartedAt] = useState<number | null>(null);
   const [resData, setResData] = useState<ImageResponse | null>(null);
 
   const url = useAtomValue(urlAtom) || "https://qrbtf.com";
 
   async function onSubmit(values: any) {
-    setGenerating(true);
+    setStartedAt(Date.now());
+    setResData(null);
     try {
       const response = await http(
         `${NEXT_PUBLIC_QRBTF_API_ENDPOINT}/qrcode/gen_image`,
@@ -58,7 +59,7 @@ export default function useGenAiImage() {
       const taskId = (await response.json())["task_id"];
       setResData({
         status: "pending",
-        task_id: "",
+        task_id: taskId,
         create_ts: Date.now(),
       });
 
@@ -74,20 +75,21 @@ export default function useGenAiImage() {
           imageResponse.status === "completed" ||
           imageResponse.status === "failed"
         ) {
-          setGenerating(false);
+          setStartedAt(null);
           if (timer) {
             clearInterval(timer);
           }
         }
       }, 1500);
     } catch {
-      setGenerating(false);
+      setStartedAt(null);
     }
   }
 
   return {
     onSubmit,
-    generating,
+    generating: startedAt !== null,
+    startedAt,
     resData,
   };
 }

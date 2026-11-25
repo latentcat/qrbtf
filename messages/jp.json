@@ -304,6 +304,15 @@
       "square": "四角"
     },
     "g1": {
+      "wait": {
+        "submitting": "生成リクエストを送信中…",
+        "pending": "リクエストを受け付けました。生成を待っています…",
+        "processing": "QR コードの生成リクエストを処理中…",
+        "elapsed_seconds": "待機時間 {seconds} 秒",
+        "elapsed_minutes": "待機時間 {minutes} 分 {seconds} 秒",
+        "long_wait": "通常より時間がかかっています。数分かかることがあります。再送信は不要です。",
+        "failed": "QR コードを生成できませんでした。"
+      },
       "title": "G1",
       "subtitle": "生成 AI QR コード",
       "desc": "バージョン realv2 | 写実的な風景と物体を得意とします",

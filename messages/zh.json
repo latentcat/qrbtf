@@ -304,6 +304,15 @@
       "square": "方形"
     },
     "g1": {
+      "wait": {
+        "submitting": "正在提交生成请求…",
+        "pending": "任务已提交，等待生成…",
+        "processing": "正在处理二维码生成任务…",
+        "elapsed_seconds": "已等待 {seconds} 秒",
+        "elapsed_minutes": "已等待 {minutes} 分 {seconds} 秒",
+        "long_wait": "本次等待较长，可能需要几分钟。无需重复提交。",
+        "failed": "二维码生成失败。"
+      },
       "title": "G1",
       "subtitle": "生成式 AI 二维码",
       "desc": "版本 realv2 | 擅长写实风景和物体",

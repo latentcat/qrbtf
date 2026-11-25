@@ -5,14 +5,12 @@ import { PhotoIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion } from "framer-motion";
 import { opacityAnimations, transitionMd } from "@/lib/animations";
 import { Loader2 } from "lucide-react";
-import { Progress } from "@/components/Progress";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { trackEvent } from "@/components/TrackComponents";
 import { flattenObject } from "@/lib/utils";
-import { QrbtfModule } from "./param";
+import type { QrbtfModule, QrbtfVisualizerProps } from "./param";
 import { G1Presets } from "./g1_config";
-import PixelCard from "@/components/vfx/pixel-grid";
-import { ImageResponse } from "./hooks/use_gen_ai_image";
 
 interface RenderG1OwnProps {
   task_type: string;
@@ -31,61 +29,73 @@ interface RenderG1OwnProps {
 
 export type QrbtfRendererG1Props = RenderG1OwnProps;
 
-interface ProgressType {
-  value: number;
-  status: string;
-}
-
-function QrbtfVisualizerG1(props: { data: any }) {
-  const [progress, setProgress] = useState<ProgressType | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+function GenerationWait({
+  startedAt,
+  status,
+}: {
+  startedAt: number;
+  status: "submitting" | "pending" | "processing";
+}) {
+  const t = useTranslations("qrcodes.g1.wait");
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
 
   useEffect(() => {
-    const resp: ImageResponse | null = props.data;
+    const updateElapsed = () => {
+      setElapsedSeconds(
+        Math.max(0, Math.floor((Date.now() - startedAt) / 1000)),
+      );
+    };
+    updateElapsed();
+    const timer = window.setInterval(updateElapsed, 1000);
+    return () => window.clearInterval(timer);
+  }, [startedAt]);
 
-    if (resp === null) return;
+  const minutes = Math.floor(elapsedSeconds / 60);
+  const seconds = elapsedSeconds % 60;
 
-    switch (resp.status) {
-      case "pending":
-        if (!resp.task_id) {
-          setProgress({
-            value: 0,
-            status: "Requesting",
-          });
-        } else {
-          setProgress({
-            value: 0.4,
-            status: "Consumed",
-          });
-        }
-        break;
-      case "processing":
-        setProgress({
-          value: 0.6,
-          status: "Generate start",
-        });
-        break;
-      case "completed":
-        setProgress({
-          value: 1,
-          status: "Generate complete",
-        });
-        break;
-      case "failed":
-        setProgress(null);
-        toast.error("Server error", {
-          description: "",
-        });
-        break;
+  return (
+    <>
+      <Loader2
+        className="h-5 w-5 motion-safe:animate-spin"
+        aria-hidden="true"
+      />
+      <p role="status" className="text-sm font-medium">
+        {t(status)}
+      </p>
+      <p role="timer" className="text-sm tabular-nums text-muted-foreground">
+        {minutes > 0
+          ? t("elapsed_minutes", { minutes, seconds })
+          : t("elapsed_seconds", { seconds })}
+      </p>
+      {status !== "submitting" && elapsedSeconds >= 20 && (
+        <p
+          role="status"
+          className="max-w-[18rem] text-sm text-muted-foreground"
+        >
+          {t("long_wait")}
+        </p>
+      )}
+    </>
+  );
+}
+
+function QrbtfVisualizerG1({ data, startedAt }: QrbtfVisualizerProps) {
+  const t = useTranslations("qrcodes.g1.wait");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const waiting = startedAt !== null;
+  const status =
+    data?.status === "pending" || data?.status === "processing"
+      ? data.status
+      : "submitting";
+
+  useEffect(() => {
+    if (data?.status === "completed") {
+      setImageUrl(data.download_url);
+      trackEvent("submit_fetcher_result", flattenObject(data));
+    } else if (data?.status === "failed") {
+      toast.error(t("failed"));
     }
-
-    // 得到结果，结束，设置图像 url
-    if (resp.status === "completed") {
-      setImageUrl(resp.download_url);
-      setProgress(null);
-      trackEvent("submit_fetcher_result", flattenObject(resp));
-    }
-  }, [props.data]);
+  }, [data, t]);
 
   return (
     <div>
@@ -93,38 +103,30 @@ function QrbtfVisualizerG1(props: { data: any }) {
         id="output_image"
         className="aspect-square flex flex-col items-center justify-center"
       >
-        {!progress && <PhotoIcon className="w-12 h-12 opacity-10" />}
+        {!waiting && <PhotoIcon className="w-12 h-12 opacity-10" />}
       </div>
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
-        <AnimatePresence>
-          {progress && (
-            <>
-              <div className="absolute w-full h-full top-0 left-0">
-                <PixelCard isActive={!!progress} className="w-full h-full">
-                  {""}
-                </PixelCard>
-              </div>
-              <motion.div
-                key="progress-and-status"
-                className="w-full h-full flex flex-col items-center justify-center gap-2 bg-background"
-                variants={opacityAnimations}
-                transition={transitionMd}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-              >
-                <Progress value={progress.value} className="w-[30%] h-2" />
-                <div className="opacity-30 text-sm hidden">
-                  {progress.status}
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </div>
+      <AnimatePresence>
+        {startedAt !== null && (
+          <motion.div
+            key="generation-wait"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background px-4 text-center"
+            variants={opacityAnimations}
+            transition={transitionMd}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <GenerationWait
+              key={startedAt}
+              startedAt={startedAt}
+              status={status}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="absolute top-0 left-0 w-full h-full">
         <AnimatePresence>
-          {!progress && imageUrl && (
+          {!waiting && imageUrl && (
             <motion.div
               key="final-image"
               variants={opacityAnimations}
